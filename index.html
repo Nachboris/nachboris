@@ -12,7 +12,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nachboris.fr" />
 
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23F7F5F2'/%3E%3Ctext x='16' y='22' font-family='Georgia, serif' font-size='18' font-weight='500' text-anchor='middle' fill='%23D4845A'%3EBN%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='10' fill='%23F7F5F2'/%3E%3Ctext x='16' y='22' font-family='Georgia, serif' font-size='18' font-weight='500' text-anchor='middle' fill='%23D4845A'%3EBN%3C/text%3E%3C/svg%3E" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,26 +20,63 @@
 
   <style>
     :root {
+      /* Base */
       --bg: #F7F5F2;
       --bg-soft: #EFECE6;
-      --bg-hover: #F2E8DF;
       --ink: #1A1814;
       --ink-soft: #4A4640;
       --ink-mute: #78726A;
-      --accent: #D4845A;
-      --accent-soft: #E9B89C;
-      --accent-tint: rgba(212, 132, 90, 0.08);
       --rule: #E5E0D8;
 
+      /* Multi-color palette — warm, varied, Ali Abdaal-esque */
+      --terra: #D4845A;        /* terra cotta — primary */
+      --terra-soft: #E9B89C;
+      --terra-tint: rgba(212, 132, 90, 0.10);
+
+      --olive: #8A9A5B;        /* olive doux */
+      --olive-soft: #B8C48A;
+      --olive-tint: rgba(138, 154, 91, 0.10);
+
+      --dusk: #6B8FA3;         /* bleu poussiéreux */
+      --dusk-soft: #A3BECC;
+      --dusk-tint: rgba(107, 143, 163, 0.10);
+
+      --ochre: #D4A574;        /* ocre chaud */
+      --ochre-soft: #E5C9A1;
+      --ochre-tint: rgba(212, 165, 116, 0.10);
+
+      --clay: #C26E5E;         /* brique douce */
+      --clay-soft: #E0A497;
+      --clay-tint: rgba(194, 110, 94, 0.10);
+
+      --moss: #6E8B7A;         /* mousse/sauge */
+      --moss-soft: #A5BDAF;
+      --moss-tint: rgba(110, 139, 122, 0.10);
+
+      /* Default accent alias (keeps legacy links/buttons on terra) */
+      --accent: var(--terra);
+      --accent-soft: var(--terra-soft);
+      --accent-tint: var(--terra-tint);
+
+      /* Typography */
       --serif: "Fraunces", Georgia, "Times New Roman", serif;
       --sans: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --hand: "Caveat", cursive;
 
+      /* Layout */
       --max: 1100px;
       --pad: clamp(1.25rem, 4vw, 2.5rem);
 
-      --radius: 6px;
+      /* Rounded shapes (v1.02 priority) */
+      --r-sm: 10px;
+      --r-md: 18px;
+      --r-lg: 28px;
+      --r-xl: 40px;
+
+      /* Easings */
       --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+      --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --soft: cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -58,7 +95,7 @@
     img, svg { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
 
-    ::selection { background: var(--accent); color: var(--bg); }
+    ::selection { background: var(--terra); color: var(--bg); }
 
     h1, h2, h3 {
       font-family: var(--serif);
@@ -67,17 +104,14 @@
       color: var(--ink);
       line-height: 1.08;
     }
-
     h1 {
       font-size: clamp(2.5rem, 6.5vw, 5rem);
       font-variation-settings: "opsz" 144, "SOFT" 50;
     }
-
     h2 {
       font-size: clamp(1.75rem, 3.5vw, 2.6rem);
       font-variation-settings: "opsz" 96;
     }
-
     h3 {
       font-size: 1.25rem;
       font-family: var(--sans);
@@ -129,7 +163,9 @@
 
     section { padding: clamp(4rem, 9vw, 7.5rem) 0; }
 
-    /* NAV */
+    /* ==========================================================
+       NAV
+       ========================================================== */
     .nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -157,14 +193,14 @@
       font-weight: 400;
       letter-spacing: -0.01em;
       color: var(--ink);
-      transition: color 0.2s var(--ease);
+      transition: color 0.35s var(--soft);
     }
     .logo em {
       font-style: italic;
-      color: var(--accent);
+      color: var(--terra);
       font-weight: 300;
     }
-    .logo:hover { color: var(--accent); }
+    .logo:hover { color: var(--terra); }
 
     .nav-links {
       display: flex;
@@ -179,7 +215,7 @@
       color: var(--ink);
       padding: 0.5rem 0;
       position: relative;
-      transition: color 0.2s var(--ease);
+      transition: color 0.35s var(--soft);
     }
     .nav-link::after {
       content: "";
@@ -187,13 +223,14 @@
       bottom: 2px;
       left: 0;
       width: 100%;
-      height: 1px;
-      background: var(--accent);
+      height: 1.5px;
+      border-radius: 2px;
+      background: var(--terra);
       transform: scaleX(0);
       transform-origin: right;
-      transition: transform 0.35s var(--ease);
+      transition: transform 0.4s var(--spring);
     }
-    .nav-link:hover { color: var(--accent); }
+    .nav-link:hover { color: var(--terra); }
     .nav-link:hover::after {
       transform: scaleX(1);
       transform-origin: left;
@@ -203,7 +240,9 @@
       .nav-links { gap: 1.25rem; }
     }
 
-    /* HERO */
+    /* ==========================================================
+       HERO
+       ========================================================== */
     .hero {
       padding-top: clamp(7rem, 15vw, 10rem);
       padding-bottom: clamp(4rem, 8vw, 6rem);
@@ -252,7 +291,7 @@
       font-size: 0.98rem;
       padding: 0.95rem 1.6rem;
       border-radius: 999px;
-      transition: all 0.3s var(--ease);
+      transition: transform 0.5s var(--spring), background-color 0.35s var(--soft), color 0.35s var(--soft);
       will-change: transform;
     }
     .btn-primary {
@@ -260,11 +299,15 @@
       color: var(--bg);
     }
     .btn-primary:hover {
-      background: var(--accent);
-      transform: translateY(-1px);
+      background: var(--terra);
+      transform: translateY(-2px) scale(1.02);
     }
-    .btn-primary .arrow { transition: transform 0.3s var(--ease); }
-    .btn-primary:hover .arrow { transform: translateX(3px); }
+    .btn-primary .arrow {
+      transition: transform 0.5s var(--spring);
+    }
+    .btn-primary:hover .arrow {
+      transform: translateX(4px);
+    }
 
     .btn-ghost {
       color: var(--ink);
@@ -277,14 +320,15 @@
       bottom: 0.6rem;
       left: 0;
       right: 0;
-      height: 1px;
+      height: 1.5px;
+      border-radius: 2px;
       background: var(--ink);
       transform-origin: left;
-      transition: all 0.35s var(--ease);
+      transition: all 0.45s var(--spring);
     }
-    .btn-ghost:hover { color: var(--accent); }
+    .btn-ghost:hover { color: var(--terra); }
     .btn-ghost:hover::after {
-      background: var(--accent);
+      background: var(--terra);
       transform: scaleX(0.96);
     }
 
@@ -293,14 +337,14 @@
       font-size: clamp(5rem, 12vw, 9rem);
       font-style: italic;
       font-weight: 300;
-      color: var(--accent);
+      color: var(--terra);
       line-height: 0.85;
       opacity: 0.9;
       align-self: end;
       user-select: none;
-      transition: transform 0.6s var(--ease);
+      transition: transform 0.8s var(--spring);
     }
-    .mark:hover { transform: rotate(-3deg); }
+    .mark:hover { transform: rotate(-4deg) scale(1.03); }
     .mark small {
       display: block;
       font-family: var(--sans);
@@ -313,29 +357,48 @@
       padding-left: 0.3rem;
     }
 
+    /* Decorative soft blobs in hero background */
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 20%;
+      left: -8vw;
+      width: 18vw;
+      height: 18vw;
+      max-width: 260px;
+      max-height: 260px;
+      background: radial-gradient(circle, var(--olive-soft) 0%, transparent 65%);
+      opacity: 0.28;
+      filter: blur(28px);
+      pointer-events: none;
+      z-index: -1;
+    }
     .hero::after {
       content: "";
       position: absolute;
-      top: 40%;
+      top: 35%;
       right: -10vw;
-      width: 22vw;
-      height: 22vw;
-      max-width: 320px;
-      max-height: 320px;
-      background: radial-gradient(circle, var(--accent-soft) 0%, transparent 65%);
+      width: 24vw;
+      height: 24vw;
+      max-width: 340px;
+      max-height: 340px;
+      background: radial-gradient(circle, var(--terra-soft) 0%, transparent 65%);
       opacity: 0.35;
-      filter: blur(20px);
+      filter: blur(22px);
       pointer-events: none;
       z-index: -1;
     }
 
-    /* WHY / HI */
+    /* ==========================================================
+       WHY / HI
+       ========================================================== */
     .why {
       padding-top: clamp(3rem, 6vw, 5rem);
       padding-bottom: clamp(4rem, 7vw, 6rem);
-      border-top: 1px solid var(--rule);
-      border-bottom: 1px solid var(--rule);
       background: var(--bg-soft);
+      border-radius: var(--r-xl) var(--r-xl) 0 0;
+      margin-top: -1px;
+      position: relative;
     }
 
     .why-grid {
@@ -356,7 +419,7 @@
       font-size: 1.6rem;
       font-style: italic;
       font-weight: 300;
-      color: var(--accent);
+      color: var(--terra);
       white-space: nowrap;
     }
     .why-hi .wave {
@@ -383,20 +446,25 @@
       font-weight: 500;
       color: var(--ink);
     }
+    .why-body .highlight-olive { color: var(--olive); font-weight: 500; }
+    .why-body .highlight-dusk { color: var(--dusk); font-weight: 500; }
 
     .why-signoff {
       margin-top: 1.75rem;
       font-family: var(--hand);
       font-size: 1.8rem;
-      color: var(--accent);
+      color: var(--terra);
       line-height: 1;
       letter-spacing: 0.01em;
     }
 
-    /* PROOF */
+    /* ==========================================================
+       PROOF
+       ========================================================== */
     .proof {
       padding-top: clamp(3rem, 5vw, 4rem);
       padding-bottom: clamp(3rem, 5vw, 4rem);
+      background: var(--bg-soft);
     }
     .proof-head {
       font-family: var(--hand);
@@ -419,27 +487,38 @@
     .proof-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 2.5rem;
+      gap: 1.25rem;
     }
     @media (min-width: 720px) {
       .proof-grid {
         grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
+        gap: 1.5rem;
       }
     }
 
     .stat {
       display: block;
-      padding: 1.75rem 1.5rem;
-      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      border-radius: var(--r-lg);
       text-align: center;
-      transition: all 0.3s var(--ease);
+      transition: transform 0.55s var(--spring), background 0.4s var(--soft), box-shadow 0.4s var(--soft);
       border: 1px solid transparent;
+      background: rgba(255, 255, 255, 0.4);
     }
-    .stat:hover {
-      background: var(--accent-tint);
-      border-color: var(--accent-soft);
-      transform: translateY(-3px);
+    .stat:nth-child(1):hover {
+      background: var(--terra-tint);
+      box-shadow: 0 14px 30px -16px rgba(212, 132, 90, 0.4);
+      transform: translateY(-6px) rotate(-0.5deg);
+    }
+    .stat:nth-child(2):hover {
+      background: var(--olive-tint);
+      box-shadow: 0 14px 30px -16px rgba(138, 154, 91, 0.4);
+      transform: translateY(-6px) rotate(0.5deg);
+    }
+    .stat:nth-child(3):hover {
+      background: var(--dusk-tint);
+      box-shadow: 0 14px 30px -16px rgba(107, 143, 163, 0.4);
+      transform: translateY(-6px) rotate(-0.3deg);
     }
     .stat .num {
       font-family: var(--serif);
@@ -450,9 +529,11 @@
       line-height: 1;
       display: block;
     }
+    .stat:nth-child(1) .num em { color: var(--terra); }
+    .stat:nth-child(2) .num em { color: var(--olive); }
+    .stat:nth-child(3) .num em { color: var(--dusk); }
     .stat .num em {
       font-style: italic;
-      color: var(--accent);
       font-weight: 300;
     }
     .stat .label {
@@ -471,17 +552,21 @@
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--accent);
       opacity: 0;
-      transform: translateY(4px);
-      transition: all 0.3s var(--ease);
+      transform: translateY(6px);
+      transition: opacity 0.4s var(--soft), transform 0.5s var(--spring);
     }
+    .stat:nth-child(1) .see-more { color: var(--terra); }
+    .stat:nth-child(2) .see-more { color: var(--olive); }
+    .stat:nth-child(3) .see-more { color: var(--dusk); }
     .stat:hover .see-more {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* SECTION HEAD */
+    /* ==========================================================
+       SECTION HEAD
+       ========================================================== */
     .section-head {
       display: grid;
       grid-template-columns: 1fr;
@@ -498,81 +583,91 @@
     .section-head h2 { max-width: 18ch; }
     .section-head p { max-width: 44ch; font-size: 1.05rem; }
 
-    /* SERVICES */
+    /* ==========================================================
+       SERVICES — multi-color, rounded, spring hovers
+       ========================================================== */
     .services {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 0;
+      gap: 1rem;
     }
     @media (min-width: 720px) {
       .services {
         grid-template-columns: 1fr 1fr;
+        gap: 1.25rem;
       }
     }
     .service {
-      padding: 2rem 1rem 2rem 0;
-      border-top: 1px solid var(--rule);
+      --c: var(--terra);
+      --c-soft: var(--terra-soft);
+      --c-tint: var(--terra-tint);
+      padding: 1.75rem 1.75rem;
+      border-radius: var(--r-md);
       display: grid;
       grid-template-columns: auto 1fr;
-      gap: 1.5rem;
+      gap: 1.25rem;
       align-items: start;
-      transition: background 0.3s var(--ease), padding 0.3s var(--ease);
-      border-radius: 2px;
+      transition: transform 0.55s var(--spring), background 0.4s var(--soft), box-shadow 0.4s var(--soft);
+      background: rgba(255, 255, 255, 0.35);
+      border: 1px solid var(--rule);
+      will-change: transform;
     }
     .service:hover {
-      background: var(--accent-tint);
-      padding-left: 1rem;
+      background: var(--c-tint);
+      border-color: var(--c-soft);
+      transform: translateY(-4px) scale(1.005);
+      box-shadow: 0 18px 36px -20px rgba(26, 24, 20, 0.18);
     }
-    @media (min-width: 720px) {
-      .service {
-        padding: 2.2rem 2.5rem 2.2rem 0;
-      }
-      .service:nth-child(even) {
-        padding-left: 2.5rem;
-        padding-right: 1rem;
-        border-left: 1px solid var(--rule);
-      }
-      .service:nth-child(even):hover {
-        padding-left: 3rem;
-      }
-      .service:nth-child(odd):hover {
-        padding-left: 1rem;
-      }
-    }
+    .service:hover .service-num { transform: rotate(-6deg) scale(1.1); }
+    .service:hover h3 { color: var(--c); }
+
     .service-num {
       font-family: var(--serif);
       font-style: italic;
-      font-weight: 300;
-      font-size: 1rem;
-      color: var(--accent);
-      padding-top: 0.3rem;
-      min-width: 2ch;
+      font-weight: 400;
+      font-size: 1.4rem;
+      color: var(--c);
+      min-width: 2.2ch;
+      line-height: 1;
+      padding-top: 0.1rem;
+      transition: transform 0.55s var(--spring);
+      display: inline-block;
     }
     .service h3 {
       margin-bottom: 0.55rem;
       font-size: 1.15rem;
+      transition: color 0.35s var(--soft);
     }
     .service p {
       font-size: 0.97rem;
       line-height: 1.55;
-      margin-bottom: 0.7rem;
+      margin-bottom: 0.8rem;
     }
     .service-examples {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--ink-mute);
       font-family: var(--sans);
       line-height: 1.5;
     }
     .service-examples .dot {
-      color: var(--accent);
+      color: var(--c);
       margin: 0 0.4rem;
+      transition: color 0.35s var(--soft);
     }
 
+    /* Per-service color assignments */
+    .service.s-terra { --c: var(--terra); --c-soft: var(--terra-soft); --c-tint: var(--terra-tint); }
+    .service.s-olive { --c: var(--olive); --c-soft: var(--olive-soft); --c-tint: var(--olive-tint); }
+    .service.s-dusk  { --c: var(--dusk);  --c-soft: var(--dusk-soft);  --c-tint: var(--dusk-tint);  }
+    .service.s-ochre { --c: var(--ochre); --c-soft: var(--ochre-soft); --c-tint: var(--ochre-tint); }
+    .service.s-clay  { --c: var(--clay);  --c-soft: var(--clay-soft);  --c-tint: var(--clay-tint);  }
+    .service.s-moss  { --c: var(--moss);  --c-soft: var(--moss-soft);  --c-tint: var(--moss-tint);  }
+
     .positioning {
-      margin-top: 4rem;
-      padding: 2.5rem 2rem;
-      background: var(--bg-soft);
-      border-radius: var(--radius);
+      margin-top: 3.5rem;
+      padding: 2.75rem 2rem;
+      background: linear-gradient(135deg, var(--bg-soft) 0%, var(--ochre-tint) 100%);
+      border-radius: var(--r-xl);
       text-align: center;
       font-family: var(--serif);
       font-size: clamp(1.2rem, 2.2vw, 1.65rem);
@@ -586,26 +681,25 @@
     .positioning strong {
       font-weight: 500;
       font-style: normal;
-      color: var(--accent);
-    }
-    .positioning::before {
-      content: "";
-      position: absolute;
-      top: -1px;
-      left: 50%;
-      width: 40px;
-      height: 2px;
-      background: var(--accent);
-      transform: translateX(-50%);
+      color: var(--terra);
     }
 
-    /* TRUST */
+    /* ==========================================================
+       TRUST (still dark — review in v1.03)
+       ========================================================== */
     .trust {
       background: var(--ink);
       color: var(--bg);
+      border-radius: var(--r-xl);
+      margin: 0 var(--pad);
+      max-width: calc(var(--max) - 2 * var(--pad));
+      margin-left: auto;
+      margin-right: auto;
+      padding: clamp(3.5rem, 7vw, 5.5rem) clamp(1.5rem, 4vw, 3rem);
     }
-    .trust .eyebrow { color: var(--accent-soft); }
-    .trust .eyebrow::before { background: var(--accent-soft); }
+    .trust .wrap { padding: 0; }
+    .trust .eyebrow { color: var(--ochre-soft); }
+    .trust .eyebrow::before { background: var(--ochre-soft); }
     .trust h2 { color: var(--bg); }
     .trust p {
       color: rgba(247, 245, 242, 0.75);
@@ -630,12 +724,13 @@
       font-family: var(--serif);
       font-style: italic;
       font-weight: 300;
-      font-size: 1.6rem;
-      line-height: 1.4;
+      font-size: 1.5rem;
+      line-height: 1.45;
       color: var(--bg);
-      border-left: 2px solid var(--accent);
+      border-left: 3px solid var(--ochre);
       padding-left: 1.5rem;
       margin-top: 2rem;
+      border-radius: 0 var(--r-sm) var(--r-sm) 0;
       letter-spacing: -0.01em;
     }
     .trust-cta {
@@ -646,47 +741,66 @@
       font-family: var(--sans);
       font-weight: 500;
       font-size: 0.98rem;
-      color: var(--accent-soft);
-      padding-bottom: 0.3rem;
-      border-bottom: 1px solid rgba(233, 184, 156, 0.35);
-      transition: all 0.3s var(--ease);
+      color: var(--ochre-soft);
+      padding: 0.6rem 1.25rem;
+      border: 1px solid rgba(229, 201, 161, 0.3);
+      border-radius: 999px;
+      transition: transform 0.5s var(--spring), background 0.35s var(--soft), color 0.35s var(--soft), border-color 0.35s var(--soft);
     }
     .trust-cta:hover {
-      color: var(--bg);
-      border-bottom-color: var(--bg);
+      color: var(--ink);
+      background: var(--ochre-soft);
+      border-color: var(--ochre-soft);
+      transform: translateY(-2px);
     }
-    .trust-cta .arrow { transition: transform 0.3s var(--ease); }
+    .trust-cta .arrow { transition: transform 0.5s var(--spring); }
     .trust-cta:hover .arrow { transform: translateX(4px); }
 
-    /* PROCESS */
+    /* ==========================================================
+       PROCESS
+       ========================================================== */
     .process-list {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 0;
+      gap: 1rem;
     }
     .step {
+      --c: var(--terra);
       display: grid;
       grid-template-columns: auto 1fr auto;
       gap: 2rem;
-      padding: 2rem 0;
-      border-top: 1px solid var(--rule);
+      padding: 1.75rem 2rem;
+      border-radius: var(--r-md);
+      background: rgba(255, 255, 255, 0.35);
+      border: 1px solid var(--rule);
       align-items: center;
-      transition: padding 0.4s var(--ease);
+      transition: transform 0.55s var(--spring), background 0.4s var(--soft), border-color 0.4s var(--soft);
       position: relative;
     }
-    .step:last-child { border-bottom: 1px solid var(--rule); }
-    .step:hover { padding-left: 0.75rem; }
-    .step:hover .step-num { color: var(--ink); }
+    .step:nth-child(1) { --c: var(--terra); }
+    .step:nth-child(3) { --c: var(--olive); }
+    .step:nth-child(5) { --c: var(--dusk); }
+
+    .step:hover {
+      background: rgba(255, 255, 255, 0.7);
+      border-color: var(--c);
+      transform: translateX(6px);
+    }
+    .step:hover .step-num {
+      color: var(--c);
+      transform: rotate(-4deg) scale(1.05);
+    }
 
     .step-num {
       font-family: var(--serif);
-      font-size: 2rem;
+      font-size: 2.2rem;
       font-style: italic;
       font-weight: 300;
-      color: var(--accent);
+      color: var(--c);
       min-width: 3ch;
       line-height: 1;
-      transition: color 0.3s var(--ease);
+      transition: color 0.4s var(--soft), transform 0.6s var(--spring);
+      display: inline-block;
     }
     .step-body h3 {
       font-size: 1.2rem;
@@ -699,44 +813,55 @@
     }
     .step-meta {
       font-family: var(--sans);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--ink-mute);
       white-space: nowrap;
+      padding: 0.4rem 0.85rem;
+      background: var(--bg-soft);
+      border-radius: 999px;
     }
     @media (max-width: 640px) {
       .step {
         grid-template-columns: auto 1fr;
         gap: 1.25rem;
+        padding: 1.5rem;
       }
       .step-meta {
         grid-column: 2;
         margin-top: 0.25rem;
+        justify-self: start;
       }
     }
 
+    /* Connector arrows between steps */
     .step-arrow {
       display: none;
-      color: var(--accent);
-      opacity: 0.55;
+      margin: -0.25rem 0 -0.25rem 2.8rem;
+      color: var(--terra);
+      opacity: 0.4;
     }
     @media (min-width: 720px) {
       .step-arrow {
         display: block;
-        position: absolute;
-        left: 2.5rem;
-        bottom: -1rem;
         width: 44px;
-        height: 2rem;
-        pointer-events: none;
+        height: 28px;
       }
     }
 
-    /* CONTACT */
+    /* ==========================================================
+       CONTACT
+       ========================================================== */
     .contact {
-      background: var(--bg-soft);
+      background: linear-gradient(135deg, var(--bg-soft) 0%, var(--terra-tint) 60%, var(--ochre-tint) 100%);
       text-align: center;
+      border-radius: var(--r-xl);
+      margin: 0 var(--pad) clamp(3rem, 6vw, 5rem);
+      max-width: calc(var(--max) - 2 * var(--pad));
+      margin-left: auto;
+      margin-right: auto;
+      padding: clamp(3.5rem, 7vw, 5.5rem) clamp(1.5rem, 4vw, 3rem);
     }
     .contact-inner {
       max-width: 640px;
@@ -761,28 +886,29 @@
       gap: 1rem 2rem;
     }
     .contact-note {
-      margin-top: 1.5rem;
+      margin-top: 2rem;
       font-size: 0.85rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--ink-mute);
     }
-    .contact-note span { color: var(--accent); }
+    .contact-note span { color: var(--terra); }
 
-    .coffee-note {
+    .reply-promise {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
       margin-top: 1.75rem;
       font-family: var(--hand);
-      font-size: 1.3rem;
-      color: var(--accent);
+      font-size: 1.35rem;
+      color: var(--olive);
     }
 
-    /* FOOTER */
+    /* ==========================================================
+       FOOTER
+       ========================================================== */
     footer {
       padding: 2.5rem 0;
-      border-top: 1px solid var(--rule);
     }
     .footer-inner {
       max-width: var(--max);
@@ -796,16 +922,26 @@
       font-size: 0.88rem;
       color: var(--ink-mute);
     }
+    .footer-inner .flag {
+      display: inline-block;
+      margin: 0 0.15rem;
+      transition: transform 0.5s var(--spring);
+    }
+    .footer-inner:hover .flag {
+      transform: rotate(-10deg) scale(1.15);
+    }
     .footer-links {
       display: flex;
       gap: 1.75rem;
     }
     .footer-links a {
-      transition: color 0.2s var(--ease);
+      transition: color 0.35s var(--soft);
     }
-    .footer-links a:hover { color: var(--accent); }
+    .footer-links a:hover { color: var(--terra); }
 
-    /* REVEAL */
+    /* ==========================================================
+       REVEAL
+       ========================================================== */
     .reveal {
       opacity: 0;
       transform: translateY(18px);
@@ -873,7 +1009,6 @@
               I'm Boris — a right-hand for solo founders and creators. I take on the operational weight (<span class="wavy">support</span>, <span class="wavy">community</span>, <span class="wavy">AI workflows</span>, content ops) so you stay on what only you can do.
             </p>
             <div class="hero-ctas reveal">
-              <!-- TODO: remplacer par vraie URL Calendly -->
               <a href="#contact" class="btn btn-primary">
                 Let's talk
                 <span class="arrow">→</span>
@@ -898,13 +1033,13 @@
           </div>
           <div class="why-body reveal">
             <p>
-              I spent the last decade running a digital goods business in a market where fraud was the default and every customer expected to get burned.
+              I spent the last decade running a digital goods business in a market where fraud was the default and every customer half-expected to get burned.
             </p>
             <p>
-              I never let it happen. <strong>2,250+ positive reviews and zero chargebacks later</strong>, I realized the real skill wasn't product, marketing, or luck — it was operational discipline. Reply fast. Fix what breaks. Never make the customer chase you.
+              Disputes happened. Chargebacks happened. Angry customers happened. What I learned was how to <strong class="highlight-olive">turn most of them around</strong> — own the mistake when it was mine, defend the case when it wasn't, and always make the buyer feel heard. <strong>2,250+ positive reviews</strong> isn't an accident. It's a craft worn in over thousands of touchpoints.
             </p>
             <p>
-              Now I lend that discipline to solo founders and creators who are great at what they do but drowning in the rest. The goal is simple: <strong>get your calendar back</strong>, keep your customers happy, ship the boring things on time.
+              Now I lend that craft to solo founders and creators who are great at what they do but drowning in the rest. The goal is simple: <strong class="highlight-dusk">get your calendar back</strong>, keep your customers happy, ship the boring things on time.
             </p>
             <p class="why-signoff">— Boris</p>
           </div>
@@ -917,7 +1052,6 @@
       <div class="wrap">
         <p class="proof-head reveal">the receipts</p>
         <div class="proof-grid reveal-stagger">
-          <!-- TODO: liens vers /projects (page à construire) -->
           <a href="/projects" class="stat">
             <span class="num">2,250<em>+</em></span>
             <span class="label">Verified customer relationships, 100% positive.</span>
@@ -951,7 +1085,7 @@
         </div>
 
         <div class="services reveal-stagger">
-          <div class="service">
+          <div class="service s-terra">
             <span class="service-num">01</span>
             <div>
               <h3>Customer support L2</h3>
@@ -962,7 +1096,7 @@
             </div>
           </div>
 
-          <div class="service">
+          <div class="service s-olive">
             <span class="service-num">02</span>
             <div>
               <h3>Community operations</h3>
@@ -973,7 +1107,7 @@
             </div>
           </div>
 
-          <div class="service">
+          <div class="service s-dusk">
             <span class="service-num">03</span>
             <div>
               <h3>Email sequences &amp; lifecycle</h3>
@@ -984,7 +1118,7 @@
             </div>
           </div>
 
-          <div class="service">
+          <div class="service s-ochre">
             <span class="service-num">04</span>
             <div>
               <h3>AI workflows &amp; automation</h3>
@@ -995,7 +1129,7 @@
             </div>
           </div>
 
-          <div class="service">
+          <div class="service s-clay">
             <span class="service-num">05</span>
             <div>
               <h3>Content repurposing &amp; ops</h3>
@@ -1006,7 +1140,7 @@
             </div>
           </div>
 
-          <div class="service">
+          <div class="service s-moss">
             <span class="service-num">06</span>
             <div>
               <h3>General ops &amp; admin leverage</h3>
@@ -1034,18 +1168,17 @@
           </div>
           <div class="trust-body reveal">
             <p>
-              I spent a decade running a digital goods business in an environment where fraud was the default and buyers had every reason to disappear after one bad interaction.
+              I ran a digital goods business in an environment where fraud was the default and buyers had every reason to disappear after one bad interaction.
             </p>
             <p>
-              The only way to survive — let alone scale past 20,000 transactions — was to be absurdly reliable. Reply fast. Fix what breaks. Never make the customer chase you.
+              The only way to survive — let alone scale past 20,000 transactions — was to be absurdly reliable. Reply fast. Fix what breaks. Never make the customer chase you. When disputes came up, I learned to win them — or to turn an angry buyer into a five-star review.
             </p>
             <p>
               That's not a methodology I learned in a course. It's a habit, worn in over thousands of touchpoints.
             </p>
             <div class="trust-quote">
-              "2,250+ positive reviews, zero disputes escalated. That's what a decade of showing up looks like."
+              "100% positive feedback across 2,250+ reviews. Not because nothing ever went wrong — but because I knew what to do when it did."
             </div>
-            <!-- TODO: page /projects à construire -->
             <a href="/projects" class="trust-cta">
               See some of the things I've built on my own
               <span class="arrow">→</span>
@@ -1076,11 +1209,11 @@
               <p>Twenty minutes. You tell me what's eating your week. I tell you honestly if I can help.</p>
             </div>
             <span class="step-meta">20 min · free</span>
-            <svg class="step-arrow" viewBox="0 0 44 32" fill="none" aria-hidden="true">
-              <path d="M6 2 Q 2 14, 14 18 T 34 26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none" stroke-dasharray="2 3"/>
-              <path d="M30 22 L 34 26 L 30 30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            </svg>
           </div>
+          <svg class="step-arrow" viewBox="0 0 44 28" fill="none" aria-hidden="true">
+            <path d="M6 2 Q 2 14, 14 16 T 34 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none" stroke-dasharray="2 3"/>
+            <path d="M30 18 L 34 22 L 30 26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
           <div class="step reveal">
             <span class="step-num">02</span>
             <div class="step-body">
@@ -1088,11 +1221,11 @@
               <p>We pick one painful workflow. I take it over, document it, and prove the value. Flat fee, no commitment after.</p>
             </div>
             <span class="step-meta">4 weeks · fixed</span>
-            <svg class="step-arrow" viewBox="0 0 44 32" fill="none" aria-hidden="true">
-              <path d="M6 2 Q 2 14, 14 18 T 34 26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none" stroke-dasharray="2 3"/>
-              <path d="M30 22 L 34 26 L 30 30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            </svg>
           </div>
+          <svg class="step-arrow" viewBox="0 0 44 28" fill="none" style="color: var(--olive);" aria-hidden="true">
+            <path d="M6 2 Q 2 14, 14 16 T 34 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none" stroke-dasharray="2 3"/>
+            <path d="M30 18 L 34 22 L 30 26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
           <div class="step reveal">
             <span class="step-num">03</span>
             <div class="step-body">
@@ -1115,16 +1248,14 @@
             The first call is short, free, and low-pressure. Worst case, you walk away with a clearer picture of what to offload.
           </p>
           <div class="contact-ctas reveal">
-            <!-- TODO: remplacer par vraie URL Calendly -->
-            <a href="https://calendly.com/nachboris/intro" class="btn btn-primary" target="_blank" rel="noopener">
+            <a href="https://calendly.com/nachboris/20min" class="btn btn-primary" target="_blank" rel="noopener">
               Book a 20-min call
               <span class="arrow">→</span>
             </a>
-            <!-- TODO: remplacer par vrai email si différent -->
             <a href="mailto:boris@nachboris.fr" class="btn btn-ghost">boris@nachboris.fr</a>
           </div>
-          <p class="coffee-note reveal">
-            <span aria-hidden="true">☕</span> or just say hi — no pitch needed
+          <p class="reply-promise reveal">
+            Prefer async? I reply within a day.
           </p>
           <p class="contact-note reveal">
             EU timezone <span>·</span> Remote only <span>·</span> Max 2 engagements at a time
@@ -1138,10 +1269,9 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
-      <span>© 2026 Boris Nachbaur · Made with care in Lausanne</span>
+      <span>© 2026 Boris Nachbaur · Made with care in Lausanne <span class="flag" aria-label="Switzerland">🇨🇭</span></span>
       <div class="footer-links">
         <a href="https://www.linkedin.com/in/borisnch/" target="_blank" rel="noopener">LinkedIn</a>
-        <!-- TODO: page /projects à construire -->
         <a href="/projects">Projects</a>
       </div>
     </div>
