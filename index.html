@@ -12,7 +12,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nachboris.fr" />
 
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='10' fill='%23F7F5F2'/%3E%3Ctext x='16' y='22' font-family='Georgia, serif' font-size='18' font-weight='500' text-anchor='middle' fill='%23D4845A'%3EBN%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='10' fill='%23F7F5F2'/%3E%3Ctext x='16' y='22' font-family='Georgia, serif' font-size='18' font-weight='500' text-anchor='middle' fill='%235B4FE0'%3EBN%3C/text%3E%3C/svg%3E" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,41 +23,43 @@
       /* Base */
       --bg: #F7F5F2;
       --bg-soft: #EFECE6;
-      --ink: #1A1814;
-      --ink-soft: #4A4640;
-      --ink-mute: #78726A;
+      --ink: #0F0F17;
+      --ink-soft: #3A3A4A;
+      --ink-mute: #6B6B7A;
       --rule: #E5E0D8;
 
-      /* Multi-color palette */
-      --terra: #D4845A;
-      --terra-soft: #E9B89C;
-      --terra-tint: rgba(212, 132, 90, 0.10);
+      /* New vibrant palette — Stripe-inspired */
+      --indigo: #5B4FE0;          /* Primary — electric indigo */
+      --indigo-soft: #8B82F0;
+      --indigo-tint: rgba(91, 79, 224, 0.10);
 
-      --olive: #8A9A5B;
-      --olive-soft: #B8C48A;
-      --olive-tint: rgba(138, 154, 91, 0.10);
+      --orange: #FF6B35;          /* Secondary — vibrant orange */
+      --orange-soft: #FFA07A;
+      --orange-tint: rgba(255, 107, 53, 0.10);
 
-      --dusk: #6B8FA3;
-      --dusk-soft: #A3BECC;
-      --dusk-tint: rgba(107, 143, 163, 0.10);
+      --lime: #84CC16;            /* Lime vibrant */
+      --lime-soft: #BEF264;
+      --lime-tint: rgba(132, 204, 22, 0.10);
 
-      --ochre: #D4A574;
-      --ochre-soft: #E5C9A1;
-      --ochre-tint: rgba(212, 165, 116, 0.10);
+      --yellow: #FBBF24;          /* Chaleur jaune */
+      --yellow-soft: #FCD34D;
+      --yellow-tint: rgba(251, 191, 36, 0.12);
 
-      --clay: #C26E5E;
-      --clay-soft: #E0A497;
-      --clay-tint: rgba(194, 110, 94, 0.10);
+      --sky: #38BDF8;             /* Bleu ciel vif */
+      --sky-soft: #7DD3FC;
+      --sky-tint: rgba(56, 189, 248, 0.10);
 
-      --moss: #6E8B7A;
-      --moss-soft: #A5BDAF;
-      --moss-tint: rgba(110, 139, 122, 0.10);
+      --coral: #FB7185;           /* Rose corail */
+      --coral-soft: #FDA4AF;
+      --coral-tint: rgba(251, 113, 133, 0.10);
 
-      --available: #7FA86B;
+      --gold: #D4A017;            /* Or pour la signature stat */
+      --gold-soft: #F0C755;
 
-      --accent: var(--terra);
-      --accent-soft: var(--terra-soft);
-      --accent-tint: var(--terra-tint);
+      /* Default accent alias */
+      --accent: var(--indigo);
+      --accent-soft: var(--indigo-soft);
+      --accent-tint: var(--indigo-tint);
 
       /* Typography */
       --serif: "Fraunces", Georgia, "Times New Roman", serif;
@@ -97,7 +99,7 @@
     img, svg { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
 
-    ::selection { background: var(--terra); color: var(--bg); }
+    ::selection { background: var(--indigo); color: var(--bg); }
 
     h1, h2, h3 {
       font-family: var(--serif);
@@ -127,10 +129,10 @@
     .eyebrow {
       font-family: var(--sans);
       font-size: 0.8rem;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--indigo);
       display: inline-flex;
       align-items: center;
       gap: 0.65rem;
@@ -138,13 +140,14 @@
     .eyebrow::before {
       content: "";
       width: 24px;
-      height: 1px;
-      background: var(--accent);
+      height: 1.5px;
+      background: var(--indigo);
       display: inline-block;
+      border-radius: 2px;
     }
 
     .wavy {
-      background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 8' preserveAspectRatio='none'%3E%3Cpath d='M0 5 Q 15 1, 30 5 T 60 5 T 90 5 T 120 5' stroke='%23D4845A' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 8' preserveAspectRatio='none'%3E%3Cpath d='M0 5 Q 15 1, 30 5 T 60 5 T 90 5 T 120 5' stroke='%23FF6B35' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: 0 100%;
       background-size: 100% 0.35em;
@@ -153,7 +156,7 @@
 
     .italic-accent {
       font-style: italic;
-      color: var(--accent);
+      color: var(--orange);
       font-weight: 300;
     }
 
@@ -172,7 +175,7 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      background: rgba(247, 245, 242, 0.82);
+      background: rgba(247, 245, 242, 0.85);
       backdrop-filter: saturate(140%) blur(14px);
       -webkit-backdrop-filter: saturate(140%) blur(14px);
       border-bottom: 1px solid transparent;
@@ -201,10 +204,10 @@
     }
     .logo em {
       font-style: italic;
-      color: var(--terra);
+      color: var(--indigo);
       font-weight: 300;
     }
-    .logo:hover { color: var(--terra); }
+    .logo:hover { color: var(--indigo); }
 
     .nav-links {
       display: flex;
@@ -229,12 +232,12 @@
       width: 100%;
       height: 1.5px;
       border-radius: 2px;
-      background: var(--terra);
+      background: var(--indigo);
       transform: scaleX(0);
       transform-origin: right;
       transition: transform 0.4s var(--spring);
     }
-    .nav-link:hover { color: var(--terra); }
+    .nav-link:hover { color: var(--indigo); }
     .nav-link:hover::after {
       transform: scaleX(1);
       transform-origin: left;
@@ -288,42 +291,91 @@
       align-items: center;
     }
 
-    /* Availability badge */
+    /* Hero badges container — centered */
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    /* Availability badge with punchy animation */
     .availability {
       display: inline-flex;
       align-items: center;
       gap: 0.55rem;
-      margin-bottom: 1.25rem;
-      padding: 0.4rem 0.85rem;
-      background: rgba(127, 168, 107, 0.10);
-      border: 1px solid rgba(127, 168, 107, 0.25);
+      padding: 0.45rem 0.95rem;
+      background: linear-gradient(135deg, rgba(132, 204, 22, 0.08) 0%, rgba(132, 204, 22, 0.15) 100%);
+      border: 1.5px solid rgba(132, 204, 22, 0.35);
       border-radius: 999px;
       font-family: var(--sans);
       font-size: 0.82rem;
-      font-weight: 500;
-      color: var(--available);
+      font-weight: 600;
+      color: #5C8A0F;
       letter-spacing: 0.01em;
+      box-shadow: 0 0 0 0 rgba(132, 204, 22, 0.5);
+      animation: availPulse 2.8s ease-out infinite;
     }
+    @keyframes availPulse {
+      0% { box-shadow: 0 0 0 0 rgba(132, 204, 22, 0.35); }
+      50% { box-shadow: 0 0 0 8px rgba(132, 204, 22, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(132, 204, 22, 0); }
+    }
+
     .pulse-dot {
-      width: 8px;
-      height: 8px;
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
-      background: var(--available);
+      background: var(--lime);
       position: relative;
       flex-shrink: 0;
+      box-shadow: 0 0 8px rgba(132, 204, 22, 0.6);
     }
     .pulse-dot::after {
       content: "";
       position: absolute;
-      inset: -3px;
+      inset: -4px;
       border-radius: 50%;
-      background: var(--available);
+      background: var(--lime);
       opacity: 0.5;
-      animation: pulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+      animation: pulse 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
     }
     @keyframes pulse {
-      0% { transform: scale(0.6); opacity: 0.6; }
-      80%, 100% { transform: scale(1.8); opacity: 0; }
+      0% { transform: scale(0.6); opacity: 0.7; }
+      80%, 100% { transform: scale(2.2); opacity: 0; }
+    }
+
+    /* AI native badge */
+    .ai-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 0.95rem;
+      background: linear-gradient(135deg, var(--indigo-tint) 0%, var(--orange-tint) 100%);
+      border: 1.5px solid var(--indigo-soft);
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--indigo);
+      letter-spacing: 0.01em;
+      transition: transform 0.5s var(--spring), border-color 0.35s var(--soft);
+    }
+    .ai-badge:hover {
+      transform: translateY(-2px);
+      border-color: var(--indigo);
+    }
+    .ai-badge .bolt {
+      font-size: 0.95rem;
+      animation: bolt 2.4s ease-in-out infinite;
+      display: inline-block;
+      transform-origin: center;
+    }
+    @keyframes bolt {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.2) rotate(-8deg); }
     }
 
     .btn {
@@ -335,7 +387,7 @@
       font-size: 0.98rem;
       padding: 0.95rem 1.6rem;
       border-radius: 999px;
-      transition: transform 0.5s var(--spring), background-color 0.35s var(--soft), color 0.35s var(--soft);
+      transition: transform 0.5s var(--spring), background-color 0.35s var(--soft), color 0.35s var(--soft), box-shadow 0.5s var(--soft);
       will-change: transform;
     }
     .btn-primary {
@@ -343,8 +395,9 @@
       color: var(--bg);
     }
     .btn-primary:hover {
-      background: var(--terra);
-      transform: translateY(-2px) scale(1.02);
+      background: var(--indigo);
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 28px -10px rgba(91, 79, 224, 0.55);
     }
     .btn-primary .arrow { transition: transform 0.5s var(--spring); }
     .btn-primary:hover .arrow { transform: translateX(4px); }
@@ -366,14 +419,14 @@
       transform-origin: left;
       transition: all 0.45s var(--spring);
     }
-    .btn-ghost:hover { color: var(--terra); }
+    .btn-ghost:hover { color: var(--indigo); }
     .btn-ghost:hover::after {
-      background: var(--terra);
+      background: var(--indigo);
       transform: scaleX(0.96);
     }
 
     /* ==========================================================
-       HERO PHOTO FRAME — Ali Abdaal style
+       HERO PHOTO FRAME
        ========================================================== */
     .photo-wrap {
       position: relative;
@@ -386,37 +439,34 @@
       .photo-wrap { margin: 0; margin-left: auto; }
     }
 
-    /* Ochre/yellow colored circle behind photo */
     .photo-bg {
       position: absolute;
       inset: 8% 0 0 4%;
       width: 96%;
       height: 92%;
-      background: var(--ochre-soft);
+      background: var(--yellow);
       border-radius: 50%;
       z-index: 1;
       transition: transform 0.8s var(--spring);
     }
 
-    /* Decorative hand-drawn ring */
     .photo-ring {
       position: absolute;
       inset: -4% -4% -2% 0;
       z-index: 3;
       pointer-events: none;
-      color: var(--terra);
+      color: var(--indigo);
       opacity: 0.6;
       transition: transform 1.2s var(--spring);
     }
 
-    /* The photo circle itself */
     .photo-circle {
       position: absolute;
       inset: 4% 4% 4% 8%;
       border-radius: 50%;
       overflow: hidden;
       z-index: 2;
-      background: linear-gradient(135deg, var(--terra-tint) 0%, var(--ochre-tint) 100%);
+      background: linear-gradient(135deg, var(--orange-tint) 0%, var(--yellow-tint) 100%);
       transition: transform 0.7s var(--spring);
     }
     .photo-circle img {
@@ -426,21 +476,20 @@
       object-position: center top;
     }
 
-    /* Placeholder SVG until photo arrives */
     .photo-placeholder {
       position: absolute;
       inset: 0;
       display: flex;
       align-items: flex-end;
       justify-content: center;
-      background: linear-gradient(180deg, var(--ochre-soft) 0%, var(--terra-soft) 100%);
+      background: linear-gradient(180deg, var(--yellow-soft) 0%, var(--orange-soft) 100%);
     }
     .photo-placeholder svg {
       width: 75%;
       height: 85%;
       margin-bottom: -4%;
       color: var(--bg);
-      opacity: 0.85;
+      opacity: 0.9;
     }
     .photo-placeholder .label {
       position: absolute;
@@ -450,7 +499,7 @@
       font-family: var(--hand);
       font-size: 1.1rem;
       color: var(--ink);
-      background: rgba(247, 245, 242, 0.85);
+      background: rgba(247, 245, 242, 0.9);
       padding: 0.3rem 0.9rem;
       border-radius: 999px;
       white-space: nowrap;
@@ -467,34 +516,34 @@
       transform: translate(3px, -3px);
     }
 
-    /* Background glow */
+    /* Background glow in hero */
     .hero::before {
       content: "";
       position: absolute;
       top: 15%;
       left: -8vw;
-      width: 18vw;
-      height: 18vw;
-      max-width: 260px;
-      max-height: 260px;
-      background: radial-gradient(circle, var(--olive-soft) 0%, transparent 65%);
+      width: 20vw;
+      height: 20vw;
+      max-width: 280px;
+      max-height: 280px;
+      background: radial-gradient(circle, var(--indigo-soft) 0%, transparent 65%);
       opacity: 0.25;
-      filter: blur(28px);
+      filter: blur(32px);
       pointer-events: none;
       z-index: -1;
     }
     .hero::after {
       content: "";
       position: absolute;
-      bottom: 5%;
+      bottom: 0;
       right: -10vw;
-      width: 24vw;
-      height: 24vw;
-      max-width: 340px;
-      max-height: 340px;
-      background: radial-gradient(circle, var(--terra-soft) 0%, transparent 65%);
+      width: 26vw;
+      height: 26vw;
+      max-width: 360px;
+      max-height: 360px;
+      background: radial-gradient(circle, var(--orange-soft) 0%, transparent 65%);
       opacity: 0.3;
-      filter: blur(22px);
+      filter: blur(28px);
       pointer-events: none;
       z-index: -1;
     }
@@ -529,7 +578,7 @@
       font-size: 1.6rem;
       font-style: italic;
       font-weight: 300;
-      color: var(--terra);
+      color: var(--indigo);
       white-space: nowrap;
     }
     .why-hi .wave {
@@ -553,23 +602,23 @@
     }
     .why-body p + p { margin-top: 1.1rem; }
     .why-body p strong {
-      font-weight: 500;
+      font-weight: 600;
       color: var(--ink);
     }
-    .why-body .highlight-olive { color: var(--olive); font-weight: 500; }
-    .why-body .highlight-dusk { color: var(--dusk); font-weight: 500; }
+    .why-body .highlight-orange { color: var(--orange); font-weight: 600; }
+    .why-body .highlight-sky { color: var(--sky); font-weight: 600; }
 
     .why-signoff {
       margin-top: 1.75rem;
       font-family: var(--hand);
       font-size: 1.8rem;
-      color: var(--terra);
+      color: var(--indigo);
       line-height: 1;
       letter-spacing: 0.01em;
     }
 
     /* ==========================================================
-       PROOF
+       PROOF — with featured center stat
        ========================================================== */
     .proof {
       padding-top: clamp(3rem, 5vw, 4rem);
@@ -603,34 +652,76 @@
       .proof-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 1.5rem;
+        align-items: stretch;
       }
     }
 
     .stat {
-      display: block;
+      display: flex;
+      flex-direction: column;
       padding: 2rem 1.5rem;
       border-radius: var(--r-lg);
       text-align: center;
       transition: transform 0.55s var(--spring), background 0.4s var(--soft), box-shadow 0.4s var(--soft);
       border: 1px solid transparent;
-      background: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.5);
       position: relative;
     }
     .stat:nth-child(1):hover {
-      background: var(--terra-tint);
-      box-shadow: 0 14px 30px -16px rgba(212, 132, 90, 0.4);
+      background: var(--orange-tint);
+      box-shadow: 0 14px 30px -16px rgba(255, 107, 53, 0.45);
       transform: translateY(-6px) rotate(-0.5deg);
     }
+    .stat:nth-child(2) {
+      position: relative;
+      background: linear-gradient(135deg, #FFF9EC 0%, #FFF3D1 100%);
+      border: 2px solid transparent;
+      background-clip: padding-box;
+      box-shadow: 0 0 0 1px rgba(212, 160, 23, 0.25), 0 8px 24px -12px rgba(212, 160, 23, 0.25);
+    }
+    .stat:nth-child(2)::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: var(--r-lg);
+      padding: 2px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--yellow) 50%, var(--gold) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+              mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0.95;
+    }
     .stat:nth-child(2):hover {
-      background: var(--olive-tint);
-      box-shadow: 0 14px 30px -16px rgba(138, 154, 91, 0.4);
-      transform: translateY(-6px) rotate(0.5deg);
+      box-shadow: 0 0 0 1px rgba(212, 160, 23, 0.4), 0 20px 44px -18px rgba(212, 160, 23, 0.55);
+      transform: translateY(-8px) scale(1.02);
     }
     .stat:nth-child(3):hover {
-      background: var(--dusk-tint);
-      box-shadow: 0 14px 30px -16px rgba(107, 143, 163, 0.4);
+      background: var(--sky-tint);
+      box-shadow: 0 14px 30px -16px rgba(56, 189, 248, 0.45);
       transform: translateY(-6px) rotate(-0.3deg);
     }
+
+    /* Featured badge on center stat */
+    .stat-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0.3rem 0.75rem;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--yellow-soft) 100%);
+      color: #4A3200;
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      white-space: nowrap;
+      box-shadow: 0 4px 12px -4px rgba(212, 160, 23, 0.5);
+      z-index: 2;
+    }
+
     .stat .num {
       font-family: var(--serif);
       font-size: clamp(2.25rem, 4vw, 3rem);
@@ -640,9 +731,9 @@
       line-height: 1;
       display: block;
     }
-    .stat:nth-child(1) .num em { color: var(--terra); }
-    .stat:nth-child(2) .num em { color: var(--olive); }
-    .stat:nth-child(3) .num em { color: var(--dusk); }
+    .stat:nth-child(1) .num em { color: var(--orange); }
+    .stat:nth-child(2) .num em { color: var(--gold); }
+    .stat:nth-child(3) .num em { color: var(--sky); }
     .stat .num em {
       font-style: italic;
       font-weight: 300;
@@ -656,6 +747,11 @@
       font-size: 0.92rem;
       color: var(--ink-mute);
       line-height: 1.5;
+      flex-grow: 1;
+    }
+    .stat:nth-child(2) .label {
+      color: var(--ink-soft);
+      font-weight: 500;
     }
     .stat .see-more {
       display: inline-flex;
@@ -663,22 +759,22 @@
       gap: 0.35rem;
       margin-top: 0.9rem;
       font-size: 0.78rem;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       opacity: 0;
       transform: translateY(6px);
       transition: opacity 0.4s var(--soft), transform 0.5s var(--spring);
     }
-    .stat:nth-child(1) .see-more { color: var(--terra); }
-    .stat:nth-child(2) .see-more { color: var(--olive); }
-    .stat:nth-child(3) .see-more { color: var(--dusk); }
+    .stat:nth-child(1) .see-more { color: var(--orange); }
+    .stat:nth-child(2) .see-more { color: var(--gold); }
+    .stat:nth-child(3) .see-more { color: var(--sky); }
     .stat:hover .see-more {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* Reviews link under the stats */
+    /* Reviews link under stats */
     .reviews-link-wrap {
       text-align: center;
       margin-top: 2.25rem;
@@ -696,8 +792,8 @@
       transition: color 0.35s var(--soft), border-color 0.35s var(--soft), gap 0.45s var(--spring);
     }
     .reviews-link:hover {
-      color: var(--terra);
-      border-color: var(--terra);
+      color: var(--indigo);
+      border-color: var(--indigo);
       gap: 0.8rem;
     }
     .reviews-link .arrow { transition: transform 0.5s var(--spring); }
@@ -737,9 +833,9 @@
       }
     }
     .service {
-      --c: var(--terra);
-      --c-soft: var(--terra-soft);
-      --c-tint: var(--terra-tint);
+      --c: var(--indigo);
+      --c-soft: var(--indigo-soft);
+      --c-tint: var(--indigo-tint);
       padding: 1.75rem;
       border-radius: var(--r-md);
       display: grid;
@@ -747,7 +843,7 @@
       gap: 1.25rem;
       align-items: start;
       transition: transform 0.55s var(--spring), background 0.4s var(--soft), box-shadow 0.4s var(--soft), border-color 0.4s var(--soft);
-      background: rgba(255, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.5);
       border: 1px solid var(--rule);
       will-change: transform;
     }
@@ -755,7 +851,7 @@
       background: var(--c-tint);
       border-color: var(--c-soft);
       transform: translateY(-4px) scale(1.005);
-      box-shadow: 0 18px 36px -20px rgba(26, 24, 20, 0.18);
+      box-shadow: 0 18px 36px -20px rgba(15, 15, 23, 0.2);
     }
     .service:hover .service-num { transform: rotate(-6deg) scale(1.1); }
     .service:hover h3 { color: var(--c); }
@@ -763,8 +859,8 @@
     .service-num {
       font-family: var(--serif);
       font-style: italic;
-      font-weight: 400;
-      font-size: 1.4rem;
+      font-weight: 500;
+      font-size: 1.5rem;
       color: var(--c);
       min-width: 2.2ch;
       line-height: 1;
@@ -791,20 +887,21 @@
     .service-examples .dot {
       color: var(--c);
       margin: 0 0.4rem;
+      font-weight: 700;
       transition: color 0.35s var(--soft);
     }
 
-    .service.s-terra { --c: var(--terra); --c-soft: var(--terra-soft); --c-tint: var(--terra-tint); }
-    .service.s-olive { --c: var(--olive); --c-soft: var(--olive-soft); --c-tint: var(--olive-tint); }
-    .service.s-dusk  { --c: var(--dusk);  --c-soft: var(--dusk-soft);  --c-tint: var(--dusk-tint);  }
-    .service.s-ochre { --c: var(--ochre); --c-soft: var(--ochre-soft); --c-tint: var(--ochre-tint); }
-    .service.s-clay  { --c: var(--clay);  --c-soft: var(--clay-soft);  --c-tint: var(--clay-tint);  }
-    .service.s-moss  { --c: var(--moss);  --c-soft: var(--moss-soft);  --c-tint: var(--moss-tint);  }
+    .service.s-indigo { --c: var(--indigo); --c-soft: var(--indigo-soft); --c-tint: var(--indigo-tint); }
+    .service.s-orange { --c: var(--orange); --c-soft: var(--orange-soft); --c-tint: var(--orange-tint); }
+    .service.s-sky    { --c: var(--sky);    --c-soft: var(--sky-soft);    --c-tint: var(--sky-tint);    }
+    .service.s-lime   { --c: var(--lime);   --c-soft: var(--lime-soft);   --c-tint: var(--lime-tint);   }
+    .service.s-coral  { --c: var(--coral);  --c-soft: var(--coral-soft);  --c-tint: var(--coral-tint);  }
+    .service.s-yellow { --c: #C9940D;       --c-soft: var(--yellow-soft); --c-tint: var(--yellow-tint); }
 
     .positioning {
       margin-top: 3rem;
       padding: 2.5rem 1.75rem;
-      background: linear-gradient(135deg, var(--bg-soft) 0%, var(--ochre-tint) 100%);
+      background: linear-gradient(135deg, var(--indigo-tint) 0%, var(--orange-tint) 100%);
       border-radius: var(--r-xl);
       text-align: center;
       font-family: var(--serif);
@@ -817,13 +914,13 @@
       position: relative;
     }
     .positioning strong {
-      font-weight: 500;
+      font-weight: 600;
       font-style: normal;
-      color: var(--terra);
+      color: var(--orange);
     }
 
     /* ==========================================================
-       TOOLKIT — marquee
+       TOOLKIT — marquee with colored brand logos
        ========================================================== */
     .toolkit {
       padding: clamp(3rem, 6vw, 5rem) 0;
@@ -855,6 +952,7 @@
       overflow: hidden;
       mask-image: linear-gradient(to right, transparent 0, black 8%, black 92%, transparent 100%);
       -webkit-mask-image: linear-gradient(to right, transparent 0, black 8%, black 92%, transparent 100%);
+      padding: 1rem 0; /* Extra padding to prevent hover clipping */
     }
     .marquee-track {
       display: flex;
@@ -870,43 +968,32 @@
     }
 
     .tool {
-      --c: var(--terra);
       display: inline-flex;
       align-items: center;
       gap: 0.65rem;
       padding: 0.75rem 1.25rem;
-      background: rgba(255, 255, 255, 0.5);
+      background: #FFFFFF;
       border: 1px solid var(--rule);
       border-radius: 999px;
       font-family: var(--sans);
       font-size: 0.92rem;
       font-weight: 500;
-      color: var(--ink-soft);
+      color: var(--ink);
       flex-shrink: 0;
-      transition: color 0.35s var(--soft), border-color 0.35s var(--soft), background 0.35s var(--soft), transform 0.5s var(--spring);
+      transition: border-color 0.35s var(--soft), box-shadow 0.5s var(--soft), transform 0.5s var(--spring);
       cursor: default;
     }
     .tool:hover {
-      color: var(--c);
-      border-color: var(--c);
-      background: rgba(255, 255, 255, 0.9);
-      transform: translateY(-2px);
+      border-color: var(--ink);
+      box-shadow: 0 8px 20px -10px rgba(15, 15, 23, 0.25);
+      transform: scale(1.06);
     }
-    .tool:hover .tool-icon { color: var(--c); }
     .tool-icon {
       width: 18px;
       height: 18px;
-      color: var(--ink-mute);
       flex-shrink: 0;
-      transition: color 0.35s var(--soft);
+      display: inline-block;
     }
-
-    .tool.c-terra { --c: var(--terra); }
-    .tool.c-olive { --c: var(--olive); }
-    .tool.c-dusk  { --c: var(--dusk);  }
-    .tool.c-ochre { --c: var(--ochre); }
-    .tool.c-clay  { --c: var(--clay);  }
-    .tool.c-moss  { --c: var(--moss);  }
 
     /* ==========================================================
        TRUST (dark)
@@ -919,10 +1006,32 @@
       margin-left: auto;
       margin-right: auto;
       padding: clamp(3rem, 7vw, 5.5rem) clamp(1.5rem, 4vw, 3rem);
+      position: relative;
+      overflow: hidden;
     }
-    .trust .wrap { padding: 0; }
-    .trust .eyebrow { color: var(--ochre-soft); }
-    .trust .eyebrow::before { background: var(--ochre-soft); }
+    .trust::before {
+      content: "";
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 40%;
+      height: 60%;
+      background: radial-gradient(circle, rgba(91, 79, 224, 0.2) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .trust::after {
+      content: "";
+      position: absolute;
+      bottom: -20%;
+      left: -10%;
+      width: 40%;
+      height: 60%;
+      background: radial-gradient(circle, rgba(255, 107, 53, 0.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .trust .wrap { padding: 0; position: relative; z-index: 1; }
+    .trust .eyebrow { color: var(--orange-soft); }
+    .trust .eyebrow::before { background: var(--orange-soft); }
     .trust h2 { color: var(--bg); }
     .trust p {
       color: rgba(247, 245, 242, 0.75);
@@ -950,7 +1059,7 @@
       font-size: clamp(1.25rem, 2.2vw, 1.5rem);
       line-height: 1.45;
       color: var(--bg);
-      border-left: 3px solid var(--ochre);
+      border-left: 3px solid var(--orange);
       padding-left: 1.25rem;
       margin-top: 2rem;
       border-radius: 0 var(--r-sm) var(--r-sm) 0;
@@ -962,18 +1071,18 @@
       align-items: center;
       gap: 0.6rem;
       font-family: var(--sans);
-      font-weight: 500;
+      font-weight: 600;
       font-size: 0.95rem;
-      color: var(--ochre-soft);
+      color: var(--orange-soft);
       padding: 0.6rem 1.25rem;
-      border: 1px solid rgba(229, 201, 161, 0.3);
+      border: 1px solid rgba(255, 160, 122, 0.3);
       border-radius: 999px;
       transition: transform 0.5s var(--spring), background 0.35s var(--soft), color 0.35s var(--soft), border-color 0.35s var(--soft);
     }
     .trust-cta:hover {
       color: var(--ink);
-      background: var(--ochre-soft);
-      border-color: var(--ochre-soft);
+      background: var(--orange);
+      border-color: var(--orange);
       transform: translateY(-2px);
     }
     .trust-cta .arrow { transition: transform 0.5s var(--spring); }
@@ -988,24 +1097,24 @@
       gap: 0.85rem;
     }
     .step {
-      --c: var(--terra);
+      --c: var(--indigo);
       display: grid;
       grid-template-columns: auto 1fr auto;
       gap: 1.5rem;
       padding: 1.5rem 1.75rem;
       border-radius: var(--r-md);
-      background: rgba(255, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.5);
       border: 1px solid var(--rule);
       align-items: center;
       transition: transform 0.55s var(--spring), background 0.4s var(--soft), border-color 0.4s var(--soft);
       position: relative;
     }
-    .step:nth-of-type(1) { --c: var(--terra); }
-    .step:nth-of-type(2) { --c: var(--olive); }
-    .step:nth-of-type(3) { --c: var(--dusk); }
+    .step:nth-of-type(1) { --c: var(--indigo); }
+    .step:nth-of-type(2) { --c: var(--orange); }
+    .step:nth-of-type(3) { --c: var(--lime); }
 
     .step:hover {
-      background: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.85);
       border-color: var(--c);
       transform: translateX(6px);
     }
@@ -1018,7 +1127,7 @@
       font-family: var(--serif);
       font-size: 2rem;
       font-style: italic;
-      font-weight: 300;
+      font-weight: 500;
       color: var(--c);
       min-width: 3ch;
       line-height: 1;
@@ -1044,12 +1153,13 @@
       padding: 0.35rem 0.8rem;
       background: var(--bg-soft);
       border-radius: 999px;
+      font-weight: 600;
     }
     @media (max-width: 640px) {
       .step {
         grid-template-columns: auto 1fr;
         gap: 1rem;
-        padding: 1.25rem 1.25rem;
+        padding: 1.25rem;
       }
       .step-num { font-size: 1.75rem; }
       .step-meta {
@@ -1059,36 +1169,35 @@
       }
     }
 
-    /* Connector arrows between steps */
-    .step-arrow {
-      display: none;
-      margin: -0.25rem 0 -0.25rem 2.8rem;
-      color: var(--terra);
-      opacity: 0.4;
-    }
-    @media (min-width: 720px) {
-      .step-arrow {
-        display: block;
-        width: 44px;
-        height: 28px;
-      }
-    }
-
     /* ==========================================================
        CONTACT
        ========================================================== */
     .contact {
-      background: linear-gradient(135deg, var(--bg-soft) 0%, var(--terra-tint) 60%, var(--ochre-tint) 100%);
+      background: linear-gradient(135deg, var(--bg-soft) 0%, var(--indigo-tint) 50%, var(--orange-tint) 100%);
       text-align: center;
       border-radius: var(--r-xl);
       max-width: calc(var(--max) - 2 * var(--pad));
       margin: 0 auto clamp(3rem, 6vw, 5rem);
       padding: clamp(3rem, 7vw, 5.5rem) clamp(1.5rem, 4vw, 3rem);
+      position: relative;
+      overflow: hidden;
+    }
+    .contact::before {
+      content: "";
+      position: absolute;
+      top: -30%;
+      right: -20%;
+      width: 60%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(251, 191, 36, 0.2) 0%, transparent 60%);
+      pointer-events: none;
     }
     .contact-inner {
       max-width: 640px;
       margin: 0 auto;
       text-align: center;
+      position: relative;
+      z-index: 1;
     }
     .contact h2 {
       font-size: clamp(2rem, 4.5vw, 3.25rem);
@@ -1113,8 +1222,9 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--ink-mute);
+      font-weight: 500;
     }
-    .contact-note span { color: var(--terra); }
+    .contact-note span { color: var(--orange); }
 
     .reply-promise {
       display: inline-flex;
@@ -1123,7 +1233,7 @@
       margin-top: 1.5rem;
       font-family: var(--hand);
       font-size: 1.3rem;
-      color: var(--olive);
+      color: var(--indigo);
     }
 
     /* ==========================================================
@@ -1160,7 +1270,7 @@
     .footer-links a {
       transition: color 0.35s var(--soft);
     }
-    .footer-links a:hover { color: var(--terra); }
+    .footer-links a:hover { color: var(--indigo); }
 
     /* ==========================================================
        REVEAL
@@ -1202,6 +1312,8 @@
       .why-hi .wave { animation: none; }
       .marquee-track { animation: none; }
       .pulse-dot::after { animation: none; }
+      .availability { animation: none; }
+      .ai-badge .bolt { animation: none; }
     }
   </style>
 </head>
@@ -1225,10 +1337,16 @@
       <div class="wrap">
         <div class="hero-grid">
           <div>
-            <span class="availability reveal">
-              <span class="pulse-dot"></span>
-              Available for new engagements
-            </span>
+            <div class="hero-badges reveal">
+              <span class="availability">
+                <span class="pulse-dot"></span>
+                Available for new engagements
+              </span>
+              <span class="ai-badge">
+                <span class="bolt" aria-hidden="true">⚡</span>
+                AI-native operator
+              </span>
+            </div>
             <h1 class="reveal">
               I run the ops <span class="italic-accent">so you can</span> run the show.
             </h1>
@@ -1244,21 +1362,17 @@
             </div>
           </div>
 
-          <!-- PHOTO FRAME — Ali Abdaal style -->
+          <!-- PHOTO FRAME -->
           <div class="photo-wrap reveal" aria-hidden="true">
             <div class="photo-bg"></div>
-
-            <!-- Hand-drawn decorative ring around -->
             <svg class="photo-ring" viewBox="0 0 400 400" fill="none">
-              <path d="M 50 200 Q 50 50, 200 50 Q 330 50, 360 150" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none" stroke-dasharray="1 0" opacity="0.5"/>
+              <path d="M 50 200 Q 50 50, 200 50 Q 330 50, 360 150" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.5"/>
               <path d="M 380 280 Q 340 370, 200 370" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.35"/>
             </svg>
-
             <div class="photo-circle">
               <!-- TODO: remplacer .photo-placeholder par <img src="/boris.jpg" alt="Boris Nachbaur" /> quand la photo sera prête -->
               <div class="photo-placeholder">
                 <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Stylized silhouette placeholder -->
                   <circle cx="50" cy="38" r="18" fill="currentColor" opacity="0.9"/>
                   <path d="M 20 120 Q 20 70, 50 65 Q 80 70, 80 120 Z" fill="currentColor" opacity="0.9"/>
                 </svg>
@@ -1282,10 +1396,10 @@
               I spent the last decade running a digital goods business in a market where fraud was the default and every customer half-expected to get burned.
             </p>
             <p>
-              Disputes happened. Chargebacks happened. Angry customers happened. What I learned was how to <strong class="highlight-olive">turn most of them around</strong> — own the mistake when it was mine, defend the case when it wasn't, and always make the buyer feel heard. <strong>2,250+ positive reviews</strong> isn't an accident. It's a craft worn in over thousands of touchpoints.
+              Disputes happened. Chargebacks happened. Angry customers happened. What I learned was how to <strong class="highlight-orange">turn most of them around</strong> — own the mistake when it was mine, defend the case when it wasn't, and always make the buyer feel heard. <strong>2,250+ positive reviews</strong> isn't an accident. It's a craft worn in over thousands of touchpoints.
             </p>
             <p>
-              Now I lend that craft to solo founders and creators who are great at what they do but drowning in the rest. The goal is simple: <strong class="highlight-dusk">get your calendar back</strong>, keep your customers happy, ship the boring things on time.
+              Now I lend that craft to solo founders and creators who are great at what they do but drowning in the rest. The goal is simple: <strong class="highlight-sky">get your calendar back</strong>, keep your customers happy, ship the boring things on time.
             </p>
             <p class="why-signoff">— Boris</p>
           </div>
@@ -1298,24 +1412,24 @@
       <div class="wrap">
         <p class="proof-head reveal">the receipts</p>
         <div class="proof-grid reveal-stagger">
-          <a href="/projects" class="stat">
-            <span class="num"><span class="count" data-target="2250" data-suffix="">0</span><em>+</em></span>
+          <a href="/reviews" class="stat">
+            <span class="num"><span class="count" data-target="2250">0</span><em>+</em></span>
             <span class="label">Verified customer relationships, 100% positive.</span>
+            <span class="see-more">Read the reviews →</span>
+          </a>
+          <a href="/projects" class="stat">
+            <span class="stat-badge">✦ Signature</span>
+            <span class="num"><span class="count" data-target="15">0</span><em>+ yrs</em></span>
+            <span class="label">Solo digital operations &amp; building — in the trenches since 2012.</span>
             <span class="see-more">See the story →</span>
           </a>
           <a href="/projects" class="stat">
-            <span class="num"><span class="count" data-target="1900" data-suffix="">0</span><em>+</em></span>
-            <span class="label">Community members managed across platforms.</span>
-            <span class="see-more">See the story →</span>
-          </a>
-          <a href="/projects" class="stat">
-            <span class="num"><span class="count" data-target="10" data-suffix="">0</span><em> yrs</em></span>
-            <span class="label">Running solo digital operations end-to-end.</span>
+            <span class="num"><span class="count" data-target="1900">0</span><em>+</em></span>
+            <span class="label">Discord community grown from zero. Built, branded, and run solo.</span>
             <span class="see-more">See the story →</span>
           </a>
         </div>
         <div class="reviews-link-wrap reveal">
-          <!-- TODO: page /reviews à construire -->
           <a href="/reviews" class="reviews-link">
             Read what customers say
             <span class="arrow">→</span>
@@ -1338,7 +1452,7 @@
         </div>
 
         <div class="services reveal-stagger">
-          <div class="service s-terra">
+          <div class="service s-indigo">
             <span class="service-num">01</span>
             <div>
               <h3>Customer support L2</h3>
@@ -1349,7 +1463,7 @@
             </div>
           </div>
 
-          <div class="service s-olive">
+          <div class="service s-orange">
             <span class="service-num">02</span>
             <div>
               <h3>Community operations</h3>
@@ -1360,7 +1474,7 @@
             </div>
           </div>
 
-          <div class="service s-dusk">
+          <div class="service s-sky">
             <span class="service-num">03</span>
             <div>
               <h3>Email sequences &amp; lifecycle</h3>
@@ -1371,7 +1485,7 @@
             </div>
           </div>
 
-          <div class="service s-ochre">
+          <div class="service s-lime">
             <span class="service-num">04</span>
             <div>
               <h3>AI workflows &amp; automation</h3>
@@ -1382,7 +1496,7 @@
             </div>
           </div>
 
-          <div class="service s-clay">
+          <div class="service s-coral">
             <span class="service-num">05</span>
             <div>
               <h3>Content repurposing &amp; ops</h3>
@@ -1393,7 +1507,7 @@
             </div>
           </div>
 
-          <div class="service s-moss">
+          <div class="service s-yellow">
             <span class="service-num">06</span>
             <div>
               <h3>General ops &amp; admin leverage</h3>
@@ -1411,7 +1525,7 @@
       </div>
     </section>
 
-    <!-- TOOLKIT MARQUEE -->
+    <!-- TOOLKIT MARQUEE with real brand colors -->
     <section class="toolkit">
       <div class="toolkit-head reveal">
         <span class="eyebrow">The toolkit</span>
@@ -1421,119 +1535,214 @@
 
       <div class="marquee">
         <div class="marquee-track">
-          <!-- First set -->
-          <div class="tool c-terra">
-            <svg class="tool-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 7l9 5 9-5-9-5zm0 14L3 11v6l9 5 9-5v-6l-9 5z"/></svg>
+          <!-- Claude (Anthropic orange) -->
+          <div class="tool">
+            <svg class="tool-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#D97757" d="M4.709 15.955l4.72-2.647.079-.23-.079-.128H9.2l-.79-.048-2.698-.073-2.339-.097-2.266-.122-.571-.121L0 11.784l.055-.352.48-.321.686.06 1.52.103 2.278.158 1.652.097 2.449.255h.389l.055-.157-.134-.098-.103-.097-2.358-1.596-2.552-1.688-1.336-.972-.724-.491-.364-.462-.158-1.008.656-.722.881.06.225.061.893.686 1.908 1.476 2.491 1.833.365.304.145-.103.019-.073-.164-.274-1.355-2.446-1.446-2.49-.644-1.032-.17-.619a2.97 2.97 0 01-.104-.729L6.283.134 6.696 0l.996.134.42.364.62 1.414 1.002 2.229 1.555 3.03.456.898.243.832.091.255h.158V9.01l.128-1.706.237-2.095.23-2.695.08-.76.376-.91.747-.492.584.28.48.685-.067.444-.286 1.851-.559 2.903-.364 1.942h.212l.243-.242.985-1.306 1.652-2.064.73-.82.85-.904.547-.431h1.033l.76 1.129-.34 1.166-1.064 1.347-.881 1.142-1.264 1.7-.79 1.36.073.11.188-.02 2.856-.606 1.543-.28 1.841-.315.833.388.091.395-.328.807-1.969.486-2.309.462-3.439.813-.042.03.049.061 1.549.146.662.036h1.622l3.02.225.79.522.474.638-.079.485-1.215.62-1.64-.389-3.829-.91-1.312-.329h-.182v.11l1.093 1.068 2.006 1.81 2.509 2.33.127.578-.322.455-.34-.049-2.205-1.657-.851-.747-1.926-1.62h-.128v.17l.444.649 2.345 3.521.122 1.08-.17.353-.608.213-.668-.122-1.374-1.925-1.415-2.167-1.143-1.943-.14.08-.674 7.254-.316.37-.729.28-.607-.461-.322-.747.322-1.476.389-1.924.315-1.53.286-1.9.17-.632-.012-.042-.14.018-1.434 1.967-2.18 2.945-1.726 1.845-.414.164-.717-.37.067-.662.401-.589 2.388-3.036 1.44-1.882.93-1.086-.006-.158h-.055L4.132 18.56l-1.13.146-.487-.456.061-.746.231-.243 1.908-1.312-.006.006z"/>
+            </svg>
             Claude
           </div>
-          <div class="tool c-dusk">
-            <svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
+          <!-- Whispr Flow -->
+          <div class="tool">
+            <svg class="tool-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z" fill="#6366F1"/>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2" stroke="#6366F1" stroke-width="2" stroke-linecap="round"/>
+              <line x1="12" y1="19" x2="12" y2="23" stroke="#6366F1" stroke-width="2" stroke-linecap="round"/>
+            </svg>
             Whispr Flow
           </div>
-          <div class="tool c-ochre">
-            <svg class="tool-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          <!-- X (black) -->
+          <div class="tool">
+            <svg class="tool-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#000000" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
             X
           </div>
-          <div class="tool c-clay">
-            <svg class="tool-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" opacity="0.25"/><polygon points="10,8 16,12 10,16" fill="currentColor"/></svg>
+          <!-- Loom (purple-red) -->
+          <div class="tool">
+            <svg class="tool-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" fill="#625DF5"/>
+              <polygon points="10,7.5 17,12 10,16.5" fill="#FFFFFF"/>
+            </svg>
             Loom
           </div>
-          <div class="tool c-moss">
-            <svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 8h8v8H8z" opacity="0.3"/></svg>
+          <!-- Notion (black) -->
+          <div class="tool">
+            <svg class="tool-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#000000" d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466l1.823 1.447zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952l1.448.327s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.28v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933l3.222-.186z"/>
+            </svg>
             Notion
           </div>
-          <div class="tool c-olive">
-            <svg class="tool-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.548-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+          <!-- Discord (blurple) -->
+          <div class="tool">
+            <svg class="tool-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#5865F2" d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.548-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+            </svg>
             Discord
           </div>
-          <div class="tool c-ochre">
-            <svg class="tool-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></svg>
+          <!-- Slack (multicolor) -->
+          <div class="tool">
+            <svg class="tool-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#E01E5A" d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313z"/>
+              <path fill="#36C5F0" d="M8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312z"/>
+              <path fill="#2EB67D" d="M18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312z"/>
+              <path fill="#ECB22E" d="M15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/>
+            </svg>
             Slack
           </div>
-          <div class="tool c-terra">
-            <svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
+          <!-- Gmail (colors) -->
+          <div class="tool">
+            <svg class="tool-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#4285F4" d="M1.5 7.5v12a1.5 1.5 0 0 0 1.5 1.5h2.25V12L1.5 7.5z"/>
+              <path fill="#34A853" d="M18.75 21H21a1.5 1.5 0 0 0 1.5-1.5v-12L18.75 12v9z"/>
+              <path fill="#FBBC04" d="M18.75 4.5v7.5L22.5 7.5V5.25a2.25 2.25 0 0 0-2.25-2.25c-.5 0-.976.164-1.5.432z"/>
+              <path fill="#EA4335" d="M5.25 12V4.5l6.75 5.063L18.75 4.5V12L12 17.063 5.25 12z"/>
+              <path fill="#C5221F" d="M1.5 5.25V7.5l3.75 4.5V4.5C4.35 3.932 3.5 3.75 3 3.75A2.25 2.25 0 0 0 1.5 5.25z"/>
+            </svg>
             Gmail
           </div>
-          <div class="tool c-dusk">
-            <svg class="tool-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.591-7.305z"/></svg>
+          <!-- Stripe (indigo) -->
+          <div class="tool">
+            <svg class="tool-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#635BFF" d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.591-7.305z"/>
+            </svg>
             Stripe
           </div>
-          <div class="tool c-clay">
-            <svg class="tool-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M11.998 24C5.366 24 0 18.633 0 12S5.366 0 11.998 0C18.633 0 24 5.367 24 12S18.633 24 11.998 24zm6.521-6.623l-2.104-1.58c-.47.8-1.15 1.42-1.969 1.87l1.02 2.44c1.25-.69 2.29-1.64 3.053-2.73zM8.584 19.11l1.02-2.44c-.82-.45-1.5-1.07-1.97-1.87l-2.103 1.58c.763 1.09 1.803 2.04 3.053 2.73zm-3.513-9.1c0 1.07.217 2.07.612 2.97l2.135-1.6c-.17-.43-.26-.89-.26-1.37 0-.48.09-.94.26-1.37L5.683 7.04c-.395.9-.612 1.9-.612 2.97zm5.898-4.35l-1.02-2.44c-1.25.69-2.29 1.64-3.053 2.73l2.103 1.58c.47-.8 1.15-1.42 1.97-1.87zm.12 7.28l-.82-1.96h3.46l-.82 1.96c-.26.08-.56.12-.88.12-.32 0-.62-.04-.88-.12z"/></svg>
+          <!-- Zapier (orange) -->
+          <div class="tool">
+            <svg class="tool-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#FF4A00" d="M15.075 12.003a7.04 7.04 0 0 1-.454 2.497 7.04 7.04 0 0 1-2.497.455h-.004a7.04 7.04 0 0 1-2.497-.455 7.05 7.05 0 0 1-.454-2.494v-.004c0-.887.164-1.735.455-2.497a7.04 7.04 0 0 1 2.497-.455h.004c.887 0 1.735.164 2.497.455.291.762.455 1.61.455 2.497v.001zM23.69 10.372h-7.147l5.055-5.056a12.022 12.022 0 0 0-2.745-2.746l-5.056 5.056V.479a12.03 12.03 0 0 0-1.923-.16h-.006c-.648 0-1.285.054-1.907.159v7.146L4.906 2.568A11.96 11.96 0 0 0 3.53 3.532 12.055 12.055 0 0 0 2.16 4.908l5.055 5.056H.069s-.16 1.269-.16 1.927v.007c0 .65.056 1.287.16 1.908h7.146L2.16 18.862a12.064 12.064 0 0 0 2.746 2.746l5.056-5.057v7.147c.618.103 1.252.157 1.898.158h.019a11.97 11.97 0 0 0 1.898-.158v-7.147l5.056 5.057a12.066 12.066 0 0 0 2.745-2.746l-5.055-5.056h7.146c.105-.618.158-1.253.159-1.9v-.035c0-.645-.054-1.28-.158-1.899z"/>
+            </svg>
             Zapier
           </div>
-          <div class="tool c-olive">
-            <svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M4 12h16M12 4v16"/></svg>
+          <!-- Gumloop (teal/green gradient) -->
+          <div class="tool">
+            <svg class="tool-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="3" width="18" height="18" rx="4" fill="#0F766E"/>
+              <path d="M8 12h8M12 8v8" stroke="#5EEAD4" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
             Gumloop
           </div>
-          <div class="tool c-moss">
-            <svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <!-- NotebookLM (Google blue) -->
+          <div class="tool">
+            <svg class="tool-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2V3z" fill="#4285F4"/>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7V3z" fill="#34A853"/>
+            </svg>
             NotebookLM
           </div>
-          <div class="tool c-terra">
-            <svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg>
+          <!-- MailerLite (green) -->
+          <div class="tool">
+            <svg class="tool-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="5" width="20" height="14" rx="3" fill="#38B764"/>
+              <path d="M3 7l9 6 9-6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
             MailerLite
           </div>
-          <div class="tool c-dusk">
-            <svg class="tool-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          <!-- GitHub (black) -->
+          <div class="tool">
+            <svg class="tool-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#181717" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+            </svg>
             GitHub
           </div>
 
-          <!-- Duplicate set (for seamless loop) -->
-          <div class="tool c-terra" aria-hidden="true">
-            <svg class="tool-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 7l9 5 9-5-9-5zm0 14L3 11v6l9 5 9-5v-6l-9 5z"/></svg>
+          <!-- DUPLICATE SET for seamless loop -->
+          <div class="tool" aria-hidden="true">
+            <svg class="tool-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#D97757" d="M4.709 15.955l4.72-2.647.079-.23-.079-.128H9.2l-.79-.048-2.698-.073-2.339-.097-2.266-.122-.571-.121L0 11.784l.055-.352.48-.321.686.06 1.52.103 2.278.158 1.652.097 2.449.255h.389l.055-.157-.134-.098-.103-.097-2.358-1.596-2.552-1.688-1.336-.972-.724-.491-.364-.462-.158-1.008.656-.722.881.06.225.061.893.686 1.908 1.476 2.491 1.833.365.304.145-.103.019-.073-.164-.274-1.355-2.446-1.446-2.49-.644-1.032-.17-.619a2.97 2.97 0 01-.104-.729L6.283.134 6.696 0l.996.134.42.364.62 1.414 1.002 2.229 1.555 3.03.456.898.243.832.091.255h.158V9.01l.128-1.706.237-2.095.23-2.695.08-.76.376-.91.747-.492.584.28.48.685-.067.444-.286 1.851-.559 2.903-.364 1.942h.212l.243-.242.985-1.306 1.652-2.064.73-.82.85-.904.547-.431h1.033l.76 1.129-.34 1.166-1.064 1.347-.881 1.142-1.264 1.7-.79 1.36.073.11.188-.02 2.856-.606 1.543-.28 1.841-.315.833.388.091.395-.328.807-1.969.486-2.309.462-3.439.813-.042.03.049.061 1.549.146.662.036h1.622l3.02.225.79.522.474.638-.079.485-1.215.62-1.64-.389-3.829-.91-1.312-.329h-.182v.11l1.093 1.068 2.006 1.81 2.509 2.33.127.578-.322.455-.34-.049-2.205-1.657-.851-.747-1.926-1.62h-.128v.17l.444.649 2.345 3.521.122 1.08-.17.353-.608.213-.668-.122-1.374-1.925-1.415-2.167-1.143-1.943-.14.08-.674 7.254-.316.37-.729.28-.607-.461-.322-.747.322-1.476.389-1.924.315-1.53.286-1.9.17-.632-.012-.042-.14.018-1.434 1.967-2.18 2.945-1.726 1.845-.414.164-.717-.37.067-.662.401-.589 2.388-3.036 1.44-1.882.93-1.086-.006-.158h-.055L4.132 18.56l-1.13.146-.487-.456.061-.746.231-.243 1.908-1.312-.006.006z"/>
+            </svg>
             Claude
           </div>
-          <div class="tool c-dusk" aria-hidden="true">
-            <svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
+          <div class="tool" aria-hidden="true">
+            <svg class="tool-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z" fill="#6366F1"/>
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2" stroke="#6366F1" stroke-width="2" stroke-linecap="round"/>
+              <line x1="12" y1="19" x2="12" y2="23" stroke="#6366F1" stroke-width="2" stroke-linecap="round"/>
+            </svg>
             Whispr Flow
           </div>
-          <div class="tool c-ochre" aria-hidden="true">
-            <svg class="tool-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          <div class="tool" aria-hidden="true">
+            <svg class="tool-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#000000" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
             X
           </div>
-          <div class="tool c-clay" aria-hidden="true">
-            <svg class="tool-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" opacity="0.25"/><polygon points="10,8 16,12 10,16" fill="currentColor"/></svg>
+          <div class="tool" aria-hidden="true">
+            <svg class="tool-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" fill="#625DF5"/>
+              <polygon points="10,7.5 17,12 10,16.5" fill="#FFFFFF"/>
+            </svg>
             Loom
           </div>
-          <div class="tool c-moss" aria-hidden="true">
-            <svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 8h8v8H8z" opacity="0.3"/></svg>
+          <div class="tool" aria-hidden="true">
+            <svg class="tool-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#000000" d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466l1.823 1.447zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952l1.448.327s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.28v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933l3.222-.186z"/>
+            </svg>
             Notion
           </div>
-          <div class="tool c-olive" aria-hidden="true">
-            <svg class="tool-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.548-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+          <div class="tool" aria-hidden="true">
+            <svg class="tool-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#5865F2" d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.548-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+            </svg>
             Discord
           </div>
-          <div class="tool c-ochre" aria-hidden="true">
-            <svg class="tool-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></svg>
+          <div class="tool" aria-hidden="true">
+            <svg class="tool-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#E01E5A" d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313z"/>
+              <path fill="#36C5F0" d="M8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312z"/>
+              <path fill="#2EB67D" d="M18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312z"/>
+              <path fill="#ECB22E" d="M15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/>
+            </svg>
             Slack
           </div>
-          <div class="tool c-terra" aria-hidden="true">
-            <svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
+          <div class="tool" aria-hidden="true">
+            <svg class="tool-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#4285F4" d="M1.5 7.5v12a1.5 1.5 0 0 0 1.5 1.5h2.25V12L1.5 7.5z"/>
+              <path fill="#34A853" d="M18.75 21H21a1.5 1.5 0 0 0 1.5-1.5v-12L18.75 12v9z"/>
+              <path fill="#FBBC04" d="M18.75 4.5v7.5L22.5 7.5V5.25a2.25 2.25 0 0 0-2.25-2.25c-.5 0-.976.164-1.5.432z"/>
+              <path fill="#EA4335" d="M5.25 12V4.5l6.75 5.063L18.75 4.5V12L12 17.063 5.25 12z"/>
+              <path fill="#C5221F" d="M1.5 5.25V7.5l3.75 4.5V4.5C4.35 3.932 3.5 3.75 3 3.75A2.25 2.25 0 0 0 1.5 5.25z"/>
+            </svg>
             Gmail
           </div>
-          <div class="tool c-dusk" aria-hidden="true">
-            <svg class="tool-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.591-7.305z"/></svg>
+          <div class="tool" aria-hidden="true">
+            <svg class="tool-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#635BFF" d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.591-7.305z"/>
+            </svg>
             Stripe
           </div>
-          <div class="tool c-clay" aria-hidden="true">
-            <svg class="tool-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M11.998 24C5.366 24 0 18.633 0 12S5.366 0 11.998 0C18.633 0 24 5.367 24 12S18.633 24 11.998 24zm6.521-6.623l-2.104-1.58c-.47.8-1.15 1.42-1.969 1.87l1.02 2.44c1.25-.69 2.29-1.64 3.053-2.73zM8.584 19.11l1.02-2.44c-.82-.45-1.5-1.07-1.97-1.87l-2.103 1.58c.763 1.09 1.803 2.04 3.053 2.73zm-3.513-9.1c0 1.07.217 2.07.612 2.97l2.135-1.6c-.17-.43-.26-.89-.26-1.37 0-.48.09-.94.26-1.37L5.683 7.04c-.395.9-.612 1.9-.612 2.97zm5.898-4.35l-1.02-2.44c-1.25.69-2.29 1.64-3.053 2.73l2.103 1.58c.47-.8 1.15-1.42 1.97-1.87zm.12 7.28l-.82-1.96h3.46l-.82 1.96c-.26.08-.56.12-.88.12-.32 0-.62-.04-.88-.12z"/></svg>
+          <div class="tool" aria-hidden="true">
+            <svg class="tool-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#FF4A00" d="M15.075 12.003a7.04 7.04 0 0 1-.454 2.497 7.04 7.04 0 0 1-2.497.455h-.004a7.04 7.04 0 0 1-2.497-.455 7.05 7.05 0 0 1-.454-2.494v-.004c0-.887.164-1.735.455-2.497a7.04 7.04 0 0 1 2.497-.455h.004c.887 0 1.735.164 2.497.455.291.762.455 1.61.455 2.497v.001zM23.69 10.372h-7.147l5.055-5.056a12.022 12.022 0 0 0-2.745-2.746l-5.056 5.056V.479a12.03 12.03 0 0 0-1.923-.16h-.006c-.648 0-1.285.054-1.907.159v7.146L4.906 2.568A11.96 11.96 0 0 0 3.53 3.532 12.055 12.055 0 0 0 2.16 4.908l5.055 5.056H.069s-.16 1.269-.16 1.927v.007c0 .65.056 1.287.16 1.908h7.146L2.16 18.862a12.064 12.064 0 0 0 2.746 2.746l5.056-5.057v7.147c.618.103 1.252.157 1.898.158h.019a11.97 11.97 0 0 0 1.898-.158v-7.147l5.056 5.057a12.066 12.066 0 0 0 2.745-2.746l-5.055-5.056h7.146c.105-.618.158-1.253.159-1.9v-.035c0-.645-.054-1.28-.158-1.899z"/>
+            </svg>
             Zapier
           </div>
-          <div class="tool c-olive" aria-hidden="true">
-            <svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M4 12h16M12 4v16"/></svg>
+          <div class="tool" aria-hidden="true">
+            <svg class="tool-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="3" width="18" height="18" rx="4" fill="#0F766E"/>
+              <path d="M8 12h8M12 8v8" stroke="#5EEAD4" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
             Gumloop
           </div>
-          <div class="tool c-moss" aria-hidden="true">
-            <svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <div class="tool" aria-hidden="true">
+            <svg class="tool-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2V3z" fill="#4285F4"/>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7V3z" fill="#34A853"/>
+            </svg>
             NotebookLM
           </div>
-          <div class="tool c-terra" aria-hidden="true">
-            <svg class="tool-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg>
+          <div class="tool" aria-hidden="true">
+            <svg class="tool-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="5" width="20" height="14" rx="3" fill="#38B764"/>
+              <path d="M3 7l9 6 9-6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
             MailerLite
           </div>
-          <div class="tool c-dusk" aria-hidden="true">
-            <svg class="tool-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          <div class="tool" aria-hidden="true">
+            <svg class="tool-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#181717" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+            </svg>
             GitHub
           </div>
         </div>
@@ -1653,7 +1862,6 @@
   </footer>
 
   <script>
-    // Nav border on scroll
     const nav = document.getElementById('nav');
     const onScroll = () => {
       if (window.scrollY > 12) nav.classList.add('scrolled');
@@ -1662,7 +1870,6 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    // Reveal on intersect
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         if (e.isIntersecting) {
@@ -1674,7 +1881,7 @@
 
     document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => io.observe(el));
 
-    // Animated counters on scroll
+    // Animated counters
     const formatNum = (n, target) => {
       if (target >= 1000) return n.toLocaleString('en-US');
       return String(n);
@@ -1682,7 +1889,7 @@
 
     const animateCount = (el) => {
       const target = parseInt(el.dataset.target, 10);
-      const duration = 1600;
+      const duration = 1800;
       const start = performance.now();
       const easeOut = (t) => 1 - Math.pow(1 - t, 3);
       const step = (now) => {
