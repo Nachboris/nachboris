@@ -205,36 +205,55 @@
       max-width: var(--max);
       margin: 0 auto;
       padding: 0.9rem var(--pad);
-      display: flex;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
       align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
+      gap: 1.25rem;
     }
 
-    .nav-left {
+    .nav-brand {
       display: flex;
       align-items: center;
-      gap: 0.85rem;
+      min-width: 0;
     }
 
     .logo {
       font-family: var(--serif);
-      font-size: 1.1rem;
+      font-size: 1.55rem;
       font-weight: 400;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.04em;
       color: var(--ink);
-      transition: color 0.35s var(--soft);
+      transition: color 0.35s var(--soft), transform 0.35s var(--spring);
       white-space: nowrap;
       flex-shrink: 0;
+      line-height: 1;
     }
-    .logo em {
-      font-style: italic;
+    .logo-mark {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.06em;
+    }
+    .logo-dot {
+      color: var(--ink);
+      transition: color 0.35s var(--soft);
+    }
+    .logo:hover {
       color: var(--indigo);
-      font-weight: 300;
+      transform: translateY(-1px);
     }
-    .logo:hover { color: var(--indigo); }
+    .logo:hover .logo-dot { color: var(--orange); }
 
-    /* Available — inline with logo, no border, just dot + label */
+    .nav-menu {
+      justify-self: start;
+    }
+
+    .nav-actions {
+      display: inline-flex;
+      align-items: center;
+      justify-self: end;
+      gap: 1rem;
+    }
+
     .availability {
       display: inline-flex;
       align-items: center;
@@ -284,6 +303,7 @@
       display: flex;
       gap: 1.5rem;
       align-items: center;
+      min-width: 0;
     }
 
     .nav-link {
@@ -294,6 +314,7 @@
       padding: 0.5rem 0;
       position: relative;
       transition: color 0.35s var(--soft);
+      white-space: nowrap;
     }
     .nav-link::after {
       content: "";
@@ -314,14 +335,28 @@
       transform-origin: left;
     }
 
+    @media (max-width: 900px) {
+      .nav-inner {
+        grid-template-columns: auto 1fr auto;
+        gap: 1rem;
+      }
+      .nav-links { gap: 1.1rem; }
+    }
     @media (max-width: 720px) {
-      .nav-link-services { display: none; }
+      .nav-inner {
+        grid-template-columns: auto auto;
+      }
+      .nav-menu {
+        display: none;
+      }
     }
     @media (max-width: 560px) {
       .nav-inner { padding: 0.75rem var(--pad); }
-      .nav-links { gap: 0.85rem; }
-      .nav-link { font-size: var(--fs-15); }
-      .nav-link-projects { display: none; }
+      .nav-actions { gap: 0.6rem; }
+      .nav-cta-label { display: none; }
+      .nav-cta {
+        padding: 0.56rem 0.82rem;
+      }
     }
 
     /* ==========================================================
@@ -572,8 +607,8 @@
 
     @media (min-width: 860px) {
       .hero-grid {
-        grid-template-columns: 1.2fr 1fr;
-        gap: 4rem;
+        grid-template-columns: minmax(0, 1.18fr) minmax(260px, 0.72fr);
+        gap: 3rem;
       }
     }
 
@@ -643,77 +678,90 @@
     .photo-wrap {
       position: relative;
       width: 100%;
-      max-width: 420px;
-      aspect-ratio: 4 / 5;
+      max-width: 280px;
+      aspect-ratio: 0.82;
       display: flex;
       align-items: flex-end;
       justify-content: center;
     }
 
-    /* Halo jaune doré derrière — organique, se fond avec le mesh */
     .photo-halo {
       position: absolute;
-      inset: 8% 6% 12% 6%;
-      background: radial-gradient(circle at 50% 45%,
-        var(--yellow-soft) 0%,
-        var(--yellow-soft) 38%,
-        rgba(252, 211, 77, 0.55) 58%,
+      inset: 5% -10% 10% -10%;
+      background: radial-gradient(circle at 50% 42%,
+        rgba(252, 211, 77, 0.98) 0%,
+        rgba(252, 211, 77, 0.94) 34%,
+        rgba(252, 211, 77, 0.45) 58%,
         transparent 78%);
-      border-radius: 50%;
+      border-radius: 42%;
       z-index: 0;
-      filter: blur(6px);
-      transition: transform 1s var(--spring);
+      filter: blur(10px);
+      transition: transform 0.9s var(--spring), opacity 0.35s var(--soft);
       will-change: transform;
+      opacity: 0.92;
     }
 
-    /* Petit accent orange en contrepoint, discret */
     .photo-halo::after {
       content: "";
       position: absolute;
-      top: 12%;
-      right: 6%;
-      width: 36%;
-      height: 36%;
-      background: radial-gradient(circle, var(--orange-soft) 0%, transparent 60%);
-      opacity: 0.45;
+      top: 14%;
+      right: 8%;
+      width: 34%;
+      height: 34%;
+      background: radial-gradient(circle, rgba(255, 160, 122, 0.75) 0%, transparent 65%);
+      opacity: 0.55;
       border-radius: 50%;
-      filter: blur(4px);
+      filter: blur(8px);
     }
 
-    /* La photo elle-même : détourée, ombre portée, léger tilt */
     .photo-cutout {
       position: relative;
       width: 100%;
       height: 100%;
       z-index: 2;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      transform: rotate(-1.5deg);
-      transition: transform 0.8s var(--spring);
+      overflow: hidden;
+      border-radius: 2.6rem;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0.08) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      box-shadow:
+        0 24px 46px -26px rgba(15, 15, 23, 0.42),
+        0 8px 18px -12px rgba(15, 15, 23, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.85);
+      transform: translateY(0);
+      transition: transform 0.7s var(--spring), box-shadow 0.35s var(--soft);
       will-change: transform;
+      isolation: isolate;
+    }
+    .photo-cutout::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 38%);
+      z-index: 2;
+      pointer-events: none;
     }
     .photo-cutout img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
-      object-position: center bottom;
-      filter: drop-shadow(0 18px 28px rgba(15, 15, 23, 0.18))
-              drop-shadow(0 4px 8px rgba(15, 15, 23, 0.08));
+      object-fit: cover;
+      object-position: center 18%;
+      transform: scale(1.02);
     }
 
-    /* Hover subtil : la photo se redresse, le halo glisse légèrement */
     .photo-wrap:hover .photo-cutout {
-      transform: rotate(0deg) translateY(-4px);
+      transform: translateY(-4px);
+      box-shadow:
+        0 28px 52px -26px rgba(15, 15, 23, 0.48),
+        0 10px 22px -12px rgba(15, 15, 23, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.92);
     }
     .photo-wrap:hover .photo-halo {
-      transform: translate(8px, -4px) scale(1.03);
+      transform: translate(8px, -6px) scale(1.04);
     }
 
-    /* Sticker AI-native en bas à droite, comme un post-it rotationné */
     .photo-col .ai-badge {
       position: relative;
-      margin-top: -1rem;
+      margin-top: -0.45rem;
       transform: rotate(3deg);
       transition: transform 0.5s var(--spring), border-color 0.35s var(--soft), box-shadow 0.4s var(--soft);
       z-index: 3;
@@ -722,7 +770,6 @@
       transform: rotate(0deg) translateY(-2px);
     }
 
-    /* Placeholder fallback si pas d'image (garde ton workflow dev) */
     .photo-placeholder {
       position: absolute;
       inset: 15% 10% 8% 10%;
@@ -730,7 +777,7 @@
       align-items: center;
       justify-content: center;
       background: linear-gradient(180deg, rgba(252, 211, 77, 0.4) 0%, rgba(255, 160, 122, 0.35) 100%);
-      border-radius: 50% 50% 48% 52% / 55% 50% 50% 45%;
+      border-radius: 2.6rem;
       border: 2px dashed rgba(15, 15, 23, 0.18);
     }
     .photo-placeholder .label {
@@ -744,8 +791,8 @@
       letter-spacing: 0.01em;
     }
 
-    @media (max-width: 860px) {
-      .photo-wrap { max-width: 340px; }
+    @media (min-width: 860px) {
+      .photo-wrap { max-width: 320px; }
     }
 
     /* ==========================================================
@@ -1648,18 +1695,23 @@
   <!-- NAV with Available pill next to logo -->
   <nav class="nav" id="nav">
     <div class="nav-inner">
-      <div class="nav-left">
-        <a href="#top" class="logo">Boris <em>Nachbaur</em></a>
+      <div class="nav-brand">
+        <a href="#top" class="logo logo-mark" aria-label="Boris Nachbaur home">BN<span class="logo-dot">.</span></a>
+      </div>
+
+      <div class="nav-links nav-menu">
+        <a href="#work" class="nav-link">Services</a>
+        <a href="#process" class="nav-link">Process</a>
+        <a href="#results" class="nav-link">Results</a>
+      </div>
+
+      <div class="nav-actions">
         <span class="availability">
           <span class="pulse-dot"></span>
           <span class="availability-label">Available</span>
         </span>
-      </div>
-      <div class="nav-links">
-        <a href="/projects" class="nav-link nav-link-projects">Projects</a>
-        <a href="#work" class="nav-link nav-link-services">Services</a>
         <a href="#contact" class="nav-cta">
-          <span class="nav-cta-label">Book a call</span>
+          <span class="nav-cta-label">Book a 20-min call</span>
           <span class="arrow">→</span>
         </a>
       </div>
@@ -1679,7 +1731,7 @@
         <div class="hero-grid">
           <div>
             <h1 class="reveal">
-              Your best work is the 20%. <span class="italic-accent">I handle the rest.</span>
+              Keep shipping. <span class="italic-accent">I handle the rest.</span>
             </h1>
             <p class="hero-sub reveal">
               I'm Boris — right-hand to talented solo founders & creators.
@@ -1698,7 +1750,7 @@
             <div class="photo-wrap reveal">
               <div class="photo-halo" aria-hidden="true"></div>
               <div class="photo-cutout">
-                <img src="/assets/boris-nachbaur-hero.webp" alt="Boris Nachbaur" loading="eager" decoding="async" />
+                <img src="/assets/boris-nachbaur-hero.webp" alt="Boris Nachbaur" loading="eager" fetchpriority="high" decoding="async" width="880" height="1183" />
               </div>
             </div>
 
@@ -1738,7 +1790,7 @@
     </section>
 
     <!-- PROOF -->
-    <section class="proof">
+    <section class="proof" id="results">
       <div class="wrap">
         <p class="proof-head reveal">the receipts</p>
         <div class="proof-grid reveal-stagger">
@@ -1859,7 +1911,7 @@
     </section>
 
     <!-- TOOLKIT -->
-    <section class="toolkit">
+    <section class="toolkit" id="toolkit">
       <div class="toolkit-head reveal">
         <span class="eyebrow">The toolkit</span>
         <h2>Fluent in the stack your team already uses.</h2>
@@ -1937,7 +1989,7 @@
     </section>
 
     <!-- PROCESS -->
-    <section>
+    <section id="process">
       <div class="wrap">
         <div class="section-head">
           <div>
@@ -2030,7 +2082,7 @@
           </span>
           <span>Based in Lausanne</span>
         </span>
-        <span class="footer-copy">© 2026 Nachboris · Made with ♡ by Claude & Boris</span>
+        <span class="footer-copy">© 2026 Nachboris · Made with ♡ by Boris & Claude.</span>
       </div>
       <nav class="footer-nav" aria-label="Footer">
         <a href="#work">Services</a>
