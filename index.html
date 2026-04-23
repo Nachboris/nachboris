@@ -979,38 +979,39 @@
 
     @media (max-width: 859px) {
       .hero {
-        padding-top: clamp(5.5rem, 20vw, 7rem);
+        padding-top: clamp(5rem, 17vw, 6.4rem);
       }
       .hero-grid {
-        gap: 1.65rem;
+        gap: 1.35rem;
       }
       .hero-grid > div:first-child {
-        order: 2;
+        order: 1;
       }
       .photo-col {
-        order: 1;
+        order: 2;
         gap: 0.85rem;
+        margin-top: 0.3rem;
       }
       .photo-wrap {
-        max-width: min(67vw, 252px);
+        max-width: min(62vw, 232px);
       }
       .photo-note {
         display: block;
-        top: -1.2rem;
-        left: -0.65rem;
-        width: 116px;
+        top: 0.1rem;
+        left: -0.75rem;
+        width: 128px;
         transform: rotate(-7deg);
-        opacity: 0.9;
+        opacity: 0.92;
       }
       .photo-note span {
-        font-size: 1.08rem;
+        font-size: 1.22rem;
         line-height: 0.95;
         white-space: normal;
-        max-width: 7.6rem;
+        max-width: 8.2rem;
       }
       .photo-note svg {
-        width: 82px;
-        margin-left: 0.2rem;
+        width: 88px;
+        margin-left: 0.25rem;
       }
       .photo-note path {
         stroke-width: 8;
@@ -1808,27 +1809,77 @@
     }
 
 
-    .artifact-intro {
-      width: min(100%, 15rem);
+    .artifact-map {
+      width: min(100%, 16rem);
+      min-height: 7.4rem;
+      position: relative;
       display: grid;
-      gap: 0.55rem;
+      place-items: center;
     }
-    .artifact-intro-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem;
-      padding: 0.62rem 0.75rem;
+    .artifact-map::before {
+      content: "";
+      position: absolute;
+      inset: 1rem 1.1rem 1.15rem;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.56);
+      border: 1px dashed rgba(91, 79, 224, 0.22);
+      transform: rotate(-2deg);
+    }
+    .messy-chip,
+    .focus-chip {
+      position: absolute;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.42rem 0.58rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.62);
       border: 1px solid rgba(15, 15, 23, 0.06);
-      box-shadow: 0 12px 24px -22px rgba(15, 15, 23, 0.32);
-      font-size: 0.78rem;
+      box-shadow: 0 12px 24px -22px rgba(15, 15, 23, 0.35);
+      font-size: 0.72rem;
+      line-height: 1;
       font-weight: 700;
       color: var(--ink-soft);
+      white-space: nowrap;
     }
-    .artifact-intro-row span:last-child {
-      color: var(--indigo);
+    .messy-chip::before {
+      content: "";
+      width: 0.42rem;
+      height: 0.42rem;
+      border-radius: 999px;
+      background: var(--c);
+      opacity: 0.72;
+      flex-shrink: 0;
+    }
+    .messy-chip.support { top: 0.4rem; left: 0.25rem; }
+    .messy-chip.dms { top: 0.35rem; right: 0.2rem; }
+    .messy-chip.content { bottom: 0.7rem; left: 0.55rem; }
+    .messy-chip.admin { bottom: 0.55rem; right: 0.4rem; }
+    .focus-chip {
+      position: relative;
+      z-index: 2;
+      padding: 0.58rem 0.78rem;
+      background: linear-gradient(135deg, rgba(91, 79, 224, 0.12), rgba(255, 255, 255, 0.74));
+      border-color: rgba(91, 79, 224, 0.20);
+      color: var(--ink);
+      box-shadow: 0 18px 34px -24px rgba(91, 79, 224, 0.45);
+    }
+    .focus-chip span {
+      color: var(--c);
+    }
+    .artifact-route {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      opacity: 0.65;
+    }
+    .artifact-route path {
+      fill: none;
+      stroke: var(--c);
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-dasharray: 3 6;
     }
 
     .artifact-call {
@@ -2325,7 +2376,7 @@
               </div>
               <div class="photo-cutout">
                 <picture>
-                  <source srcset="/assets/mobile-Hero.webp" media="(max-width: 720px)" width="560" height="603" />
+                  <source srcset="/assets/Mobile-Hero.webp" media="(max-width: 720px)" width="560" height="603" />
                   <img src="/assets/Hero-Boris.webp" alt="Boris Nachbaur" loading="eager" fetchpriority="high" decoding="async" width="788" height="849" />
                 </picture>
               </div>
@@ -2596,9 +2647,18 @@
               <p>Twenty minutes. You tell me what's eating your week. I tell you honestly if I can help.</p>
             </div>
             <div class="process-artifact" aria-hidden="true">
-              <div class="artifact-intro">
-                <div class="artifact-intro-row"><span>messy week</span><span>mapped</span></div>
-                <div class="artifact-intro-row"><span>first workflow</span><span>picked</span></div>
+              <div class="artifact-map">
+                <svg class="artifact-route" viewBox="0 0 260 120" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                  <path d="M56 24 C88 38, 95 48, 123 61" />
+                  <path d="M205 24 C174 36, 164 49, 136 61" />
+                  <path d="M62 96 C88 82, 102 76, 124 66" />
+                  <path d="M200 96 C172 84, 156 75, 136 66" />
+                </svg>
+                <span class="messy-chip support">Support</span>
+                <span class="messy-chip dms">DMs</span>
+                <span class="messy-chip content">Content</span>
+                <span class="messy-chip admin">Admin</span>
+                <span class="focus-chip">first workflow <span>picked</span></span>
               </div>
             </div>
           </article>
