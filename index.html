@@ -630,97 +630,122 @@
     }
 
     /* ==========================================================
-       PHOTO COLUMN
+       PHOTO COLUMN — floating portrait on mesh, cutout-style
        ========================================================== */
     .photo-col {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1rem;
+      gap: 1.5rem;
+      position: relative;
     }
 
     .photo-wrap {
       position: relative;
       width: 100%;
-      max-width: 380px;
-      aspect-ratio: 1 / 1;
-    }
-
-    .photo-bg {
-      position: absolute;
-      inset: 8% 0 0 4%;
-      width: 96%;
-      height: 92%;
-      background: var(--yellow);
-      border-radius: 50%;
-      z-index: 1;
-      transition: transform 0.8s var(--spring);
-    }
-
-    .photo-ring {
-      position: absolute;
-      inset: -4% -4% -2% 0;
-      z-index: 3;
-      pointer-events: none;
-      color: var(--indigo);
-      opacity: 0.6;
-      transition: transform 1.2s var(--spring);
-    }
-
-    .photo-circle {
-      position: absolute;
-      inset: 4% 4% 4% 8%;
-      border-radius: 50%;
-      overflow: hidden;
-      z-index: 2;
-      background: linear-gradient(135deg, var(--orange-tint) 0%, var(--yellow-tint) 100%);
-      transition: transform 0.7s var(--spring);
-    }
-    .photo-circle img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-    }
-
-    .photo-placeholder {
-      position: absolute;
-      inset: 0;
+      max-width: 420px;
+      aspect-ratio: 4 / 5;
       display: flex;
       align-items: flex-end;
       justify-content: center;
-      background: linear-gradient(180deg, var(--yellow-soft) 0%, var(--orange-soft) 100%);
     }
-    .photo-placeholder svg {
-      width: 75%;
-      height: 85%;
-      margin-bottom: -4%;
-      color: var(--bg);
-      opacity: 0.9;
+
+    /* Halo jaune doré derrière — organique, se fond avec le mesh */
+    .photo-halo {
+      position: absolute;
+      inset: 8% 6% 12% 6%;
+      background: radial-gradient(circle at 50% 45%,
+        var(--yellow-soft) 0%,
+        var(--yellow-soft) 38%,
+        rgba(252, 211, 77, 0.55) 58%,
+        transparent 78%);
+      border-radius: 50%;
+      z-index: 0;
+      filter: blur(6px);
+      transition: transform 1s var(--spring);
+      will-change: transform;
+    }
+
+    /* Petit accent orange en contrepoint, discret */
+    .photo-halo::after {
+      content: "";
+      position: absolute;
+      top: 12%;
+      right: 6%;
+      width: 36%;
+      height: 36%;
+      background: radial-gradient(circle, var(--orange-soft) 0%, transparent 60%);
+      opacity: 0.45;
+      border-radius: 50%;
+      filter: blur(4px);
+    }
+
+    /* La photo elle-même : détourée, ombre portée, léger tilt */
+    .photo-cutout {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      transform: rotate(-1.5deg);
+      transition: transform 0.8s var(--spring);
+      will-change: transform;
+    }
+    .photo-cutout img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+      filter: drop-shadow(0 18px 28px rgba(15, 15, 23, 0.18))
+              drop-shadow(0 4px 8px rgba(15, 15, 23, 0.08));
+    }
+
+    /* Hover subtil : la photo se redresse, le halo glisse légèrement */
+    .photo-wrap:hover .photo-cutout {
+      transform: rotate(0deg) translateY(-4px);
+    }
+    .photo-wrap:hover .photo-halo {
+      transform: translate(8px, -4px) scale(1.03);
+    }
+
+    /* Sticker AI-native en bas à droite, comme un post-it rotationné */
+    .photo-col .ai-badge {
+      position: relative;
+      margin-top: -1rem;
+      transform: rotate(3deg);
+      transition: transform 0.5s var(--spring), border-color 0.35s var(--soft), box-shadow 0.4s var(--soft);
+      z-index: 3;
+    }
+    .photo-col .ai-badge:hover {
+      transform: rotate(0deg) translateY(-2px);
+    }
+
+    /* Placeholder fallback si pas d'image (garde ton workflow dev) */
+    .photo-placeholder {
+      position: absolute;
+      inset: 15% 10% 8% 10%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, rgba(252, 211, 77, 0.4) 0%, rgba(255, 160, 122, 0.35) 100%);
+      border-radius: 50% 50% 48% 52% / 55% 50% 50% 45%;
+      border: 2px dashed rgba(15, 15, 23, 0.18);
     }
     .photo-placeholder .label {
-      position: absolute;
-      bottom: 10%;
-      left: 50%;
-      transform: translateX(-50%);
       font-family: var(--hand);
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: var(--ink);
-      background: rgba(247, 245, 242, 0.9);
-      padding: 0.3rem 0.9rem;
+      background: rgba(247, 245, 242, 0.92);
+      padding: 0.35rem 1rem;
       border-radius: 999px;
       white-space: nowrap;
       letter-spacing: 0.01em;
     }
 
-    .photo-wrap:hover .photo-bg {
-      transform: translate(-4px, 4px) rotate(-2deg);
-    }
-    .photo-wrap:hover .photo-ring {
-      transform: rotate(8deg);
-    }
-    .photo-wrap:hover .photo-circle {
-      transform: translate(3px, -3px);
+    @media (max-width: 860px) {
+      .photo-wrap { max-width: 340px; }
     }
 
     /* ==========================================================
@@ -1357,212 +1382,84 @@
     /* ==========================================================
        PROCESS
        ========================================================== */
-    .process-story {
-      position: relative;
-    }
-    .process-story::before {
-      content: "";
-      position: absolute;
-      top: 112px;
-      left: 12%;
-      right: 12%;
-      height: 1px;
-      background: linear-gradient(90deg, rgba(91, 79, 224, 0.14) 0%, rgba(255, 107, 53, 0.18) 50%, rgba(132, 204, 22, 0.14) 100%);
-      pointer-events: none;
-    }
-    .process-grid {
+    .process-list {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1rem;
-      position: relative;
+      gap: 0.85rem;
     }
-    @media (min-width: 900px) {
-      .process-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.25rem;
-      }
-    }
-    .p-card {
-      --p-accent: var(--indigo);
-      position: relative;
-      padding: 1.5rem;
-      border-radius: calc(var(--r-md) + 4px);
-      background: rgba(255,255,255,0.66);
-      border: 1px solid rgba(255,255,255,0.72);
-      backdrop-filter: blur(16px) saturate(140%);
-      -webkit-backdrop-filter: blur(16px) saturate(140%);
-      box-shadow: 0 10px 28px -18px rgba(15,15,23,0.18), inset 0 1px 0 rgba(255,255,255,0.9);
-      transition: transform 0.45s var(--spring), border-color 0.35s var(--soft), box-shadow 0.35s var(--soft), background 0.35s var(--soft);
-      min-height: 100%;
-      overflow: hidden;
-    }
-    .p-card::before {
-      content: "";
-      position: absolute;
-      inset: 0 auto auto 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, var(--p-accent) 0%, transparent 78%);
-      opacity: 0.9;
-    }
-    .p-card::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 120px;
-      height: 120px;
-      background: radial-gradient(circle at top right, color-mix(in srgb, var(--p-accent) 12%, white) 0%, transparent 68%);
-      pointer-events: none;
-    }
-    .p-card:hover {
-      transform: translateY(-4px);
-      border-color: color-mix(in srgb, var(--p-accent) 42%, white);
-      background: rgba(255,255,255,0.82);
-      box-shadow: 0 18px 38px -22px rgba(15,15,23,0.26), 0 0 0 1px color-mix(in srgb, var(--p-accent) 18%, white), inset 0 1px 0 rgba(255,255,255,0.95);
-    }
-    .p-card.p-indigo { --p-accent: var(--indigo); }
-    .p-card.p-orange { --p-accent: var(--orange); }
-    .p-card.p-lime { --p-accent: var(--lime); }
-    .p-card-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-    .p-step {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 38px;
-      height: 38px;
-      border-radius: 999px;
-      background: color-mix(in srgb, var(--p-accent) 12%, white);
-      color: var(--p-accent);
-      font-family: var(--sans);
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      flex-shrink: 0;
-    }
-    .p-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.45rem 0.8rem;
-      border-radius: 999px;
-      background: rgba(247,245,242,0.9);
-      border: 1px solid color-mix(in srgb, var(--p-accent) 18%, var(--rule));
-      color: var(--ink);
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-    .p-card h3 {
-      font-size: var(--fs-20);
-      margin-bottom: 0.55rem;
-    }
-    .p-card p {
-      font-size: var(--fs-15);
-      color: var(--ink-soft);
-      line-height: 1.62;
-      max-width: 31ch;
-    }
-    .p-artifact {
-      margin-top: 1.25rem;
-      padding: 0.95rem;
-      border-radius: 16px;
-      background: rgba(247,245,242,0.78);
-      border: 1px solid rgba(229,224,216,0.95);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
-    }
-    .signal-row,
-    .output-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      align-items: center;
-    }
-    .signal-chip,
-    .output-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.42rem 0.68rem;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.92);
-      border: 1px solid rgba(229,224,216,0.95);
-      color: var(--ink-soft);
-      font-size: 0.8rem;
-      font-weight: 500;
-      line-height: 1;
-      white-space: nowrap;
-    }
-    .signal-dot,
-    .output-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--p-accent);
-      flex-shrink: 0;
-    }
-    .workflow-stack {
-      display: grid;
-      gap: 0.55rem;
-    }
-    .workflow-item {
+    .step {
+      --c: var(--indigo);
       display: grid;
       grid-template-columns: auto 1fr auto;
+      gap: 1.5rem;
+      padding: 1.5rem 1.75rem;
+      border-radius: var(--r-md);
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid var(--rule);
       align-items: center;
-      gap: 0.7rem;
-      padding: 0.58rem 0.7rem;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.92);
-      border: 1px solid rgba(229,224,216,0.92);
-      font-size: 0.82rem;
-      color: var(--ink-soft);
+      transition: transform 0.55s var(--spring), background 0.4s var(--soft), border-color 0.4s var(--soft);
+      position: relative;
     }
-    .workflow-icon {
-      width: 22px;
-      height: 22px;
-      border-radius: 7px;
-      background: color-mix(in srgb, var(--p-accent) 14%, white);
-      color: var(--p-accent);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      font-weight: 700;
+    .step:nth-of-type(1) { --c: var(--indigo); }
+    .step:nth-of-type(2) { --c: var(--orange); }
+    .step:nth-of-type(3) { --c: var(--lime); }
+
+    .step:hover {
+      background: rgba(255, 255, 255, 0.85);
+      border-color: var(--c);
+      transform: translateX(6px);
     }
-    .workflow-item strong {
-      color: var(--ink);
-      font-weight: 600;
+    .step:hover .step-num {
+      color: var(--c);
+      transform: rotate(-4deg) scale(1.05);
     }
-    .workflow-status {
-      color: var(--p-accent);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+
+    .step-num {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-style: italic;
+      font-weight: 500;
+      color: var(--c);
+      min-width: 3ch;
+      line-height: 1;
+      transition: color 0.4s var(--soft), transform 0.6s var(--spring);
+      display: inline-block;
     }
-    .process-close {
-      margin-top: 1.5rem;
-      text-align: center;
+    .step-body h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.3rem;
+    }
+    .step-body p {
       font-size: var(--fs-15);
       color: var(--ink-soft);
+      max-width: 52ch;
     }
-    .process-close strong {
-      color: var(--ink);
+    .step-meta {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      white-space: nowrap;
+      padding: 0.35rem 0.8rem;
+      background: var(--bg-soft);
+      border-radius: 999px;
       font-weight: 600;
     }
-    @media (max-width: 899px) {
-      .process-story::before { display: none; }
-      .p-card p { max-width: none; }
+    @media (max-width: 640px) {
+      .step {
+        grid-template-columns: auto 1fr;
+        gap: 1rem;
+        padding: 1.25rem;
+      }
+      .step-num { font-size: 1.75rem; }
+      .step-meta {
+        grid-column: 2;
+        margin-top: 0.25rem;
+        justify-self: start;
+      }
     }
+
     /* ==========================================================
        CONTACT
        ========================================================== */
@@ -1782,10 +1679,11 @@
         <div class="hero-grid">
           <div>
             <h1 class="reveal">
-              I run the ops <span class="italic-accent">so you can</span> run the show.
+              Your best work is the 20%. <span class="italic-accent">I handle the rest.</span>
             </h1>
             <p class="hero-sub reveal">
-              I'm Boris — a right-hand for solo founders and creators. I take on the operational weight (<span class="wavy">support</span>, <span class="wavy">community</span>, <span class="wavy">AI workflows</span>, content ops) so you stay on what only you can do.
+              I'm Boris — right-hand to talented solo founders & creators.
+			  <span class="wavy">Support, community, AI workflows, ops</span> — taken off your plate so you can stay in builder mode.
             </p>
             <div class="hero-ctas reveal">
               <a href="#contact" class="btn btn-primary">
@@ -1797,21 +1695,10 @@
           </div>
 
           <div class="photo-col">
-            <div class="photo-wrap reveal" aria-hidden="true">
-              <div class="photo-bg"></div>
-              <svg class="photo-ring" viewBox="0 0 400 400" fill="none">
-                <path d="M 50 200 Q 50 50, 200 50 Q 330 50, 360 150" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.5"/>
-                <path d="M 380 280 Q 340 370, 200 370" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.35"/>
-              </svg>
-              <div class="photo-circle">
-                <!-- TODO: remplacer .photo-placeholder par <img src="/boris.jpg" alt="Boris Nachbaur" /> quand la photo sera prête -->
-                <div class="photo-placeholder">
-                  <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="38" r="18" fill="currentColor" opacity="0.9"/>
-                    <path d="M 20 120 Q 20 70, 50 65 Q 80 70, 80 120 Z" fill="currentColor" opacity="0.9"/>
-                  </svg>
-                  <span class="label">📸 Photo coming soon</span>
-                </div>
+            <div class="photo-wrap reveal">
+              <div class="photo-halo" aria-hidden="true"></div>
+              <div class="photo-cutout">
+                <img src="/assets/boris-nachbaur-hero.webp" alt="Boris Nachbaur" loading="eager" decoding="async" />
               </div>
             </div>
 
@@ -1833,13 +1720,16 @@
           </div>
           <div class="why-body reveal">
             <p>
-              I spent the last decade running a digital goods business in a market where fraud was the default and every customer half-expected to get burned.
+              For the past 15 years, I've been building and growing digital projects from scratch. <span class="highlight-orange">I know what it's like to wear every hat</span>
             </p>
             <p>
-              Disputes happened. Chargebacks happened. Angry customers happened. What I learned was how to <span class="highlight-orange">turn most of them around</span> — own the mistake when it was mine, defend the case when it wasn't, and always make the buyer feel heard. <strong>2,250+ positive reviews</strong> isn't an accident. It's a craft worn in over thousands of touchpoints.
+              Every founder has to handle acquisition, conversion, retention, operations, support... 
+			 I know how difficult it is to be everywhere at once. 
+			 <br> <strong> Focus is key to grow a business.</strong> → 20% of the work drives 80% of your growth. Everything else? That's where I come in.
             </p>
             <p>
-              Now I lend that craft to solo founders and creators who are great at what they do but drowning in the rest. The goal is simple: <span class="highlight-sky">get your calendar back</span>, keep your customers happy, ship the boring things on time.
+              I help solo founders and creators who are great at what they do but drowning in the rest. I run the ops so you can run the show. 
+			  <br>The goal is simple: <span class="highlight-sky">get your calendar back</span> so you focus on what you do best.
             </p>
             <p class="why-signoff">— Boris</p>
           </div>
@@ -1854,19 +1744,19 @@
         <div class="proof-grid reveal-stagger">
           <a href="/reviews" class="stat">
             <span class="num"><span class="count" data-target="2250">0</span><em>+</em></span>
-            <span class="label">Verified customer relationships, 100% positive.</span>
+            <span class="label">Verified customer relationships from my 15 years shipping.</span>
             <span class="see-more">Read the reviews →</span>
           </a>
           <a href="/projects" class="stat signature">
-            <span class="stat-badge">✦ Signature</span>
+            <span class="stat-badge">✓ Certified geek</span>
             <span class="num"><span class="count" data-target="15">0</span><em>+ yrs</em></span>
-            <span class="label">Solo digital operations &amp; building — in the trenches since 2012.</span>
+            <span class="label">Solo digital operations &amp; building — in the trenches since 2011.</span>
             <span class="see-more">See the story →</span>
           </a>
           <a href="/projects" class="stat">
-            <span class="num"><span class="count" data-target="1900">0</span><em>+</em></span>
-            <span class="label">Discord community grown from zero. Built, branded, and run solo.</span>
-            <span class="see-more">See the story →</span>
+            <span class="num"><span class="count" data-target="100">0</span><em>%</em></span>
+            <span class="label">Satisfaction rate that I'm genuinely proud of.</span>
+            <span class="see-more">Check how reliable I am →</span>
           </a>
         </div>
         <div class="reviews-link-wrap reveal">
@@ -1890,7 +1780,7 @@
             <h2 style="margin-top: 1.25rem;">The boring, essential stuff — handled.</h2>
           </div>
           <p>
-            You didn't start your thing to answer support tickets at 11pm or babysit your Discord. That's where I come in.
+            You didn't start your thing to answer support tickets at 11pm and burnout. That's where I come in.
           </p>
         </div>
 
@@ -1899,7 +1789,7 @@
             <span class="service-num">01</span>
             <div>
               <h3>Customer support L2</h3>
-              <p>Tickets, refunds, edge cases, knowledge base upkeep. The kind of work that compounds when done consistently.</p>
+              <p>Real answers to complex tickets, fast. Your users feel heard. You never see the queue.</p>
               <div class="service-examples">
                 refund flows<span class="dot">·</span>ticket SLAs<span class="dot">·</span>FAQ upkeep<span class="dot">·</span>escalation playbooks
               </div>
@@ -1912,7 +1802,7 @@
               <h3>Community operations</h3>
               <p>Discord, Slack, Circle. Moderation, onboarding, engagement — making a space feel alive, not abandoned.</p>
               <div class="service-examples">
-                welcome flows<span class="dot">·</span>role automations<span class="dot">·</span>events &amp; AMAs<span class="dot">·</span>moderation
+                welcome flows<span class="dot">·</span>role automations<span class="dot">·</span>events<span class="dot">·</span>moderation
               </div>
             </div>
           </div>
@@ -1921,9 +1811,9 @@
             <span class="service-num">03</span>
             <div>
               <h3>Email sequences &amp; lifecycle</h3>
-              <p>Welcome flows, launch campaigns, re-engagement, cold outreach. Written in your voice, tested, shipped.</p>
+              <p>Welcome flows, launch campaigns, re-engagement... Written in your voice, tested, shipped.</p>
               <div class="service-examples">
-                onboarding<span class="dot">·</span>launches<span class="dot">·</span>win-back<span class="dot">·</span>cold outreach
+                onboarding<span class="dot">·</span>launches<span class="dot">·</span>win-back
               </div>
             </div>
           </div>
@@ -1931,10 +1821,10 @@
           <div class="service s-lime">
             <span class="service-num">04</span>
             <div>
-              <h3>AI workflows &amp; automation</h3>
-              <p>Claude, n8n, Zapier, custom scripts. I build the pipes that quietly remove the repetitive parts of your week.</p>
+              <h3>Light vibe coding</h3>
+              <p>Fixes, landing pages, small integrations. The backlog items that never make it to a real dev sprint.</p>
               <div class="service-examples">
-                inbox triage<span class="dot">·</span>content pipelines<span class="dot">·</span>research agents<span class="dot">·</span>SOPs
+                automation<span class="dot">·</span>integrations<span class="dot">·</span>landing page<span class="dot">·</span>SOPs
               </div>
             </div>
           </div>
@@ -1963,7 +1853,7 @@
         </div>
 
         <p class="positioning reveal">
-          I'm not a VA. I'm the operator <strong>you trust with your passwords.</strong>
+          I'm not a VA. I'm the operator <strong>you can trust with your passwords.</strong>
         </p>
       </div>
     </section>
@@ -2047,79 +1937,44 @@
     </section>
 
     <!-- PROCESS -->
-    <section class="process-story">
+    <section>
       <div class="wrap">
         <div class="section-head">
           <div>
-            <span class="eyebrow">How we start</span>
-            <h2 style="margin-top: 1.25rem;">Simple, low-risk, built around trust.</h2>
+            <span class="eyebrow">How we'd work together</span>
+            <h2 style="margin-top: 1.25rem;">Simple, low-risk, no lock-in.</h2>
           </div>
           <p>
-            No heavy onboarding. No long contract upfront. Just a clear way to see if working together actually makes your week lighter.
+            No month-long onboardings. No 40-page proposals. If we're a fit, you'll know within a few weeks.
           </p>
         </div>
 
-        <div class="process-grid reveal-stagger">
-          <article class="p-card p-indigo">
-            <div class="p-card-head">
-              <span class="p-step">01</span>
-              <span class="p-badge">20 min · free</span>
+        <div class="process-list">
+          <div class="step reveal">
+            <span class="step-num">01</span>
+            <div class="step-body">
+              <h3>Intro call</h3>
+              <p>Twenty minutes. You tell me what's eating your week. I tell you honestly if I can help.</p>
             </div>
-            <h3>Intro call</h3>
-            <p>Twenty minutes. You tell me what’s eating your week. I tell you honestly if I can help.</p>
-            <div class="p-artifact">
-              <div class="signal-row">
-                <span class="signal-chip"><span class="signal-dot"></span>Loom</span>
-                <span class="signal-chip"><span class="signal-dot"></span>Slack note</span>
-                <span class="signal-chip"><span class="signal-dot"></span>Messy brief</span>
-              </div>
+            <span class="step-meta">20 min · free</span>
+          </div>
+          <div class="step reveal">
+            <span class="step-num">02</span>
+            <div class="step-body">
+              <h3>Four-week trial</h3>
+              <p>We pick one painful workflow. I take it over, document it, and prove the value. Flat fee, no commitment after.</p>
             </div>
-          </article>
-
-          <article class="p-card p-orange">
-            <div class="p-card-head">
-              <span class="p-step">02</span>
-              <span class="p-badge">4 weeks · fixed</span>
+            <span class="step-meta">no commitment</span>
+          </div>
+          <div class="step reveal">
+            <span class="step-num">03</span>
+            <div class="step-body">
+              <h3>Long-term engagement</h3>
+              <p>If it's working, we extend. Scope grows as your trust grows.</p>
             </div>
-            <h3>Four-week trial</h3>
-            <p>We pick one painful workflow. I take it over, document it, and show you the difference. Flat fee, no commitment after.</p>
-            <div class="p-artifact workflow-stack">
-              <div class="workflow-item">
-                <span class="workflow-icon">↳</span>
-                <span><strong>Support queue</strong> triaged + replied</span>
-                <span class="workflow-status">handled</span>
-              </div>
-              <div class="workflow-item">
-                <span class="workflow-icon">≡</span>
-                <span><strong>Workflow SOP</strong> cleaned + documented</span>
-                <span class="workflow-status">documented</span>
-              </div>
-              <div class="workflow-item">
-                <span class="workflow-icon">⚡</span>
-                <span><strong>Follow-ups</strong> automated where useful</span>
-                <span class="workflow-status">running</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="p-card p-lime">
-            <div class="p-card-head">
-              <span class="p-step">03</span>
-              <span class="p-badge">monthly · rolling</span>
-            </div>
-            <h3>Long-term setup</h3>
-            <p>If it’s working, we keep going. Scope grows as your trust grows — support, community, systems, or whatever keeps dragging your attention away.</p>
-            <div class="p-artifact">
-              <div class="output-row">
-                <span class="output-chip"><span class="output-dot"></span>Calmer inbox</span>
-                <span class="output-chip"><span class="output-dot"></span>Clearer docs</span>
-                <span class="output-chip"><span class="output-dot"></span>More headspace</span>
-              </div>
-            </div>
-          </article>
+            <span class="step-meta">monthly · rolling</span>
+          </div>
         </div>
-
-        <p class="process-close reveal"><strong>No long contracts.</strong> Just a clean way to see if working together makes sense.</p>
       </div>
     </section>
 
@@ -2130,7 +1985,7 @@
           <span class="eyebrow reveal">Get in touch</span>
           <h2 class="reveal">Ready to get some <span class="italic-accent">of your time</span> back?</h2>
           <p class="contact-sub reveal">
-            The first call is short, free, and low-pressure. Worst case, you walk away with a clearer picture of what to offload.
+            The first call is 20 min. Free. Worst case, you walk away with a clearer picture of what to offload.
           </p>
           <div class="contact-ctas reveal">
             <a href="https://calendly.com/nachboris/20min" class="btn btn-ink" target="_blank" rel="noopener">
@@ -2175,7 +2030,7 @@
           </span>
           <span>Based in Lausanne</span>
         </span>
-        <span class="footer-copy">© 2026 Nachboris · Made with care by Boris & Claude ♡</span>
+        <span class="footer-copy">© 2026 Nachboris · Made with ♡ by Claude & Boris</span>
       </div>
       <nav class="footer-nav" aria-label="Footer">
         <a href="#work">Services</a>
