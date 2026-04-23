@@ -687,7 +687,7 @@
     .photo-wrap {
       position: relative;
       width: 100%;
-      max-width: 300px;
+      max-width: 270px;
       aspect-ratio: 0.86;
       display: flex;
       align-items: flex-end;
@@ -699,15 +699,15 @@
       position: absolute;
       inset: -14% -18% -10% -18%;
       background:
-        radial-gradient(circle at 55% 38%, rgba(252, 211, 77, 0.76) 0%, rgba(252, 211, 77, 0.52) 28%, rgba(252, 211, 77, 0.16) 52%, transparent 72%),
-        radial-gradient(circle at 88% 74%, rgba(255, 107, 53, 0.30) 0%, rgba(255, 107, 53, 0.12) 38%, transparent 68%),
-        radial-gradient(circle at 10% 12%, rgba(139, 130, 240, 0.26) 0%, rgba(139, 130, 240, 0.09) 40%, transparent 70%);
+        radial-gradient(circle at 55% 38%, rgba(252, 211, 77, 0.58) 0%, rgba(252, 211, 77, 0.38) 28%, rgba(252, 211, 77, 0.12) 52%, transparent 72%),
+        radial-gradient(circle at 88% 74%, rgba(255, 107, 53, 0.22) 0%, rgba(255, 107, 53, 0.09) 38%, transparent 68%),
+        radial-gradient(circle at 10% 12%, rgba(139, 130, 240, 0.20) 0%, rgba(139, 130, 240, 0.07) 40%, transparent 70%);
       border-radius: 46%;
       z-index: 0;
       filter: blur(18px);
       transition: transform 0.9s var(--spring), opacity 0.35s var(--soft);
       will-change: transform;
-      opacity: 0.86;
+      opacity: 0.78;
     }
 
     .photo-cutout {
@@ -718,7 +718,7 @@
       overflow: hidden;
       border-radius: 2.6rem;
       background:
-        radial-gradient(circle at 50% 38%, rgba(252, 211, 77, 0.74) 0%, rgba(252, 211, 77, 0.50) 29%, rgba(255, 235, 158, 0.26) 48%, rgba(255, 255, 255, 0.48) 68%, rgba(255, 255, 255, 0.34) 100%),
+        radial-gradient(circle at 50% 38%, rgba(252, 211, 77, 0.62) 0%, rgba(252, 211, 77, 0.40) 29%, rgba(255, 235, 158, 0.26) 48%, rgba(255, 255, 255, 0.48) 68%, rgba(255, 255, 255, 0.34) 100%),
         linear-gradient(135deg, rgba(139, 130, 240, 0.13) 0%, rgba(255, 255, 255, 0.22) 44%, rgba(255, 107, 53, 0.12) 100%);
       border: 1px solid rgba(255, 255, 255, 0.82);
       box-shadow:
@@ -834,11 +834,11 @@
     }
 
     @media (min-width: 860px) {
-      .photo-wrap { max-width: 370px; }
+      .photo-wrap { max-width: 333px; }
     }
 
     @media (min-width: 1100px) {
-      .photo-wrap { max-width: 390px; }
+      .photo-wrap { max-width: 351px; }
     }
 
 
@@ -857,7 +857,7 @@
         gap: 0.85rem;
       }
       .photo-wrap {
-        max-width: min(74vw, 280px);
+        max-width: min(67vw, 252px);
       }
       .photo-note {
         display: none;
@@ -1869,7 +1869,7 @@
               </div>
               <div class="photo-cutout">
                 <picture>
-                  <source srcset="/assets/Mobile-Hero.webp" media="(max-width: 720px)" width="560" height="603" />
+                  <source srcset="/assets/mobile-Hero.webp" media="(max-width: 720px)" width="560" height="603" />
                   <img src="/assets/Hero-Boris.webp" alt="Boris Nachbaur" loading="eager" fetchpriority="high" decoding="async" width="788" height="849" />
                 </picture>
               </div>
