@@ -1,546 +1,1382 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Projects and experience of Boris Nachbaur — 13 years operating digital businesses solo, from e-commerce to community-led products.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects — Boris Nachbaur</title>
+  <meta name="description" content="15+ years building and operating digital businesses solo. From a $500K+ e-commerce to active side projects — the proof behind the operator." />
+  <meta name="author" content="Boris Nachbaur" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <meta property="og:title" content="Projects — Boris Nachbaur" />
+  <meta property="og:description" content="15+ years building and operating digital businesses solo. From a $500K+ e-commerce to active side projects." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nachboris.fr/projects" />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='10' fill='%23F7F5F2'/%3E%3Ctext x='16' y='22' font-family='Georgia, serif' font-size='18' font-weight='500' text-anchor='middle' fill='%235B4FE0'%3EBN%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..500&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <style>
-    /* ---------- Variables ---------- */
+    /* ==========================================================
+       TOKENS — mirrored from index.html
+       ========================================================== */
     :root {
       --bg: #F7F5F2;
-      --bg-secondary: #EFEDE9;
-      --text-primary: #1A1A18;
-      --text-secondary: #6B6B67;
-      --text-tertiary: #9B9B97;
-      --accent: #D4845A;
-      --accent-hover: #C0734A;
-      --border: #E2DED8;
+      --bg-soft: #EFECE6;
+      --ink: #0F0F17;
+      --ink-soft: #3A3A4A;
+      --ink-mute: #6B6B7A;
+      --rule: #E5E0D8;
 
-      --font-serif: 'Playfair Display', Georgia, serif;
-      --font-sans: 'DM Sans', -apple-system, sans-serif;
+      --indigo: #5B4FE0;
+      --indigo-soft: #8B82F0;
+      --indigo-tint: rgba(91, 79, 224, 0.10);
 
-      --space-xs: 8px;
-      --space-sm: 16px;
-      --space-md: 24px;
-      --space-lg: 48px;
-      --space-xl: 80px;
-      --space-2xl: 120px;
+      --orange: #FF6B35;
+      --orange-soft: #FFA07A;
+      --orange-tint: rgba(255, 107, 53, 0.10);
 
-      --max-width: 720px;
-      --max-width-wide: 1100px;
-      --radius: 8px;
-      --radius-lg: 16px;
+      --lime: #84CC16;
+      --lime-soft: #BEF264;
+      --lime-tint: rgba(132, 204, 22, 0.10);
+
+      --green: #22C55E;
+      --green-soft: #86EFAC;
+
+      --yellow: #FBBF24;
+      --yellow-soft: #FCD34D;
+      --yellow-tint: rgba(251, 191, 36, 0.12);
+
+      --sky: #38BDF8;
+      --sky-soft: #7DD3FC;
+      --sky-tint: rgba(56, 189, 248, 0.10);
+
+      --coral: #FB7185;
+      --coral-soft: #FDA4AF;
+      --coral-tint: rgba(251, 113, 133, 0.10);
+
+      --gold: #D4A017;
+      --gold-soft: #F0C755;
+
+      --serif: "Fraunces", Georgia, "Times New Roman", serif;
+      --sans: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --hand: "Caveat", cursive;
+
+      --max: 1100px;
+      --pad: clamp(1.25rem, 4vw, 2.5rem);
+
+      --fs-13: 0.8125rem;
+      --fs-15: 0.9375rem;
+      --fs-17: 1.0625rem;
+      --fs-20: 1.25rem;
+      --fs-24: 1.5rem;
+      --fs-32: 2rem;
+      --fs-48: 3rem;
+
+      --r-sm: 10px;
+      --r-md: 18px;
+      --r-lg: 28px;
+      --r-xl: 40px;
+
+      --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+      --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --soft: cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* ---------- Reset minimal ---------- */
-    *, *::before, *::after { box-sizing: border-box; }
-    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
     body {
-      margin: 0;
-      font-family: var(--font-sans);
-      font-size: 17px;
-      line-height: 1.6;
-      color: var(--text-primary);
+      font-family: var(--sans);
+      font-size: var(--fs-17);
+      line-height: 1.65;
+      color: var(--ink);
       background: var(--bg);
+      font-feature-settings: "ss01", "cv11";
+      overflow-x: hidden;
     }
+    img, svg { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
-    h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 600; letter-spacing: -0.01em; margin: 0; }
-    p { margin: 0; }
+    button { font-family: inherit; border: 0; background: none; cursor: pointer; }
+    summary { cursor: pointer; list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    ::selection { background: var(--indigo); color: var(--bg); }
 
-    /* ---------- Nav ---------- */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(247, 245, 242, 0.85);
-      backdrop-filter: saturate(180%) blur(12px);
-      -webkit-backdrop-filter: saturate(180%) blur(12px);
-      border-bottom: 1px solid var(--border);
+    h1, h2, h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      line-height: 1.08;
     }
-    .nav-inner {
-      max-width: var(--max-width-wide);
-      margin: 0 auto;
-      padding: var(--space-sm) var(--space-md);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--space-md);
+    h1 {
+      font-size: clamp(2.25rem, 6.5vw, 5rem);
+      font-variation-settings: "opsz" 144, "SOFT" 50;
     }
-    .nav-brand {
-      font-family: var(--font-serif);
-      font-size: 18px;
-      font-weight: 600;
+    h2 {
+      font-size: clamp(1.75rem, 3.5vw, 2.6rem);
+      font-variation-settings: "opsz" 96;
     }
-    .nav-links {
-      display: flex;
-      gap: var(--space-md);
-      font-size: 15px;
-      color: var(--text-secondary);
-    }
-    .nav-links a:hover { color: var(--text-primary); }
-    .nav-links a.active { color: var(--text-primary); }
-
-    /* ---------- Layout helpers ---------- */
-    main { padding: var(--space-lg) var(--space-md) var(--space-2xl); }
-    .container { max-width: var(--max-width); margin: 0 auto; }
-    .container-wide { max-width: var(--max-width-wide); margin: 0 auto; }
-
-    section + section { margin-top: var(--space-xl); }
-
-    /* ---------- Hero ---------- */
-    .hero {
-      padding-top: var(--space-lg);
-      padding-bottom: var(--space-md);
-    }
-    .eyebrow {
-      font-family: var(--font-sans);
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-tertiary);
-      margin-bottom: var(--space-md);
-    }
-    .hero h1 {
-      font-size: 44px;
-      line-height: 1.1;
-      margin-bottom: var(--space-md);
-    }
-    .hero-lede {
-      font-size: 19px;
-      color: var(--text-secondary);
-      max-width: 620px;
-    }
-
-    /* ---------- Featured project ---------- */
-    .featured {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: var(--space-lg) var(--space-md);
-    }
-    .featured-head {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-xs);
-      margin-bottom: var(--space-md);
-    }
-    .featured-tag {
-      font-size: 12px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 500;
-    }
-    .featured h2 {
-      font-size: 34px;
+    h3 {
+      font-size: var(--fs-24);
+      font-family: var(--serif);
+      font-weight: 400;
+      letter-spacing: -0.015em;
       line-height: 1.15;
     }
+    p { color: var(--ink-soft); }
+
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+    section { padding: clamp(3.5rem, 9vw, 7.5rem) 0; }
+
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: var(--fs-13);
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--indigo);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 24px;
+      height: 1.5px;
+      background: var(--indigo);
+      display: inline-block;
+      border-radius: 2px;
+    }
+
+    .italic-accent {
+      font-style: italic;
+      color: var(--orange);
+      font-weight: 300;
+    }
+
+    @media (max-width: 640px) {
+      :root { --pad: 1.35rem; }
+    }
+
+    /* ==========================================================
+       NAV — mirrored from index.html
+       ========================================================== */
+    .nav {
+      position: fixed;
+      top: 1rem; left: 0; right: 0;
+      z-index: 100;
+      background: transparent;
+      transition: transform 0.35s var(--soft);
+      pointer-events: none;
+    }
+    .nav-inner {
+      max-width: calc(var(--max) + 2rem);
+      margin: 0 auto;
+      padding: 0.72rem 0.85rem 0.72rem 1.15rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 1.25rem;
+      background: rgba(255, 255, 255, 0.74);
+      border: 1px solid rgba(15, 15, 23, 0.07);
+      border-radius: 18px;
+      box-shadow: 0 18px 48px -34px rgba(15, 15, 23, 0.42), 0 1px 0 rgba(255, 255, 255, 0.82) inset;
+      backdrop-filter: saturate(150%) blur(18px);
+      -webkit-backdrop-filter: saturate(150%) blur(18px);
+      pointer-events: auto;
+    }
+    .nav-brand { display: flex; align-items: center; min-width: 0; }
+    .logo {
+      font-family: var(--serif);
+      font-size: 1.55rem;
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+      transition: color 0.35s var(--soft), transform 0.35s var(--spring);
+      white-space: nowrap;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .logo-mark { display: inline-flex; align-items: baseline; gap: 0.06em; }
+    .logo-dot { color: var(--ink); transition: color 0.35s var(--soft); }
+    .logo:hover { color: var(--indigo); transform: translateY(-1px); }
+    .logo:hover .logo-dot { color: var(--orange); }
+
+    .nav-menu { justify-self: center; }
+    .nav-actions { display: inline-flex; align-items: center; justify-self: end; gap: 1rem; }
+
+    .nav-links { display: flex; gap: 1.5rem; align-items: center; min-width: 0; }
+    .nav-link {
+      font-family: var(--sans);
+      font-size: var(--fs-15);
+      font-weight: 500;
+      color: var(--ink);
+      padding: 0.5rem 0;
+      position: relative;
+      transition: color 0.35s var(--soft);
+      white-space: nowrap;
+    }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      width: 100%;
+      height: 1.5px;
+      border-radius: 2px;
+      background: var(--indigo);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.4s var(--spring);
+    }
+    .nav-link.active { color: var(--indigo); }
+    .nav-link.active::after { transform: scaleX(1); transform-origin: left; }
+    .nav-link:hover { color: var(--indigo); }
+    .nav-link:hover::after { transform: scaleX(1); transform-origin: left; }
+
+    .availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--green);
+      letter-spacing: 0.01em;
+      padding-left: 0.75rem;
+      border-left: 1px solid var(--rule);
+      white-space: nowrap;
+    }
+    .pulse-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--green); position: relative; flex-shrink: 0;
+      box-shadow: 0 0 5px rgba(34, 197, 94, 0.7);
+    }
+    .pulse-dot::after {
+      content: ""; position: absolute; inset: -3px;
+      border-radius: 50%; background: var(--green);
+      opacity: 0.5; animation: pulse 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(0.6); opacity: 0.7; }
+      80%, 100% { transform: scale(2.2); opacity: 0; }
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.62rem 1rem;
+      background: var(--ink);
+      color: var(--bg);
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-size: var(--fs-15);
+      font-weight: 600;
+      line-height: 1;
+      white-space: nowrap;
+      transition: transform 0.3s var(--spring), background 0.25s var(--soft), box-shadow 0.25s var(--soft);
+      box-shadow: 0 8px 18px -16px rgba(15, 15, 23, 0.65);
+    }
+    .nav-cta:hover { transform: translateY(-1px); background: #171723; }
+    .nav-cta .arrow { transition: transform 0.35s var(--spring); }
+    .nav-cta:hover .arrow { transform: translateX(2px); }
+
+    .nav-toggle {
+      display: none;
+      width: 2.35rem; height: 2.35rem;
+      align-items: center; justify-content: center;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 15, 23, 0.08);
+      background: rgba(247, 245, 242, 0.72);
+      color: var(--ink);
+      transition: transform 0.35s var(--spring), background 0.25s var(--soft), border-color 0.25s var(--soft);
+    }
+    .nav-toggle-lines { position: relative; width: 17px; height: 12px; display: block; }
+    .nav-toggle-lines::before,
+    .nav-toggle-lines::after,
+    .nav-toggle-lines span {
+      content: ""; position: absolute; left: 0;
+      width: 17px; height: 2px; border-radius: 999px;
+      background: currentColor;
+      transition: transform 0.35s var(--spring), opacity 0.25s var(--soft), top 0.35s var(--spring);
+    }
+    .nav-toggle-lines::before { top: 0; }
+    .nav-toggle-lines span { top: 5px; }
+    .nav-toggle-lines::after { top: 10px; }
+    .nav.menu-open .nav-toggle-lines::before { top: 5px; transform: rotate(45deg); }
+    .nav.menu-open .nav-toggle-lines span { opacity: 0; }
+    .nav.menu-open .nav-toggle-lines::after { top: 5px; transform: rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 4.7rem; left: 0.9rem; right: 0.9rem;
+      z-index: 99;
+      padding: 1rem;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(15, 15, 23, 0.08);
+      box-shadow: 0 24px 60px -34px rgba(15, 15, 23, 0.52), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+      backdrop-filter: saturate(150%) blur(18px);
+      -webkit-backdrop-filter: saturate(150%) blur(18px);
+      transform: translateY(-8px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.28s var(--soft), transform 0.35s var(--spring);
+    }
+    .mobile-menu.is-open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+    .mobile-menu-links { display: grid; gap: 0.25rem; }
+    .mobile-menu-link {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.9rem 0.95rem; border-radius: 16px;
+      font-weight: 600; color: var(--ink);
+      transition: background 0.25s var(--soft), transform 0.35s var(--spring);
+    }
+    .mobile-menu-link:hover { background: var(--bg-soft); transform: translateX(2px); }
+    .mobile-menu-link span { color: var(--ink-mute); font-weight: 500; }
+    .mobile-menu-foot { margin-top: 0.95rem; display: grid; gap: 0.7rem; justify-items: center; text-align: center; }
+    .mobile-menu-foot .availability { padding-left: 0; border-left: 0; font-size: 0.82rem; justify-content: center; }
+    .mobile-menu-cta {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 0.45rem; width: 100%;
+      padding: 0.88rem 1rem; border-radius: 999px;
+      background: var(--ink); color: var(--bg);
+      font-weight: 700; line-height: 1;
+      box-shadow: 0 14px 26px -20px rgba(15, 15, 23, 0.75);
+    }
+
+    @media (max-width: 720px) {
+      .nav-inner {
+        width: calc(100% - 1.5rem);
+        grid-template-columns: auto auto;
+        gap: 0.75rem;
+        padding: 0.62rem 0.64rem 0.62rem 0.92rem;
+      }
+      .nav-menu, .nav-actions { display: none; }
+      .nav-toggle { display: inline-flex; justify-self: end; }
+      .mobile-menu { display: block; }
+    }
+    @media (max-width: 560px) {
+      .nav { top: 0.7rem; }
+      .logo { font-size: 1.45rem; }
+      .mobile-menu { top: 4.35rem; left: 0.75rem; right: 0.75rem; }
+    }
+
+    /* ==========================================================
+       BUTTONS
+       ========================================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center; justify-content: center;
+      gap: 0.6rem;
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: var(--fs-15);
+      line-height: 1;
+      white-space: nowrap;
+      padding: 0.95rem 1.35rem;
+      border-radius: 999px;
+      transition: transform 0.35s var(--spring), box-shadow 0.35s var(--soft), color 0.25s var(--soft), background 0.25s var(--soft), border-color 0.25s var(--soft);
+      position: relative;
+      isolation: isolate;
+    }
+    .btn-ink { background: var(--ink); color: var(--bg); box-shadow: 0 10px 24px -18px rgba(15, 15, 23, 0.55); }
+    .btn-ink:hover { transform: translateY(-2px); background: #171723; box-shadow: 0 14px 28px -18px rgba(15, 15, 23, 0.65); }
+    .btn-ink .arrow { transition: transform 0.35s var(--spring); }
+    .btn-ink:hover .arrow { transform: translateX(3px); }
+
+    .btn-ghost {
+      color: var(--ink);
+      padding: 0.95rem 0;
+      position: relative;
+      font-weight: 500;
+    }
+    .btn-ghost::after {
+      content: ""; position: absolute;
+      bottom: 0.6rem; left: 0; right: 0;
+      height: 1.5px; border-radius: 2px;
+      background: currentColor;
+      transform-origin: left;
+      transition: transform 0.35s var(--soft), color 0.25s var(--soft), opacity 0.25s var(--soft);
+      opacity: 0.8;
+    }
+    .btn-ghost:hover { color: var(--indigo); transform: translateY(-1px); }
+    .btn-ghost:hover::after { transform: scaleX(0.98); opacity: 1; }
+
+    /* ==========================================================
+       PAGE HEAD
+       ========================================================== */
+    .page-head {
+      padding-top: clamp(7.5rem, 16vw, 10rem);
+      padding-bottom: clamp(2.5rem, 6vw, 4rem);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-head-mesh {
+      position: absolute; inset: 0; z-index: -1;
+      overflow: hidden; pointer-events: none;
+    }
+    .page-head-mesh::before,
+    .page-head-mesh::after {
+      content: ""; position: absolute;
+      border-radius: 50%; filter: blur(60px);
+    }
+    .page-head-mesh::before {
+      top: -20%; left: -10%;
+      width: 50%; height: 70%;
+      background: radial-gradient(circle, var(--indigo-soft) 0%, transparent 65%);
+      opacity: 0.32;
+    }
+    .page-head-mesh::after {
+      top: -10%; right: -15%;
+      width: 55%; height: 70%;
+      background: radial-gradient(circle, var(--orange-soft) 0%, transparent 65%);
+      opacity: 0.28;
+    }
+    .page-head-inner { position: relative; z-index: 1; max-width: 780px; }
+    .page-head h1 {
+      margin-top: 1.1rem;
+      font-size: clamp(2.4rem, 6vw, 4.4rem);
+    }
+    .page-head h1 em {
+      font-style: italic;
+      color: var(--orange);
+      font-weight: 300;
+    }
+    .page-head .lede {
+      margin-top: 1.5rem;
+      font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+      color: var(--ink-soft);
+      line-height: 1.55;
+      max-width: 58ch;
+    }
+
+    /* ==========================================================
+       FEATURED PROJECT — Bobu
+       ========================================================== */
+    .featured {
+      padding-top: clamp(1rem, 3vw, 2rem);
+      padding-bottom: clamp(3rem, 6vw, 4.5rem);
+    }
+    .featured-card {
+      border-radius: var(--r-lg);
+      padding: clamp(1.75rem, 4vw, 3rem);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0.55) 100%),
+        linear-gradient(135deg, var(--indigo-tint) 0%, var(--orange-tint) 100%);
+      border: 1px solid rgba(15, 15, 23, 0.06);
+      box-shadow: 0 20px 60px -38px rgba(15, 15, 23, 0.4), 0 1px 0 rgba(255, 255, 255, 0.75) inset;
+      position: relative;
+      overflow: hidden;
+    }
+    .featured-card::before {
+      content: "";
+      position: absolute;
+      top: -50px; right: -50px;
+      width: 220px; height: 220px;
+      background: radial-gradient(circle, var(--yellow-tint) 0%, transparent 70%);
+      filter: blur(20px);
+      pointer-events: none;
+    }
+    .featured-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.3rem 0.75rem;
+      font-family: var(--sans);
+      font-size: var(--fs-13);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: linear-gradient(135deg, #FFF9EC 0%, #FFF3D1 100%);
+      border: 1px solid rgba(212, 160, 23, 0.3);
+      border-radius: 999px;
+      position: relative;
+    }
+    .featured-tag::before {
+      content: "★";
+      font-size: 0.75rem;
+      color: var(--gold);
+    }
+
+    .featured-head h2 {
+      margin-top: 1.1rem;
+      font-size: clamp(2rem, 4.5vw, 3.25rem);
+    }
     .featured-one-liner {
-      font-size: 17px;
-      color: var(--text-secondary);
-      margin-top: var(--space-xs);
+      margin-top: 0.8rem;
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+      line-height: 1.45;
+      color: var(--ink-soft);
+      max-width: 60ch;
     }
 
-    .meta-grid {
+    .featured-meta {
+      margin-top: 2rem;
       display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--space-sm);
-      margin: var(--space-md) 0 var(--space-lg);
-      padding: var(--space-md) 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(15, 15, 23, 0.05);
+      border-radius: var(--r-md);
     }
-    .meta-item .label {
-      font-size: 12px;
-      letter-spacing: 0.08em;
+    @media (min-width: 720px) {
+      .featured-meta { grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    }
+    .meta-item .meta-label {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--text-tertiary);
-      margin-bottom: 2px;
+      color: var(--ink-mute);
+      margin-bottom: 0.35rem;
     }
-    .meta-item .value {
-      font-size: 15px;
-      color: var(--text-primary);
+    .meta-item .meta-value {
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 2.4vw, 1.75rem);
+      font-weight: 400;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      line-height: 1.1;
     }
-
-    .featured-body p {
-      color: var(--text-secondary);
-      margin-bottom: var(--space-sm);
+    .meta-item .meta-value em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--orange);
     }
-    .featured-body p:last-child { margin-bottom: 0; }
-
-    .featured-proof {
-      margin-top: var(--space-lg);
-      padding: var(--space-md);
-      background: var(--bg);
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-    }
-    .featured-proof .label {
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-tertiary);
-      margin-bottom: var(--space-xs);
-    }
-    .featured-proof p {
-      font-family: var(--font-serif);
-      font-size: 20px;
+    .meta-item .meta-sub {
+      display: block;
+      margin-top: 0.2rem;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--ink-mute);
       line-height: 1.4;
-      color: var(--text-primary);
     }
 
-    /* ---------- Section header ---------- */
-    .section-header {
-      margin-bottom: var(--space-lg);
+    .featured-summary { margin-top: 2rem; }
+    .featured-summary p {
+      color: var(--ink-soft);
+      font-size: var(--fs-17);
+      line-height: 1.65;
+      margin-bottom: 1rem;
     }
-    .section-header h2 {
-      font-size: 28px;
-      margin-bottom: var(--space-xs);
+    .featured-summary p:last-child { margin-bottom: 0; }
+
+    /* Read more — <details> styled */
+    .read-more { margin-top: 1.5rem; }
+    .read-more[open] .read-more-toggle .arrow { transform: rotate(90deg); }
+    .read-more-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.15rem;
+      background: var(--ink);
+      color: var(--bg);
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-size: var(--fs-15);
+      font-weight: 600;
+      transition: transform 0.3s var(--spring), background 0.25s var(--soft);
     }
-    .section-header p {
-      color: var(--text-secondary);
+    .read-more-toggle:hover { transform: translateY(-1px); background: #171723; }
+    .read-more-toggle .arrow { display: inline-block; transition: transform 0.35s var(--spring); }
+    .read-more[open] .read-more-toggle .label-closed { display: none; }
+    .read-more-toggle .label-open { display: none; }
+    .read-more[open] .read-more-toggle .label-open { display: inline; }
+
+    .read-more-body { margin-top: 2rem; display: grid; gap: 2rem; }
+    .act {
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid rgba(15, 15, 23, 0.06);
+      border-radius: var(--r-md);
+    }
+    @media (min-width: 720px) { .act { padding: 2rem; } }
+    .act-label {
+      font-family: var(--hand);
+      font-size: 1.3rem;
+      color: var(--indigo);
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+    .act h3 {
+      font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+      margin-bottom: 0.9rem;
+    }
+    .act p {
+      color: var(--ink-soft);
+      margin-bottom: 0.85rem;
+      line-height: 1.65;
+    }
+    .act p:last-child { margin-bottom: 0; }
+    .act blockquote {
+      margin-top: 1rem;
+      padding: 0.85rem 1.1rem;
+      border-left: 3px solid var(--orange);
+      background: rgba(255, 107, 53, 0.06);
+      border-radius: 0 10px 10px 0;
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--ink);
+      font-size: var(--fs-17);
+      line-height: 1.5;
     }
 
-    /* ---------- Side projects grid ---------- */
-    .grid {
+    .proved {
+      margin-top: 2rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--r-md);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+    }
+    .proved-icon {
+      flex-shrink: 0;
+      width: 28px; height: 28px;
+      display: inline-flex;
+      align-items: center; justify-content: center;
+      background: var(--indigo);
+      color: var(--bg);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      line-height: 1;
+    }
+    .proved-body .proved-label {
+      display: block;
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--indigo);
+      margin-bottom: 0.25rem;
+    }
+    .proved-body p {
+      color: var(--ink);
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    /* ==========================================================
+       SIDE PROJECTS
+       ========================================================== */
+    .side-head { margin-bottom: clamp(2rem, 4vw, 3rem); max-width: 620px; }
+    .side-head h2 { margin-top: 1.1rem; }
+    .side-head p { margin-top: 1rem; color: var(--ink-soft); }
+    .side-head h2 em { font-style: italic; color: var(--orange); font-weight: 300; }
+
+    .projects-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: var(--space-md);
+      gap: 1.25rem;
     }
-    .card {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: var(--space-md);
+    @media (min-width: 780px) {
+      .projects-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    }
+
+    .project {
+      padding: 1.75rem;
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid rgba(15, 15, 23, 0.06);
+      border-radius: var(--r-lg);
       display: flex;
       flex-direction: column;
-      gap: var(--space-sm);
-      transition: transform 0.2s ease, border-color 0.2s ease;
+      gap: 1rem;
+      transition: transform 0.45s var(--spring), background 0.3s var(--soft), box-shadow 0.3s var(--soft), border-color 0.3s var(--soft);
+      position: relative;
     }
-    .card:hover {
-      transform: translateY(-2px);
-      border-color: #D3CEC6;
+    @media (min-width: 780px) {
+      .project { padding: 2rem; }
     }
-    .card-head {
+    .project:hover {
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.8);
+      border-color: rgba(15, 15, 23, 0.1);
+      box-shadow: 0 24px 50px -28px rgba(15, 15, 23, 0.25);
+    }
+
+    .project-head {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: var(--space-sm);
+      gap: 0.75rem;
     }
-    .card h3 {
-      font-size: 22px;
-      line-height: 1.2;
+    .project-title {
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 2.6vw, 1.85rem);
+      font-weight: 400;
+      letter-spacing: -0.015em;
+      line-height: 1.15;
     }
-    .card-status {
-      font-size: 11px;
+    .project-title em { font-style: italic; font-weight: 300; color: var(--orange); }
+    .project.project-indigo .project-title em { color: var(--indigo); }
+    .project.project-lime .project-title em { color: var(--lime); }
+    .project.project-sky .project-title em { color: var(--sky); }
+
+    .status {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.3rem 0.7rem;
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--text-tertiary);
-      padding: 4px 8px;
-      border: 1px solid var(--border);
       border-radius: 999px;
-      background: var(--bg);
       white-space: nowrap;
+      border: 1px solid;
+    }
+    .status-active {
+      color: var(--green);
+      background: rgba(34, 197, 94, 0.08);
+      border-color: rgba(34, 197, 94, 0.25);
+    }
+    .status-active::before {
+      content: "";
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 4px rgba(34, 197, 94, 0.6);
+    }
+    .status-sunset {
+      color: var(--ink-mute);
+      background: rgba(107, 107, 122, 0.06);
+      border-color: rgba(107, 107, 122, 0.2);
+    }
+    .status-personal {
+      color: var(--sky);
+      background: var(--sky-tint);
+      border-color: rgba(56, 189, 248, 0.25);
+    }
+
+    .project-period {
+      font-family: var(--hand);
+      font-size: 1.1rem;
+      color: var(--ink-mute);
+      margin-top: -0.25rem;
+    }
+
+    .project-body p {
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+    .project-body p + p { margin-top: 0.75rem; }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 1rem;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--rule);
+      font-size: 0.85rem;
+      color: var(--ink-mute);
+    }
+    .project-meta span strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .project-proved {
+      margin-top: auto;
+      padding-top: 0.75rem;
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--ink);
+      font-size: var(--fs-17);
+      line-height: 1.45;
+      display: flex;
+      gap: 0.5rem;
+    }
+    .project-proved::before {
+      content: "→";
+      color: var(--indigo);
+      font-style: normal;
+      font-family: var(--sans);
+      font-weight: 600;
       flex-shrink: 0;
     }
-    .card-status.active { color: var(--accent); border-color: rgba(212, 132, 90, 0.3); }
-    .card-oneliner {
-      font-size: 15px;
-      color: var(--text-secondary);
+    .project.project-orange .project-proved::before { color: var(--orange); }
+    .project.project-lime .project-proved::before { color: var(--lime); }
+    .project.project-sky .project-proved::before { color: var(--sky); }
+
+    /* ==========================================================
+       CLOSING CTA
+       ========================================================== */
+    .closing {
+      padding-top: clamp(2rem, 5vw, 4rem);
+      padding-bottom: clamp(4rem, 9vw, 7rem);
     }
-    .card-meta {
+    .closing-card {
+      padding: clamp(2rem, 5vw, 3.5rem);
+      border-radius: var(--r-lg);
+      background: linear-gradient(135deg, var(--ink) 0%, #1a1a2e 100%);
+      color: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+    .closing-card::before {
+      content: "";
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(139, 130, 240, 0.35) 0%, transparent 65%);
+      filter: blur(30px);
+      pointer-events: none;
+    }
+    .closing-card::after {
+      content: "";
+      position: absolute;
+      bottom: -80px; left: -40px;
+      width: 260px; height: 260px;
+      background: radial-gradient(circle, rgba(255, 107, 53, 0.3) 0%, transparent 65%);
+      filter: blur(30px);
+      pointer-events: none;
+    }
+    .closing-inner { position: relative; z-index: 1; max-width: 640px; }
+    .closing .eyebrow { color: var(--indigo-soft); }
+    .closing .eyebrow::before { background: var(--indigo-soft); }
+    .closing h2 {
+      margin-top: 1.1rem;
+      color: var(--bg);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    }
+    .closing h2 em { font-style: italic; color: var(--orange-soft); font-weight: 300; }
+    .closing p {
+      margin-top: 1.2rem;
+      color: rgba(247, 245, 242, 0.75);
+      font-size: var(--fs-17);
+      line-height: 1.6;
+      max-width: 54ch;
+    }
+    .closing-ctas {
+      margin-top: 1.75rem;
       display: flex;
       flex-wrap: wrap;
-      gap: var(--space-xs) var(--space-md);
-      font-size: 13px;
-      color: var(--text-tertiary);
-      padding-top: var(--space-sm);
-      border-top: 1px solid var(--border);
+      gap: 0.85rem 1.25rem;
+      align-items: center;
     }
-    .card-meta span strong {
-      color: var(--text-secondary);
-      font-weight: 500;
+    .closing .btn-ink {
+      background: var(--bg);
+      color: var(--ink);
     }
-    .card-proved {
-      font-size: 14px;
-      color: var(--text-primary);
-      font-style: italic;
-    }
-    .card-proved::before {
-      content: "→ ";
-      color: var(--accent);
-      font-style: normal;
-    }
+    .closing .btn-ink:hover { background: #fff; }
+    .closing .btn-ghost { color: var(--bg); }
+    .closing .btn-ghost:hover { color: var(--orange-soft); }
 
-    /* ---------- Closing ---------- */
-    .closing {
-      text-align: left;
-      padding: var(--space-lg) 0 0;
-      border-top: 1px solid var(--border);
-      margin-top: var(--space-xl);
-    }
-    .closing h2 {
-      font-size: 28px;
-      margin-bottom: var(--space-sm);
-    }
-    .closing p {
-      color: var(--text-secondary);
-      margin-bottom: var(--space-md);
-      max-width: 560px;
-    }
-    .btn {
-      display: inline-block;
-      padding: 14px 24px;
-      background: var(--text-primary);
-      color: var(--bg);
-      border-radius: var(--radius);
-      font-size: 15px;
-      font-weight: 500;
-      transition: background 0.2s ease;
-    }
-    .btn:hover { background: #000; }
-    .btn-secondary {
-      background: transparent;
-      color: var(--text-primary);
-      border: 1px solid var(--border);
-      margin-left: var(--space-xs);
-    }
-    .btn-secondary:hover { background: var(--bg-secondary); }
-
-    /* ---------- Footer ---------- */
+    /* ==========================================================
+       FOOTER — mirrored from index.html
+       ========================================================== */
     footer {
-      border-top: 1px solid var(--border);
-      padding: var(--space-md);
-      font-size: 14px;
-      color: var(--text-tertiary);
+      padding: 2.75rem 0 3rem;
+      border-top: 1px solid rgba(15, 15, 23, 0.06);
     }
     .footer-inner {
-      max-width: var(--max-width-wide);
+      max-width: var(--max);
       margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: var(--space-sm);
+      padding: 0 var(--pad);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      color: var(--ink-mute);
     }
-    .footer-links { display: flex; gap: var(--space-md); }
-    .footer-links a:hover { color: var(--text-primary); }
+    @media (min-width: 860px) {
+      .footer-inner { grid-template-columns: 1.2fr auto auto; align-items: start; gap: 2rem; }
+    }
+    .footer-meta { display: grid; gap: 0.45rem; font-size: var(--fs-15); }
+    .footer-identity {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      flex-wrap: wrap; color: var(--ink);
+      font-weight: 500; letter-spacing: -0.01em; line-height: 1.5;
+    }
+    .footer-copy { font-size: 0.88rem; line-height: 1.6; max-width: 42ch; }
+    .flag-badge { display: inline-flex; align-items: center; justify-content: center; width: 1rem; height: 1rem; }
+    .flag-badge svg { width: 100%; height: 100%; display: block; border-radius: 999px; box-shadow: inset 0 0 0 0.5px rgba(15, 15, 23, 0.08); }
+    .footer-nav, .footer-social {
+      display: flex; flex-wrap: wrap;
+      gap: 0.9rem 1.15rem; align-content: start;
+      font-size: 0.9rem; align-items: center;
+    }
+    .footer-nav a, .footer-social a { transition: color 0.25s var(--soft), transform 0.25s var(--soft); }
+    .footer-nav a:hover, .footer-social a:hover { color: var(--indigo); transform: translateY(-1px); }
+    .social-icon { display: inline-flex; align-items: center; justify-content: center; width: 1.15rem; height: 1.15rem; }
+    .social-icon svg { width: 100%; height: 100%; display: block; fill: currentColor; }
 
-    /* ---------- Responsive ---------- */
-    @media (min-width: 768px) {
-      main { padding: var(--space-xl) var(--space-md) var(--space-2xl); }
-      .hero h1 { font-size: 56px; }
-      .hero-lede { font-size: 21px; }
-      .featured { padding: var(--space-xl) var(--space-lg); }
-      .featured h2 { font-size: 42px; }
-      .meta-grid { grid-template-columns: repeat(4, 1fr); gap: var(--space-md); }
-      .section-header h2 { font-size: 34px; }
-      .grid { grid-template-columns: repeat(2, 1fr); }
-      .card { padding: var(--space-lg); }
-      .card h3 { font-size: 24px; }
-      .closing h2 { font-size: 34px; }
+    /* ==========================================================
+       REVEAL
+       ========================================================== */
+    .reveal {
+      opacity: 0; transform: translateY(18px);
+      transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .reveal-stagger > * {
+      opacity: 0; transform: translateY(14px);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    }
+    .reveal-stagger.in > * { opacity: 1; transform: translateY(0); }
+    .reveal-stagger.in > *:nth-child(1) { transition-delay: 0.05s; }
+    .reveal-stagger.in > *:nth-child(2) { transition-delay: 0.15s; }
+    .reveal-stagger.in > *:nth-child(3) { transition-delay: 0.25s; }
+    .reveal-stagger.in > *:nth-child(4) { transition-delay: 0.35s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+      .reveal, .reveal-stagger > * { opacity: 1; transform: none; }
+      .pulse-dot::after { animation: none; }
     }
   </style>
 </head>
 <body>
 
-  <nav>
+  <!-- NAV -->
+  <nav class="nav" id="nav">
     <div class="nav-inner">
-      <a class="nav-brand" href="/">Boris Nachbaur</a>
-      <div class="nav-links">
-        <a href="/">Home</a>
-        <a href="/projects.html" class="active">Projects</a>
-        <a href="#contact">Contact</a>
+      <div class="nav-brand">
+        <a href="/" class="logo logo-mark" aria-label="Boris Nachbaur home">BN<span class="logo-dot">.</span></a>
       </div>
+
+      <div class="nav-links nav-menu">
+        <a href="/#about" class="nav-link">About</a>
+        <a href="/#results" class="nav-link">Results</a>
+        <a href="/#work" class="nav-link">Services</a>
+        <a href="/projects" class="nav-link active">Projects</a>
+        <a href="/#process" class="nav-link">Process</a>
+      </div>
+
+      <div class="nav-actions">
+        <span class="availability">
+          <span class="pulse-dot"></span>
+          <span class="availability-label">Available</span>
+        </span>
+        <a href="/#contact" class="nav-cta">
+          <span>Book a call</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span class="nav-toggle-lines" aria-hidden="true"><span></span></span>
+      </button>
     </div>
   </nav>
 
-  <main>
-    <div class="container">
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu-links">
+      <a href="/#about" class="mobile-menu-link">About <span>01</span></a>
+      <a href="/#results" class="mobile-menu-link">Results <span>02</span></a>
+      <a href="/#work" class="mobile-menu-link">Services <span>03</span></a>
+      <a href="/projects" class="mobile-menu-link">Projects <span>04</span></a>
+      <a href="/#process" class="mobile-menu-link">Process <span>05</span></a>
+    </div>
+    <div class="mobile-menu-foot">
+      <a href="/#contact" class="mobile-menu-cta">Book a call <span aria-hidden="true">→</span></a>
+      <span class="availability">
+        <span class="pulse-dot"></span>
+        <span class="availability-label">Available</span>
+      </span>
+    </div>
+  </div>
 
-      <!-- ============ HERO ============ -->
-      <section class="hero">
-        <div class="eyebrow">Projects &amp; experience</div>
-        <h1>13 years operating digital businesses. Solo.</h1>
-        <p class="hero-lede">
-          Every project below was run end-to-end: acquisition, retention, support, community, ops. No team, no agency. Just the operator and the work.
-        </p>
-      </section>
+  <main id="top">
 
-      <!-- ============ FEATURED: BOBU ============ -->
-      <section>
-        <article class="featured">
+    <!-- PAGE HEAD -->
+    <section class="page-head">
+      <div class="page-head-mesh" aria-hidden="true"></div>
+      <div class="wrap">
+        <div class="page-head-inner reveal">
+          <span class="eyebrow">Projects &amp; experience</span>
+          <h1>15+ years shipping things <em>solo.</em></h1>
+          <p class="lede">
+            Every project below was run end-to-end &mdash; acquisition, sales, support, community, ops. No team, no agency. Just the operator and the work. Counted together with my Master in Digital Business Management at Rennes School of Business and two business-developer stints in early-stage startups, that's more than 15 years in the trenches of digital operations.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED: BOBU -->
+    <section class="featured">
+      <div class="wrap">
+        <article class="featured-card reveal">
+
           <div class="featured-head">
-            <div class="featured-tag">Featured — flagship project</div>
-            <h2>Bobu</h2>
+            <span class="featured-tag">Flagship project</span>
+            <h2>Bobu <span class="italic-accent">&mdash; e-commerce, 2012 → 2024</span></h2>
             <p class="featured-one-liner">
-              A one-man trading service that became a trusted reference in a market where fraud was the norm.
+              A one-person digital-goods operation I started at 15 and scaled into a $500K+ business with a 100% satisfaction rate &mdash; in a market where trust is scarce and fraud is the norm.
             </p>
           </div>
 
-          <div class="meta-grid">
+          <div class="featured-meta reveal-stagger">
             <div class="meta-item">
-              <div class="label">Role</div>
-              <div class="value">Solo operator</div>
+              <div class="meta-label">Duration</div>
+              <div class="meta-value">12 <em>yrs</em></div>
+              <span class="meta-sub">2012 &mdash; 2024</span>
             </div>
             <div class="meta-item">
-              <div class="label">Duration</div>
-              <div class="value"><!-- TODO: remplacer par dur\u00e9e Bobu, ex "2013–2025" -->13+ years</div>
+              <div class="meta-label">Revenue</div>
+              <div class="meta-value">$500K<em>+</em></div>
+              <span class="meta-sub">Cumulative, full-time era</span>
             </div>
             <div class="meta-item">
-              <div class="label">Verified reviews</div>
-              <div class="value">2,250+</div>
+              <div class="meta-label">Transactions</div>
+              <div class="meta-value">20,000<em>+</em></div>
+              <span class="meta-sub">Processed solo</span>
             </div>
             <div class="meta-item">
-              <div class="label">Satisfaction</div>
-              <div class="value">100%</div>
+              <div class="meta-label">Satisfaction</div>
+              <div class="meta-value">100<em>%</em></div>
+              <span class="meta-sub">2,250+ verified reviews</span>
             </div>
           </div>
 
-          <div class="featured-body">
-            <!-- TODO: réécrire cette section avec le contenu détaillé issu des articles du blog Gamoniz (histoire, méthode, ce que je permettais aux joueurs, pourquoi je suis devenu une référence) -->
+          <div class="featured-summary">
             <p>
-              Bobu started as a side hustle at 15 and grew into a full trading operation serving thousands of players over more than a decade. What I sold wasn't really the product — it was time saved, transactions secured, and the peace of mind of dealing with someone who'd still be there next month.
+              It started at 15, selling $800 of in-game currency to a stranger on the internet. My hands were shaking when I clicked confirm. That single trade opened the door to nine years of side-hustling through high school, business school and my first jobs &mdash; then three years of full-time, properly declared, properly run operations after that.
             </p>
             <p>
-              I handled everything myself: acquisition, customer support across several languages, dispute resolution, reputation management, pricing, and the slow, boring work of building trust one transaction at a time in a market where scams were daily.
+              What I actually sold wasn't the product. It was <strong>time saved, transactions secured, and the peace of mind of dealing with someone who'd still be there next month.</strong> Across 20,000+ transactions I handled every piece of the chain alone: sourcing, sales funnels, SEO, copywriting, customer support in multiple languages, dispute resolution, reputation management, pricing, and the slow, boring work of earning trust one trade at a time.
             </p>
             <p>
-              The reputation wasn't built on marketing. It was built on answering every message, honoring every deal, and showing up for years.
+              Later I built a custom WordPress storefront (GW2Rewards.com), scaled with Google Ads, automated CD-key delivery end-to-end, and ran email campaigns via MailerLite. The reputation wasn't built on marketing. It was built on answering every message, honoring every deal, and showing up for over a decade.
             </p>
           </div>
 
-          <div class="featured-proof">
-            <div class="label">What it proved</div>
-            <p>
-              I can own a business end-to-end, build a reputation from zero in a hostile market, and operate it for a decade without burning out the trust I earned.
-            </p>
+          <details class="read-more">
+            <summary class="read-more-toggle">
+              <span class="label-closed">Read the full story</span>
+              <span class="label-open">Close</span>
+              <span class="arrow" aria-hidden="true">→</span>
+            </summary>
+
+            <div class="read-more-body">
+
+              <div class="act">
+                <span class="act-label">Act 1 &mdash; The side hustle</span>
+                <h3>How an $800 trade turned into a 9-year side business</h3>
+                <p>
+                  Between 2012 and 2021, Bobu ran in the background of my life &mdash; alongside high school, a Master in Digital Business Management at Rennes School of Business, and my early career in startups as a business developer.
+                </p>
+                <p>
+                  I was reselling 8,000+ game keys and 100+ Collector's Editions across a decade. The real skill wasn't selling &mdash; it was finding supply nobody else had: retail clearance deals, marketplace arbitrage on Amazon, eBay and LeBonCoin, key-store pricing errors. Boring, patient work that compounded.
+                </p>
+                <blockquote>
+                  Reputation compounds faster than revenue. Every happy customer becomes a returning customer. Every returning customer brings referrals.
+                </blockquote>
+                <p>
+                  By the end of that period I was a known reference in my niche, with 1,000+ verified positive reviews, a 100% satisfaction rate, and a business running in parallel with a full-time job.
+                </p>
+              </div>
+
+              <div class="act">
+                <span class="act-label">Act 2 &mdash; The ban wave</span>
+                <h3>150 accounts, $15,000 lost, and the lesson that changed everything</h3>
+                <p>
+                  At some point I did what most operators in this space eventually do: I tried to scale production. 150 accounts running in parallel. Bots generating supply. More output, thinner margins, endless maintenance. A twice-a-day routine, every day, no weekends.
+                </p>
+                <p>
+                  Then came the ban wave. 150 accounts flagged in 48 hours &mdash; including 125 that weren't even botting. Estimated loss: <strong>$15,000 in inventory and accounts, gone in a weekend.</strong>
+                </p>
+                <p>
+                  The ban wasn't the real problem. The ban was the moment I finally saw what I'd actually built: a production machine with a single point of failure, no customer list, no safety net. The fix was embarrassingly simple, and it took me years and $15K to see it.
+                </p>
+                <blockquote>
+                  I stopped trying to be the biggest producer and started being the most trusted seller. Everything changed.
+                </blockquote>
+              </div>
+
+              <div class="act">
+                <span class="act-label">Act 3 &mdash; Full-time, on the road</span>
+                <h3>From side project to $500K+ business &mdash; while traveling Southeast Asia</h3>
+                <p>
+                  In 2021, my girlfriend and I left for a year across Thailand, Cambodia, Vietnam, Indonesia, South Korea, Malaysia and New Zealand. On paper, terrible timing to scale a business. In practice, the best thing that ever happened to it.
+                </p>
+                <p>
+                  Living on the road forced decisions I'd been avoiding: every task that couldn't be automated, delegated, or systemized had to disappear or force a fix. Three levers did the heavy lifting &mdash; building a real community (a Discord server that became a trust machine), entering a bigger market with proper operational security, and using the low cost of living as runway to build patiently instead of grabbing every quick sale.
+                </p>
+                <p>
+                  There was no dramatic "I quit my job" moment. By the end of that year, the business was doing better than a job. So I just didn't go back. For the next three years, this was my full-time income &mdash; properly declared, taxed, and profitable enough to fund the life that eventually let me buy real estate and move to Switzerland.
+                </p>
+                <p>
+                  I shut it down in 2024, on my terms, with 2,250+ verified positive reviews and a 100% satisfaction rate across its entire history.
+                </p>
+              </div>
+
+            </div>
+          </details>
+
+          <div class="proved">
+            <span class="proved-icon" aria-hidden="true">★</span>
+            <div class="proved-body">
+              <span class="proved-label">What it proved</span>
+              <p>
+                I can own a digital business end-to-end, build a reputation from zero in a hostile market, and operate it profitably for over a decade without burning out the trust I earned.
+              </p>
+            </div>
           </div>
+
         </article>
-      </section>
+      </div>
+    </section>
 
-      <!-- ============ SIDE PROJECTS ============ -->
-      <section>
-        <div class="section-header">
-          <h2>Side projects</h2>
-          <p>Things I built and ran on the side — each one taught me a specific operating skill.</p>
+    <!-- SIDE PROJECTS -->
+    <section class="projects">
+      <div class="wrap">
+        <div class="side-head reveal">
+          <span class="eyebrow">Side projects</span>
+          <h2>Smaller bets, real <em>operating</em> work.</h2>
+          <p>
+            Things I built and ran on the side &mdash; each one taught me a specific operating skill. Some are still live, others got shut down for honest reasons. I assume both.
+          </p>
         </div>
 
-        <div class="grid">
+        <div class="projects-grid reveal-stagger">
 
-          <!-- Gamoniz -->
-          <article class="card">
-            <div class="card-head">
-              <h3>Gamoniz</h3>
-              <span class="card-status active">Active</span>
+          <!-- Gamoniz (ex-Marketplace) -->
+          <article class="project project-indigo">
+            <div class="project-head">
+              <h3 class="project-title">Gamoniz <em>(ex-Marketplace)</em></h3>
+              <span class="status status-active">Active</span>
             </div>
-            <p class="card-oneliner">
-              A digital marketplace I launched and operate — acquisition, retention, support, and a 1,900+ member Discord community.
-            </p>
-            <div class="card-meta">
-              <span><strong>Role:</strong> Solo founder &amp; operator</span>
-              <span><strong>Community:</strong> 1,900+ members</span>
-              <span><strong>Since:</strong> <!-- TODO: remplacer par année de lancement Gamoniz -->——</span>
+            <span class="project-period">2023 &mdash; present</span>
+            <div class="project-body">
+              <p>
+                Originally launched as a digital-goods marketplace backed by a <strong>crowdfunding campaign that raised 226% of its goal</strong>, with a small team of 3 interns I managed through brand, go-to-market, WordPress build and launch.
+              </p>
+              <p>
+                The marketplace had to be shut down for legal constraints specific to the industry. I kept the community (~2,000 email subscribers, 300+ Discord members) and pivoted Gamoniz into what it is today: a content &amp; coaching brand where I share my operator experience through articles, Twitter, a low-ticket product, and 1-on-1 coaching.
+              </p>
             </div>
-            <p class="card-proved">
-              Building and keeping a community engaged on Discord, day in, day out.
+            <div class="project-meta">
+              <span><strong>Role:</strong> Founder, solo operator</span>
+              <span><strong>Crowdfunding:</strong> 226% of goal</span>
+              <span><strong>Community:</strong> 2,000+ email · 300+ Discord</span>
+              <span><strong>Team:</strong> Managed 3 interns at launch</span>
+            </div>
+            <p class="project-proved">
+              Running a proper launch (brand, GTM, community), killing a project when reality requires it, and pivoting without losing the audience.
             </p>
           </article>
 
           <!-- PrimeParrain.fr -->
-          <article class="card">
-            <div class="card-head">
-              <h3>PrimeParrain.fr</h3>
-              <span class="card-status"><!-- TODO: active / sunset / sold -->Status</span>
+          <article class="project project-lime">
+            <div class="project-head">
+              <h3 class="project-title">PrimeParrain<em>.fr</em></h3>
+              <span class="status status-active">Active</span>
             </div>
-            <p class="card-oneliner">
-              <!-- TODO: one-liner PrimeParrain (ex: "A referral-bonus aggregator matching users with the best sign-up deals across French services.") -->
-              A referral platform in the French market — built, monetized, and grown solo.
-            </p>
-            <div class="card-meta">
-              <span><strong>Role:</strong> Solo founder &amp; operator</span>
-              <span><strong>Users:</strong> <!-- TODO: metrics users PrimeParrain -->——</span>
-              <span><strong>Years:</strong> <!-- TODO: années d'activité PrimeParrain -->——</span>
+            <span class="project-period">Ongoing &mdash; minimalist side</span>
+            <div class="project-body">
+              <p>
+                A small affiliate project where I curate referral deals for French consumers &mdash; sign up, complete a simple task, pocket a cash bonus. Built as a minimalist site backed by an email list I write to 2&ndash;3 times a month.
+              </p>
+              <p>
+                One flagship deep-dive on Finary alone drove <strong>1,000+ referrals</strong> plus affiliate revenue via an exclusive promo code. It's deliberately kept small &mdash; a steady few hundred euros a month with minimal upkeep. The skill this builds isn't size, it's disciplined affiliate &amp; SEO ops on a lean stack.
+              </p>
             </div>
-            <p class="card-proved">
-              SEO-driven acquisition and running a monetized consumer product with no paid ads.
-            </p>
-          </article>
-
-          <!-- BodyFlow -->
-          <article class="card">
-            <div class="card-head">
-              <h3>BodyFlow</h3>
-              <span class="card-status"><!-- TODO: active / sunset / sold -->Status</span>
+            <div class="project-meta">
+              <span><strong>Role:</strong> Solo operator</span>
+              <span><strong>Finary case:</strong> 1,000+ referrals</span>
+              <span><strong>Cadence:</strong> 2&ndash;3 emails / month</span>
             </div>
-            <p class="card-oneliner">
-              <!-- TODO: one-liner BodyFlow (ex: "A mobile app for guided mobility and recovery routines.") -->
-              A mobile app I designed and shipped — product, content, and launch, solo.
-            </p>
-            <div class="card-meta">
-              <span><strong>Role:</strong> Solo builder</span>
-              <span><strong>Platform:</strong> iOS / Android <!-- TODO: corriger plateforme --></span>
-              <span><strong>Shipped:</strong> <!-- TODO: année de lancement BodyFlow -->——</span>
-            </div>
-            <p class="card-proved">
-              Shipping a product alone: from idea, to design, to live app, to first users.
+            <p class="project-proved">
+              Running a profitable, evergreen side asset on minimal hours &mdash; SEO, affiliate, email, nothing fancy.
             </p>
           </article>
 
-          <!-- Placeholder 4e projet si besoin -->
-          <!-- TODO: ajouter un 4e side project ici si pertinent (ou supprimer ce bloc) -->
-          <article class="card">
-            <div class="card-head">
-              <h3><!-- TODO: nom 4e projet -->Other ventures</h3>
-              <span class="card-status">Various</span>
+          <!-- Other ventures (BodyFlow + experiments) -->
+          <article class="project project-sky">
+            <div class="project-head">
+              <h3 class="project-title">Other <em>ventures</em></h3>
+              <span class="status status-personal">Personal</span>
             </div>
-            <p class="card-oneliner">
-              Smaller experiments, content ops, AI workflows, and internal tools I've built over the years. Happy to walk through any of them on a call.
-            </p>
-            <div class="card-meta">
+            <span class="project-period">Various &mdash; always shipping something</span>
+            <div class="project-body">
+              <p>
+                Small experiments, AI workflows and personal tools I keep building on the side. Most recent: <strong>BodyFlow</strong>, a fully personalized home-workout app I designed and built for my own training routine &mdash; videos hosted on YouTube, structured around the exact way I want to train.
+              </p>
+              <p>
+                None of these are for sale. They're the background noise of someone who can't stop shipping small things. Happy to walk through any of them on a call.
+              </p>
+            </div>
+            <div class="project-meta">
               <span><strong>Role:</strong> Builder / operator</span>
+              <span><strong>BodyFlow:</strong> Personal-use app</span>
+              <span><strong>Stack:</strong> Vibe coding + AI tools</span>
             </div>
-            <p class="card-proved">
-              Willingness to ship small, learn fast, and kill what doesn't work.
+            <p class="project-proved">
+              Shipping small, learning fast, and killing what doesn't deserve more time.
+            </p>
+          </article>
+
+          <!-- Career context card -->
+          <article class="project project-orange">
+            <div class="project-head">
+              <h3 class="project-title">Beyond <em>solo projects</em></h3>
+              <span class="status status-sunset">Context</span>
+            </div>
+            <span class="project-period">Studies &amp; early career</span>
+            <div class="project-body">
+              <p>
+                Alongside Bobu, I earned a <strong>Master in Digital Business Management</strong> at Rennes School of Business and worked two stints as a <strong>business developer</strong> in early-stage startups &mdash; where I saw the other side of the table: founders hiring operators, scaling sales, building processes from scratch.
+              </p>
+              <p>
+                I also ran community ops for <strong>Well'Come</strong>, a student association welcoming international students &mdash; another early, unpaid lesson in community building that stuck.
+              </p>
+            </div>
+            <div class="project-meta">
+              <span><strong>Degree:</strong> Master Digital Business Mgmt</span>
+              <span><strong>Roles:</strong> Biz dev × 2 startups</span>
+              <span><strong>Volunteer:</strong> Well'Come student association</span>
+            </div>
+            <p class="project-proved">
+              The operator view isn't just theory &mdash; I've been on both sides of the founder/operator relationship.
             </p>
           </article>
 
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- ============ CLOSING ============ -->
-      <section class="closing" id="contact">
-        <h2>What this track record means for you</h2>
-        <p>
-          If you're a solo founder or creator looking for someone to take operational weight off your plate — support, community, ops, content, AI workflows — you already know what I can handle. Let's talk.
-        </p>
-        <a class="btn" href="mailto:boris@nachboris.fr">Email me</a>
-        <!-- TODO: remplacer par lien Calendly -->
-        <a class="btn btn-secondary" href="#">Book a 20-min call</a>
-      </section>
+    <!-- CLOSING -->
+    <section class="closing">
+      <div class="wrap">
+        <div class="closing-card reveal">
+          <div class="closing-inner">
+            <span class="eyebrow">What this means for you</span>
+            <h2>If I can run a business <em>solo for 13 years,</em> I can run pieces of yours.</h2>
+            <p>
+              That's the reaction I'm hoping for. If you're a solo founder or creator looking to hand off operational weight &mdash; support, community, ops, content, AI workflows &mdash; you already know the track record. Let's talk.
+            </p>
+            <div class="closing-ctas">
+              <a href="https://calendly.com/nachboris/20min" class="btn btn-ink" target="_blank" rel="noopener">
+                <span>Book a 20-min call</span>
+                <span class="arrow">→</span>
+              </a>
+              <a href="mailto:boris@nachboris.fr" class="btn btn-ghost">boris@nachboris.fr</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    </div>
   </main>
 
+  <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
-      <div>© 2026 Boris Nachbaur — Lausanne, Switzerland</div>
-      <div class="footer-links">
-        <!-- TODO: remplacer par lien LinkedIn -->
-        <a href="#">LinkedIn</a>
-        <!-- TODO: remplacer par lien Twitter/X -->
-        <a href="#">Twitter</a>
-        <a href="mailto:boris@nachboris.fr">Email</a>
+      <div class="footer-meta">
+        <span class="footer-identity">
+          <span>Boris Nachbaur</span>
+          <span class="flag-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img">
+              <defs><clipPath id="fr-round"><circle cx="12" cy="12" r="12"/></clipPath></defs>
+              <g clip-path="url(#fr-round)">
+                <rect width="8" height="24" x="0" y="0" fill="#1F4AA8"/>
+                <rect width="8" height="24" x="8" y="0" fill="#FFFFFF"/>
+                <rect width="8" height="24" x="16" y="0" fill="#E23D28"/>
+              </g>
+            </svg>
+          </span>
+          <span>French</span>
+          <span>·</span>
+          <span class="flag-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img">
+              <defs><clipPath id="ch-round"><circle cx="12" cy="12" r="12"/></clipPath></defs>
+              <g clip-path="url(#ch-round)">
+                <rect width="24" height="24" fill="#D52B1E"/>
+                <rect x="10" y="5" width="4" height="14" fill="#FFFFFF"/>
+                <rect x="5" y="10" width="14" height="4" fill="#FFFFFF"/>
+              </g>
+            </svg>
+          </span>
+          <span>Based in Lausanne</span>
+        </span>
+        <span class="footer-copy">© 2026 Nachboris · Made with ♡ by Boris &amp; Claude.</span>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="/#work">Services</a>
+        <a href="/#contact">Contact</a>
+        <a href="/projects">Projects</a>
+        <a href="/reviews">Reviews</a>
+      </nav>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/borisnch/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <span class="social-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A1.96 1.96 0 1 0 5.3 6.92 1.96 1.96 0 0 0 5.25 3Zm14.19 9.89c0-3.47-1.85-5.08-4.32-5.08-1.99 0-2.88 1.1-3.38 1.87V8.5H8.36c.04.79 0 11.5 0 11.5h3.38v-6.42c0-.34.02-.68.13-.92.27-.68.88-1.39 1.92-1.39 1.35 0 1.89 1.03 1.89 2.54V20H19.1v-7.11Z"/>
+            </svg>
+          </span>
+        </a>
+        <a href="mailto:boris@nachboris.fr" aria-label="Email">
+          <span class="social-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 6.75A1.75 1.75 0 0 1 4.75 5h14.5A1.75 1.75 0 0 1 21 6.75v10.5A1.75 1.75 0 0 1 19.25 19H4.75A1.75 1.75 0 0 1 3 17.25V6.75Zm1.9-.25 7.1 5.31 7.1-5.31H4.9Zm14.6 11V8.34l-6.98 5.22a.9.9 0 0 1-1.04 0L4.5 8.34v9.16h15Z"/>
+            </svg>
+          </span>
+        </a>
       </div>
     </div>
   </footer>
 
+  <script>
+    const nav = document.getElementById('nav');
+    const navToggle = document.getElementById('navToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    const closeMobileMenu = () => {
+      nav.classList.remove('menu-open');
+      mobileMenu.classList.remove('is-open');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Open navigation menu');
+    };
+
+    const toggleMobileMenu = () => {
+      const isOpen = mobileMenu.classList.toggle('is-open');
+      nav.classList.toggle('menu-open', isOpen);
+      mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+      navToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    };
+
+    navToggle.addEventListener('click', toggleMobileMenu);
+    mobileMenu.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMobileMenu));
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeMobileMenu();
+    });
+
+    const onScroll = () => {
+      if (window.scrollY > 12) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => io.observe(el));
+  </script>
 </body>
 </html>
