@@ -1530,7 +1530,7 @@
     }
 
     /* ==========================================================
-       FIT — compact comparison table
+       FIT — compact decision map
        ========================================================== */
     .fit {
       padding-top: clamp(3.5rem, 7vw, 6rem);
@@ -1538,76 +1538,105 @@
       background: var(--bg);
       position: relative;
     }
-    .fit-table-wrap {
-      margin-top: 2.5rem;
-      overflow-x: auto;
+    .fit-map {
+      margin-top: 2rem;
+      display: grid;
+      gap: 0.55rem;
+      padding: 0.65rem;
       border-radius: var(--r-lg);
       border: 1px solid rgba(15, 15, 23, 0.08);
       background: rgba(255, 255, 255, 0.48);
       box-shadow: 0 18px 42px -34px rgba(15, 15, 23, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.78);
     }
-    .fit-table {
-      width: 100%;
-      min-width: 760px;
-      border-collapse: collapse;
-      font-size: var(--fs-15);
+    .fit-map-head,
+    .fit-row {
+      display: grid;
+      grid-template-columns: minmax(135px, 0.55fr) minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1rem;
+      align-items: center;
     }
-    .fit-table th,
-    .fit-table td {
-      padding: 1rem 1.05rem;
-      text-align: left;
-      vertical-align: top;
-      border-bottom: 1px solid rgba(15, 15, 23, 0.07);
-    }
-    .fit-table th {
-      font-size: 0.72rem;
+    .fit-map-head {
+      padding: 0.65rem 0.85rem 0.35rem;
+      font-size: 0.7rem;
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--ink-mute);
-      background: rgba(247, 245, 242, 0.72);
-      white-space: nowrap;
     }
-    .fit-table tr:last-child td {
-      border-bottom: 0;
+    .fit-row {
+      min-height: 86px;
+      padding: 0.95rem 0.95rem;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.52);
+      border: 1px solid rgba(15, 15, 23, 0.055);
+      transition: transform 0.35s var(--spring), background 0.25s var(--soft), box-shadow 0.25s var(--soft), border-color 0.25s var(--soft);
     }
-    .fit-table td {
-      color: var(--ink-soft);
-      line-height: 1.45;
+    .fit-row:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.68);
+      border-color: rgba(15, 15, 23, 0.08);
+      box-shadow: 0 14px 28px -24px rgba(15, 15, 23, 0.3);
     }
-    .fit-table .fit-option {
+    .fit-row-me {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(91, 79, 224, 0.11) 0%, rgba(255, 107, 53, 0.08) 100%);
+      border-color: rgba(91, 79, 224, 0.18);
+      box-shadow: 0 14px 34px -28px rgba(91, 79, 224, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.82);
+    }
+    .fit-row-me::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--indigo), var(--orange));
+      border-radius: 999px;
+    }
+    .fit-option {
+      display: grid;
+      gap: 0.35rem;
+      min-width: 0;
+    }
+    .fit-option-name {
       color: var(--ink);
-      font-weight: 700;
-      white-space: nowrap;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
     }
-    .fit-table .fit-me td {
-      background: linear-gradient(135deg, rgba(91, 79, 224, 0.09) 0%, rgba(255, 107, 53, 0.07) 100%);
-      color: var(--ink);
-    }
-    .fit-table .fit-me .fit-option {
+    .fit-row-me .fit-option-name {
       color: var(--indigo);
     }
-    .fit-pill {
+    .fit-option-meta {
+      color: var(--ink-mute);
+      font-size: 0.78rem;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+    .fit-cell {
+      color: var(--ink-soft);
+      font-size: var(--fs-15);
+      line-height: 1.42;
+    }
+    .fit-row-me .fit-cell {
+      color: var(--ink);
+    }
+    .fit-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.42rem;
+      margin-top: 0.7rem;
+    }
+    .fit-chip {
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
-      padding: 0.32rem 0.62rem;
+      padding: 0.26rem 0.58rem;
       border-radius: 999px;
       background: rgba(91, 79, 224, 0.1);
       color: var(--indigo);
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 800;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
-      white-space: nowrap;
-    }
-    .fit-name {
-      display: inline-flex;
-      align-items: center;
-      margin-right: 0.35rem;
-      color: var(--indigo);
-      font-weight: 700;
-      letter-spacing: -0.01em;
       white-space: nowrap;
     }
     .fit-note {
@@ -1621,60 +1650,70 @@
       color: var(--ink-mute);
       text-align: center;
     }
-    .fit-cards {
-      display: none;
-      margin-top: 1.25rem;
-      gap: 0.85rem;
-    }
-    .fit-card {
-      padding: 1.1rem;
-      border-radius: 22px;
-      background: rgba(255, 255, 255, 0.54);
-      border: 1px solid rgba(15, 15, 23, 0.08);
-      box-shadow: 0 12px 30px -26px rgba(15, 15, 23, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.82);
-    }
-    .fit-card-me {
-      background: linear-gradient(135deg, rgba(91, 79, 224, 0.1) 0%, rgba(255, 107, 53, 0.07) 100%);
-    }
-    .fit-card h3 {
-      margin-bottom: 0.85rem;
-      font-size: 1.05rem;
-    }
-    .fit-card dl {
-      display: grid;
-      gap: 0.75rem;
-    }
-    .fit-card dt {
-      margin-bottom: 0.15rem;
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--ink-mute);
-    }
-    .fit-card dd {
-      color: var(--ink-soft);
-      font-size: var(--fs-15);
-      line-height: 1.45;
-    }
-    .fit-card-me dd {
-      color: var(--ink);
-    }
     @media (max-width: 760px) {
-      .fit-table-wrap {
+      .fit .section-head {
+        margin-bottom: 1.8rem;
+      }
+      .fit-map {
+        margin-top: 1.15rem;
+        gap: 0.45rem;
+        padding: 0.5rem;
+        border-radius: 24px;
+      }
+      .fit-map-head {
         display: none;
       }
-      .fit-cards {
+      .fit-row {
+        min-height: 0;
+        grid-template-columns: 1fr;
+        gap: 0.55rem;
+        padding: 0.85rem 0.9rem;
+        border-radius: 18px;
+      }
+      .fit-option {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 0.75rem;
+      }
+      .fit-option-meta {
+        text-align: right;
+        font-size: 0.72rem;
+        white-space: nowrap;
+      }
+      .fit-cell {
         display: grid;
+        grid-template-columns: 4.7rem 1fr;
+        gap: 0.75rem;
+        font-size: 0.9rem;
+        line-height: 1.35;
+      }
+      .fit-cell::before {
+        color: var(--ink-mute);
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .fit-best::before { content: "Best for"; }
+      .fit-tradeoff::before { content: "Trade-off"; }
+      .fit-chips {
+        margin-top: 0.55rem;
+        gap: 0.35rem;
+      }
+      .fit-chip {
+        padding: 0.23rem 0.5rem;
+        font-size: 0.64rem;
       }
       .fit-note {
-        margin-top: 1rem;
+        margin-top: 0.85rem;
         font-size: 0.88rem;
         text-align: left;
       }
     }
 
-    /* ==========================================================
+
+/* ==========================================================
        TOOLKIT
        ========================================================== */
     .toolkit {
@@ -2811,82 +2850,56 @@
 <div class="section-head">
 <div>
 <span class="eyebrow">Where I fit</span>
-<h2 style="margin-top: 1.25rem;">Not every ops problem needs the same hire.</h2>
+<h2 style="margin-top: 1.25rem;">Choose the right kind of help.</h2>
 </div>
 <p>
-            Quick map: specialists go deep, VAs execute tasks, full-time hires add weight. I sit in the flexible middle: trusted, business-minded, and useful across shifting ops.
+            Specialists go deep. VAs keep costs low. Full-time hires bring continuity. I sit in the flexible middle: trusted, business-minded, and useful when the work keeps moving.
           </p>
 </div>
-<div class="fit-table-wrap reveal">
-<table class="fit-table">
-<thead>
-<tr>
-<th>Option</th>
-<th>👌 Best when</th>
-<th>✅ What you get</th>
-<th>⚠️ Watch-out</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="fit-option">Specialist</td>
-<td>One clear problem needs deep expertise.</td>
-<td>Deep skill in one lane.</td>
-<td>Less range when support, content, tools, customers, and ops all move at once.</td>
-</tr>
-<tr>
-<td class="fit-option">Full-time hire</td>
-<td>The role is stable, obvious, and large enough.</td>
-<td>Availability, continuity, and team focus.</td>
-<td>Expensive and slow if the scope keeps changing.</td>
-</tr>
-<tr>
-<td class="fit-option">VA</td>
-<td>You have clear tasks and clear instructions.</td>
-<td>Task execution.</td>
-<td>Usually not business judgement, critical thinking, or reputation-level trust.</td>
-</tr>
-<tr class="fit-me">
-<td class="fit-option"><span class="fit-name">Boris</span> <span class="fit-pill">Flexible operator</span></td>
-<td>You need a flexible right-hand across messy, changing ops.</td>
-<td>Range, business-owner judgement, fresh improvement ideas, and more delegation over time.</td>
-<td>Not for one narrow expert role or cheap task execution.</td>
-</tr>
-</tbody>
-</table>
+<div class="fit-map reveal">
+<div class="fit-map-head" aria-hidden="true">
+<span>Option</span>
+<span>Best for</span>
+<span>Trade-off</span>
 </div>
-<div class="fit-cards reveal">
-<article class="fit-card">
-<h3>Specialist</h3>
-<dl>
-<div><dt>👌 Best when</dt><dd>One clear problem needs deep expertise.</dd></div>
-<div><dt>✅ What you get</dt><dd>Deep skill in one lane.</dd></div>
-<div><dt>⚠️ Watch-out</dt><dd>Less range when support, content, tools, customers, and ops all move at once.</dd></div>
-</dl>
+<article class="fit-row">
+<div class="fit-option">
+<span class="fit-option-name">Specialist</span>
+<span class="fit-option-meta">Deep expertise</span>
+</div>
+<div class="fit-cell fit-best">One clear problem that needs real depth.</div>
+<div class="fit-cell fit-tradeoff">Less useful when support, tools, content, and customers all move at once.</div>
 </article>
-<article class="fit-card">
-<h3>Full-time hire</h3>
-<dl>
-<div><dt>👌 Best when</dt><dd>The role is stable, obvious, and large enough.</dd></div>
-<div><dt>✅ What you get</dt><dd>Availability, continuity, and team focus.</dd></div>
-<div><dt>⚠️ Watch-out</dt><dd>Expensive and slow if the scope keeps changing.</dd></div>
-</dl>
+<article class="fit-row">
+<div class="fit-option">
+<span class="fit-option-name">Full-time hire</span>
+<span class="fit-option-meta">Continuity</span>
+</div>
+<div class="fit-cell fit-best">A stable role with enough work every week.</div>
+<div class="fit-cell fit-tradeoff">Expensive and slow if the scope is still changing.</div>
 </article>
-<article class="fit-card">
-<h3>VA</h3>
-<dl>
-<div><dt>👌 Best when</dt><dd>You have clear tasks and clear instructions.</dd></div>
-<div><dt>✅ What you get</dt><dd>Task execution.</dd></div>
-<div><dt>⚠️ Watch-out</dt><dd>Usually not business judgement, critical thinking, or reputation-level trust.</dd></div>
-</dl>
+<article class="fit-row">
+<div class="fit-option">
+<span class="fit-option-name">VA</span>
+<span class="fit-option-meta">Clear tasks</span>
+</div>
+<div class="fit-cell fit-best">Simple execution with clear instructions.</div>
+<div class="fit-cell fit-tradeoff">Usually less judgement, ownership, and reputation-level trust.</div>
 </article>
-<article class="fit-card fit-card-me">
-<h3><span class="fit-name">Boris</span> <span class="fit-pill">Flexible operator</span></h3>
-<dl>
-<div><dt>👌 Best when</dt><dd>You need a flexible right-hand across messy, changing ops.</dd></div>
-<div><dt>✅ What you get</dt><dd>Range, business-owner judgement, fresh improvement ideas, and more delegation over time.</dd></div>
-<div><dt>⚠️ Watch-out</dt><dd>Not for one narrow expert role or cheap task execution.</dd></div>
-</dl>
+<article class="fit-row fit-row-me">
+<div class="fit-option">
+<span class="fit-option-name">Boris</span>
+<span class="fit-option-meta">Flexible operator</span>
+</div>
+<div>
+<div class="fit-cell fit-best">Messy, changing ops across support, community, tools, content, and admin.</div>
+<div class="fit-chips" aria-label="Boris advantages">
+<span class="fit-chip">Builder mindset</span>
+<span class="fit-chip">Flexible range</span>
+<span class="fit-chip">High trust</span>
+</div>
+</div>
+<div class="fit-cell fit-tradeoff">Not the cheapest task executor, not a narrow specialist.</div>
 </article>
 </div>
 <div class="fit-note reveal">
@@ -2895,6 +2908,7 @@
 </div>
 </section>
 <!-- TOOLKIT -->
+
 <section class="toolkit" id="toolkit">
 <div class="toolkit-head reveal">
 <span class="eyebrow">The toolkit</span>
