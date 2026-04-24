@@ -1662,6 +1662,55 @@
         gap: 5rem;
       }
     }
+    .trust-proof-card {
+      margin-top: 2rem;
+      padding: 1.1rem;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 22px 54px -36px rgba(0, 0, 0, 0.58), inset 0 1px 0 rgba(255, 255, 255, 0.10);
+      max-width: 330px;
+      transform: rotate(-1deg);
+    }
+    .trust-stars {
+      display: flex;
+      gap: 0.25rem;
+      color: var(--yellow-soft);
+      font-family: var(--hand);
+      font-size: 2rem;
+      line-height: 1;
+      letter-spacing: -0.08em;
+      transform: rotate(-2deg);
+      text-shadow: 0 0 20px rgba(251, 191, 36, 0.20);
+    }
+    .trust-proof-number {
+      margin-top: 0.65rem;
+      font-family: var(--serif);
+      font-size: clamp(3.1rem, 6.4vw, 5.15rem);
+      font-style: italic;
+      font-weight: 300;
+      letter-spacing: -0.06em;
+      line-height: 0.9;
+      color: var(--bg);
+    }
+    .trust-proof-label {
+      margin-top: 0.75rem;
+      color: rgba(247, 245, 242, 0.78);
+      font-size: 0.88rem;
+      line-height: 1.45;
+      max-width: 30ch;
+    }
+    .trust-proof-label strong {
+      color: var(--bg);
+      font-weight: 650;
+    }
+    @media (max-width: 859px) {
+      .trust-proof-card {
+        max-width: 100%;
+        transform: rotate(-0.5deg);
+      }
+    }
+
     .trust-body p + p { margin-top: 1.25rem; }
     .trust-quote {
       font-family: var(--serif);
@@ -1979,12 +2028,9 @@
       font-size: 0.74rem;
       line-height: 1.2;
       font-weight: 650;
-      transform: translateY(3px);
-      opacity: 0;
-      animation: agendaIn 3.8s var(--soft) infinite;
+      transform: none;
+      opacity: 1;
     }
-    .artifact-agenda-item:nth-child(2) { animation-delay: 0.18s; }
-    .artifact-agenda-item:nth-child(3) { animation-delay: 0.36s; }
     .artifact-agenda-dot {
       width: 0.5rem;
       height: 0.5rem;
@@ -1992,11 +2038,13 @@
       background: var(--c);
       opacity: 0.76;
       box-shadow: 0 0 0 4px color-mix(in srgb, var(--c) 13%, transparent);
+      animation: agendaDotPulse 1.9s cubic-bezier(0, 0, 0.2, 1) infinite;
     }
-    @keyframes agendaIn {
-      0% { transform: translateY(3px); opacity: 0; }
-      16%, 74% { transform: translateY(0); opacity: 1; }
-      100% { transform: translateY(-3px); opacity: 0; }
+    .artifact-agenda-item:nth-child(2) .artifact-agenda-dot { animation-delay: 0.22s; }
+    .artifact-agenda-item:nth-child(3) .artifact-agenda-dot { animation-delay: 0.44s; }
+    @keyframes agendaDotPulse {
+      0%, 100% { opacity: 0.56; box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 10%, transparent); transform: scale(0.9); }
+      45% { opacity: 1; box-shadow: 0 0 0 7px color-mix(in srgb, var(--c) 17%, transparent); transform: scale(1.08); }
     }
     .artifact-avatars {
       display: flex;
@@ -2683,6 +2731,15 @@
           <div class="reveal">
             <span class="eyebrow">Why trust me</span>
             <h2 style="margin-top: 1.25rem;">Ten years in a market where trust was the only currency.</h2>
+            <div class="trust-proof-card">
+              <div class="trust-stars" aria-label="Five stars">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <div class="trust-proof-number">2,250+</div>
+              <p class="trust-proof-label">
+                <strong>Verified customer reviews</strong> from my past operations.
+              </p>
+            </div>
           </div>
           <div class="trust-body reveal">
             <p>
