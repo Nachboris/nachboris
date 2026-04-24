@@ -628,32 +628,83 @@
     /* ==========================================================
        Continue reading — preview-fade + expander
        ========================================================== */
-    .story { margin-top: 2rem; }
+    .story {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px dashed rgba(15, 15, 23, 0.1);
+    }
+    .story-chapters-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+      padding: 0.3rem 0.75rem;
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(15, 15, 23, 0.06);
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      color: var(--ink-mute);
+      letter-spacing: 0.02em;
+    }
+    .story-chapters-label {
+      font-weight: 600;
+      color: var(--indigo);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+    }
+    .story-chapters-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--ink-mute);
+      opacity: 0.5;
+    }
+
     .story-preview {
       position: relative;
-      max-height: 9.5em;          /* ~6 lines visible on mobile */
+      max-height: 14em;
       overflow: hidden;
       transition: max-height 0.5s var(--ease);
     }
     @media (min-width: 720px) {
-      .story-preview { max-height: 8em; }  /* 5 lines on desktop */
+      .story-preview { max-height: 13em; }
     }
-    .story-preview p {
+    .story-act-peek {
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid rgba(15, 15, 23, 0.06);
+      border-radius: var(--r-md);
+    }
+    @media (min-width: 720px) { .story-act-peek { padding: 2rem; } }
+    .story-act-peek .act-label {
+      font-family: var(--hand);
+      font-size: 1.3rem;
+      color: var(--indigo);
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+    .story-act-peek h3 {
+      font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+      margin-bottom: 0.9rem;
+    }
+    .story-act-peek p {
       color: var(--ink-soft);
       line-height: 1.65;
-      margin-bottom: 1rem;
+      margin-bottom: 0.85rem;
     }
     .story-preview::after {
       content: "";
       position: absolute;
       left: 0; right: 0; bottom: 0;
-      height: 5em;
+      height: 8em;
       pointer-events: none;
       background: linear-gradient(
         to bottom,
         rgba(247, 245, 242, 0) 0%,
-        rgba(247, 245, 242, 0.6) 45%,
-        rgba(247, 245, 242, 0.95) 100%
+        rgba(247, 245, 242, 0.5) 35%,
+        rgba(247, 245, 242, 0.9) 70%,
+        rgba(247, 245, 242, 1) 100%
       );
       transition: opacity 0.4s var(--ease);
     }
@@ -663,25 +714,33 @@
     .story[open] .story-preview::after {
       opacity: 0;
     }
+
     .story-toggle {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      margin-top: 1rem;
-      padding: 0.75rem 1.15rem;
+      margin-top: -1.5rem;            /* overlap with fade */
+      position: relative;
+      z-index: 3;
+      padding: 0.85rem 1.35rem;
       background: var(--ink);
       color: var(--bg);
       border-radius: 999px;
       font-family: var(--sans);
       font-size: var(--fs-15);
       font-weight: 600;
-      transition: transform 0.3s var(--spring), background 0.25s var(--soft);
+      transition: transform 0.3s var(--spring), background 0.25s var(--soft), box-shadow 0.3s var(--soft);
+      box-shadow: 0 12px 28px -14px rgba(15, 15, 23, 0.5);
     }
     .story-toggle:hover { transform: translateY(-1px); background: #171723; }
     .story-toggle .chev {
       display: inline-block;
       transition: transform 0.35s var(--spring);
       font-size: 0.85rem;
+    }
+    .story[open] .story-toggle {
+      margin-top: 1rem;
+      box-shadow: 0 8px 18px -14px rgba(15, 15, 23, 0.4);
     }
     .story[open] .story-toggle .chev { transform: rotate(180deg); }
     .story[open] .story-toggle .label-closed { display: none; }
@@ -852,6 +911,11 @@
       background: rgba(107, 107, 122, 0.06);
       border-color: rgba(107, 107, 122, 0.2);
     }
+    .status-passive {
+      color: var(--lime);
+      background: var(--lime-tint);
+      border-color: rgba(132, 204, 22, 0.3);
+    }
     .status-personal {
       color: var(--sky);
       background: var(--sky-tint);
@@ -919,6 +983,28 @@
     .project.project-orange .project-proved::before { color: var(--orange); }
     .project.project-lime .project-proved::before { color: var(--lime); }
     .project.project-sky .project-proved::before { color: var(--sky); }
+
+    .projects-footer {
+      margin-top: clamp(2.5rem, 5vw, 4rem);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+      padding: clamp(1.5rem, 4vw, 2.5rem);
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px dashed rgba(15, 15, 23, 0.12);
+      border-radius: var(--r-lg);
+    }
+    .projects-footer-lede {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      color: var(--ink);
+      line-height: 1.4;
+      margin: 0;
+    }
 
     /* ==========================================================
        CLOSING CTA
@@ -1108,7 +1194,7 @@
           <span class="eyebrow">Projects &amp; experience</span>
           <h1>15+ years shipping things <em>solo.</em></h1>
           <p class="lede">
-            Every project below was run end-to-end &mdash; acquisition, sales, support, community, ops. No team, no agency. Just the operator and the work. Counted together with my Master in Digital Business Management at Rennes School of Business and two business-developer stints in early-stage startups, that's more than 15 years in the trenches of digital operations.
+            Every project below was run end-to-end &mdash; acquisition, sales, support, community, ops. Counted together with my Master in Digital Business Management at Rennes School of Business and two business-developer stints in early-stage startups, that's more than 15 years in the trenches of digital operations.
           </p>
         </div>
       </div>
@@ -1161,22 +1247,42 @@
 
           <div class="featured-summary">
             <p>
-              I sold <strong>digital goods and services for video-game players</strong> &mdash; the kind of things that save serious gamers hundreds of hours of repetitive grinding: in-game items, currency, account boosting, secured trades between strangers, and later activation keys for new releases. A real, niche e-commerce in a market where most sellers are fly-by-night and trust is the actual product.
+              I sold <strong>digital goods and services for video-game players</strong> &mdash; the kind of things that save serious gamers hundreds of hours of repetitive grinding: in-game items, currency, account boosting, secured trades between strangers, and activation keys. A real, niche e-commerce in a market where most sellers are fly-by-night and trust is the actual product.
             </p>
             <p>
               The first nine years (2012&mdash;2021) ran in the background of my life, alongside high school, a Master in Digital Business Management at Rennes School of Business, and my early career as a business developer in startups. The next three years (2021&mdash;2024) were full-time, properly declared, with a custom storefront, automation, and the operations of a real small business.
             </p>
           </div>
 
-          <!-- Continue reading: preview-fade + expander -->
+          <div class="proved">
+            <span class="proved-icon" aria-hidden="true">★</span>
+            <div class="proved-body">
+              <span class="proved-label">What it proved</span>
+              <p>
+                I can take a digital business from zero to full-time, build a reputation in a hostile market, and operate it profitably for over a decade without burning out the trust I earned.
+              </p>
+            </div>
+          </div>
+
+          <!-- Full story: preview-fade + expander -->
           <details class="story">
+            <div class="story-chapters-hint" aria-hidden="true">
+              <span class="story-chapters-label">Full story</span>
+              <span class="story-chapters-dot"></span>
+              <span>3 chapters · ~4 min read</span>
+            </div>
+
             <div class="story-preview">
-              <p>
-                What I actually sold wasn't the product. It was <strong>time saved, transactions secured, and the peace of mind of dealing with someone who'd still be there next month.</strong> Across 20,000+ transactions I handled every piece of the chain alone: sourcing, sales funnels, SEO, copywriting, customer support in multiple languages, dispute resolution, reputation management, pricing, and the slow, boring work of earning trust one trade at a time.
-              </p>
-              <p>
-                What started as one teenager selling in-game currency to a stranger turned into a diversified, full-stack digital business with automated delivery, a real storefront, and a customer base that came back. Here's how it actually unfolded &mdash;
-              </p>
+              <div class="story-act-peek">
+                <span class="act-label">Act 1 &mdash; The side hustle (2012 &mdash; 2021)</span>
+                <h3>Nine years of services for serious gamers</h3>
+                <p>
+                  It started at 15, selling $800 of in-game currency to a stranger on the internet. My hands were shaking when I clicked confirm. That single trade opened the door to nine years of side-hustling.
+                </p>
+                <p>
+                  Over time, the offer kept widening. It went from "I can sell you currency" to a full menu of services for serious players: <strong>in-game items, character boosting, walkthroughs, secured trades between strangers, and activation keys &mdash; from mainstream releases to rarer items like Collector's Editions and pre-orders.</strong>
+                </p>
+              </div>
             </div>
 
             <summary class="story-toggle">
@@ -1188,13 +1294,10 @@
             <div class="story-rest">
 
               <div class="act">
-                <span class="act-label">Act 1 &mdash; The side hustle (2012 &mdash; 2021)</span>
-                <h3>Nine years of services for serious gamers</h3>
+                <span class="act-label">Act 1 (continued)</span>
+                <h3>The hands-on years</h3>
                 <p>
-                  It started at 15, selling $800 of in-game currency to a stranger on the internet. My hands were shaking when I clicked confirm. That single trade opened the door to nine years of side-hustling.
-                </p>
-                <p>
-                  Over time, the offer kept widening. It went from "I can sell you currency" to a full menu of services for serious players: <strong>in-game items, character boosting, walkthroughs, secured trades between strangers, and activation keys for new releases.</strong> Some of it was high-touch and manual &mdash; for example, I delivered every game key by hand for years, account by account, message by message.
+                  At first, everything was done by hand: every key delivered one at a time, every trade walked through message by message. Over the years, I gradually automated the parts that could be &mdash; starting with the highest-volume ones &mdash; while keeping the human touch where it actually mattered to the customer.
                 </p>
                 <blockquote>
                   Reputation compounds faster than revenue. Every happy customer becomes a returning customer. Every returning customer brings referrals.
@@ -1208,13 +1311,16 @@
                 <span class="act-label">Act 2 &mdash; From producer to reseller</span>
                 <h3>The shift that turned the operation into a real business</h3>
                 <p>
-                  At some point I tried to scale by becoming the producer &mdash; running bots to generate supply myself. It looked like the smart move on paper, but it was a treadmill: more output, thinner margins, endless maintenance, and a single point of failure I didn't want to depend on.
+                  Early on, I did what most operators in this space eventually do: I tried to scale by becoming the producer. Bots generating supply, accounts running in parallel, the whole setup &mdash; what looked like "passive income" on paper. I ran it that way for years.
+                </p>
+                <p>
+                  It took me a long time to admit it wasn't actually passive. It was a treadmill: more output, thinner margins, endless maintenance, and a single point of failure I'd never really own. The shift in thinking was slow, and honestly, humbling.
                 </p>
                 <p>
                   So I made the opposite move. I stopped trying to be the biggest producer and started being the most trusted seller. <strong>I built a network of reliable suppliers, sourced inventory through them, and put my energy into the storefront, the customer relationship, and the diversification of services.</strong>
                 </p>
                 <p>
-                  That's when the offer really matured: turnkey accounts sold to players, a <strong>middleman service to secure high-value trades between strangers</strong>, and operational standards that other sellers simply didn't have. The middleman work in particular &mdash; sitting between two strangers making a risky exchange &mdash; was the seed of an idea I'd later turn into Gamoniz.
+                  That's when the offer really matured: turnkey accounts sold to players, a <strong>middleman service to secure high-value trades between strangers</strong>, and operational standards that other sellers simply didn't have. The middleman work in particular &mdash; sitting between two strangers making a risky exchange &mdash; was the seed of an idea I'd later turn into my marketplace project.
                 </p>
                 <blockquote>
                   I stopped trying to be the biggest producer and started being the most trusted seller. Everything changed.
@@ -1231,25 +1337,15 @@
                   Living on the road forced decisions I'd been avoiding: every task that couldn't be automated had to disappear or force a fix. I built a custom WordPress storefront (<strong>GW2Rewards</strong>), <strong>fully automated CD-key delivery end-to-end</strong>, ran email campaigns through MailerLite, and shifted into a bigger market with proper operational security. The low cost of living gave me runway to build patiently instead of grabbing every quick sale.
                 </p>
                 <p>
-                  There was no dramatic "I quit my job" moment. By the end of that year, the business was doing better than a job. So I just didn't go back. For the next three years, this was my full-time income &mdash; properly declared, taxed, and profitable enough to <strong>generate $500K+ in cumulative revenue</strong>, fund the life I wanted, and eventually let me buy real estate and move to Switzerland.
+                  There was no dramatic "I quit my job" moment. By the end of that year, the business was doing better than a job. So I just didn't go back. For the next three years, this was my full-time income &mdash; properly declared, taxed, and profitable enough to <strong>generate $500K+ in cumulative revenue</strong>, fund the life I wanted, and invest in real estate back in France.
                 </p>
                 <p>
-                  I shut it down in 2024, on my terms, with 2,250+ verified positive reviews and a 100% satisfaction rate across its entire history.
+                  By 2024, with 2,250+ verified positive reviews and a 100% satisfaction rate across its entire history, I'd stretched that model about as far as it could go alone. <strong>I closed it on my terms &mdash; to go build something more ambitious: a proper marketplace.</strong>
                 </p>
               </div>
 
             </div>
           </details>
-
-          <div class="proved">
-            <span class="proved-icon" aria-hidden="true">★</span>
-            <div class="proved-body">
-              <span class="proved-label">What it proved</span>
-              <p>
-                I can take a digital business from zero to full-time, build a reputation in a hostile market, and operate it profitably for over a decade without burning out the trust I earned.
-              </p>
-            </div>
-          </div>
 
         </article>
       </div>
@@ -1280,7 +1376,7 @@
                 Originally launched as a digital-goods marketplace backed by a <strong>crowdfunding campaign that raised 226% of its goal</strong>, with a small team of 3 interns I managed through brand, go-to-market, WordPress build and launch.
               </p>
               <p>
-                The marketplace had to be shut down in 2025 for legal constraints specific to the industry. I kept the community (~2,000 email subscribers, 300+ Discord members) and pivoted Gamoniz into what it is today: a content &amp; coaching brand where I share my operator experience through articles, Twitter, a low-ticket product, and 1-on-1 coaching.
+                The marketplace had to be shut down in 2025 after a successful launch &mdash; for legal constraints specific to the industry. Honestly, a brutally frustrating decision: nothing in the law prevented me from running it, but other players in the industry decided otherwise, and I chose to walk away rather than fight a battle that would have burned years of energy for little upside. I kept the community (~2,000 email subscribers, 300+ Discord members) and pivoted Gamoniz into what it is today: a content &amp; coaching brand where I share my operator experience through articles, Twitter, a low-ticket product, and 1-on-1 coaching.
               </p>
             </div>
             <div class="project-meta">
@@ -1299,7 +1395,7 @@
           <article class="project project-lime">
             <div class="project-head">
               <h3 class="project-title">PrimeParrain <em>(Affiliation)</em></h3>
-              <span class="status status-active">Active</span>
+              <span class="status status-passive">Passive</span>
             </div>
             <span class="project-period">Ongoing &mdash; minimalist side</span>
             <div class="project-body">
@@ -1362,7 +1458,6 @@
               </p>
             </div>
             <div class="project-meta">
-              <span><strong>More:</strong> <a class="meta-link" href="/me">About me →</a></span>
               <span><strong>Degree:</strong> Master Digital Business Mgmt</span>
               <span><strong>Roles:</strong> Biz dev × 2 startups</span>
               <span><strong>Volunteer:</strong> Well'Come student association</span>
@@ -1372,6 +1467,16 @@
             </p>
           </article>
 
+        </div>
+
+        <div class="projects-footer reveal">
+          <p class="projects-footer-lede">
+            Curious about the person behind the projects?
+          </p>
+          <a href="/me" class="btn btn-ink about-cta">
+            <span>Read more about me</span>
+            <span class="arrow">→</span>
+          </a>
         </div>
       </div>
     </section>
