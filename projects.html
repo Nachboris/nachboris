@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projects and experience of Boris Nachbaur — 13 years operating digital businesses solo, from e-commerce to community-led products.">
+  <title>Projects — Boris Nachbaur</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------- Variables ---------- */
+    :root {
+      --bg: #F7F5F2;
+      --bg-secondary: #EFEDE9;
+      --text-primary: #1A1A18;
+      --text-secondary: #6B6B67;
+      --text-tertiary: #9B9B97;
+      --accent: #D4845A;
+      --accent-hover: #C0734A;
+      --border: #E2DED8;
+
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'DM Sans', -apple-system, sans-serif;
+
+      --space-xs: 8px;
+      --space-sm: 16px;
+      --space-md: 24px;
+      --space-lg: 48px;
+      --space-xl: 80px;
+      --space-2xl: 120px;
+
+      --max-width: 720px;
+      --max-width-wide: 1100px;
+      --radius: 8px;
+      --radius-lg: 16px;
+    }
+
+    /* ---------- Reset minimal ---------- */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg);
+    }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 600; letter-spacing: -0.01em; margin: 0; }
+    p { margin: 0; }
+
+    /* ---------- Nav ---------- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(247, 245, 242, 0.85);
+      backdrop-filter: saturate(180%) blur(12px);
+      -webkit-backdrop-filter: saturate(180%) blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: var(--max-width-wide);
+      margin: 0 auto;
+      padding: var(--space-sm) var(--space-md);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+    }
+    .nav-brand {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .nav-links {
+      display: flex;
+      gap: var(--space-md);
+      font-size: 15px;
+      color: var(--text-secondary);
+    }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-links a.active { color: var(--text-primary); }
+
+    /* ---------- Layout helpers ---------- */
+    main { padding: var(--space-lg) var(--space-md) var(--space-2xl); }
+    .container { max-width: var(--max-width); margin: 0 auto; }
+    .container-wide { max-width: var(--max-width-wide); margin: 0 auto; }
+
+    section + section { margin-top: var(--space-xl); }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      padding-top: var(--space-lg);
+      padding-bottom: var(--space-md);
+    }
+    .eyebrow {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: var(--space-md);
+    }
+    .hero h1 {
+      font-size: 44px;
+      line-height: 1.1;
+      margin-bottom: var(--space-md);
+    }
+    .hero-lede {
+      font-size: 19px;
+      color: var(--text-secondary);
+      max-width: 620px;
+    }
+
+    /* ---------- Featured project ---------- */
+    .featured {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg) var(--space-md);
+    }
+    .featured-head {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      margin-bottom: var(--space-md);
+    }
+    .featured-tag {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+    }
+    .featured h2 {
+      font-size: 34px;
+      line-height: 1.15;
+    }
+    .featured-one-liner {
+      font-size: 17px;
+      color: var(--text-secondary);
+      margin-top: var(--space-xs);
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+      margin: var(--space-md) 0 var(--space-lg);
+      padding: var(--space-md) 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .meta-item .label {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 2px;
+    }
+    .meta-item .value {
+      font-size: 15px;
+      color: var(--text-primary);
+    }
+
+    .featured-body p {
+      color: var(--text-secondary);
+      margin-bottom: var(--space-sm);
+    }
+    .featured-body p:last-child { margin-bottom: 0; }
+
+    .featured-proof {
+      margin-top: var(--space-lg);
+      padding: var(--space-md);
+      background: var(--bg);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+    .featured-proof .label {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: var(--space-xs);
+    }
+    .featured-proof p {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      line-height: 1.4;
+      color: var(--text-primary);
+    }
+
+    /* ---------- Section header ---------- */
+    .section-header {
+      margin-bottom: var(--space-lg);
+    }
+    .section-header h2 {
+      font-size: 28px;
+      margin-bottom: var(--space-xs);
+    }
+    .section-header p {
+      color: var(--text-secondary);
+    }
+
+    /* ---------- Side projects grid ---------- */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+    .card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: #D3CEC6;
+    }
+    .card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--space-sm);
+    }
+    .card h3 {
+      font-size: 22px;
+      line-height: 1.2;
+    }
+    .card-status {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      padding: 4px 8px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--bg);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .card-status.active { color: var(--accent); border-color: rgba(212, 132, 90, 0.3); }
+    .card-oneliner {
+      font-size: 15px;
+      color: var(--text-secondary);
+    }
+    .card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs) var(--space-md);
+      font-size: 13px;
+      color: var(--text-tertiary);
+      padding-top: var(--space-sm);
+      border-top: 1px solid var(--border);
+    }
+    .card-meta span strong {
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+    .card-proved {
+      font-size: 14px;
+      color: var(--text-primary);
+      font-style: italic;
+    }
+    .card-proved::before {
+      content: "→ ";
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    /* ---------- Closing ---------- */
+    .closing {
+      text-align: left;
+      padding: var(--space-lg) 0 0;
+      border-top: 1px solid var(--border);
+      margin-top: var(--space-xl);
+    }
+    .closing h2 {
+      font-size: 28px;
+      margin-bottom: var(--space-sm);
+    }
+    .closing p {
+      color: var(--text-secondary);
+      margin-bottom: var(--space-md);
+      max-width: 560px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      background: var(--text-primary);
+      color: var(--bg);
+      border-radius: var(--radius);
+      font-size: 15px;
+      font-weight: 500;
+      transition: background 0.2s ease;
+    }
+    .btn:hover { background: #000; }
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+      margin-left: var(--space-xs);
+    }
+    .btn-secondary:hover { background: var(--bg-secondary); }
+
+    /* ---------- Footer ---------- */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: var(--space-md);
+      font-size: 14px;
+      color: var(--text-tertiary);
+    }
+    .footer-inner {
+      max-width: var(--max-width-wide);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+    .footer-links { display: flex; gap: var(--space-md); }
+    .footer-links a:hover { color: var(--text-primary); }
+
+    /* ---------- Responsive ---------- */
+    @media (min-width: 768px) {
+      main { padding: var(--space-xl) var(--space-md) var(--space-2xl); }
+      .hero h1 { font-size: 56px; }
+      .hero-lede { font-size: 21px; }
+      .featured { padding: var(--space-xl) var(--space-lg); }
+      .featured h2 { font-size: 42px; }
+      .meta-grid { grid-template-columns: repeat(4, 1fr); gap: var(--space-md); }
+      .section-header h2 { font-size: 34px; }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .card { padding: var(--space-lg); }
+      .card h3 { font-size: 24px; }
+      .closing h2 { font-size: 34px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-brand" href="/">Boris Nachbaur</a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/projects.html" class="active">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+
+      <!-- ============ HERO ============ -->
+      <section class="hero">
+        <div class="eyebrow">Projects &amp; experience</div>
+        <h1>13 years operating digital businesses. Solo.</h1>
+        <p class="hero-lede">
+          Every project below was run end-to-end: acquisition, retention, support, community, ops. No team, no agency. Just the operator and the work.
+        </p>
+      </section>
+
+      <!-- ============ FEATURED: BOBU ============ -->
+      <section>
+        <article class="featured">
+          <div class="featured-head">
+            <div class="featured-tag">Featured — flagship project</div>
+            <h2>Bobu</h2>
+            <p class="featured-one-liner">
+              A one-man trading service that became a trusted reference in a market where fraud was the norm.
+            </p>
+          </div>
+
+          <div class="meta-grid">
+            <div class="meta-item">
+              <div class="label">Role</div>
+              <div class="value">Solo operator</div>
+            </div>
+            <div class="meta-item">
+              <div class="label">Duration</div>
+              <div class="value"><!-- TODO: remplacer par dur\u00e9e Bobu, ex "2013–2025" -->13+ years</div>
+            </div>
+            <div class="meta-item">
+              <div class="label">Verified reviews</div>
+              <div class="value">2,250+</div>
+            </div>
+            <div class="meta-item">
+              <div class="label">Satisfaction</div>
+              <div class="value">100%</div>
+            </div>
+          </div>
+
+          <div class="featured-body">
+            <!-- TODO: réécrire cette section avec le contenu détaillé issu des articles du blog Gamoniz (histoire, méthode, ce que je permettais aux joueurs, pourquoi je suis devenu une référence) -->
+            <p>
+              Bobu started as a side hustle at 15 and grew into a full trading operation serving thousands of players over more than a decade. What I sold wasn't really the product — it was time saved, transactions secured, and the peace of mind of dealing with someone who'd still be there next month.
+            </p>
+            <p>
+              I handled everything myself: acquisition, customer support across several languages, dispute resolution, reputation management, pricing, and the slow, boring work of building trust one transaction at a time in a market where scams were daily.
+            </p>
+            <p>
+              The reputation wasn't built on marketing. It was built on answering every message, honoring every deal, and showing up for years.
+            </p>
+          </div>
+
+          <div class="featured-proof">
+            <div class="label">What it proved</div>
+            <p>
+              I can own a business end-to-end, build a reputation from zero in a hostile market, and operate it for a decade without burning out the trust I earned.
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <!-- ============ SIDE PROJECTS ============ -->
+      <section>
+        <div class="section-header">
+          <h2>Side projects</h2>
+          <p>Things I built and ran on the side — each one taught me a specific operating skill.</p>
+        </div>
+
+        <div class="grid">
+
+          <!-- Gamoniz -->
+          <article class="card">
+            <div class="card-head">
+              <h3>Gamoniz</h3>
+              <span class="card-status active">Active</span>
+            </div>
+            <p class="card-oneliner">
+              A digital marketplace I launched and operate — acquisition, retention, support, and a 1,900+ member Discord community.
+            </p>
+            <div class="card-meta">
+              <span><strong>Role:</strong> Solo founder &amp; operator</span>
+              <span><strong>Community:</strong> 1,900+ members</span>
+              <span><strong>Since:</strong> <!-- TODO: remplacer par année de lancement Gamoniz -->——</span>
+            </div>
+            <p class="card-proved">
+              Building and keeping a community engaged on Discord, day in, day out.
+            </p>
+          </article>
+
+          <!-- PrimeParrain.fr -->
+          <article class="card">
+            <div class="card-head">
+              <h3>PrimeParrain.fr</h3>
+              <span class="card-status"><!-- TODO: active / sunset / sold -->Status</span>
+            </div>
+            <p class="card-oneliner">
+              <!-- TODO: one-liner PrimeParrain (ex: "A referral-bonus aggregator matching users with the best sign-up deals across French services.") -->
+              A referral platform in the French market — built, monetized, and grown solo.
+            </p>
+            <div class="card-meta">
+              <span><strong>Role:</strong> Solo founder &amp; operator</span>
+              <span><strong>Users:</strong> <!-- TODO: metrics users PrimeParrain -->——</span>
+              <span><strong>Years:</strong> <!-- TODO: années d'activité PrimeParrain -->——</span>
+            </div>
+            <p class="card-proved">
+              SEO-driven acquisition and running a monetized consumer product with no paid ads.
+            </p>
+          </article>
+
+          <!-- BodyFlow -->
+          <article class="card">
+            <div class="card-head">
+              <h3>BodyFlow</h3>
+              <span class="card-status"><!-- TODO: active / sunset / sold -->Status</span>
+            </div>
+            <p class="card-oneliner">
+              <!-- TODO: one-liner BodyFlow (ex: "A mobile app for guided mobility and recovery routines.") -->
+              A mobile app I designed and shipped — product, content, and launch, solo.
+            </p>
+            <div class="card-meta">
+              <span><strong>Role:</strong> Solo builder</span>
+              <span><strong>Platform:</strong> iOS / Android <!-- TODO: corriger plateforme --></span>
+              <span><strong>Shipped:</strong> <!-- TODO: année de lancement BodyFlow -->——</span>
+            </div>
+            <p class="card-proved">
+              Shipping a product alone: from idea, to design, to live app, to first users.
+            </p>
+          </article>
+
+          <!-- Placeholder 4e projet si besoin -->
+          <!-- TODO: ajouter un 4e side project ici si pertinent (ou supprimer ce bloc) -->
+          <article class="card">
+            <div class="card-head">
+              <h3><!-- TODO: nom 4e projet -->Other ventures</h3>
+              <span class="card-status">Various</span>
+            </div>
+            <p class="card-oneliner">
+              Smaller experiments, content ops, AI workflows, and internal tools I've built over the years. Happy to walk through any of them on a call.
+            </p>
+            <div class="card-meta">
+              <span><strong>Role:</strong> Builder / operator</span>
+            </div>
+            <p class="card-proved">
+              Willingness to ship small, learn fast, and kill what doesn't work.
+            </p>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ============ CLOSING ============ -->
+      <section class="closing" id="contact">
+        <h2>What this track record means for you</h2>
+        <p>
+          If you're a solo founder or creator looking for someone to take operational weight off your plate — support, community, ops, content, AI workflows — you already know what I can handle. Let's talk.
+        </p>
+        <a class="btn" href="mailto:boris@nachboris.fr">Email me</a>
+        <!-- TODO: remplacer par lien Calendly -->
+        <a class="btn btn-secondary" href="#">Book a 20-min call</a>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© 2026 Boris Nachbaur — Lausanne, Switzerland</div>
+      <div class="footer-links">
+        <!-- TODO: remplacer par lien LinkedIn -->
+        <a href="#">LinkedIn</a>
+        <!-- TODO: remplacer par lien Twitter/X -->
+        <a href="#">Twitter</a>
+        <a href="mailto:boris@nachboris.fr">Email</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
