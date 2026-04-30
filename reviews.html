@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Reviews — Boris Nachbaur</title>
-  <meta name="description" content="2,250+ verified reviews across Trustpilot, eBay, EpicNPC, Elitepvpers and PrimeParrain. 12 years of operating in trust-scarce markets. No edits. Real customers." />
+  <meta name="description" content="2,250+ verified reviews from twelve years of operating in trust-scarce markets. Public sources, real customers, no edits." />
 
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
   <link rel="shortcut icon" href="/favicon.ico" />
@@ -33,29 +33,14 @@
 
       --lime: #84CC16;
       --lime-soft: #BEF264;
-      --lime-tint: rgba(132, 204, 22, 0.10);
 
       --green: #22C55E;
-      --green-soft: #86EFAC;
-
-      --yellow: #FBBF24;
-      --yellow-soft: #FCD34D;
-      --yellow-tint: rgba(251, 191, 36, 0.12);
 
       --sky: #38BDF8;
-      --sky-soft: #7DD3FC;
-      --sky-tint: rgba(56, 189, 248, 0.10);
-
       --coral: #FB7185;
-      --coral-soft: #FDA4AF;
-      --coral-tint: rgba(251, 113, 133, 0.10);
-
-      --gold: #D4A017;
-      --gold-soft: #F0C755;
 
       --serif: "Fraunces", Georgia, "Times New Roman", serif;
       --sans: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --hand: "Caveat", cursive;
 
       --max: 1100px;
       --pad: clamp(1.25rem, 4vw, 2.5rem);
@@ -63,15 +48,10 @@
       --fs-13: 0.8125rem;
       --fs-15: 0.9375rem;
       --fs-17: 1.0625rem;
-      --fs-20: 1.25rem;
       --fs-24: 1.5rem;
-      --fs-32: 2rem;
-      --fs-48: 3rem;
 
-      --r-sm: 10px;
       --r-md: 18px;
       --r-lg: 28px;
-      --r-xl: 40px;
 
       --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
       --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -111,7 +91,6 @@
       font-weight: 300;
     }
     h2 { font-size: clamp(1.75rem, 3.5vw, 2.6rem); font-variation-settings: "opsz" 96; }
-    h3 { font-size: var(--fs-24); font-weight: 400; letter-spacing: -0.015em; line-height: 1.15; }
     p { color: var(--ink-soft); }
 
     .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
@@ -172,15 +151,6 @@
     }
     .btn-ghost:hover { color: var(--indigo); transform: translateY(-1px); }
 
-    .btn-outline {
-      color: var(--ink);
-      background: transparent;
-      border: 1px solid var(--rule);
-      box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset;
-    }
-    .btn-outline:hover { transform: translateY(-2px); border-color: var(--ink); }
-
-    /* Reveal animations */
     .reveal {
       opacity: 0; transform: translateY(18px);
       transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
@@ -197,6 +167,8 @@
     .reveal-stagger.in > *:nth-child(4) { transition-delay: 0.35s; }
     .reveal-stagger.in > *:nth-child(5) { transition-delay: 0.45s; }
     .reveal-stagger.in > *:nth-child(6) { transition-delay: 0.55s; }
+    .reveal-stagger.in > *:nth-child(7) { transition-delay: 0.65s; }
+    .reveal-stagger.in > *:nth-child(8) { transition-delay: 0.75s; }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { transition: none !important; animation: none !important; }
@@ -204,7 +176,7 @@
       .marquee-track { animation: none !important; }
     }
 
-    /* === Nav === */
+    /* === Nav (canonique 4 pages) === */
     .nav { position: fixed; top: 1rem; left: 0; right: 0; z-index: 100; background: transparent; transition: transform 0.35s var(--soft); pointer-events: none; }
     .nav-inner {
       max-width: calc(var(--max) + 2rem); margin: 0 auto;
@@ -336,150 +308,50 @@
       .stat-cell { padding: 2rem 1.5rem; }
     }
 
-    /* === Source strip === */
-    .source-strip { padding: clamp(2rem, 4vw, 3rem) 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+    /* === Source strip with monochrome SVG logos === */
+    .source-strip { padding: clamp(2rem, 4vw, 2.75rem) 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
     .source-strip-inner {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      gap: 1.25rem 2.5rem;
+      gap: 1.5rem;
     }
     .source-strip-label {
       font-family: var(--sans);
       font-size: 0.78rem;
       font-weight: 600;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--ink-mute);
     }
-    .source-strip-list {
+    .source-strip-logos {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.6rem 1.5rem;
+      gap: 1.5rem 2.75rem;
       align-items: center;
       justify-content: center;
+      color: var(--ink-soft);
     }
-    .source-strip-item {
-      font-family: var(--serif);
-      font-size: var(--fs-17);
-      font-weight: 400;
-      color: var(--ink);
-      letter-spacing: -0.01em;
-    }
-    .source-strip-item span {
-      color: var(--ink-mute);
-      font-family: var(--sans);
-      font-size: var(--fs-13);
-      font-weight: 500;
-      margin-left: 0.4rem;
-    }
-
-    /* === Hero reviews === */
-    .hero-reviews { padding-top: clamp(3rem, 7vw, 5rem); padding-bottom: clamp(2rem, 4vw, 3rem); }
-    .hero-reviews-head { max-width: 720px; margin: 0 auto 3rem; text-align: center; }
-    .hero-reviews-head h2 { margin-top: 1.1rem; }
-    .hero-reviews-head p { margin-top: 1.1rem; color: var(--ink-soft); font-size: var(--fs-17); line-height: 1.6; }
-    .hero-reviews-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
-    }
-    @media (min-width: 720px) {
-      .hero-reviews-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-      .hero-reviews-grid > .review-hero:first-child { grid-column: 1 / -1; }
-    }
-
-    .review-hero {
-      position: relative;
-      padding: 2rem 1.75rem 1.75rem;
-      background: var(--bg);
-      border: 1px solid var(--rule);
-      border-radius: var(--r-md);
-      transition: transform 0.4s var(--soft), box-shadow 0.4s var(--soft), border-color 0.3s var(--soft);
-    }
-    .review-hero:hover { transform: translateY(-3px); box-shadow: 0 24px 40px -28px rgba(15, 15, 23, 0.18); }
-    .review-hero::before {
-      content: "\201C";
-      position: absolute;
-      top: -0.4rem;
-      left: 1.4rem;
-      font-family: var(--serif);
-      font-size: 5rem;
-      font-style: italic;
-      line-height: 1;
-      color: var(--indigo-soft);
-      opacity: 0.55;
-      pointer-events: none;
-    }
-    .review-hero.accent-orange::before { color: var(--orange-soft); }
-    .review-hero.accent-lime::before { color: var(--lime-soft); }
-    .review-hero.accent-sky::before { color: var(--sky-soft); }
-    .review-hero.accent-coral::before { color: var(--coral-soft); }
-    .review-hero.accent-yellow::before { color: var(--yellow-soft); }
-
-    .review-hero-text {
-      font-family: var(--serif);
-      font-style: italic;
-      font-weight: 400;
-      font-size: clamp(1.1rem, 1.6vw, 1.3rem);
-      line-height: 1.45;
-      letter-spacing: -0.005em;
-      color: var(--ink);
-      margin-top: 0.6rem;
-    }
-    .review-hero-meta {
+    .src-logo {
+      height: 26px;
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
-      gap: 0.5rem 1rem;
-      margin-top: 1.5rem;
-      padding-top: 1.1rem;
-      border-top: 1px solid var(--rule);
+      opacity: 0.72;
+      transition: opacity 0.3s var(--soft), transform 0.3s var(--soft), color 0.3s var(--soft);
     }
-    .review-hero-stars {
-      color: var(--gold);
-      letter-spacing: 0.05em;
-      font-size: 0.85rem;
-    }
-    .review-hero-author {
-      font-family: var(--sans);
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: var(--ink);
-    }
-    .review-hero-source {
-      font-family: var(--sans);
-      font-size: 0.82rem;
-      color: var(--ink-mute);
-      margin-left: auto;
-    }
-    .review-hero-tag {
-      display: inline-flex;
-      align-items: center;
-      padding: 0.2rem 0.55rem;
-      border-radius: 999px;
-      background: var(--indigo-tint);
-      color: var(--indigo);
-      font-family: var(--sans);
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-    .review-hero.accent-orange .review-hero-tag { background: var(--orange-tint); color: var(--orange); }
-    .review-hero.accent-lime .review-hero-tag { background: var(--lime-tint); color: #5a8b0e; }
+    .src-logo:hover { opacity: 1; color: var(--ink); transform: translateY(-1px); }
+    .src-logo svg { height: 100%; width: auto; display: block; }
 
     /* === Marquee === */
-    .marquee-section { padding-top: clamp(3rem, 6vw, 4.5rem); padding-bottom: clamp(2.5rem, 5vw, 4rem); }
+    .marquee-section { padding-top: clamp(3.5rem, 7vw, 5.5rem); padding-bottom: clamp(2.5rem, 5vw, 4rem); }
     .marquee-head {
       max-width: 720px;
-      margin: 0 auto 2.5rem;
+      margin: 0 auto 2.75rem;
       text-align: center;
       padding: 0 var(--pad);
     }
     .marquee-head h2 { margin-top: 1.1rem; }
-    .marquee-head p { margin-top: 1rem; color: var(--ink-soft); }
+    .marquee-head p { margin-top: 1rem; color: var(--ink-soft); font-size: var(--fs-17); }
 
     .marquee {
       position: relative;
@@ -495,9 +367,9 @@
       display: flex;
       gap: 1rem;
       width: max-content;
-      animation: marquee-scroll 78s linear infinite;
+      animation: marquee-scroll 130s linear infinite;
     }
-    .marquee-track.reverse { animation: marquee-scroll-reverse 86s linear infinite; }
+    .marquee-track.reverse { animation: marquee-scroll-reverse 145s linear infinite; }
     .marquee:hover .marquee-track { animation-play-state: paused; }
 
     @keyframes marquee-scroll {
@@ -512,13 +384,13 @@
     .review-card {
       flex: 0 0 auto;
       width: 320px;
-      padding: 1.1rem 1.2rem 1rem;
+      padding: 1.15rem 1.25rem 1.05rem;
       background: var(--bg);
       border: 1px solid var(--rule);
       border-radius: var(--r-md);
       display: flex;
       flex-direction: column;
-      gap: 0.65rem;
+      gap: 0.7rem;
       transition: transform 0.3s var(--soft), border-color 0.3s var(--soft), box-shadow 0.3s var(--soft);
     }
     .review-card:hover { transform: translateY(-2px); border-color: rgba(15,15,23,0.14); box-shadow: 0 12px 24px -18px rgba(15,15,23,0.18); }
@@ -528,18 +400,26 @@
       align-items: center;
       gap: 0.7rem;
     }
-    .review-avatar {
+    .review-avatar-img {
       flex-shrink: 0;
-      width: 2rem;
-      height: 2rem;
+      width: 2.1rem;
+      height: 2.1rem;
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--bg-soft);
+    }
+    .review-avatar-letter {
+      flex-shrink: 0;
+      width: 2.1rem;
+      height: 2.1rem;
       border-radius: 50%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       font-family: var(--sans);
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 600;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.01em;
       color: #fff;
     }
     .av-indigo { background: var(--indigo); }
@@ -590,7 +470,7 @@
       display: grid;
       grid-template-columns: 1fr;
       gap: 0.75rem;
-      max-width: 640px;
+      max-width: 720px;
       margin: 0 auto;
     }
     @media (min-width: 600px) { .ext-sources-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -613,12 +493,14 @@
       font-weight: 400;
       letter-spacing: -0.01em;
       color: var(--ink);
+      display: block;
     }
     .ext-source-meta {
       font-family: var(--sans);
       font-size: 0.78rem;
       color: var(--ink-mute);
       margin-top: 0.15rem;
+      display: block;
     }
     .ext-source-arrow {
       font-family: var(--sans);
@@ -669,19 +551,17 @@
         <a href="/" class="logo logo-mark" aria-label="Boris Nachbaur home">BN<span class="logo-dot">.</span></a>
       </div>
       <div class="nav-links nav-menu">
-        <a href="/#about" class="nav-link">About</a>
-        <a href="/#results" class="nav-link">Results</a>
         <a href="/#work" class="nav-link">Services</a>
+        <a href="/me" class="nav-link">About</a>
         <a href="/projects" class="nav-link">Projects</a>
         <a href="/reviews" class="nav-link active">Reviews</a>
-        <a href="/#process" class="nav-link">Process</a>
       </div>
       <div class="nav-actions">
         <span class="availability">
           <span class="pulse-dot"></span>
           <span class="availability-label">Available</span>
         </span>
-        <a href="/#contact" class="nav-cta">
+        <a href="https://calendly.com/nachboris/20min" target="_blank" rel="noopener" class="nav-cta">
           <span>Book a call</span>
           <span class="arrow">→</span>
         </a>
@@ -694,15 +574,13 @@
 
   <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
     <div class="mobile-menu-links">
-      <a href="/#about" class="mobile-menu-link">About <span>01</span></a>
-      <a href="/#results" class="mobile-menu-link">Results <span>02</span></a>
-      <a href="/#work" class="mobile-menu-link">Services <span>03</span></a>
-      <a href="/projects" class="mobile-menu-link">Projects <span>04</span></a>
-      <a href="/reviews" class="mobile-menu-link">Reviews <span>05</span></a>
-      <a href="/#process" class="mobile-menu-link">Process <span>06</span></a>
+      <a href="/#work" class="mobile-menu-link">Services <span>01</span></a>
+      <a href="/me" class="mobile-menu-link">About <span>02</span></a>
+      <a href="/projects" class="mobile-menu-link">Projects <span>03</span></a>
+      <a href="/reviews" class="mobile-menu-link">Reviews <span>04</span></a>
     </div>
     <div class="mobile-menu-foot">
-      <a href="/#contact" class="mobile-menu-cta">Book a call <span aria-hidden="true">→</span></a>
+      <a href="https://calendly.com/nachboris/20min" target="_blank" rel="noopener" class="mobile-menu-cta">Book a call <span aria-hidden="true">→</span></a>
       <span class="availability">
         <span class="pulse-dot"></span>
         <span class="availability-label">Available</span>
@@ -716,8 +594,8 @@
       <div class="wrap">
         <div class="page-head-inner reveal">
           <span class="eyebrow">Reviews &amp; testimonials</span>
-          <h1>2,250+ verified reviews. <em>One signature.</em></h1>
-          <p class="lede">Twelve years of operating in trust-scarce markets. Every review here comes from a real transaction on a public platform — Trustpilot, eBay, EpicNPC, Elitepvpers, PrimeParrain. No edits. No deletions. No screenshots from a private dashboard.</p>
+          <h1>2,250+ verified reviews. <em>100% satisfaction.</em></h1>
+          <p class="lede">Twelve years of operating in trust-scarce markets. Every review here comes from a real transaction on a public platform — Trustpilot, eBay, PrimeParrain and more. No edits. No deletions. No screenshots from a private dashboard.</p>
         </div>
       </div>
     </section>
@@ -738,7 +616,7 @@
             <span class="stat-label">Of operations</span>
           </div>
           <div class="stat-cell">
-            <span class="stat-num">5 <em>sources</em></span>
+            <span class="stat-num">7 <em>sources</em></span>
             <span class="stat-label">Independent platforms</span>
           </div>
         </div>
@@ -749,80 +627,47 @@
       <div class="wrap">
         <div class="source-strip-inner reveal">
           <span class="source-strip-label">Verified on</span>
-          <div class="source-strip-list">
-            <span class="source-strip-item">Trustpilot<span>Gamoniz</span></span>
-            <span class="source-strip-item">eBay<span>cdk-now</span></span>
-            <span class="source-strip-item">EpicNPC<span>bobu</span></span>
-            <span class="source-strip-item">Elitepvpers<span>profile #4159412</span></span>
-            <span class="source-strip-item">PrimeParrain<span>1parrainage</span></span>
+          <div class="source-strip-logos">
+            <a href="https://www.trustpilot.com/review/gamoniz.com" target="_blank" rel="noopener" class="src-logo" aria-label="Trustpilot" title="Trustpilot">
+              <svg viewBox="0 0 110 28" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                <path d="M14 2 L17.1 10.4 L26 10.4 L18.85 15.55 L21.55 24 L14 18.85 L6.45 24 L9.15 15.55 L2 10.4 L10.9 10.4 Z"/>
+                <text x="32" y="20" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="currentColor">Trustpilot</text>
+              </svg>
+            </a>
+            <a href="https://www.ebay.com/usr/cdk-now?_tab=feedback" target="_blank" rel="noopener" class="src-logo" aria-label="eBay" title="eBay">
+              <svg viewBox="0 0 56 28" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                <text x="0" y="22" font-family="Inter, sans-serif" font-size="22" font-weight="800" font-style="italic" letter-spacing="-1" fill="currentColor">ebay</text>
+              </svg>
+            </a>
+            <a href="https://www.g2g.com/r/73712348a0f4405290f172deb5774edf" target="_blank" rel="noopener" class="src-logo" aria-label="G2G" title="G2G Marketplace">
+              <svg viewBox="0 0 48 28" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                <text x="0" y="22" font-family="Inter, sans-serif" font-size="22" font-weight="900" letter-spacing="-1" fill="currentColor">G2G</text>
+              </svg>
+            </a>
+            <a href="https://www.epicnpc.com/members/bobu.275961/#feedback" target="_blank" rel="noopener" class="src-logo" aria-label="EpicNPC" title="EpicNPC">
+              <svg viewBox="0 0 78 28" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                <rect x="2" y="6" width="16" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+                <text x="22" y="20" font-family="Inter, sans-serif" font-size="14" font-weight="700" letter-spacing="-0.3" fill="currentColor">EpicNPC</text>
+              </svg>
+            </a>
+            <a href="https://www.elitepvpers.com/theblackmarket/profile/4159412" target="_blank" rel="noopener" class="src-logo" aria-label="Elitepvpers" title="Elitepvpers">
+              <svg viewBox="0 0 92 28" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                <path d="M2 5 L18 5 L18 8 L5 8 L5 12 L16 12 L16 15 L5 15 L5 19 L18 19 L18 22 L2 22 Z" fill="currentColor"/>
+                <text x="22" y="20" font-family="Inter, sans-serif" font-size="13" font-weight="700" letter-spacing="-0.3" fill="currentColor">litepvpers</text>
+              </svg>
+            </a>
+            <a href="https://www.1parrainage.com/listeannonces_39516_Shiba%20Deal.php" target="_blank" rel="noopener" class="src-logo" aria-label="1parrainage" title="1parrainage">
+              <svg viewBox="0 0 96 28" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                <text x="0" y="22" font-family="Inter, sans-serif" font-size="22" font-weight="900" letter-spacing="-1" fill="currentColor">1</text>
+                <text x="11" y="22" font-family="Inter, sans-serif" font-size="13" font-weight="600" letter-spacing="-0.3" fill="currentColor">parrainage</text>
+              </svg>
+            </a>
+            <a href="https://www.super-parrain.com/" target="_blank" rel="noopener" class="src-logo" aria-label="super-parrain" title="super-parrain">
+              <svg viewBox="0 0 102 28" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                <text x="0" y="20" font-family="Inter, sans-serif" font-size="13" font-weight="700" letter-spacing="-0.3" fill="currentColor">super-parrain</text>
+              </svg>
+            </a>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="hero-reviews">
-      <div class="wrap">
-        <div class="hero-reviews-head reveal">
-          <span class="eyebrow">Featured</span>
-          <h2>Six reviews, <em>twelve years.</em></h2>
-          <p>Hand-picked from the public archives. The full set of 2,250+ lives on the source platforms — links at the bottom of this page.</p>
-        </div>
-
-        <div class="hero-reviews-grid reveal-stagger">
-          <article class="review-hero accent-indigo">
-            <p class="review-hero-text">Smooth, easy process! ($800 order) Bought the max 50HOM+GWAMM, and zero issues! Was skeptical at first, but back and forth communication helped put me at ease on taking the chance of its legitimacy; glad I did! They were super nice and patient as I had asked a lot of questions.</p>
-            <div class="review-hero-meta">
-              <span class="review-hero-stars" aria-label="5 out of 5">★★★★★</span>
-              <span class="review-hero-author">Lan</span>
-              <span class="review-hero-source">Trustpilot · Gamoniz</span>
-            </div>
-          </article>
-
-          <article class="review-hero accent-orange">
-            <p class="review-hero-text">I have been doing business with Bobu for many years now, never had an issue. Truth is, I recommend Bobu to anyone, who is looking for any kind of service related to Guild Wars. Very friendly, perfect service. Always have been.</p>
-            <div class="review-hero-meta">
-              <span class="review-hero-stars" aria-label="5 out of 5">★★★★★</span>
-              <span class="review-hero-author">KT</span>
-              <span class="review-hero-source">Trustpilot · Gamoniz</span>
-            </div>
-          </article>
-
-          <article class="review-hero accent-lime">
-            <p class="review-hero-text">The vendor I worked with went far beyond an extra mile to make sure I was taken care of in our transaction. I had an issue with one of the codes I was provided, and it was resolved pretty much right away. After this, the vendor offered an in-game bonus to make up for the inconvenience, which wasn't necessary but appreciated.</p>
-            <div class="review-hero-meta">
-              <span class="review-hero-stars" aria-label="5 out of 5">★★★★★</span>
-              <span class="review-hero-author">Trilosk</span>
-              <span class="review-hero-source">Trustpilot · Gamoniz</span>
-            </div>
-          </article>
-
-          <article class="review-hero accent-orange">
-            <span class="review-hero-tag">Coaching</span>
-            <p class="review-hero-text" style="margin-top: 0.8rem;">I was the first to test Bobu's system. Before the mentoring, I was stuck trying to make everything 'perfect' before starting. Bobu forced me to stop overthinking and actually launch. He showed me the 'under-the-hood' methods, like how to manage stock and sourcing without needing a massive upfront inventory. I covered the coaching cost in about 8 days, and made over $1.2k net profit my first month.</p>
-            <div class="review-hero-meta">
-              <span class="review-hero-stars" aria-label="5 out of 5">★★★★★</span>
-              <span class="review-hero-author">Ethan</span>
-              <span class="review-hero-source">Gamoniz · RMT Accelerator</span>
-            </div>
-          </article>
-
-          <article class="review-hero accent-sky">
-            <p class="review-hero-text">Fast, and safe seller. Been using him for over a decade.</p>
-            <div class="review-hero-meta">
-              <span class="review-hero-stars" aria-label="5 out of 5">★★★★★</span>
-              <span class="review-hero-author">Chris Young</span>
-              <span class="review-hero-source">Trustpilot · Gamoniz</span>
-            </div>
-          </article>
-
-          <article class="review-hero accent-coral">
-            <p class="review-hero-text">De nos jours, il n'est pas toujours facile de tomber sur des personnes de confiance. J'ai donc eu beaucoup de chance de rencontrer Shiba Deal : très sympa, il a répondu à toutes mes interrogations et a tenu son engagement en me reversant la moitié du bonus de parrainage Kraken.</p>
-            <div class="review-hero-meta">
-              <span class="review-hero-stars" aria-label="5 out of 5">★★★★★</span>
-              <span class="review-hero-author">PatOneill</span>
-              <span class="review-hero-source">PrimeParrain · 1parrainage</span>
-            </div>
-          </article>
         </div>
       </div>
     </section>
@@ -830,721 +675,529 @@
     <section class="marquee-section">
       <div class="marquee-head reveal">
         <span class="eyebrow">The wall</span>
-        <h2>And then, <em>two thousand more.</em></h2>
+        <h2>Twelve years, <em>two thousand voices.</em></h2>
         <p>A small sample, scrolling. Hover to pause.</p>
       </div>
 
       <div class="marquee" aria-label="Customer reviews, scrolling left">
         <div class="marquee-track">
           <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-indigo">L</span>
-          <span class="review-name">LC</span>
-        </div>
-        <p class="review-text">Bobu is both reliable and fast.</p>
-        <span class="review-source">Trustpilot · Gamoniz</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-orange">C</span>
-          <span class="review-name">Chrozinel</span>
-        </div>
-        <p class="review-text">Great seller! Strongly recommended!</p>
-        <span class="review-source">EpicNPC</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-lime">D</span>
-          <span class="review-name">destockgames</span>
-        </div>
-        <p class="review-text">Paiement rapide, très bonne communication. Parfait !</p>
-        <span class="review-source">eBay</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-sky">C</span>
-          <span class="review-name">Coby</span>
-        </div>
-        <p class="review-text">Great Service! Contacted through Discord for a question, fast replies, great service and overall super friendly :)</p>
-        <span class="review-source">Trustpilot · Gamoniz</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-coral">P</span>
-          <span class="review-name">PoryBot</span>
-        </div>
-        <p class="review-text">+++ Quick, smooth and friendly trading! Anytime again +++</p>
-        <span class="review-source">Elitepvpers</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-indigo">J</span>
-          <span class="review-name">jpim73</span>
-        </div>
-        <p class="review-text">Paiement très rapide, ebayeur sérieux, merci !!</p>
-        <span class="review-source">eBay</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-orange">J</span>
-          <span class="review-name">jjgoesrage</span>
-        </div>
-        <p class="review-text">Very nice and helpful. Everything went fast he is very kind. I recommend him and always would trade again.</p>
-        <span class="review-source">Elitepvpers</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-lime">N</span>
-          <span class="review-name">NightFury1</span>
-        </div>
-        <p class="review-text">A gracious and very quick person</p>
-        <span class="review-source">EpicNPC</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-sky">V</span>
-          <span class="review-name">ventesgaming68-67</span>
-        </div>
-        <p class="review-text">Bon acheteur et paiement rapide. Recommandé !</p>
-        <span class="review-source">eBay</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-coral">G</span>
-          <span class="review-name">gcarlo54</span>
-        </div>
-        <p class="review-text">esattamente come descrizione++</p>
-        <span class="review-source">eBay</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-indigo">H</span>
-          <span class="review-name">Hepic</span>
-        </div>
-        <p class="review-text">Je recommande à 100 % ! J&#x27;ai utilisé son offre de parrainage pour Kraken et tout s&#x27;est déroulé parfaitement. Il a toujours été réactif et a tenu son engagement.</p>
-        <span class="review-source">PrimeParrain</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-orange">Z</span>
-          <span class="review-name">zenrobin</span>
-        </div>
-        <p class="review-text">Just the very best. Fast delivery and they say he is not bad looking. 5 Stars</p>
-        <span class="review-source">eBay</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-lime">C</span>
-          <span class="review-name">coatofarms</span>
-        </div>
-        <p class="review-text">Bought x2 gw complete edition, professional, fast, reliable. As always. Thanks!</p>
-        <span class="review-source">EpicNPC</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-sky">R</span>
-          <span class="review-name">reding</span>
-        </div>
-        <p class="review-text">Quick service, accommodating, easy to work with.</p>
-        <span class="review-source">EpicNPC</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-coral">D</span>
-          <span class="review-name">D.M.</span>
-        </div>
-        <p class="review-text">Great Service Quick, smooth, polite service.</p>
-        <span class="review-source">Trustpilot · Gamoniz</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-indigo">NL</span>
-          <span class="review-name">Niandra Lades</span>
-        </div>
-        <p class="review-text">Amazing service, was faster than expected and was here to help with any question/update me on the process ! Ar Everything went well and smoothly, thank you :)</p>
-        <span class="review-source">Trustpilot · Gamoniz</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-orange">B</span>
-          <span class="review-name">briadea-50</span>
-        </div>
-        <p class="review-text">Best GW2 Seller hands down! Awesome! Thank you!</p>
-        <span class="review-source">eBay</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-lime">K</span>
-          <span class="review-name">Keasbey</span>
-        </div>
-        <p class="review-text">Great trader, super fast response time when online. Will be back !</p>
-        <span class="review-source">Elitepvpers</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-sky">LK</span>
-          <span class="review-name">Lennart Kallenbach</span>
-        </div>
-        <p class="review-text">fast delivery and an extremely friendly guy I can definitely recommend this service to anyone that is interested</p>
-        <span class="review-source">Trustpilot · Gamoniz</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-coral">Q</span>
-          <span class="review-name">qais10</span>
-        </div>
-        <p class="review-text">Quick safe and recommended. Appreciate your trade and business</p>
-        <span class="review-source">EpicNPC</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-indigo">S</span>
-          <span class="review-name">sinkir-85</span>
-        </div>
-        <p class="review-text">Received gold same day when order was made! Fast and trusted!</p>
-        <span class="review-source">eBay</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-orange">C</span>
-          <span class="review-name">Cronical</span>
-        </div>
-        <p class="review-text">Parrainage IBKR atypique : récompense versée un an après. Il m&#x27;a tout de même remis ma part sans problème malgré ce délai. Personne de confiance.</p>
-        <span class="review-source">PrimeParrain</span>
-      </article>
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-indigo">B</span>
+              <span class="review-name">briadea-50</span>
+            </div>
+            <p class="review-text">If Bobu were running for president I’d vote for Bobu! This seller is that good! Thank you!</p>
+            <span class="review-source">eBay</span>
+          </article>
           <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-indigo">L</span>
-          <span class="review-name">LC</span>
-        </div>
-        <p class="review-text">Bobu is both reliable and fast.</p>
-        <span class="review-source">Trustpilot · Gamoniz</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-orange">C</span>
-          <span class="review-name">Chrozinel</span>
-        </div>
-        <p class="review-text">Great seller! Strongly recommended!</p>
-        <span class="review-source">EpicNPC</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-lime">D</span>
-          <span class="review-name">destockgames</span>
-        </div>
-        <p class="review-text">Paiement rapide, très bonne communication. Parfait !</p>
-        <span class="review-source">eBay</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-sky">C</span>
-          <span class="review-name">Coby</span>
-        </div>
-        <p class="review-text">Great Service! Contacted through Discord for a question, fast replies, great service and overall super friendly :)</p>
-        <span class="review-source">Trustpilot · Gamoniz</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-coral">P</span>
-          <span class="review-name">PoryBot</span>
-        </div>
-        <p class="review-text">+++ Quick, smooth and friendly trading! Anytime again +++</p>
-        <span class="review-source">Elitepvpers</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-indigo">J</span>
-          <span class="review-name">jpim73</span>
-        </div>
-        <p class="review-text">Paiement très rapide, ebayeur sérieux, merci !!</p>
-        <span class="review-source">eBay</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-orange">J</span>
-          <span class="review-name">jjgoesrage</span>
-        </div>
-        <p class="review-text">Very nice and helpful. Everything went fast he is very kind. I recommend him and always would trade again.</p>
-        <span class="review-source">Elitepvpers</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-lime">N</span>
-          <span class="review-name">NightFury1</span>
-        </div>
-        <p class="review-text">A gracious and very quick person</p>
-        <span class="review-source">EpicNPC</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-sky">V</span>
-          <span class="review-name">ventesgaming68-67</span>
-        </div>
-        <p class="review-text">Bon acheteur et paiement rapide. Recommandé !</p>
-        <span class="review-source">eBay</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-coral">G</span>
-          <span class="review-name">gcarlo54</span>
-        </div>
-        <p class="review-text">esattamente come descrizione++</p>
-        <span class="review-source">eBay</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-indigo">H</span>
-          <span class="review-name">Hepic</span>
-        </div>
-        <p class="review-text">Je recommande à 100 % ! J&#x27;ai utilisé son offre de parrainage pour Kraken et tout s&#x27;est déroulé parfaitement. Il a toujours été réactif et a tenu son engagement.</p>
-        <span class="review-source">PrimeParrain</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-orange">Z</span>
-          <span class="review-name">zenrobin</span>
-        </div>
-        <p class="review-text">Just the very best. Fast delivery and they say he is not bad looking. 5 Stars</p>
-        <span class="review-source">eBay</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-lime">C</span>
-          <span class="review-name">coatofarms</span>
-        </div>
-        <p class="review-text">Bought x2 gw complete edition, professional, fast, reliable. As always. Thanks!</p>
-        <span class="review-source">EpicNPC</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-sky">R</span>
-          <span class="review-name">reding</span>
-        </div>
-        <p class="review-text">Quick service, accommodating, easy to work with.</p>
-        <span class="review-source">EpicNPC</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-coral">D</span>
-          <span class="review-name">D.M.</span>
-        </div>
-        <p class="review-text">Great Service Quick, smooth, polite service.</p>
-        <span class="review-source">Trustpilot · Gamoniz</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-indigo">NL</span>
-          <span class="review-name">Niandra Lades</span>
-        </div>
-        <p class="review-text">Amazing service, was faster than expected and was here to help with any question/update me on the process ! Ar Everything went well and smoothly, thank you :)</p>
-        <span class="review-source">Trustpilot · Gamoniz</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-orange">B</span>
-          <span class="review-name">briadea-50</span>
-        </div>
-        <p class="review-text">Best GW2 Seller hands down! Awesome! Thank you!</p>
-        <span class="review-source">eBay</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-lime">K</span>
-          <span class="review-name">Keasbey</span>
-        </div>
-        <p class="review-text">Great trader, super fast response time when online. Will be back !</p>
-        <span class="review-source">Elitepvpers</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-sky">LK</span>
-          <span class="review-name">Lennart Kallenbach</span>
-        </div>
-        <p class="review-text">fast delivery and an extremely friendly guy I can definitely recommend this service to anyone that is interested</p>
-        <span class="review-source">Trustpilot · Gamoniz</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-coral">Q</span>
-          <span class="review-name">qais10</span>
-        </div>
-        <p class="review-text">Quick safe and recommended. Appreciate your trade and business</p>
-        <span class="review-source">EpicNPC</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-indigo">S</span>
-          <span class="review-name">sinkir-85</span>
-        </div>
-        <p class="review-text">Received gold same day when order was made! Fast and trusted!</p>
-        <span class="review-source">eBay</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-orange">C</span>
-          <span class="review-name">Cronical</span>
-        </div>
-        <p class="review-text">Parrainage IBKR atypique : récompense versée un an après. Il m&#x27;a tout de même remis ma part sans problème malgré ce délai. Personne de confiance.</p>
-        <span class="review-source">PrimeParrain</span>
-      </article>
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/united-kingdom.png" alt="Oli Chesters" loading="lazy" decoding="async">
+              <span class="review-name">Oli Chesters</span>
+            </div>
+            <p class="review-text">Quick and easy transaction. Very helpful and polite on Skype. Excellent service.</p>
+            <span class="review-source">EpicNPC</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/09/Clement-Alexandre.png" alt="Clément Alexandre" loading="lazy" decoding="async">
+              <span class="review-name">Clément Alexandre</span>
+            </div>
+            <p class="review-text">Reliable, fast and always helpful. I use their service often and it is always perfect.</p>
+            <span class="review-source">Trustpilot</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://primeparrain.fr/wp-content/uploads/2025/09/JennyPerpi.jpeg" alt="JennyPerpi" loading="lazy" decoding="async">
+              <span class="review-name">JennyPerpi</span>
+            </div>
+            <p class="review-text">Parrain sérieux et respect des primes reversés. 2 parrainages réalisés.</p>
+            <span class="review-source">1parrainage</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/Flag-FR.png" alt="matponc-91" loading="lazy" decoding="async">
+              <span class="review-name">matponc-91</span>
+            </div>
+            <p class="review-text">Super vendeur, ultra rapide et réactif. Je recommanderai encore c’est sûr.</p>
+            <span class="review-source">eBay</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/ArayaS1337.gif" alt="ArayaS1337" loading="lazy" decoding="async">
+              <span class="review-name">ArayaS1337</span>
+            </div>
+            <p class="review-text">Fast and easy. No problems at all, very friendly.</p>
+            <span class="review-source">Elitepvpers</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/09/Trilosk.png" alt="Trilosk" loading="lazy" decoding="async">
+              <span class="review-name">Trilosk</span>
+            </div>
+            <p class="review-text">Best customer service I have ever seen in gaming. Bobu followed up for 5 days just to make sure I got my bonus. Incredible.</p>
+            <span class="review-source">Trustpilot</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://primeparrain.fr/wp-content/uploads/2025/09/Kent.jpeg" alt="Kent" loading="lazy" decoding="async">
+              <span class="review-name">Kent</span>
+            </div>
+            <p class="review-text">Parrain fiable qui respecte ses engagements et très rapide. Le parrainage s&#x27;est déroulé en moins de 10 minutes.</p>
+            <span class="review-source">super-parrain</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-sky">S</span>
+              <span class="review-name">sum1</span>
+            </div>
+            <p class="review-text">Friendly and professional. Explained everything in detail. Highly recommended.</p>
+            <span class="review-source">EpicNPC</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-coral">Y</span>
+              <span class="review-name">yeh</span>
+            </div>
+            <p class="review-text">He&#x27;s like a brother to me. Always used bobu, fast, friendly, reliable great guy don&#x27;t use anyone else this guy is the goat 🙌</p>
+            <span class="review-source">Trustpilot</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/Lithuania.png" alt="furion1" loading="lazy" decoding="async">
+              <span class="review-name">furion1</span>
+            </div>
+            <p class="review-text">Super friendly, delivered everything fast and explained what I needed to know.</p>
+            <span class="review-source">EpicNPC</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/sweden.png" alt="TheWld" loading="lazy" decoding="async">
+              <span class="review-name">TheWld</span>
+            </div>
+            <p class="review-text">Fast, reliable, very good communication. Super smooth experience.</p>
+            <span class="review-source">EpicNPC</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-lime">M</span>
+              <span class="review-name">Moonspeak</span>
+            </div>
+            <p class="review-text">Great service overall. Fast, safe and reliable. Highly recommended.</p>
+            <span class="review-source">EpicNPC</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/BigZ-e1764335466898.webp" alt="BigZThyDoom" loading="lazy" decoding="async">
+              <span class="review-name">BigZThyDoom</span>
+            </div>
+            <p class="review-text">I’ve bought many many many accounts from him, and sold him some boosting services in the past as well. Nothing but good things to say, 10/10 would absolutely recommend to a friend.</p>
+            <span class="review-source">Elitepvpers</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/12/Dean-Bolt.png" alt="Dean Bolt" loading="lazy" decoding="async">
+              <span class="review-name">Dean Bolt</span>
+            </div>
+            <p class="review-text">Simple no hassle transaction, faultless guarantee backs up their service. Does exactly what you pay for with no hidden extras.</p>
+            <span class="review-source">Trustpilot</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-indigo">C</span>
+              <span class="review-name">Collin</span>
+            </div>
+            <p class="review-text">I had reservations but everything was legitimate. Excellent communication, payment flexibility, and perfect delivery. Could not recommend more.</p>
+            <span class="review-source">Trustpilot</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-indigo">B</span>
+              <span class="review-name">briadea-50</span>
+            </div>
+            <p class="review-text">If Bobu were running for president I’d vote for Bobu! This seller is that good! Thank you!</p>
+            <span class="review-source">eBay</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/united-kingdom.png" alt="Oli Chesters" loading="lazy" decoding="async">
+              <span class="review-name">Oli Chesters</span>
+            </div>
+            <p class="review-text">Quick and easy transaction. Very helpful and polite on Skype. Excellent service.</p>
+            <span class="review-source">EpicNPC</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/09/Clement-Alexandre.png" alt="Clément Alexandre" loading="lazy" decoding="async">
+              <span class="review-name">Clément Alexandre</span>
+            </div>
+            <p class="review-text">Reliable, fast and always helpful. I use their service often and it is always perfect.</p>
+            <span class="review-source">Trustpilot</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://primeparrain.fr/wp-content/uploads/2025/09/JennyPerpi.jpeg" alt="JennyPerpi" loading="lazy" decoding="async">
+              <span class="review-name">JennyPerpi</span>
+            </div>
+            <p class="review-text">Parrain sérieux et respect des primes reversés. 2 parrainages réalisés.</p>
+            <span class="review-source">1parrainage</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/Flag-FR.png" alt="matponc-91" loading="lazy" decoding="async">
+              <span class="review-name">matponc-91</span>
+            </div>
+            <p class="review-text">Super vendeur, ultra rapide et réactif. Je recommanderai encore c’est sûr.</p>
+            <span class="review-source">eBay</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/ArayaS1337.gif" alt="ArayaS1337" loading="lazy" decoding="async">
+              <span class="review-name">ArayaS1337</span>
+            </div>
+            <p class="review-text">Fast and easy. No problems at all, very friendly.</p>
+            <span class="review-source">Elitepvpers</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/09/Trilosk.png" alt="Trilosk" loading="lazy" decoding="async">
+              <span class="review-name">Trilosk</span>
+            </div>
+            <p class="review-text">Best customer service I have ever seen in gaming. Bobu followed up for 5 days just to make sure I got my bonus. Incredible.</p>
+            <span class="review-source">Trustpilot</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://primeparrain.fr/wp-content/uploads/2025/09/Kent.jpeg" alt="Kent" loading="lazy" decoding="async">
+              <span class="review-name">Kent</span>
+            </div>
+            <p class="review-text">Parrain fiable qui respecte ses engagements et très rapide. Le parrainage s&#x27;est déroulé en moins de 10 minutes.</p>
+            <span class="review-source">super-parrain</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-sky">S</span>
+              <span class="review-name">sum1</span>
+            </div>
+            <p class="review-text">Friendly and professional. Explained everything in detail. Highly recommended.</p>
+            <span class="review-source">EpicNPC</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-coral">Y</span>
+              <span class="review-name">yeh</span>
+            </div>
+            <p class="review-text">He&#x27;s like a brother to me. Always used bobu, fast, friendly, reliable great guy don&#x27;t use anyone else this guy is the goat 🙌</p>
+            <span class="review-source">Trustpilot</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/Lithuania.png" alt="furion1" loading="lazy" decoding="async">
+              <span class="review-name">furion1</span>
+            </div>
+            <p class="review-text">Super friendly, delivered everything fast and explained what I needed to know.</p>
+            <span class="review-source">EpicNPC</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/sweden.png" alt="TheWld" loading="lazy" decoding="async">
+              <span class="review-name">TheWld</span>
+            </div>
+            <p class="review-text">Fast, reliable, very good communication. Super smooth experience.</p>
+            <span class="review-source">EpicNPC</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-lime">M</span>
+              <span class="review-name">Moonspeak</span>
+            </div>
+            <p class="review-text">Great service overall. Fast, safe and reliable. Highly recommended.</p>
+            <span class="review-source">EpicNPC</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/BigZ-e1764335466898.webp" alt="BigZThyDoom" loading="lazy" decoding="async">
+              <span class="review-name">BigZThyDoom</span>
+            </div>
+            <p class="review-text">I’ve bought many many many accounts from him, and sold him some boosting services in the past as well. Nothing but good things to say, 10/10 would absolutely recommend to a friend.</p>
+            <span class="review-source">Elitepvpers</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/12/Dean-Bolt.png" alt="Dean Bolt" loading="lazy" decoding="async">
+              <span class="review-name">Dean Bolt</span>
+            </div>
+            <p class="review-text">Simple no hassle transaction, faultless guarantee backs up their service. Does exactly what you pay for with no hidden extras.</p>
+            <span class="review-source">Trustpilot</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-indigo">C</span>
+              <span class="review-name">Collin</span>
+            </div>
+            <p class="review-text">I had reservations but everything was legitimate. Excellent communication, payment flexibility, and perfect delivery. Could not recommend more.</p>
+            <span class="review-source">Trustpilot</span>
+          </article>
         </div>
       </div>
 
       <div class="marquee" aria-label="Customer reviews, scrolling right">
         <div class="marquee-track reverse">
           <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-lime">H</span>
-          <span class="review-name">haris485</span>
-        </div>
-        <p class="review-text">Great guy, fast and easy trade. 10/10</p>
-        <span class="review-source">Elitepvpers</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-sky">AV</span>
-          <span class="review-name">Andrew Vaillancourt</span>
-        </div>
-        <p class="review-text">Very legit service that you can trust. Turned to this to finish up the consumable titles prior to Wintersday when there wasn&#x27;t much on the market. Good price, super fast delivery. Looking forward to rocking GWAMM in GW2.</p>
-        <span class="review-source">Trustpilot · Gamoniz</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-coral">J</span>
-          <span class="review-name">jendrihartman-0</span>
-        </div>
-        <p class="review-text">Didnt even take 10 mins to deliver 12/10 probably do again</p>
-        <span class="review-source">eBay</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-indigo">U</span>
-          <span class="review-name">UzunMedia</span>
-        </div>
-        <p class="review-text">Fast Trade! Any Time i would go to Bobu</p>
-        <span class="review-source">Elitepvpers</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-orange">K</span>
-          <span class="review-name">Kamala</span>
-        </div>
-        <p class="review-text">Fast delivery and competitive prices</p>
-        <span class="review-source">Trustpilot · Gamoniz</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-lime">T</span>
-          <span class="review-name">Twangis</span>
-        </div>
-        <p class="review-text">nicer person quick trade thx ! MrHashy save and legit, thanks</p>
-        <span class="review-source">Elitepvpers</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-sky">J</span>
-          <span class="review-name">James</span>
-        </div>
-        <p class="review-text">SUPERB Simple. Easy. Straight to the point. Trustworthy. GREAT CUSTOMER SERVICE! After purchase, I was reached out to within 24 hours with all the information I needed, including a step by step guide with pictures. I had some struggles on my end getting things to work. Reached out to their customer support and was immediately contacted. Their customer service went above and beyond my expectations. Worked through with me step by step on what had to be done and helped troubleshoot. We figured out the problem and I have had no issues since. Happy customer!</p>
-        <span class="review-source">Trustpilot · Gamoniz</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-coral">E</span>
-          <span class="review-name">esm1th</span>
-        </div>
-        <p class="review-text">Great seller! Thanks a lot!!!!</p>
-        <span class="review-source">Elitepvpers</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-indigo">I</span>
-          <span class="review-name">imazombie</span>
-        </div>
-        <p class="review-text">Trade went very smoothly, thank you again! Highly recommend!</p>
-        <span class="review-source">Elitepvpers</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-orange">E</span>
-          <span class="review-name">emp223</span>
-        </div>
-        <p class="review-text">Everything worked great, thank you!</p>
-        <span class="review-source">eBay</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-lime">F</span>
-          <span class="review-name">fred</span>
-        </div>
-        <p class="review-text">Les engagements sont plus que respectés par Shiba. J&#x27;étais sceptique au début mais le parrainage s&#x27;est déroulé parfaitement !</p>
-        <span class="review-source">PrimeParrain</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-sky">OB</span>
-          <span class="review-name">OLD BACK</span>
-        </div>
-        <p class="review-text">Trusted, and fast perfect trade</p>
-        <span class="review-source">Elitepvpers</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-coral">X</span>
-          <span class="review-name">Xenphek</span>
-        </div>
-        <p class="review-text">fast easy great trade! SomeSquirrel Fast and Friendly as always.</p>
-        <span class="review-source">Elitepvpers</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-indigo">O</span>
-          <span class="review-name">Ortheus</span>
-        </div>
-        <p class="review-text">Fast, reliable, very good communication!</p>
-        <span class="review-source">EpicNPC</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-orange">R</span>
-          <span class="review-name">Rivside</span>
-        </div>
-        <p class="review-text">The best service overall! Very nice seller and quick response, I will make more deals with him for sure!</p>
-        <span class="review-source">Trustpilot · Gamoniz</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-lime">JC</span>
-          <span class="review-name">jesus christ</span>
-        </div>
-        <p class="review-text">So good! Great communication, friendly and super efficient! I can only recommend this website for any of your needs :)</p>
-        <span class="review-source">Trustpilot · Gamoniz</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-sky">D</span>
-          <span class="review-name">Darondo</span>
-        </div>
-        <p class="review-text">bought 40 hom account, awesome seller and told me everything i need to know!</p>
-        <span class="review-source">EpicNPC</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-coral">K</span>
-          <span class="review-name">kevkv.fr.sapk6wbohz</span>
-        </div>
-        <p class="review-text">Sérieux aucun soucis je recommande sans soucis envoie rapide très consciencieux</p>
-        <span class="review-source">eBay</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-indigo">C</span>
-          <span class="review-name">Chrozinel</span>
-        </div>
-        <p class="review-text">Fast and easy, highly recommended!</p>
-        <span class="review-source">EpicNPC</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-orange">L</span>
-          <span class="review-name">LurkerH</span>
-        </div>
-        <p class="review-text">Quick and easy, I went first with no problems! Friendly</p>
-        <span class="review-source">Elitepvpers</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-lime">GW</span>
-          <span class="review-name">Guild Wars Fun</span>
-        </div>
-        <p class="review-text">(1k order) Got my GWAMM without any issues. Great site, great people.</p>
-        <span class="review-source">Trustpilot · Gamoniz</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-sky">H</span>
-          <span class="review-name">Hben</span>
-        </div>
-        <p class="review-text">Top parrain, seconde fois que Boris me parraine. Comme toujours il a tenu son engagement et a été très réactif.</p>
-        <span class="review-source">PrimeParrain</span>
-      </article>
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-orange">A</span>
+              <span class="review-name">Alice&amp;lt;3</span>
+            </div>
+            <p class="review-text">++ Always a positive experience, very fast and very easy.</p>
+            <span class="review-source">Elitepvpers</span>
+          </article>
           <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-lime">H</span>
-          <span class="review-name">haris485</span>
-        </div>
-        <p class="review-text">Great guy, fast and easy trade. 10/10</p>
-        <span class="review-source">Elitepvpers</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-sky">AV</span>
-          <span class="review-name">Andrew Vaillancourt</span>
-        </div>
-        <p class="review-text">Very legit service that you can trust. Turned to this to finish up the consumable titles prior to Wintersday when there wasn&#x27;t much on the market. Good price, super fast delivery. Looking forward to rocking GWAMM in GW2.</p>
-        <span class="review-source">Trustpilot · Gamoniz</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-coral">J</span>
-          <span class="review-name">jendrihartman-0</span>
-        </div>
-        <p class="review-text">Didnt even take 10 mins to deliver 12/10 probably do again</p>
-        <span class="review-source">eBay</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-indigo">U</span>
-          <span class="review-name">UzunMedia</span>
-        </div>
-        <p class="review-text">Fast Trade! Any Time i would go to Bobu</p>
-        <span class="review-source">Elitepvpers</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-orange">K</span>
-          <span class="review-name">Kamala</span>
-        </div>
-        <p class="review-text">Fast delivery and competitive prices</p>
-        <span class="review-source">Trustpilot · Gamoniz</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-lime">T</span>
-          <span class="review-name">Twangis</span>
-        </div>
-        <p class="review-text">nicer person quick trade thx ! MrHashy save and legit, thanks</p>
-        <span class="review-source">Elitepvpers</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-sky">J</span>
-          <span class="review-name">James</span>
-        </div>
-        <p class="review-text">SUPERB Simple. Easy. Straight to the point. Trustworthy. GREAT CUSTOMER SERVICE! After purchase, I was reached out to within 24 hours with all the information I needed, including a step by step guide with pictures. I had some struggles on my end getting things to work. Reached out to their customer support and was immediately contacted. Their customer service went above and beyond my expectations. Worked through with me step by step on what had to be done and helped troubleshoot. We figured out the problem and I have had no issues since. Happy customer!</p>
-        <span class="review-source">Trustpilot · Gamoniz</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-coral">E</span>
-          <span class="review-name">esm1th</span>
-        </div>
-        <p class="review-text">Great seller! Thanks a lot!!!!</p>
-        <span class="review-source">Elitepvpers</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-indigo">I</span>
-          <span class="review-name">imazombie</span>
-        </div>
-        <p class="review-text">Trade went very smoothly, thank you again! Highly recommend!</p>
-        <span class="review-source">Elitepvpers</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-orange">E</span>
-          <span class="review-name">emp223</span>
-        </div>
-        <p class="review-text">Everything worked great, thank you!</p>
-        <span class="review-source">eBay</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-lime">F</span>
-          <span class="review-name">fred</span>
-        </div>
-        <p class="review-text">Les engagements sont plus que respectés par Shiba. J&#x27;étais sceptique au début mais le parrainage s&#x27;est déroulé parfaitement !</p>
-        <span class="review-source">PrimeParrain</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-sky">OB</span>
-          <span class="review-name">OLD BACK</span>
-        </div>
-        <p class="review-text">Trusted, and fast perfect trade</p>
-        <span class="review-source">Elitepvpers</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-coral">X</span>
-          <span class="review-name">Xenphek</span>
-        </div>
-        <p class="review-text">fast easy great trade! SomeSquirrel Fast and Friendly as always.</p>
-        <span class="review-source">Elitepvpers</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-indigo">O</span>
-          <span class="review-name">Ortheus</span>
-        </div>
-        <p class="review-text">Fast, reliable, very good communication!</p>
-        <span class="review-source">EpicNPC</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-orange">R</span>
-          <span class="review-name">Rivside</span>
-        </div>
-        <p class="review-text">The best service overall! Very nice seller and quick response, I will make more deals with him for sure!</p>
-        <span class="review-source">Trustpilot · Gamoniz</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-lime">JC</span>
-          <span class="review-name">jesus christ</span>
-        </div>
-        <p class="review-text">So good! Great communication, friendly and super efficient! I can only recommend this website for any of your needs :)</p>
-        <span class="review-source">Trustpilot · Gamoniz</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-sky">D</span>
-          <span class="review-name">Darondo</span>
-        </div>
-        <p class="review-text">bought 40 hom account, awesome seller and told me everything i need to know!</p>
-        <span class="review-source">EpicNPC</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-coral">K</span>
-          <span class="review-name">kevkv.fr.sapk6wbohz</span>
-        </div>
-        <p class="review-text">Sérieux aucun soucis je recommande sans soucis envoie rapide très consciencieux</p>
-        <span class="review-source">eBay</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-indigo">C</span>
-          <span class="review-name">Chrozinel</span>
-        </div>
-        <p class="review-text">Fast and easy, highly recommended!</p>
-        <span class="review-source">EpicNPC</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-orange">L</span>
-          <span class="review-name">LurkerH</span>
-        </div>
-        <p class="review-text">Quick and easy, I went first with no problems! Friendly</p>
-        <span class="review-source">Elitepvpers</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-lime">GW</span>
-          <span class="review-name">Guild Wars Fun</span>
-        </div>
-        <p class="review-text">(1k order) Got my GWAMM without any issues. Great site, great people.</p>
-        <span class="review-source">Trustpilot · Gamoniz</span>
-      </article>
-      <article class="review-card">
-        <div class="review-card-top">
-          <span class="review-avatar av-sky">H</span>
-          <span class="review-name">Hben</span>
-        </div>
-        <p class="review-text">Top parrain, seconde fois que Boris me parraine. Comme toujours il a tenu son engagement et a été très réactif.</p>
-        <span class="review-source">PrimeParrain</span>
-      </article>
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/09/Andrew-Vaillancourt.png" alt="Andrew Vaillancourt" loading="lazy" decoding="async">
+              <span class="review-name">Andrew Vaillancourt</span>
+            </div>
+            <p class="review-text">Very legit service you can trust. Great price, super fast delivery. Looking forward to rocking GWAMM.</p>
+            <span class="review-source">Trustpilot</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-sky">K</span>
+              <span class="review-name">Kee</span>
+            </div>
+            <p class="review-text">Bobu is fantastic to work with. Great support, fast service, quality individual.</p>
+            <span class="review-source">Trustpilot</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-coral">R</span>
+              <span class="review-name">Rom1</span>
+            </div>
+            <p class="review-text">Had an issue with my order, Bobu directly apologized and gave me some extra stuff on top of what I ordered. 🙏</p>
+            <span class="review-source">G2G</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-indigo">T</span>
+              <span class="review-name">Tyrius</span>
+            </div>
+            <p class="review-text">Bobu is not like other sellers: he perfectly explained how it would go. Smooth transaction, with a secure way to transfer to avoid ban. Will def come back again ❤️</p>
+            <span class="review-source">G2G</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-orange">W</span>
+              <span class="review-name">wldmk</span>
+            </div>
+            <p class="review-text">Quick communication, super quick delivery and everything worked perfectly.</p>
+            <span class="review-source">eBay</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/US-flag.png" alt="the_shivers" loading="lazy" decoding="async">
+              <span class="review-name">the_shivers</span>
+            </div>
+            <p class="review-text">Very friendly service. Honest, prompt, and helpful. Had no issues whatsoever.</p>
+            <span class="review-source">EpicNPC</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-sky">T</span>
+              <span class="review-name">Tangologie</span>
+            </div>
+            <p class="review-text">Just concluded a 4 figure trade with Bobu sending the money first. Everything went perfectly smooth. He answered quickly, did everything as described. Very friendly, easy to reach person. I would recommend this seller over and over!</p>
+            <span class="review-source">Elitepvpers</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/Naruto-1.jpg" alt="InFusion121" loading="lazy" decoding="async">
+              <span class="review-name">InFusion121</span>
+            </div>
+            <p class="review-text">100% recommend this seller AWESOME delivery.. was so helpful fast responses and super patient with my dumbass 200/100 rating</p>
+            <span class="review-source">Elitepvpers</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-indigo">PE</span>
+              <span class="review-name">Prinzessin Einhorn</span>
+            </div>
+            <p class="review-text">Best third-party service ever. Friendly, fast, and extremely professional. Highly recommended.</p>
+            <span class="review-source">Trustpilot</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-orange">K</span>
+              <span class="review-name">KT</span>
+            </div>
+            <p class="review-text">I have been doing business with Bobu for many years now, never had an issue. Truth is, I recommend Bobu to anyone, who is looking for any gaming service. Very friendly, perfect service.</p>
+            <span class="review-source">Trustpilot</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-lime">G</span>
+              <span class="review-name">Georgio</span>
+            </div>
+            <p class="review-text">6 years later, Bobu is still my main provider, I could not find someone as professional and fast as him.</p>
+            <span class="review-source">G2G</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/Memzware-e1764276660257.webp" alt="Memzware" loading="lazy" decoding="async">
+              <span class="review-name">Memzware</span>
+            </div>
+            <p class="review-text">Fast trade and good seller. Recommend.</p>
+            <span class="review-source">Elitepvpers</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/netherlands.png" alt="TimeTyrant" loading="lazy" decoding="async">
+              <span class="review-name">TimeTyrant</span>
+            </div>
+            <p class="review-text">I asked for products he was not even advertising and he got them for me within a day. Best seller, I have used his service before and will again.</p>
+            <span class="review-source">EpicNPC</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/09/Fatih-oren.png" alt="Fatih ören" loading="lazy" decoding="async">
+              <span class="review-name">Fatih ören</span>
+            </div>
+            <p class="review-text">Bobu is the best middleman. 10000% trustworthy.</p>
+            <span class="review-source">Trustpilot</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-orange">T</span>
+              <span class="review-name">Ted74</span>
+            </div>
+            <p class="review-text">Bobu is my go-to guy when I need virtual goods, it has been years he helps me with my gaming needs. 💯</p>
+            <span class="review-source">G2G</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-orange">A</span>
+              <span class="review-name">Alice&amp;lt;3</span>
+            </div>
+            <p class="review-text">++ Always a positive experience, very fast and very easy.</p>
+            <span class="review-source">Elitepvpers</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/09/Andrew-Vaillancourt.png" alt="Andrew Vaillancourt" loading="lazy" decoding="async">
+              <span class="review-name">Andrew Vaillancourt</span>
+            </div>
+            <p class="review-text">Very legit service you can trust. Great price, super fast delivery. Looking forward to rocking GWAMM.</p>
+            <span class="review-source">Trustpilot</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-sky">K</span>
+              <span class="review-name">Kee</span>
+            </div>
+            <p class="review-text">Bobu is fantastic to work with. Great support, fast service, quality individual.</p>
+            <span class="review-source">Trustpilot</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-coral">R</span>
+              <span class="review-name">Rom1</span>
+            </div>
+            <p class="review-text">Had an issue with my order, Bobu directly apologized and gave me some extra stuff on top of what I ordered. 🙏</p>
+            <span class="review-source">G2G</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-indigo">T</span>
+              <span class="review-name">Tyrius</span>
+            </div>
+            <p class="review-text">Bobu is not like other sellers: he perfectly explained how it would go. Smooth transaction, with a secure way to transfer to avoid ban. Will def come back again ❤️</p>
+            <span class="review-source">G2G</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-orange">W</span>
+              <span class="review-name">wldmk</span>
+            </div>
+            <p class="review-text">Quick communication, super quick delivery and everything worked perfectly.</p>
+            <span class="review-source">eBay</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/US-flag.png" alt="the_shivers" loading="lazy" decoding="async">
+              <span class="review-name">the_shivers</span>
+            </div>
+            <p class="review-text">Very friendly service. Honest, prompt, and helpful. Had no issues whatsoever.</p>
+            <span class="review-source">EpicNPC</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-sky">T</span>
+              <span class="review-name">Tangologie</span>
+            </div>
+            <p class="review-text">Just concluded a 4 figure trade with Bobu sending the money first. Everything went perfectly smooth. He answered quickly, did everything as described. Very friendly, easy to reach person. I would recommend this seller over and over!</p>
+            <span class="review-source">Elitepvpers</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/Naruto-1.jpg" alt="InFusion121" loading="lazy" decoding="async">
+              <span class="review-name">InFusion121</span>
+            </div>
+            <p class="review-text">100% recommend this seller AWESOME delivery.. was so helpful fast responses and super patient with my dumbass 200/100 rating</p>
+            <span class="review-source">Elitepvpers</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-indigo">PE</span>
+              <span class="review-name">Prinzessin Einhorn</span>
+            </div>
+            <p class="review-text">Best third-party service ever. Friendly, fast, and extremely professional. Highly recommended.</p>
+            <span class="review-source">Trustpilot</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-orange">K</span>
+              <span class="review-name">KT</span>
+            </div>
+            <p class="review-text">I have been doing business with Bobu for many years now, never had an issue. Truth is, I recommend Bobu to anyone, who is looking for any gaming service. Very friendly, perfect service.</p>
+            <span class="review-source">Trustpilot</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-lime">G</span>
+              <span class="review-name">Georgio</span>
+            </div>
+            <p class="review-text">6 years later, Bobu is still my main provider, I could not find someone as professional and fast as him.</p>
+            <span class="review-source">G2G</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/Memzware-e1764276660257.webp" alt="Memzware" loading="lazy" decoding="async">
+              <span class="review-name">Memzware</span>
+            </div>
+            <p class="review-text">Fast trade and good seller. Recommend.</p>
+            <span class="review-source">Elitepvpers</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/netherlands.png" alt="TimeTyrant" loading="lazy" decoding="async">
+              <span class="review-name">TimeTyrant</span>
+            </div>
+            <p class="review-text">I asked for products he was not even advertising and he got them for me within a day. Best seller, I have used his service before and will again.</p>
+            <span class="review-source">EpicNPC</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/09/Fatih-oren.png" alt="Fatih ören" loading="lazy" decoding="async">
+              <span class="review-name">Fatih ören</span>
+            </div>
+            <p class="review-text">Bobu is the best middleman. 10000% trustworthy.</p>
+            <span class="review-source">Trustpilot</span>
+          </article>
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="review-avatar-letter av-orange">T</span>
+              <span class="review-name">Ted74</span>
+            </div>
+            <p class="review-text">Bobu is my go-to guy when I need virtual goods, it has been years he helps me with my gaming needs. 💯</p>
+            <span class="review-source">G2G</span>
+          </article>
         </div>
       </div>
     </section>
@@ -1575,14 +1228,14 @@
           <a class="ext-source-link" href="https://www.epicnpc.com/members/bobu.275961/#feedback" target="_blank" rel="noopener">
             <span>
               <span class="ext-source-name">EpicNPC</span>
-              <span class="ext-source-meta">bobu · feedback</span>
+              <span class="ext-source-meta">Bobu · feedback</span>
             </span>
             <span class="ext-source-arrow" aria-hidden="true">↗</span>
           </a>
           <a class="ext-source-link" href="https://www.elitepvpers.com/theblackmarket/profile/4159412" target="_blank" rel="noopener">
             <span>
               <span class="ext-source-name">Elitepvpers</span>
-              <span class="ext-source-meta">profile #4159412</span>
+              <span class="ext-source-meta">Bobu</span>
             </span>
             <span class="ext-source-arrow" aria-hidden="true">↗</span>
           </a>
@@ -1593,10 +1246,24 @@
             </span>
             <span class="ext-source-arrow" aria-hidden="true">↗</span>
           </a>
+          <a class="ext-source-link" href="https://gamoniz.com/reviews/" target="_blank" rel="noopener">
+            <span>
+              <span class="ext-source-name">Gamoniz</span>
+              <span class="ext-source-meta">all reviews aggregated</span>
+            </span>
+            <span class="ext-source-arrow" aria-hidden="true">↗</span>
+          </a>
           <a class="ext-source-link" href="https://primeparrain.fr/a-propos/#avis" target="_blank" rel="noopener">
             <span>
               <span class="ext-source-name">PrimeParrain</span>
               <span class="ext-source-meta">primeparrain.fr · avis</span>
+            </span>
+            <span class="ext-source-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="ext-source-link" href="https://gamoniz.com" target="_blank" rel="noopener">
+            <span>
+              <span class="ext-source-name">Gamoniz · Coaching</span>
+              <span class="ext-source-meta">RMT Accelerator</span>
             </span>
             <span class="ext-source-arrow" aria-hidden="true">↗</span>
           </a>
@@ -1657,7 +1324,7 @@
       </div>
       <nav class="footer-nav" aria-label="Footer">
         <a href="/#work">Services</a>
-        <a href="/#contact">Contact</a>
+        <a href="/me">About</a>
         <a href="/projects">Projects</a>
         <a href="/reviews">Reviews</a>
       </nav>
@@ -1681,7 +1348,6 @@
   </footer>
 
   <script>
-    // Mobile menu
     const nav = document.getElementById('nav');
     const navToggle = document.getElementById('navToggle');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -1708,7 +1374,6 @@
       if (event.key === 'Escape') closeMobileMenu();
     });
 
-    // Reveal observer
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         if (e.isIntersecting) {
