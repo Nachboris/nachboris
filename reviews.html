@@ -5,6 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Reviews — Boris Nachbaur</title>
   <meta name="description" content="2,250+ verified reviews from twelve years of operating in trust-scarce markets. Public sources, real customers, no edits." />
+  <link rel="canonical" href="https://nachboris.fr/reviews" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Boris Nachbaur" />
+  <meta property="og:title" content="Reviews — Boris Nachbaur" />
+  <meta property="og:description" content="2,250+ verified reviews from twelve years of operating in trust-scarce markets. Public sources, real customers, no edits." />
+  <meta property="og:url" content="https://nachboris.fr/reviews" />
+  <meta property="og:image" content="https://nachboris.fr/assets/og-image.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="631" />
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Reviews — Boris Nachbaur" />
+  <meta name="twitter:description" content="2,250+ verified reviews from twelve years of operating in trust-scarce markets. Public sources, real customers, no edits." />
+  <meta name="twitter:image" content="https://nachboris.fr/assets/og-image.webp" />
 
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
   <link rel="shortcut icon" href="/favicon.ico" />
@@ -17,6 +33,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..500&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <style>
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 1rem;
+      z-index: 9999;
+      padding: 0.6rem 1.1rem;
+      background: var(--ink);
+      color: var(--bg);
+      font-family: var(--sans);
+      font-size: var(--fs-15);
+      font-weight: 600;
+      border-radius: 0 0 var(--r-sm) var(--r-sm);
+      text-decoration: none;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 0; }
+    
     :root {
       --bg: #F7F5F2;
       --bg-soft: #EFECE6;
@@ -843,6 +876,8 @@
   </style>
 </head>
 <body>
+  <a href="#top" class="skip-link">Skip to content</a>
+
   <div id="grain" aria-hidden="true"></div>
 
   <nav class="nav" id="nav">
