@@ -553,6 +553,59 @@
       color: var(--ink-soft);
     }
 
+    /* === Stat counter animation === */
+    .stat-num .count-val { display: inline; }
+
+    /* === Paper texture for confession card === */
+    .confession-card {
+      background: #fdfaf6;
+    }
+    .confession-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: var(--r-md);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .confession-card > * { position: relative; z-index: 1; }
+    /* Refined scotch tape */
+    .confession-card::before {
+      content: "";
+      position: absolute;
+      top: -11px;
+      left: 1.6rem;
+      width: 64px;
+      height: 16px;
+      background: linear-gradient(135deg, rgba(255,200,150,0.45) 0%, rgba(255,220,180,0.28) 50%, rgba(255,200,150,0.42) 100%);
+      border: 1px solid rgba(255, 160, 90, 0.28);
+      border-radius: 2px;
+      box-shadow: 0 2px 6px -3px rgba(200, 120, 40, 0.25);
+      transform: rotate(-2deg);
+      backdrop-filter: blur(1px);
+    }
+
+    /* === Marquee depth (3D perspective) === */
+    .marquee {
+      perspective: 1200px;
+    }
+    .marquee-track {
+      transform-style: preserve-3d;
+    }
+
+    /* === Pattern attribution === */
+    .pattern-attribution {
+      display: block;
+      margin-top: 0.65rem;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--ink-mute);
+      letter-spacing: 0.01em;
+    }
+
     /* === Marquee === */
     .marquee-section { padding-top: clamp(3.5rem, 7vw, 5.5rem); padding-bottom: clamp(2.5rem, 5vw, 4rem); }
     .marquee-head {
@@ -568,9 +621,10 @@
       position: relative;
       width: 100%;
       overflow: hidden;
-      padding: 0.5rem 0;
-      mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-      -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+      padding: 0.75rem 0;
+      mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+      perspective: 1200px;
     }
     .marquee + .marquee { margin-top: 1rem; }
 
@@ -804,9 +858,9 @@
       <div class="page-head-mesh" aria-hidden="true"></div>
       <div class="wrap">
         <div class="page-head-inner reveal">
-          <span class="eyebrow">Reviews &amp; testimonials</span>
+          <span class="eyebrow">The public record</span>
           <h1>2,250+ verified reviews. <em>100% satisfaction.</em></h1>
-          <p class="lede">Twelve years of operating in trust-scarce markets. Every review here comes from a real transaction on a public platform — Trustpilot, eBay, PrimeParrain and more. No edits. No deletions. No screenshots from a private dashboard.</p>
+          <p class="lede">Here's twelve years of receipts, operating in trust-scarce markets. Every review here comes from a real transaction on a public platform — no edits, no deletions, no screenshots from a private dashboard.</p>
         </div>
       </div>
     </section>
@@ -815,19 +869,19 @@
       <div class="wrap">
         <div class="stat-grid reveal-stagger">
           <div class="stat-cell">
-            <span class="stat-num"><em>2,250+</em></span>
+            <span class="stat-num"><em><span class="count-val" data-target="2250" data-suffix="+">2,250+</span></em></span>
             <span class="stat-label">Verified reviews</span>
           </div>
           <div class="stat-cell">
-            <span class="stat-num">100<em>%</em></span>
+            <span class="stat-num"><span class="count-val" data-target="100" data-suffix="%">100</span><em>%</em></span>
             <span class="stat-label">Positive feedback</span>
           </div>
           <div class="stat-cell">
-            <span class="stat-num">12 <em>yrs</em></span>
+            <span class="stat-num"><span class="count-val" data-target="12" data-suffix="">12</span> <em>yrs</em></span>
             <span class="stat-label">Of operations</span>
           </div>
           <div class="stat-cell">
-            <span class="stat-num">7 <em>sources</em></span>
+            <span class="stat-num"><span class="count-val" data-target="7" data-suffix="">7</span> <em>sources</em></span>
             <span class="stat-label">Independent platforms</span>
           </div>
         </div>
@@ -1287,21 +1341,25 @@
             <span class="pattern-num">01</span>
             <h3 class="pattern-title">Following up after delivery.</h3>
             <p class="pattern-desc">"Bobu followed up for 5 days just to make sure I got my bonus." The job isn't done at "delivered" — it's done when you confirm everything works.</p>
+            <span class="pattern-attribution">— Trilosk, Trustpilot</span>
           </div>
           <div class="pattern-item">
             <span class="pattern-num">02</span>
             <h3 class="pattern-title">Fixing issues before being asked.</h3>
             <p class="pattern-desc">"Had an issue with my order, he directly apologized and gave me extra stuff on top." Problems happen. The difference is who notices first.</p>
+            <span class="pattern-attribution">— Rom1, G2G</span>
           </div>
           <div class="pattern-item">
             <span class="pattern-num">03</span>
             <h3 class="pattern-title">Patience with the "dumb questions".</h3>
             <p class="pattern-desc">"Super patient as I had asked a lot of questions." Most clients are skeptical the first time. Walking them through is the work.</p>
+            <span class="pattern-attribution">— Lan, Trustpilot</span>
           </div>
           <div class="pattern-item">
             <span class="pattern-num">04</span>
             <h3 class="pattern-title">Showing up for years, not weeks.</h3>
             <p class="pattern-desc">"6 years later, still my main provider." Trust isn't a one-shot thing. The receipts compound.</p>
+            <span class="pattern-attribution">— Georgio, G2G</span>
           </div>
         </div>
       </div>
@@ -1311,8 +1369,8 @@
       <div class="wrap">
         <div class="ext-sources-head reveal">
           <span class="eyebrow">Verify everything</span>
-          <h2>The full set, <em>on the source platforms.</em></h2>
-          <p>Open any of the links below to read every review, with timestamps, transaction history and platform-side verification.</p>
+          <h2>Don't take my word for it.</h2>
+          <p>Open any link below to read every review, with timestamps, transaction history and platform-side verification.</p>
         </div>
 
         <div class="ext-sources-grid reveal-stagger">
@@ -1347,7 +1405,7 @@
           <a class="ext-source-link" href="https://www.g2g.com/r/73712348a0f4405290f172deb5774edf" target="_blank" rel="noopener">
             <span>
               <span class="ext-source-name">G2G</span>
-              <span class="ext-source-meta">RMT Platform</span>
+              <span class="ext-source-meta">seller profile</span>
             </span>
             <span class="ext-source-arrow" aria-hidden="true">↗</span>
           </a>
@@ -1453,6 +1511,7 @@
   </footer>
 
   <script>
+    /* === Mobile menu === */
     const nav = document.getElementById('nav');
     const navToggle = document.getElementById('navToggle');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -1475,10 +1534,9 @@
 
     navToggle.addEventListener('click', toggleMobileMenu);
     mobileMenu.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMobileMenu));
-    window.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') closeMobileMenu();
-    });
+    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMobileMenu(); });
 
+    /* === Reveal on scroll === */
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         if (e.isIntersecting) {
@@ -1488,6 +1546,143 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => io.observe(el));
+
+    /* === Animated stat counters === */
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const animateCounter = (el) => {
+      if (prefersReducedMotion) return;
+      const target = parseInt(el.dataset.target, 10);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1400;
+      const start = performance.now();
+
+      const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+
+      const tick = (now) => {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const val = Math.round(easeOut(progress) * target);
+        el.textContent = target === 2250
+          ? val.toLocaleString('en-US') + suffix
+          : val + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+
+      el.textContent = '0' + suffix;
+      requestAnimationFrame(tick);
+    };
+
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('.count-val').forEach(animateCounter);
+          statsObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.4 });
+
+    const statGrid = document.querySelector('.stat-grid');
+    if (statGrid) statsObserver.observe(statGrid);
+
+    /* === Parallax on header mesh === */
+    const mesh = document.querySelector('.page-head-mesh');
+    if (mesh && !prefersReducedMotion) {
+      let ticking = false;
+      const onScroll = () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            const scrollY = window.scrollY;
+            mesh.style.transform = `translateY(${scrollY * 0.22}px)`;
+            ticking = false;
+          });
+          ticking = true;
+        }
+      };
+      // Only on non-mobile to avoid jank
+      if (window.innerWidth >= 768) {
+        window.addEventListener('scroll', onScroll, { passive: true });
+      }
+    }
+
+    /* === Drag-to-scroll on marquees (mobile + desktop) === */
+    document.querySelectorAll('.marquee').forEach((marquee) => {
+      const track = marquee.querySelector('.marquee-track');
+      if (!track) return;
+
+      let isDragging = false;
+      let startX = 0;
+      let scrollStart = 0;
+      let dragDelta = 0;
+      let velX = 0;
+      let lastX = 0;
+      let lastTime = 0;
+      let rafId = null;
+
+      const getX = (e) => e.touches ? e.touches[0].clientX : e.clientX;
+
+      const onStart = (e) => {
+        isDragging = true;
+        startX = getX(e);
+        dragDelta = 0;
+        velX = 0;
+        lastX = startX;
+        lastTime = performance.now();
+        track.style.animationPlayState = 'paused';
+        marquee.style.cursor = 'grabbing';
+        if (rafId) cancelAnimationFrame(rafId);
+      };
+
+      const onMove = (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = getX(e);
+        const now = performance.now();
+        const dt = now - lastTime || 16;
+        velX = (x - lastX) / dt * 16;
+        lastX = x;
+        lastTime = now;
+        dragDelta += x - startX;
+        startX = x;
+        // Shift the track inline without breaking the animation offset
+        const curr = new DOMMatrix(getComputedStyle(track).transform).m41;
+        track.style.transform = `translateX(${curr + (x - startX + dragDelta - dragDelta)}px)`;
+        // Simpler: just nudge via marginLeft offset stored as a var
+        const prev = parseFloat(track.dataset.drag || '0');
+        const next = prev + (x - (parseFloat(track.dataset.lastX) || x));
+        track.dataset.drag = next;
+        track.dataset.lastX = x;
+        track.style.marginLeft = next + 'px';
+      };
+
+      const onEnd = () => {
+        if (!isDragging) return;
+        isDragging = false;
+        marquee.style.cursor = '';
+
+        // Momentum glide
+        const momentum = () => {
+          velX *= 0.92;
+          const prev = parseFloat(track.dataset.drag || '0');
+          const next = prev + velX;
+          track.dataset.drag = next;
+          track.style.marginLeft = next + 'px';
+          if (Math.abs(velX) > 0.3) {
+            rafId = requestAnimationFrame(momentum);
+          } else {
+            track.style.animationPlayState = '';
+          }
+        };
+        rafId = requestAnimationFrame(momentum);
+      };
+
+      marquee.addEventListener('mousedown', onStart);
+      marquee.addEventListener('touchstart', onStart, { passive: true });
+      window.addEventListener('mousemove', onMove);
+      marquee.addEventListener('touchmove', onMove, { passive: false });
+      window.addEventListener('mouseup', onEnd);
+      marquee.addEventListener('touchend', onEnd);
+    });
   </script>
 </body>
 </html>
