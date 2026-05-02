@@ -10,6 +10,8 @@
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
+  <link rel="preconnect" href="https://gamoniz.com" />
+  <link rel="preconnect" href="https://primeparrain.fr" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..500&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -403,29 +405,38 @@
     .confession-card {
       position: relative;
       padding: 1.6rem 1.5rem 1.4rem;
-      background: var(--bg);
+      background: #fdfaf6;
       border: 1px solid var(--rule);
       border-radius: var(--r-md);
       box-shadow: 0 24px 40px -32px rgba(15, 15, 23, 0.18);
-      transform: rotate(-1.2deg);
-      transition: transform 0.4s var(--soft);
     }
-    .confession-card:hover { transform: rotate(0deg) translateY(-2px); }
-    @media (max-width: 540px) {
-      .confession-card { transform: rotate(0deg); }
-    }
+    /* Scotch tape */
     .confession-card::before {
       content: "";
       position: absolute;
-      top: -10px;
-      left: 1.5rem;
-      width: 60px;
-      height: 14px;
-      background: rgba(255, 107, 53, 0.25);
-      border: 1px solid rgba(255, 107, 53, 0.35);
+      top: -11px;
+      left: 1.6rem;
+      width: 64px;
+      height: 16px;
+      background: linear-gradient(135deg, rgba(255,200,150,0.45) 0%, rgba(255,220,180,0.28) 50%, rgba(255,200,150,0.42) 100%);
+      border: 1px solid rgba(255, 160, 90, 0.28);
       border-radius: 2px;
-      transform: rotate(-3deg);
+      box-shadow: 0 2px 6px -3px rgba(200, 120, 40, 0.25);
+      transform: rotate(-2deg);
+      backdrop-filter: blur(1px);
     }
+    /* Paper noise texture */
+    .confession-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: var(--r-md);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .confession-card > * { position: relative; z-index: 1; }
     .confession-card-top {
       display: flex;
       align-items: center;
@@ -553,39 +564,61 @@
       color: var(--ink-soft);
     }
 
+    /* === Global film grain === */
+    #grain {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 300px 300px;
+      background-repeat: repeat;
+    }
+
+    /* === Source strip brand colors on hover === */
+    .src-trustpilot:hover   { color: #00B67A; opacity: 1; }
+    .src-ebay:hover         { color: #E53238; opacity: 1; }
+    .src-g2g:hover          { color: #FF6B35; opacity: 1; }
+    .src-epicnpc:hover      { color: #4F6BF4; opacity: 1; }
+    .src-elitepvpers:hover  { color: #2563EB; opacity: 1; }
+    .src-1parrainage:hover  { color: var(--indigo); opacity: 1; }
+    .src-superparrain:hover { color: #0EA5E9; opacity: 1; }
+
+    /* === Confession card spring entry === */
+    .confession-card {
+      transform: rotate(-10deg);
+      transition: transform 0.85s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s var(--soft);
+    }
+    .confession-inner.in .confession-card { transform: rotate(-1.2deg); }
+    .confession-card:hover { transform: rotate(0deg) translateY(-2px) !important; }
+    @media (max-width: 540px) {
+      .confession-card { transform: rotate(0deg) !important; }
+    }
+
+    /* === Pattern 3D tilt === */
+    .pattern-item {
+      will-change: transform;
+      transition: transform 0.12s ease, border-color 0.3s var(--soft), box-shadow 0.3s var(--soft);
+    }
+    .pattern-item:hover {
+      /* JS overrides transform — just handle border/shadow here */
+      border-color: rgba(15,15,23,0.14);
+      box-shadow: 0 14px 24px -20px rgba(15,15,23,0.18);
+    }
+
     /* === Stat counter animation === */
     .stat-num .count-val { display: inline; }
+    .stat-num.pulse {
+      animation: stat-pulse 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    @keyframes stat-pulse {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.06); }
+      100% { transform: scale(1); }
+    }
 
-    /* === Paper texture for confession card === */
-    .confession-card {
-      background: #fdfaf6;
-    }
-    .confession-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: var(--r-md);
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
-      background-size: 200px 200px;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .confession-card > * { position: relative; z-index: 1; }
-    /* Refined scotch tape */
-    .confession-card::before {
-      content: "";
-      position: absolute;
-      top: -11px;
-      left: 1.6rem;
-      width: 64px;
-      height: 16px;
-      background: linear-gradient(135deg, rgba(255,200,150,0.45) 0%, rgba(255,220,180,0.28) 50%, rgba(255,200,150,0.42) 100%);
-      border: 1px solid rgba(255, 160, 90, 0.28);
-      border-radius: 2px;
-      box-shadow: 0 2px 6px -3px rgba(200, 120, 40, 0.25);
-      transform: rotate(-2deg);
-      backdrop-filter: blur(1px);
-    }
+
 
     /* === Marquee depth (3D perspective) === */
     .marquee {
@@ -810,6 +843,8 @@
   </style>
 </head>
 <body>
+  <div id="grain" aria-hidden="true"></div>
+
   <nav class="nav" id="nav">
     <div class="nav-inner">
       <div class="nav-brand">
@@ -893,41 +928,41 @@
         <div class="source-strip-inner reveal">
           <span class="source-strip-label">Verified on</span>
           <div class="source-strip-logos">
-            <a href="https://www.trustpilot.com/review/gamoniz.com" target="_blank" rel="noopener" class="src-logo" aria-label="Trustpilot" title="Trustpilot">
+            <a href="https://www.trustpilot.com/review/gamoniz.com" target="_blank" rel="noopener" class="src-logo src-trustpilot" aria-label="Trustpilot" title="Trustpilot">
               <svg viewBox="0 0 110 28" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                 <path d="M14 2 L17.1 10.4 L26 10.4 L18.85 15.55 L21.55 24 L14 18.85 L6.45 24 L9.15 15.55 L2 10.4 L10.9 10.4 Z"/>
                 <text x="32" y="20" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="currentColor">Trustpilot</text>
               </svg>
             </a>
-            <a href="https://www.ebay.com/usr/cdk-now?_tab=feedback" target="_blank" rel="noopener" class="src-logo" aria-label="eBay" title="eBay">
+            <a href="https://www.ebay.com/usr/cdk-now?_tab=feedback" target="_blank" rel="noopener" class="src-logo src-ebay" aria-label="eBay" title="eBay">
               <svg viewBox="0 0 56 28" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                 <text x="0" y="22" font-family="Inter, sans-serif" font-size="22" font-weight="800" font-style="italic" letter-spacing="-1" fill="currentColor">ebay</text>
               </svg>
             </a>
-            <a href="https://www.g2g.com/r/73712348a0f4405290f172deb5774edf" target="_blank" rel="noopener" class="src-logo" aria-label="G2G" title="G2G Marketplace">
+            <a href="https://www.g2g.com/r/73712348a0f4405290f172deb5774edf" target="_blank" rel="noopener" class="src-logo src-g2g" aria-label="G2G" title="G2G Marketplace">
               <svg viewBox="0 0 48 28" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                 <text x="0" y="22" font-family="Inter, sans-serif" font-size="22" font-weight="900" letter-spacing="-1" fill="currentColor">G2G</text>
               </svg>
             </a>
-            <a href="https://www.epicnpc.com/members/bobu.275961/#feedback" target="_blank" rel="noopener" class="src-logo" aria-label="EpicNPC" title="EpicNPC">
+            <a href="https://www.epicnpc.com/members/bobu.275961/#feedback" target="_blank" rel="noopener" class="src-logo src-epicnpc" aria-label="EpicNPC" title="EpicNPC">
               <svg viewBox="0 0 78 28" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                 <rect x="2" y="6" width="16" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
                 <text x="22" y="20" font-family="Inter, sans-serif" font-size="14" font-weight="700" letter-spacing="-0.3" fill="currentColor">EpicNPC</text>
               </svg>
             </a>
-            <a href="https://www.elitepvpers.com/theblackmarket/profile/4159412" target="_blank" rel="noopener" class="src-logo" aria-label="Elitepvpers" title="Elitepvpers">
+            <a href="https://www.elitepvpers.com/theblackmarket/profile/4159412" target="_blank" rel="noopener" class="src-logo src-elitepvpers" aria-label="Elitepvpers" title="Elitepvpers">
               <svg viewBox="0 0 92 28" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                 <path d="M2 5 L18 5 L18 8 L5 8 L5 12 L16 12 L16 15 L5 15 L5 19 L18 19 L18 22 L2 22 Z" fill="currentColor"/>
                 <text x="22" y="20" font-family="Inter, sans-serif" font-size="13" font-weight="700" letter-spacing="-0.3" fill="currentColor">litepvpers</text>
               </svg>
             </a>
-            <a href="https://www.1parrainage.com/listeannonces_39516_Shiba%20Deal.php" target="_blank" rel="noopener" class="src-logo" aria-label="1parrainage" title="1parrainage">
+            <a href="https://www.1parrainage.com/listeannonces_39516_Shiba%20Deal.php" target="_blank" rel="noopener" class="src-logo src-1parrainage" aria-label="1parrainage" title="1parrainage">
               <svg viewBox="0 0 96 28" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                 <text x="0" y="22" font-family="Inter, sans-serif" font-size="22" font-weight="900" letter-spacing="-1" fill="currentColor">1</text>
                 <text x="11" y="22" font-family="Inter, sans-serif" font-size="13" font-weight="600" letter-spacing="-0.3" fill="currentColor">parrainage</text>
               </svg>
             </a>
-            <a href="https://www.super-parrain.com/users/kulkuris" target="_blank" rel="noopener" class="src-logo" aria-label="super-parrain" title="super-parrain">
+            <a href="https://www.super-parrain.com/users/kulkuris" target="_blank" rel="noopener" class="src-logo src-superparrain" aria-label="super-parrain" title="super-parrain">
               <svg viewBox="0 0 102 28" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                 <text x="0" y="20" font-family="Inter, sans-serif" font-size="13" font-weight="700" letter-spacing="-0.3" fill="currentColor">super-parrain</text>
               </svg>
@@ -948,7 +983,7 @@
         <div class="marquee-track">
           <article class="review-card">
             <div class="review-card-top">
-              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/09/Trilosk.png" alt="Trilosk" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-indigo" style="display:none;">T</span>
+              <img class="review-avatar-img" width="34" height="34" src="https://gamoniz.com/wp-content/uploads/2025/09/Trilosk.png" alt="Trilosk" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-indigo" style="display:none;">T</span>
               <span class="review-name">Trilosk</span>
             </div>
             <p class="review-text">Best customer service I have ever seen in gaming. Bobu followed up for 5 days just to make sure I got my bonus. Incredible.</p>
@@ -964,7 +999,7 @@
           </article>
           <article class="review-card">
             <div class="review-card-top">
-              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/12/Dean-Bolt.png" alt="Dean Bolt" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-coral" style="display:none;">DB</span>
+              <img class="review-avatar-img" width="34" height="34" src="https://gamoniz.com/wp-content/uploads/2025/12/Dean-Bolt.png" alt="Dean Bolt" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-coral" style="display:none;">DB</span>
               <span class="review-name">Dean Bolt</span>
             </div>
             <p class="review-text">Simple no hassle transaction, faultless guarantee backs up their service. Does exactly what you pay for with no hidden extras.</p>
@@ -972,7 +1007,7 @@
           </article>
           <article class="review-card">
             <div class="review-card-top">
-              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/netherlands.png" alt="TimeTyrant" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-orange" style="display:none;">T</span>
+              <img class="review-avatar-img" width="34" height="34" src="https://gamoniz.com/wp-content/uploads/2025/11/netherlands.png" alt="TimeTyrant" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-orange" style="display:none;">T</span>
               <span class="review-name">TimeTyrant</span>
             </div>
             <p class="review-text">I asked for products he was not even advertising and he got them for me within a day. Best seller, I have used his service before and will again.</p>
@@ -980,7 +1015,7 @@
           </article>
           <article class="review-card">
             <div class="review-card-top">
-              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/09/Andrew-Vaillancourt.png" alt="Andrew Vaillancourt" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-sky" style="display:none;">AV</span>
+              <img class="review-avatar-img" width="34" height="34" src="https://gamoniz.com/wp-content/uploads/2025/09/Andrew-Vaillancourt.png" alt="Andrew Vaillancourt" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-sky" style="display:none;">AV</span>
               <span class="review-name">Andrew Vaillancourt</span>
             </div>
             <p class="review-text">Very legit service you can trust. Great price, super fast delivery. Looking forward to rocking GWAMM.</p>
@@ -988,7 +1023,7 @@
           </article>
           <article class="review-card">
             <div class="review-card-top">
-              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/09/Fatih-oren.png" alt="Fatih ören" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-indigo" style="display:none;">FÖ</span>
+              <img class="review-avatar-img" width="34" height="34" src="https://gamoniz.com/wp-content/uploads/2025/09/Fatih-oren.png" alt="Fatih ören" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-indigo" style="display:none;">FÖ</span>
               <span class="review-name">Fatih ören</span>
             </div>
             <p class="review-text">Bobu is the best middleman. 10000% trustworthy.</p>
@@ -996,7 +1031,7 @@
           </article>
           <article class="review-card">
             <div class="review-card-top">
-              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/Naruto-1.jpg" alt="InFusion121" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-lime" style="display:none;">I</span>
+              <img class="review-avatar-img" width="34" height="34" src="https://gamoniz.com/wp-content/uploads/2025/11/Naruto-1.jpg" alt="InFusion121" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-lime" style="display:none;">I</span>
               <span class="review-name">InFusion121</span>
             </div>
             <p class="review-text">100% recommend this seller AWESOME delivery.. was so helpful fast responses and super patient with my dumbass 200/100 rating</p>
@@ -1004,7 +1039,7 @@
           </article>
           <article class="review-card">
             <div class="review-card-top">
-              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/09/Clement-Alexandre.png" alt="Clément Alexandre" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-coral" style="display:none;">CA</span>
+              <img class="review-avatar-img" width="34" height="34" src="https://gamoniz.com/wp-content/uploads/2025/09/Clement-Alexandre.png" alt="Clément Alexandre" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-coral" style="display:none;">CA</span>
               <span class="review-name">Clément Alexandre</span>
             </div>
             <p class="review-text">Reliable, fast and always helpful. I use their service often and it is always perfect.</p>
@@ -1012,7 +1047,7 @@
           </article>
           <article class="review-card">
             <div class="review-card-top">
-              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/sweden.png" alt="TheWld" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-orange" style="display:none;">T</span>
+              <img class="review-avatar-img" width="34" height="34" src="https://gamoniz.com/wp-content/uploads/2025/11/sweden.png" alt="TheWld" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-orange" style="display:none;">T</span>
               <span class="review-name">TheWld</span>
             </div>
             <p class="review-text">Fast, reliable, very good communication. Super smooth experience.</p>
@@ -1020,7 +1055,7 @@
           </article>
           <article class="review-card">
             <div class="review-card-top">
-              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/united-kingdom.png" alt="Oli Chesters" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-sky" style="display:none;">OC</span>
+              <img class="review-avatar-img" width="34" height="34" src="https://gamoniz.com/wp-content/uploads/2025/11/united-kingdom.png" alt="Oli Chesters" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-sky" style="display:none;">OC</span>
               <span class="review-name">Oli Chesters</span>
             </div>
             <p class="review-text">Quick and easy transaction. Very helpful and polite on Skype. Excellent service.</p>
@@ -1029,7 +1064,7 @@
           <article class="review-card">
             <span class="review-fr-tag" title="Avis en français" aria-hidden="true">🇫🇷</span>
             <div class="review-card-top">
-              <img class="review-avatar-img" src="https://primeparrain.fr/wp-content/uploads/2025/09/Kent.jpeg" alt="Kent" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-indigo" style="display:none;">K</span>
+              <img class="review-avatar-img" width="34" height="34" src="https://primeparrain.fr/wp-content/uploads/2025/09/Kent.jpeg" alt="Kent" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-indigo" style="display:none;">K</span>
               <span class="review-name">Kent</span>
             </div>
             <p class="review-text">Parrain fiable qui respecte ses engagements et très rapide. Le parrainage s&#x27;est déroulé en moins de 10 minutes.</p>
@@ -1037,7 +1072,7 @@
           </article>
           <article class="review-card">
             <div class="review-card-top">
-              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/09/Trilosk.png" alt="Trilosk" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-indigo" style="display:none;">T</span>
+              <img class="review-avatar-img" width="34" height="34" src="https://gamoniz.com/wp-content/uploads/2025/09/Trilosk.png" alt="Trilosk" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-indigo" style="display:none;">T</span>
               <span class="review-name">Trilosk</span>
             </div>
             <p class="review-text">Best customer service I have ever seen in gaming. Bobu followed up for 5 days just to make sure I got my bonus. Incredible.</p>
@@ -1053,7 +1088,7 @@
           </article>
           <article class="review-card">
             <div class="review-card-top">
-              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/12/Dean-Bolt.png" alt="Dean Bolt" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-coral" style="display:none;">DB</span>
+              <img class="review-avatar-img" width="34" height="34" src="https://gamoniz.com/wp-content/uploads/2025/12/Dean-Bolt.png" alt="Dean Bolt" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-coral" style="display:none;">DB</span>
               <span class="review-name">Dean Bolt</span>
             </div>
             <p class="review-text">Simple no hassle transaction, faultless guarantee backs up their service. Does exactly what you pay for with no hidden extras.</p>
@@ -1061,7 +1096,7 @@
           </article>
           <article class="review-card">
             <div class="review-card-top">
-              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/netherlands.png" alt="TimeTyrant" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-orange" style="display:none;">T</span>
+              <img class="review-avatar-img" width="34" height="34" src="https://gamoniz.com/wp-content/uploads/2025/11/netherlands.png" alt="TimeTyrant" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-orange" style="display:none;">T</span>
               <span class="review-name">TimeTyrant</span>
             </div>
             <p class="review-text">I asked for products he was not even advertising and he got them for me within a day. Best seller, I have used his service before and will again.</p>
@@ -1069,7 +1104,7 @@
           </article>
           <article class="review-card">
             <div class="review-card-top">
-              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/09/Andrew-Vaillancourt.png" alt="Andrew Vaillancourt" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-sky" style="display:none;">AV</span>
+              <img class="review-avatar-img" width="34" height="34" src="https://gamoniz.com/wp-content/uploads/2025/09/Andrew-Vaillancourt.png" alt="Andrew Vaillancourt" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-sky" style="display:none;">AV</span>
               <span class="review-name">Andrew Vaillancourt</span>
             </div>
             <p class="review-text">Very legit service you can trust. Great price, super fast delivery. Looking forward to rocking GWAMM.</p>
@@ -1077,7 +1112,7 @@
           </article>
           <article class="review-card">
             <div class="review-card-top">
-              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/09/Fatih-oren.png" alt="Fatih ören" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-indigo" style="display:none;">FÖ</span>
+              <img class="review-avatar-img" width="34" height="34" src="https://gamoniz.com/wp-content/uploads/2025/09/Fatih-oren.png" alt="Fatih ören" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-indigo" style="display:none;">FÖ</span>
               <span class="review-name">Fatih ören</span>
             </div>
             <p class="review-text">Bobu is the best middleman. 10000% trustworthy.</p>
@@ -1085,7 +1120,7 @@
           </article>
           <article class="review-card">
             <div class="review-card-top">
-              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/Naruto-1.jpg" alt="InFusion121" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-lime" style="display:none;">I</span>
+              <img class="review-avatar-img" width="34" height="34" src="https://gamoniz.com/wp-content/uploads/2025/11/Naruto-1.jpg" alt="InFusion121" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-lime" style="display:none;">I</span>
               <span class="review-name">InFusion121</span>
             </div>
             <p class="review-text">100% recommend this seller AWESOME delivery.. was so helpful fast responses and super patient with my dumbass 200/100 rating</p>
@@ -1093,7 +1128,7 @@
           </article>
           <article class="review-card">
             <div class="review-card-top">
-              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/09/Clement-Alexandre.png" alt="Clément Alexandre" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-coral" style="display:none;">CA</span>
+              <img class="review-avatar-img" width="34" height="34" src="https://gamoniz.com/wp-content/uploads/2025/09/Clement-Alexandre.png" alt="Clément Alexandre" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-coral" style="display:none;">CA</span>
               <span class="review-name">Clément Alexandre</span>
             </div>
             <p class="review-text">Reliable, fast and always helpful. I use their service often and it is always perfect.</p>
@@ -1101,7 +1136,7 @@
           </article>
           <article class="review-card">
             <div class="review-card-top">
-              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/sweden.png" alt="TheWld" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-orange" style="display:none;">T</span>
+              <img class="review-avatar-img" width="34" height="34" src="https://gamoniz.com/wp-content/uploads/2025/11/sweden.png" alt="TheWld" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-orange" style="display:none;">T</span>
               <span class="review-name">TheWld</span>
             </div>
             <p class="review-text">Fast, reliable, very good communication. Super smooth experience.</p>
@@ -1109,7 +1144,7 @@
           </article>
           <article class="review-card">
             <div class="review-card-top">
-              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/united-kingdom.png" alt="Oli Chesters" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-sky" style="display:none;">OC</span>
+              <img class="review-avatar-img" width="34" height="34" src="https://gamoniz.com/wp-content/uploads/2025/11/united-kingdom.png" alt="Oli Chesters" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-sky" style="display:none;">OC</span>
               <span class="review-name">Oli Chesters</span>
             </div>
             <p class="review-text">Quick and easy transaction. Very helpful and polite on Skype. Excellent service.</p>
@@ -1118,7 +1153,7 @@
           <article class="review-card">
             <span class="review-fr-tag" title="Avis en français" aria-hidden="true">🇫🇷</span>
             <div class="review-card-top">
-              <img class="review-avatar-img" src="https://primeparrain.fr/wp-content/uploads/2025/09/Kent.jpeg" alt="Kent" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-indigo" style="display:none;">K</span>
+              <img class="review-avatar-img" width="34" height="34" src="https://primeparrain.fr/wp-content/uploads/2025/09/Kent.jpeg" alt="Kent" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-indigo" style="display:none;">K</span>
               <span class="review-name">Kent</span>
             </div>
             <p class="review-text">Parrain fiable qui respecte ses engagements et très rapide. Le parrainage s&#x27;est déroulé en moins de 10 minutes.</p>
@@ -1131,7 +1166,7 @@
         <div class="marquee-track reverse">
           <article class="review-card">
             <div class="review-card-top">
-              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/BigZ-e1764335466898.webp" alt="BigZThyDoom" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-orange" style="display:none;">B</span>
+              <img class="review-avatar-img" width="34" height="34" src="https://gamoniz.com/wp-content/uploads/2025/11/BigZ-e1764335466898.webp" alt="BigZThyDoom" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-orange" style="display:none;">B</span>
               <span class="review-name">BigZThyDoom</span>
             </div>
             <p class="review-text">I’ve bought many many many accounts from him, and sold him some boosting services in the past as well. Nothing but good things to say, 10/10 would absolutely recommend to a friend.</p>
@@ -1140,7 +1175,7 @@
           <article class="review-card">
             <span class="review-fr-tag" title="Avis en français" aria-hidden="true">🇫🇷</span>
             <div class="review-card-top">
-              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/Flag-FR.png" alt="matponc-91" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-sky" style="display:none;">M</span>
+              <img class="review-avatar-img" width="34" height="34" src="https://gamoniz.com/wp-content/uploads/2025/11/Flag-FR.png" alt="matponc-91" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-sky" style="display:none;">M</span>
               <span class="review-name">matponc-91</span>
             </div>
             <p class="review-text">Super vendeur, ultra rapide et réactif. Je recommanderai encore c’est sûr.</p>
@@ -1212,7 +1247,7 @@
           </article>
           <article class="review-card">
             <div class="review-card-top">
-              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/BigZ-e1764335466898.webp" alt="BigZThyDoom" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-orange" style="display:none;">B</span>
+              <img class="review-avatar-img" width="34" height="34" src="https://gamoniz.com/wp-content/uploads/2025/11/BigZ-e1764335466898.webp" alt="BigZThyDoom" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-orange" style="display:none;">B</span>
               <span class="review-name">BigZThyDoom</span>
             </div>
             <p class="review-text">I’ve bought many many many accounts from him, and sold him some boosting services in the past as well. Nothing but good things to say, 10/10 would absolutely recommend to a friend.</p>
@@ -1221,7 +1256,7 @@
           <article class="review-card">
             <span class="review-fr-tag" title="Avis en français" aria-hidden="true">🇫🇷</span>
             <div class="review-card-top">
-              <img class="review-avatar-img" src="https://gamoniz.com/wp-content/uploads/2025/11/Flag-FR.png" alt="matponc-91" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-sky" style="display:none;">M</span>
+              <img class="review-avatar-img" width="34" height="34" src="https://gamoniz.com/wp-content/uploads/2025/11/Flag-FR.png" alt="matponc-91" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"><span class="review-avatar-letter av-sky" style="display:none;">M</span>
               <span class="review-name">matponc-91</span>
             </div>
             <p class="review-text">Super vendeur, ultra rapide et réactif. Je recommanderai encore c’est sûr.</p>
@@ -1307,7 +1342,7 @@
             <p>So I asked the next happy customer to leave <strong>4 stars</strong> instead of 5. He compromised. Called me "not the cheapest" — and meant it as a fact, not a complaint.</p>
             <p>Turns out a small flaw is the most credible thing you can show.</p>
             <span class="confession-byline">
-              <img class="confession-byline-photo" src="/assets/boris.webp" alt="Boris Nachbaur" loading="lazy" decoding="async" />
+              <img class="confession-byline-photo" width="38" height="38" src="/assets/boris.webp" alt="Boris Nachbaur" loading="lazy" decoding="async" />
               <span class="confession-byline-text">
                 <span class="confession-byline-name">Boris Nachbaur</span><br />
                 <span>Author of this strange request</span>
@@ -1605,84 +1640,43 @@
       }
     }
 
-    /* === Drag-to-scroll on marquees (mobile + desktop) === */
-    document.querySelectorAll('.marquee').forEach((marquee) => {
-      const track = marquee.querySelector('.marquee-track');
-      if (!track) return;
+    /* === Pattern 3D tilt & marquee scroll speed === */
+    (() => {
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      let isDragging = false;
-      let startX = 0;
-      let scrollStart = 0;
-      let dragDelta = 0;
-      let velX = 0;
-      let lastX = 0;
-      let lastTime = 0;
-      let rafId = null;
+      /* --- Pattern 3D tilt on hover --- */
+      if (!prefersReduced && window.innerWidth >= 768) {
+        document.querySelectorAll('.pattern-item').forEach((card) => {
+          const MAX_TILT = 6; // degrees
+          let rafId = null;
 
-      const getX = (e) => e.touches ? e.touches[0].clientX : e.clientX;
+          const onMove = (e) => {
+            if (rafId) cancelAnimationFrame(rafId);
+            rafId = requestAnimationFrame(() => {
+              const rect = card.getBoundingClientRect();
+              const cx = rect.left + rect.width / 2;
+              const cy = rect.top + rect.height / 2;
+              const dx = (e.clientX - cx) / (rect.width / 2);
+              const dy = (e.clientY - cy) / (rect.height / 2);
+              const rotX = -dy * MAX_TILT;
+              const rotY = dx * MAX_TILT;
+              card.style.transform = `perspective(600px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-2px)`;
+            });
+          };
 
-      const onStart = (e) => {
-        isDragging = true;
-        startX = getX(e);
-        dragDelta = 0;
-        velX = 0;
-        lastX = startX;
-        lastTime = performance.now();
-        track.style.animationPlayState = 'paused';
-        marquee.style.cursor = 'grabbing';
-        if (rafId) cancelAnimationFrame(rafId);
-      };
+          const onLeave = () => {
+            if (rafId) cancelAnimationFrame(rafId);
+            card.style.transform = '';
+            card.style.transition = 'transform 0.5s var(--ease), border-color 0.3s var(--soft), box-shadow 0.3s var(--soft)';
+            setTimeout(() => { card.style.transition = ''; }, 500);
+          };
 
-      const onMove = (e) => {
-        if (!isDragging) return;
-        e.preventDefault();
-        const x = getX(e);
-        const now = performance.now();
-        const dt = now - lastTime || 16;
-        velX = (x - lastX) / dt * 16;
-        lastX = x;
-        lastTime = now;
-        dragDelta += x - startX;
-        startX = x;
-        // Shift the track inline without breaking the animation offset
-        const curr = new DOMMatrix(getComputedStyle(track).transform).m41;
-        track.style.transform = `translateX(${curr + (x - startX + dragDelta - dragDelta)}px)`;
-        // Simpler: just nudge via marginLeft offset stored as a var
-        const prev = parseFloat(track.dataset.drag || '0');
-        const next = prev + (x - (parseFloat(track.dataset.lastX) || x));
-        track.dataset.drag = next;
-        track.dataset.lastX = x;
-        track.style.marginLeft = next + 'px';
-      };
+          card.addEventListener('mousemove', onMove);
+          card.addEventListener('mouseleave', onLeave);
+        });
+      }
 
-      const onEnd = () => {
-        if (!isDragging) return;
-        isDragging = false;
-        marquee.style.cursor = '';
-
-        // Momentum glide
-        const momentum = () => {
-          velX *= 0.92;
-          const prev = parseFloat(track.dataset.drag || '0');
-          const next = prev + velX;
-          track.dataset.drag = next;
-          track.style.marginLeft = next + 'px';
-          if (Math.abs(velX) > 0.3) {
-            rafId = requestAnimationFrame(momentum);
-          } else {
-            track.style.animationPlayState = '';
-          }
-        };
-        rafId = requestAnimationFrame(momentum);
-      };
-
-      marquee.addEventListener('mousedown', onStart);
-      marquee.addEventListener('touchstart', onStart, { passive: true });
-      window.addEventListener('mousemove', onMove);
-      marquee.addEventListener('touchmove', onMove, { passive: false });
-      window.addEventListener('mouseup', onEnd);
-      marquee.addEventListener('touchend', onEnd);
-    });
+    })();
   </script>
 </body>
 </html>
