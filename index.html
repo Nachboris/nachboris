@@ -5,15 +5,50 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Boris Nachbaur — Trusted operator for founders &amp; creators</title>
-<meta content="I run the operational weight — support, community, AI workflows, content ops — so solo founders and creators can stay on their highest-value work." name="description"/>
-<meta content="Boris Nachbaur" name="author"/>
-<meta content="Boris Nachbaur — Trusted operator for founders &amp; creators" property="og:title"/>
-<meta content="Trusted right-hand for solo founders and creators. Support, community, AI workflows, ops. Remote, EU timezone." property="og:description"/>
-<meta content="website" property="og:type"/>
-<meta content="https://nachboris.fr" property="og:url"/>
+<meta name="description" content="I run the operational weight — support, community, AI workflows, content ops — so solo founders and creators can stay on their highest-value work." />
+<meta name="author" content="Boris Nachbaur" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+<meta name="theme-color" content="#F7F5F2" />
+<link rel="canonical" href="https://nachboris.fr/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Boris Nachbaur" />
+<meta property="og:title" content="Boris Nachbaur — Trusted operator for founders &amp; creators" />
+<meta property="og:description" content="Trusted right-hand for solo founders and creators. Support, community, AI workflows, ops. Remote, EU timezone." />
+<meta property="og:url" content="https://nachboris.fr/" />
+<meta property="og:image" content="https://nachboris.fr/assets/og-image.webp" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="631" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@BobuRMT" />
+<meta name="twitter:creator" content="@BobuRMT" />
+<meta name="twitter:title" content="Boris Nachbaur — Trusted operator for founders &amp; creators" />
+<meta name="twitter:description" content="Trusted right-hand for solo founders and creators. Support, community, AI workflows, ops. Remote, EU timezone." />
+<meta name="twitter:image" content="https://nachboris.fr/assets/og-image.webp" />
 <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
 <link rel="shortcut icon" href="/favicon.ico" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="preload" as="image" href="/assets/Hero-Boris.webp" fetchpriority="high" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Boris Nachbaur",
+  "url": "https://nachboris.fr",
+  "image": "https://nachboris.fr/assets/Hero-Boris.webp",
+  "jobTitle": "Trusted operator for founders and creators",
+  "email": "boris@nachboris.fr",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Lausanne",
+    "addressCountry": "CH"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/borisnch/",
+    "https://x.com/BobuRMT",
+    "https://github.com/Nachboris/nachboris"
+  ]
+}
+</script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&amp;family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..500&amp;family=Inter+Tight:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
@@ -106,6 +141,27 @@
     button { font-family: inherit; border: 0; background: none; cursor: pointer; }
 
     ::selection { background: var(--indigo); color: var(--bg); }
+
+    /* Skip link — visible only on keyboard focus */
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 1rem;
+      z-index: 9999;
+      background: var(--ink);
+      color: var(--bg);
+      padding: 0.75rem 1.25rem;
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: top 0.25s var(--soft, ease);
+    }
+    .skip-link:focus {
+      top: 1rem;
+      outline: 2px solid var(--indigo);
+      outline-offset: 2px;
+    }
 
     h1, h2, h3 {
       font-family: var(--serif);
@@ -649,7 +705,7 @@
        HERO
        ========================================================== */
     .hero {
-      padding-top: clamp(7.5rem, 16vw, 10.25rem);
+      padding-top: clamp(9rem, 20vw, 10.25rem);
       padding-bottom: clamp(3.5rem, 8vw, 6rem);
       position: relative;
       overflow: hidden;
@@ -2616,6 +2672,7 @@
   </style>
 </head>
 <body>
+<a class="skip-link" href="#top">Skip to main content</a>
 <!-- NAV with Available pill next to logo -->
 <nav class="nav" id="nav">
 <div class="nav-inner">
@@ -2623,11 +2680,10 @@
 <a aria-label="Boris Nachbaur home" class="logo logo-mark" href="/">BN<span class="logo-dot">.</span></a>
 </div>
 <div class="nav-links nav-menu">
-<a class="nav-link" href="#work">Services</a>
-<a class="nav-link" href="#fit">Fit</a>
+<a class="nav-link" href="/#work">Services</a>
 <a class="nav-link nav-link-about" href="/me">About</a>
-<a class="nav-link" href="/reviews">Reviews</a>
 <a class="nav-link nav-link-toolkit" href="/projects">Projects</a>
+<a class="nav-link" href="/reviews">Reviews</a>
 </div>
 <div class="nav-actions">
 <span class="availability">
@@ -2646,9 +2702,10 @@
 </nav>
 <div aria-hidden="true" class="mobile-menu" id="mobileMenu">
 <div class="mobile-menu-links">
-<a class="mobile-menu-link" href="/me">About <span>01</span></a>
-<a class="mobile-menu-link" href="/reviews">Reviews <span>02</span></a>
+<a class="mobile-menu-link" href="/#work">Services <span>01</span></a>
+<a class="mobile-menu-link" href="/me">About <span>02</span></a>
 <a class="mobile-menu-link" href="/projects">Projects <span>03</span></a>
+<a class="mobile-menu-link" href="/reviews">Reviews <span>04</span></a>
 </div>
 <div class="mobile-menu-foot">
 <a class="mobile-menu-cta" href="#contact">Book a call <span aria-hidden="true">→</span></a>
@@ -2780,18 +2837,38 @@
           </p>
 </div>
 <div class="services reveal-stagger">
-<div class="service s-indigo">
+<div class="service s-sky">
 <span class="service-num">01</span>
 <div>
-<h3>Customer support L2</h3>
-<p>Real answers to complex tickets, fast. Your users feel heard. You never see the queue.</p>
+<h3>Funnels &amp; lifecycle email</h3>
+<p>Lead magnets, landing pages, welcome sequences, launch campaigns, re-engagement. Written in your voice, tested, shipped.</p>
 <div class="service-examples">
-                refund flows<span class="dot">·</span>ticket SLAs<span class="dot">·</span>FAQ upkeep<span class="dot">·</span>escalation playbooks
+                lead magnets<span class="dot">·</span>onboarding<span class="dot">·</span>launches<span class="dot">·</span>win-back<span class="dot">·</span>follow-ups
+              </div>
+</div>
+</div>
+<div class="service s-lime">
+<span class="service-num">02</span>
+<div>
+<h3>Light vibe coding</h3>
+<p>Landing pages, marketing site fixes, small integrations. The backlog items that never make it to a real dev sprint.</p>
+<div class="service-examples">
+                landing pages<span class="dot">·</span>integrations<span class="dot">·</span>automations<span class="dot">·</span>quick fixes
+              </div>
+</div>
+</div>
+<div class="service s-coral">
+<span class="service-num">03</span>
+<div>
+<h3>Content repurposing &amp; ops</h3>
+<p>One long-form piece becomes a newsletter, five posts, and a thread — on schedule, in your voice.</p>
+<div class="service-examples">
+                newsletter ops<span class="dot">·</span>video-to-post<span class="dot">·</span>threads<span class="dot">·</span>scheduling
               </div>
 </div>
 </div>
 <div class="service s-orange">
-<span class="service-num">02</span>
+<span class="service-num">04</span>
 <div>
 <h3>Community operations</h3>
 <p>Discord, Slack, Circle. Moderation, onboarding, engagement — making a space feel alive, not abandoned.</p>
@@ -2800,33 +2877,13 @@
               </div>
 </div>
 </div>
-<div class="service s-sky">
-<span class="service-num">03</span>
-<div>
-<h3>Email sequences &amp; lifecycle</h3>
-<p>Welcome flows, launch campaigns, re-engagement... Written in your voice, tested, shipped.</p>
-<div class="service-examples">
-                onboarding<span class="dot">·</span>launches<span class="dot">·</span>win-back
-              </div>
-</div>
-</div>
-<div class="service s-lime">
-<span class="service-num">04</span>
-<div>
-<h3>Light vibe coding</h3>
-<p>Fixes, landing pages, small integrations. The backlog items that never make it to a real dev sprint.</p>
-<div class="service-examples">
-                automation<span class="dot">·</span>integrations<span class="dot">·</span>landing page<span class="dot">·</span>SOPs
-              </div>
-</div>
-</div>
-<div class="service s-coral">
+<div class="service s-indigo">
 <span class="service-num">05</span>
 <div>
-<h3>Content repurposing &amp; ops</h3>
-<p>One long-form piece becomes a newsletter, five posts, and a thread — on schedule, in your voice.</p>
+<h3>Customer support L2</h3>
+<p>Real answers to complex tickets, fast. Your users feel heard. You never see the queue.</p>
 <div class="service-examples">
-                newsletter ops<span class="dot">·</span>video-to-post<span class="dot">·</span>threads<span class="dot">·</span>scheduling
+                refund flows<span class="dot">·</span>ticket SLAs<span class="dot">·</span>FAQ upkeep<span class="dot">·</span>escalation playbooks
               </div>
 </div>
 </div>
@@ -3103,7 +3160,7 @@
 </span>
 <span>Based in Lausanne</span>
 </span>
-<span class="footer-copy">© 2026 Nachboris · Made with ♡ by Boris &amp; Claude.</span>
+<span class="footer-copy">© <span id="year">2026</span> Nachboris · Made with ♡ by Boris &amp; Claude.</span>
 </div>
 <nav aria-label="Footer" class="footer-nav">
 <a href="#work">Services</a>
@@ -3119,6 +3176,20 @@
 </svg>
 </span>
 </a>
+<a aria-label="X (Twitter)" href="https://x.com/BobuRMT" rel="noopener" target="_blank">
+<span aria-hidden="true" class="social-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.53 3H20.5l-6.49 7.42L21.75 21h-5.99l-4.69-6.13L5.7 21H2.73l6.94-7.94L2.25 3h6.14l4.24 5.61L17.53 3Zm-1.05 16.2h1.65L7.6 4.7H5.83L16.48 19.2Z"></path>
+</svg>
+</span>
+</a>
+<a aria-label="GitHub" href="https://github.com/Nachboris/nachboris" rel="noopener" target="_blank">
+<span aria-hidden="true" class="social-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.21c-3.2.7-3.87-1.36-3.87-1.36-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.76 2.69 1.25 3.35.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11.04 11.04 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.4-5.25 5.68.41.36.78 1.06.78 2.13v3.16c0 .31.21.68.8.56C20.21 21.39 23.5 17.07 23.5 12 23.5 5.65 18.35.5 12 .5Z"></path>
+</svg>
+</span>
+</a>
 <a aria-label="Email" href="mailto:boris@nachboris.fr">
 <span aria-hidden="true" class="social-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -3130,6 +3201,10 @@
 </div>
 </footer>
 <script>
+    // Auto-update copyright year
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
     const nav = document.getElementById('nav');
     const navToggle = document.getElementById('navToggle');
     const mobileMenu = document.getElementById('mobileMenu');
