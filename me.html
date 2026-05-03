@@ -3,23 +3,23 @@
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>About — Boris Nachbaur</title>
-  <meta name="description" content="The geek behind nachboris.fr. Born digital, hooked on AI, business and personal finance — and yes, the guy who hugs 5G antennas abroad." />
+  <title>About — Boris Nachbaur, operator for solo founders</title>
+  <meta name="description" content="The geek behind nachboris.fr. 31, Lausanne-based, hooked on AI, business and personal finance since I was 15." />
   <meta name="author" content="Boris Nachbaur" />
   <link rel="canonical" href="https://nachboris.fr/me" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Boris Nachbaur" />
-  <meta property="og:title" content="About — Boris Nachbaur" />
-  <meta property="og:description" content="The geek behind nachboris.fr. Born digital, hooked on AI, business and personal finance — and yes, the guy who hugs 5G antennas abroad." />
+  <meta property="og:title" content="Hi, I'm Boris — the geek behind nachboris.fr" />
+  <meta property="og:description" content="The geek behind nachboris.fr. 31, Lausanne-based, hooked on AI, business and personal finance since I was 15." />
   <meta property="og:url" content="https://nachboris.fr/me" />
   <meta property="og:image" content="https://nachboris.fr/assets/og-image.webp" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="631" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="About — Boris Nachbaur" />
-  <meta name="twitter:description" content="The geek behind nachboris.fr. Born digital, hooked on AI, business and personal finance — and yes, the guy who hugs 5G antennas abroad." />
+  <meta name="twitter:title" content="Hi, I'm Boris — the geek behind nachboris.fr" />
+  <meta name="twitter:description" content="The geek behind nachboris.fr. 31, Lausanne-based, hooked on AI, business and personal finance since I was 15." />
   <meta name="twitter:image" content="https://nachboris.fr/assets/og-image.webp" />
 
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
@@ -29,6 +29,33 @@
   <link href="https://fonts.googleapis.com" rel="preconnect" />
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&amp;family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..500&amp;family=Inter+Tight:wght@400;500;600&amp;display=swap" rel="stylesheet" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Boris Nachbaur",
+    "url": "https://nachboris.fr",
+    "image": "https://nachboris.fr/assets/og-image.webp",
+    "jobTitle": "Operator for solo founders and creators",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Lausanne",
+      "addressCountry": "CH"
+    },
+    "nationality": "French",
+    "sameAs": [
+      "https://www.linkedin.com/in/borisnch/",
+      "https://x.com/BobuRMT"
+    ],
+    "knowsAbout": ["Operations", "AI workflows", "Community management", "Customer support", "Digital marketing", "Personal finance"],
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "Rennes School of Business",
+      "department": "Master in Digital Business Management"
+    }
+  }
+  </script>
 
   <style>
     :root {
@@ -161,6 +188,8 @@
     }
 
     .italic-accent { font-style: italic; color: var(--orange); font-weight: 300; }
+    .inline-link { color: var(--indigo); text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; transition: color 0.25s var(--soft); }
+    .inline-link:hover { color: var(--orange); }
 
     .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
     .wrap-prose { max-width: var(--prose); margin: 0 auto; padding: 0 var(--pad); }
@@ -469,7 +498,7 @@
     .reveal.in { opacity: 1; transform: translateY(0); }
 
     /* ==========================================================
-       HERO — split layout
+       HERO
        ========================================================== */
     .hero {
       padding-top: clamp(7.5rem, 16vw, 10rem);
@@ -754,6 +783,29 @@
     .value-body strong { color: var(--ink); font-weight: 600; }
 
     /* ==========================================================
+       BRIDGE — see /projects link
+       ========================================================== */
+    .bridge { padding: clamp(2rem, 5vw, 3.5rem) 0 0; }
+    .bridge-inner {
+      max-width: var(--prose);
+      margin: 0 auto;
+      text-align: center;
+      font-family: var(--sans);
+      font-size: var(--fs-17);
+      color: var(--ink-mute);
+    }
+    .bridge a {
+      color: var(--ink);
+      font-weight: 600;
+      border-bottom: 1.5px solid var(--orange);
+      padding-bottom: 1px;
+      transition: color 0.25s var(--soft);
+    }
+    .bridge a:hover { color: var(--orange); }
+    .bridge-arrow { display: inline-block; transition: transform 0.35s var(--spring); }
+    .bridge a:hover .bridge-arrow { transform: translateX(3px); }
+
+    /* ==========================================================
        CLOSING
        ========================================================== */
     .closing { padding-top: clamp(2rem, 5vw, 4rem); padding-bottom: clamp(4rem, 9vw, 7rem); }
@@ -809,6 +861,29 @@
     .closing .btn-ghost { color: var(--bg); }
     .closing .btn-ghost::after { background: var(--bg); }
     .closing .btn-ghost:hover { color: var(--orange-soft); }
+
+    /* ==========================================================
+       BACK TO TOP
+       ========================================================== */
+    .back-to-top {
+      position: fixed;
+      bottom: 1.25rem;
+      right: 1.25rem;
+      z-index: 90;
+      width: 2.75rem; height: 2.75rem;
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--bg);
+      display: inline-flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 24px -10px rgba(15, 15, 23, 0.5);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 0.3s var(--soft), transform 0.35s var(--spring), background 0.25s var(--soft);
+    }
+    .back-to-top.is-visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .back-to-top:hover { background: #171723; transform: translateY(-2px); }
+    .back-to-top svg { width: 16px; height: 16px; }
 
     /* ==========================================================
        FOOTER
@@ -930,18 +1005,18 @@
             <span class="eyebrow">A bit about me</span>
             <h1>Hi, I'm <em>Boris.</em></h1>
             <p class="hero-lede">
-              <strong>31, French, based in Lausanne</strong> with my wife Élodie. I've been quietly running things on the internet since I was 15 &mdash; first selling stuff to other gamers, then a marketplace, now an operator-for-hire for founders who don't have time for the unglamorous half of their job.
+              <strong>31, French, based in Lausanne</strong> with my wife Élodie &mdash; she teaches kids in a primary school here (the <em>real</em> hard job in the household). I do stuff on a computer. <span class="hand-aside">Voilà.</span>
             </p>
             <p class="hero-lede" style="margin-top: 1rem;">
-              This page is the <em style="font-style: italic; color: var(--orange);">unfiltered</em> version. The CV-friendly stuff lives on <a href="/projects" style="color: var(--indigo); text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px;">/projects</a>.
+              This page is the <em style="font-style: italic; color: var(--orange);">unfiltered</em> version of me: my personality, what I'm passionate about, my ethic... The CV-friendly stuff lives on <a href="/projects" class="inline-link">/projects</a>.
             </p>
           </div>
 
           <figure class="hero-photo reveal">
             <div class="photo-frame">
-              <img src="/assets/Leman.webp" alt="Boris Nachbaur by Lake Geneva, Lausanne" width="800" height="1000" loading="eager" />
+              <img src="/assets/Leman.webp" alt="Boris Nachbaur and Élodie by Lake Geneva, Lausanne, Switzerland" width="800" height="1000" loading="eager" fetchpriority="high" />
             </div>
-            <figcaption class="photo-caption">Lake Geneva, our backyard now.</figcaption>
+            <figcaption class="photo-caption">Élodie &amp; me, Lac Léman in Lausanne 🇨🇭.</figcaption>
           </figure>
         </div>
       </div>
@@ -954,13 +1029,13 @@
           <span class="eyebrow">The short version</span>
           <h2 style="margin-top: 0.85rem;">Born <em>online,</em> still here.</h2>
           <p>
-            At 15, I sold <strong>$800 worth of in-game currency</strong> to a stranger on the internet. Hands shaking, brand new PayPal account, Guild Wars gold built up over thousands of hours of farming. A few weeks later, I found out the buyer had resold it for double. I wasn't annoyed for long &mdash; I'd just discovered there was <strong>a whole value chain behind a video game</strong>, and I was sitting at the bottom of it. <a href="https://gamoniz.com/how-i-made-first-1000-from-video-games/" target="_blank" rel="noopener" style="color: var(--indigo); text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px;">Full story here</a> if you're curious.
+            At 15, I sold <strong>$800 worth of in-game currency</strong> to a stranger on the internet. A few days later, I found out the buyer had resold it for double. I wasn't annoyed for long &mdash; I'd just discovered there was <strong>a whole value chain behind a video game</strong>, and I was sitting at the bottom of it. <a href="https://gamoniz.com/how-i-made-first-1000-from-video-games/" target="_blank" rel="noopener" class="inline-link">Full story here</a> if you're curious.
           </p>
           <p>
-            That trade was 16 years ago. Since then I've explored every corner of the field &mdash; botting, RMT, diversifying services &mdash; then professionalised the whole thing: built suppliers, an email list, a 1,900+ Discord community, racked up <strong>2,250+ verified positive reviews</strong>, went full-time, lived a year across Asia as a digital nomad, and somewhere along the way became the guy who listens to business and personal-finance podcasts no one around me wants to hear about. <span class="hand-aside">(Sorry, Élodie.)</span>
+            That trade was 16 years ago. Since then I've explored every corner of the field &mdash; botting, RMT, diversifying services &mdash; then professionalised the whole thing: built suppliers, an email list, a Discord community, went full-time, lived a year across Asia as a digital nomad, and somewhere along the way became the guy who listens to business and personal-finance podcasts no one around me wants to hear about. <span class="hand-aside">(Sorry, Élodie.)</span>
           </p>
           <p>
-            Today I help solo founders and creators run the operational half of their business &mdash; the support tickets, the AI workflows, the Discord chaos, the inbox &mdash; so they can focus on the part nobody can do for them.
+            Today I help founders and creators run the operational half of their business. I'm the wrong fit for big teams, equity-based deals, or anyone who needs a 12-month strategy deck &mdash; the right fit if you want a quiet pair of hands taking the unglamorous half off your plate.
           </p>
         </div>
       </div>
@@ -1006,9 +1081,9 @@
               <h3>Personal finance</h3>
             </div>
             <p>
-              Hooked for 15 years. I've put money into pretty much every asset class &mdash; stocks, bonds, real estate, crowdfunding, private credit, crypto &mdash; but I preach simplicity (ETFs do the job). Soft spot for Bitcoin and the case for decentralisation.
+              Hooked for 15 years. Explored everything &mdash; stocks, bonds, real estate, crowdfunding, private credit, crypto &mdash; and landed on simplicity (ETFs do the job). Soft spot for Bitcoin and the case for decentralisation.
             </p>
-            <span class="ob-tag">Side hobby: a spreadsheet of my spreadsheets.</span>
+            <span class="ob-tag">Side hobby: farming stablecoin yields & airdrops.</span>
           </article>
 
           <article class="ob-card o-marketing reveal">
@@ -1030,9 +1105,9 @@
       <div class="wrap">
         <figure class="photo-break-figure reveal">
           <div class="photo-break-frame">
-            <img src="/assets/Skydive.webp" alt="Boris Nachbaur grinning before a skydive" width="1200" height="900" loading="lazy" />
+            <img src="/assets/Skydive.webp" alt="Boris Nachbaur grinning before a skydive in New Zealand" width="1200" height="900" loading="lazy" />
           </div>
-          <figcaption class="photo-break-caption">About to jump out of a perfectly fine plane. Same energy I bring to a new business idea.</figcaption>
+          <figcaption class="photo-break-caption">About to jump out of a plane in New Zealand. The closest thing to starting a new business.</figcaption>
         </figure>
       </div>
     </section>
@@ -1050,7 +1125,7 @@
 
         <div class="chips reveal">
           <span class="chip"><span class="chip-emoji" aria-hidden="true">✈️</span> Travel <span class="chip-aside">/ 30+ countries, 1 year across Asia</span></span>
-          <span class="chip"><span class="chip-emoji" aria-hidden="true">🏸</span> Badminton <span class="chip-aside">/ harder than it looks</span></span>
+          <span class="chip"><span class="chip-emoji" aria-hidden="true">🏸</span> Badminton <span class="chip-aside">/ pure fun, played 100% for the win</span></span>
           <span class="chip"><span class="chip-emoji" aria-hidden="true">🏋️</span> Home workouts <span class="chip-aside">/ no gym, no excuse</span></span>
           <span class="chip"><span class="chip-emoji" aria-hidden="true">🎬</span> Cinema &amp; series <span class="chip-aside">/ way too many</span></span>
           <span class="chip"><span class="chip-emoji" aria-hidden="true">🖥️</span> Technology <span class="chip-aside">/ I build my own PCs</span></span>
@@ -1080,7 +1155,7 @@
           <span class="eyebrow">What I actually value</span>
           <h2 style="margin-top: 0.85rem;">Three things I won't <em>compromise on.</em></h2>
           <p>
-            If you took these three away, I'd have to find a different job. Probably a worse one.
+            If you took these three away, I'd have to find a different job.
           </p>
         </header>
 
@@ -1090,7 +1165,7 @@
             <div>
               <div class="value-title">Honesty &mdash; even when it's awkward.</div>
               <p class="value-body">
-                I'll tell you on day three that something isn't working, instead of pretending on day thirty. If your idea is shaky, I'll say so &mdash; once, with tact &mdash; then it's your call. <strong>I'd rather lose a contract than write you a bill for three months of polite nodding.</strong>
+                I'll tell you when something isn't working, instead of pretending. If your idea is shaky, I'll say so and you can be straightforward with me as well. Nobody's perfect, and I value simplicity and honesty.
               </p>
             </div>
           </div>
@@ -1100,7 +1175,7 @@
             <div>
               <div class="value-title">Curiosity &mdash; the incurable kind.</div>
               <p class="value-body">
-                I read on AI, business, finance and individual freedom. Probably more than I should. The upside for you: <strong>I bring context from outside your bubble</strong> &mdash; without pretending to be your strategist. I just connect dots that nobody around you has the bandwidth to connect.
+                I read on AI, business, finance and individual freedom. Probably more than I should. <strong>I'm generally curious</strong> (unless it's gossips) and love learning new things, especially about how things work.
               </p>
             </div>
           </div>
@@ -1110,11 +1185,18 @@
             <div>
               <div class="value-title">Open-mindedness &mdash; default state.</div>
               <p class="value-body">
-                Different industries, different personalities, different countries (I've lived in five). I genuinely don't care where the good idea comes from &mdash; the intern, the customer, the competitor, a Discord lurker at 2am. <strong>If it's true, it's true.</strong> Pride is the most expensive blocker in operations.
+                Different industries, different personalities, different countries (I've lived in five). I genuinely don't care where the good idea comes from &mdash; the intern, the customer, the competitor, a Discord lurker at 2am. If it's true, it's true. Pride is the most expensive blocker in operations.
               </p>
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- BRIDGE TO /PROJECTS -->
+    <section class="bridge">
+      <div class="bridge-inner reveal">
+        Want the work-version, with receipts? <a href="/projects">See <em>/projects</em> <span class="bridge-arrow">→</span></a>
       </div>
     </section>
 
@@ -1141,6 +1223,13 @@
     </section>
 
   </main>
+
+  <!-- BACK TO TOP -->
+  <a href="#top" class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </a>
 
   <!-- FOOTER -->
   <footer>
@@ -1210,6 +1299,7 @@
     const nav = document.getElementById('nav');
     const navToggle = document.getElementById('navToggle');
     const mobileMenu = document.getElementById('mobileMenu');
+    const backToTop = document.getElementById('backToTop');
 
     const closeMobileMenu = () => {
       nav.classList.remove('menu-open');
@@ -1236,6 +1326,9 @@
     const onScroll = () => {
       if (window.scrollY > 12) nav.classList.add('scrolled');
       else nav.classList.remove('scrolled');
+
+      if (window.scrollY > 600) backToTop.classList.add('is-visible');
+      else backToTop.classList.remove('is-visible');
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
