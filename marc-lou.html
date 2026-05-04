@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pour Marc Lou — Boris Nachbaur</title>
+<meta name="description" content="Une page perso pour Marc Lou. J'absorbe le support, les onboarding flows et l'ops marketplace pour que tu gardes ton bloc de deep work intact." />
+<meta name="author" content="Boris Nachbaur" />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="canonical" href="https://nachboris.fr/marc-lou" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Boris Nachbaur" />
+<meta property="og:title" content="Pour Marc Lou — Boris Nachbaur" />
+<meta property="og:description" content="Une page perso pour Marc Lou. J'absorbe le support, les onboarding flows et l'ops marketplace." />
+<meta property="og:url" content="https://nachboris.fr/marc-lou" />
+<meta property="og:image" content="https://nachboris.fr/assets/og-image.webp" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="631" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Pour Marc Lou — Boris Nachbaur" />
+<meta name="twitter:description" content="Une page perso pour Marc Lou. J'absorbe le support, les onboarding flows et l'ops marketplace." />
+<meta name="twitter:image" content="https://nachboris.fr/assets/og-image.webp" />
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..500&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #F7F5F2;
+    --bg-soft: #EFECE6;
+    --ink: #0F0F17;
+    --ink-soft: #3A3A4A;
+    --ink-mute: #6B6B7A;
+    --rule: #E5E0D8;
+    --indigo: #5B4FE0;
+    --indigo-soft: #8B82F0;
+    --indigo-tint: rgba(91, 79, 224, 0.08);
+    --orange: #FF6B35;
+    --orange-soft: #FFA07A;
+    --orange-tint: rgba(255, 107, 53, 0.09);
+    --lime: #84CC16;
+    --lime-tint: rgba(132, 204, 22, 0.09);
+    --sky: #38BDF8;
+    --sky-tint: rgba(56, 189, 248, 0.09);
+    --yellow: #FBBF24;
+    --yellow-soft: #FCD34D;
+    --green: #22C55E;
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Inter Tight', -apple-system, sans-serif;
+    --hand: 'Caveat', cursive;
+    --max: 720px;
+    --max-wide: 1000px;
+    --pad: clamp(1.25rem, 4vw, 2.5rem);
+    --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --soft: cubic-bezier(0.4, 0, 0.2, 1);
+    --r-sm: 10px;
+    --r-md: 18px;
+    --r-lg: 28px;
+    --r-xl: 40px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body {
+    font-family: var(--sans);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    background: var(--bg);
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; border: 0; background: none; cursor: pointer; }
+  ::selection { background: var(--indigo); color: var(--bg); }
+
+  .skip-link {
+    position: absolute; top: -100px; left: 1rem; z-index: 9999;
+    background: var(--ink); color: var(--bg);
+    padding: 0.75rem 1.25rem; border-radius: 999px;
+    font-size: 0.9rem; font-weight: 600;
+    transition: top 0.25s var(--soft);
+  }
+  .skip-link:focus { top: 1rem; outline: 2px solid var(--indigo); outline-offset: 2px; }
+
+  h1, h2, h3 {
+    font-family: var(--serif);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1.1;
+  }
+
+  /* NAV */
+  .nav { position: fixed; top: 1rem; left: 0; right: 0; z-index: 100; background: transparent; pointer-events: none; }
+  .nav-inner {
+    max-width: calc(var(--max-wide) + 2rem); margin: 0 auto;
+    padding: 0.72rem 0.85rem 0.72rem 1.15rem;
+    display: grid; grid-template-columns: auto 1fr auto;
+    align-items: center; gap: 1.25rem;
+    background: rgba(255, 255, 255, 0.74);
+    border: 1px solid rgba(15, 15, 23, 0.07);
+    border-radius: 18px;
+    box-shadow: 0 18px 48px -34px rgba(15, 15, 23, 0.42), 0 1px 0 rgba(255, 255, 255, 0.82) inset;
+    backdrop-filter: saturate(150%) blur(18px);
+    -webkit-backdrop-filter: saturate(150%) blur(18px);
+    pointer-events: auto;
+  }
+  .nav.scrolled .nav-inner { background: rgba(255, 255, 255, 0.9); }
+  .nav-brand { display: flex; align-items: center; min-width: 0; }
+  .logo { font-family: var(--serif); font-size: 1.15rem; color: var(--ink); display: flex; align-items: center; }
+  .logo-dot { color: var(--orange); }
+  .nav-links { display: flex; align-items: center; justify-content: center; gap: 0.25rem; }
+  .nav-link { font-size: 0.9rem; font-weight: 500; color: var(--ink-mute); padding: 0.42rem 0.85rem; border-radius: 999px; transition: color 0.2s, background 0.2s; }
+  .nav-link:hover { color: var(--ink); background: rgba(15,15,23,0.05); }
+  .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+  .nav-cta { font-size: 0.875rem; font-weight: 600; color: var(--bg); background: var(--ink); padding: 0.5rem 1.1rem; border-radius: 999px; transition: opacity 0.2s, transform 0.2s var(--spring); }
+  .nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+  .nav-toggle { display: none; width: 38px; height: 38px; border-radius: 50%; background: rgba(15,15,23,0.06); align-items: center; justify-content: center; }
+  .nav-toggle:hover { background: rgba(15,15,23,0.1); }
+  .nav-toggle-lines { display: flex; flex-direction: column; gap: 5px; width: 18px; }
+  .nav-toggle-lines span,
+  .nav-toggle-lines::before,
+  .nav-toggle-lines::after { content: ''; display: block; height: 1.5px; background: var(--ink); border-radius: 2px; transition: transform 0.3s var(--soft), opacity 0.2s; }
+  .nav.menu-open .nav-toggle-lines span { opacity: 0; }
+  .nav.menu-open .nav-toggle-lines::before { transform: rotate(45deg) translate(4.5px, 4.5px); }
+  .nav.menu-open .nav-toggle-lines::after { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+
+  .mobile-menu { position: fixed; inset: 0; z-index: 90; background: rgba(247, 245, 242, 0.97); backdrop-filter: blur(20px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; opacity: 0; pointer-events: none; transition: opacity 0.3s var(--soft); }
+  .mobile-menu.is-open { opacity: 1; pointer-events: auto; }
+  .mobile-menu-links { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; }
+  .mobile-menu-link { font-family: var(--serif); font-size: 2.2rem; color: var(--ink); padding: 0.4rem 1.5rem; display: flex; align-items: baseline; gap: 0.75rem; }
+  .mobile-menu-link span { font-family: var(--sans); font-size: 0.75rem; color: var(--ink-mute); }
+  .mobile-menu-cta { margin-top: 1.5rem; font-size: 1rem; font-weight: 600; color: var(--bg); background: var(--ink); padding: 0.75rem 2rem; border-radius: 999px; }
+
+  /* LAYOUT */
+  .wrap { max-width: var(--max); margin: 0 auto; padding-left: var(--pad); padding-right: var(--pad); }
+  .wrap-wide { max-width: var(--max-wide); margin: 0 auto; padding-left: var(--pad); padding-right: var(--pad); }
+  .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--sans); font-size: 0.8125rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: var(--indigo); }
+  .eyebrow::before { content: ''; display: block; width: 24px; height: 1.5px; background: currentColor; border-radius: 2px; flex-shrink: 0; }
+
+  /* Reveals */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s var(--soft), transform 0.55s var(--soft); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .reveal-stagger > * { opacity: 0; transform: translateY(18px); transition: opacity 0.55s var(--soft), transform 0.55s var(--soft); }
+  .reveal-stagger.in > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0s; }
+  .reveal-stagger.in > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.07s; }
+  .reveal-stagger.in > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.14s; }
+  .reveal-stagger.in > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.21s; }
+
+  /* HERO */
+  .hero { padding-top: clamp(8rem, 16vw, 10rem); padding-bottom: clamp(3rem, 7vw, 5rem); position: relative; overflow: hidden; }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    opacity: 0.4; pointer-events: none; z-index: 0;
+  }
+  .hero .wrap-wide { position: relative; z-index: 1; }
+
+  .hero-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: start; }
+
+  .greeting-card {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    padding: 0.4rem 1rem 0.4rem 0.4rem;
+    font-size: 0.875rem; font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 1.75rem;
+    box-shadow: 0 4px 12px -8px rgba(15,15,23,0.15);
+  }
+  .marc-avatar { width: 32px; height: 32px; border-radius: 50%; overflow: hidden; background: var(--bg-soft); flex-shrink: 0; border: 1.5px solid var(--rule); }
+  .marc-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .greeting-card .wave { font-size: 1rem; }
+
+  .hero h1 {
+    font-size: clamp(2.1rem, 6vw, 3.6rem);
+    font-weight: 400; letter-spacing: -0.03em; line-height: 1.05;
+    color: var(--ink); margin-bottom: 0.5rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--indigo); }
+
+  .hero-sub {
+    font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+    color: var(--ink-mute); font-style: italic;
+    font-family: var(--serif); margin-bottom: 2rem;
+  }
+
+  .marc-portrait { display: none; }
+
+  .hero-rule {
+    width: 40px; height: 2px;
+    background: linear-gradient(90deg, var(--indigo), var(--orange));
+    border-radius: 2px; margin-bottom: 1.75rem;
+  }
+
+  .hero-body { font-size: 1.0625rem; line-height: 1.7; color: var(--ink-soft); max-width: 540px; margin-bottom: 2rem; }
+  .hero-body strong { color: var(--ink); font-weight: 600; }
+  .hero-body p + p { margin-top: 1rem; }
+
+  /* Mobile portrait card */
+  .portrait-card { position: relative; text-align: center; margin: 1rem 0 2rem; }
+  .portrait-photo-wrap { position: relative; width: 200px; height: 200px; margin: 0 auto; }
+  .portrait-halo {
+    position: absolute; inset: -8%;
+    background: radial-gradient(circle, var(--yellow-soft) 0%, var(--yellow-soft) 35%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(14px);
+    opacity: 0.65; z-index: 0;
+    animation: halo-breathe 6s ease-in-out infinite;
+  }
+  @keyframes halo-breathe {
+    0%, 100% { transform: scale(1); opacity: 0.65; }
+    50% { transform: scale(1.04); opacity: 0.8; }
+  }
+  .portrait-photo {
+    position: relative; width: 100%; height: 100%;
+    border-radius: 50%; overflow: hidden; z-index: 1;
+    border: 4px solid #fff;
+    box-shadow: 0 16px 40px -12px rgba(15,15,23,0.25);
+    transform: rotate(-2deg);
+    transition: transform 0.6s var(--spring);
+  }
+  .portrait-photo:hover { transform: rotate(0deg) translateY(-4px); }
+  .portrait-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .portrait-tag {
+    position: absolute; bottom: -8px; left: 50%;
+    transform: translateX(-50%) rotate(2deg);
+    background: var(--ink); color: var(--bg);
+    font-size: 0.75rem; font-weight: 600;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px; z-index: 2;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px -4px rgba(15,15,23,0.2);
+  }
+  .portrait-caption {
+    margin-top: 1.5rem;
+    font-family: var(--hand);
+    font-size: 1.15rem;
+    color: var(--ink-mute);
+    font-weight: 500;
+  }
+  .portrait-caption em { color: var(--indigo); font-weight: 600; font-style: normal; }
+
+  /* CTA buttons */
+  .hero-cta { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--sans); font-size: 0.9375rem; font-weight: 600; border-radius: 999px; padding: 0.75rem 1.5rem; transition: opacity 0.2s, transform 0.3s var(--spring); cursor: pointer; }
+  .btn-ink { background: var(--ink); color: var(--bg); }
+  .btn-ink:hover { opacity: 0.85; transform: translateY(-2px); }
+  .btn-ghost { color: var(--ink-soft); padding: 0.75rem 0; font-weight: 500; border-bottom: 1px solid var(--rule); border-radius: 0; }
+  .btn-ghost:hover { color: var(--ink); border-color: var(--ink); }
+
+  /* NOTICED */
+  .noticed { padding: clamp(4rem, 9vw, 6rem) 0; background: var(--bg-soft); border-radius: var(--r-xl) var(--r-xl) 0 0; }
+  .section-head { margin-bottom: 2.5rem; }
+  .noticed h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin-top: 1rem; }
+  .noticed h2 em { font-style: italic; color: var(--indigo); }
+
+  .noticed-list { display: flex; flex-direction: column; gap: 0; }
+  .noticed-item {
+    display: grid;
+    grid-template-columns: 3.5rem 1fr;
+    gap: 0 1.5rem;
+    padding: 1.85rem 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: start;
+  }
+  .noticed-item:first-child { border-top: 1px solid var(--rule); }
+  .noticed-emoji {
+    font-size: 1.6rem;
+    line-height: 1;
+    width: 3rem; height: 3rem;
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px -6px rgba(15,15,23,0.1);
+  }
+  .noticed-product {
+    display: inline-block;
+    font-size: 0.7rem; font-weight: 600;
+    color: var(--indigo);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.4rem;
+  }
+  .noticed-content h3 {
+    font-family: var(--sans);
+    font-size: 1.05rem; font-weight: 600;
+    color: var(--ink); margin-bottom: 0.5rem;
+    letter-spacing: -0.01em; line-height: 1.35;
+  }
+  .noticed-content p { font-size: 0.9375rem; color: var(--ink-mute); line-height: 1.65; }
+  .noticed-content p strong { color: var(--ink-soft); font-weight: 600; }
+
+  /* SHIP LINE — handwritten transition */
+  .ship-line {
+    background: var(--bg-soft);
+    text-align: center;
+    padding: 3rem var(--pad) 4.5rem;
+    position: relative;
+  }
+  .ship-line p {
+    font-family: var(--hand);
+    font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+    color: var(--ink); line-height: 1.25;
+    max-width: 580px; margin: 0 auto;
+    font-weight: 500;
+  }
+  .ship-line p em { color: var(--indigo); font-style: normal; font-weight: 600; }
+  .ship-line .arrow-down {
+    margin: 1.25rem auto 0;
+    display: flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px;
+    color: var(--ink-mute);
+  }
+  .ship-line .arrow-down svg { width: 100%; height: 100%; animation: bounce 2.5s ease-in-out infinite; }
+  @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+  /* SERVICES */
+  .services { padding: clamp(4rem, 9vw, 6rem) 0; background: var(--bg-soft); }
+  .services h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin-top: 1rem; }
+  .services h2 em { font-style: italic; color: var(--indigo); }
+
+  .service-cards {
+    display: flex; flex-direction: column; gap: 0;
+    border: 1px solid var(--rule);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+  }
+  .service-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 1.75rem;
+    padding: 1.85rem 2rem;
+    background: rgba(255,255,255,0.6);
+    border-bottom: 1px solid var(--rule);
+    transition: background 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card:last-child { border-bottom: 0; }
+  .service-card:hover { background: rgba(255,255,255,0.92); }
+  .service-card::before {
+    content: ''; position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--card-accent, var(--indigo));
+    opacity: 0; transition: opacity 0.25s;
+  }
+  .service-card:hover::before { opacity: 1; }
+  .service-card.s-sky { --card-accent: var(--sky); }
+  .service-card.s-lime { --card-accent: var(--lime); }
+  .service-card.s-indigo { --card-accent: var(--indigo); }
+
+  .service-num {
+    font-family: var(--serif);
+    font-size: 0.8rem;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+    padding-top: 0.25rem;
+    width: 2rem;
+  }
+  .service-card h3 {
+    font-family: var(--sans);
+    font-size: 1.05rem; font-weight: 600;
+    color: var(--ink); margin-bottom: 0.5rem;
+    letter-spacing: -0.01em; line-height: 1.3;
+  }
+  .service-card .service-desc { font-size: 0.9375rem; color: var(--ink-mute); line-height: 1.6; margin-bottom: 0.85rem; }
+  .service-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.85rem; }
+  .tag {
+    font-size: 0.75rem; font-weight: 500;
+    padding: 0.25rem 0.65rem;
+    background: rgba(15,15,23,0.04);
+    border-radius: 999px;
+    color: var(--ink-mute);
+    border: 1px solid var(--rule);
+  }
+  .tag.tag-product {
+    background: var(--indigo-tint);
+    color: var(--indigo);
+    border-color: rgba(91,79,224,0.18);
+    font-weight: 600;
+  }
+  .benefit {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    color: var(--ink); font-weight: 500;
+    background: linear-gradient(180deg, rgba(132,204,22,0.1) 0%, rgba(132,204,22,0.05) 100%);
+    border: 1px solid rgba(132,204,22,0.25);
+    border-radius: 8px;
+    padding: 0.5rem 0.85rem;
+    line-height: 1.4;
+  }
+  .benefit::before { content: '→'; color: var(--lime); font-weight: 700; flex-shrink: 0; }
+
+  /* PROOF */
+  .proof { padding: clamp(4rem, 9vw, 6rem) 0; background: var(--bg); border-radius: 0 0 var(--r-xl) var(--r-xl); }
+  .proof h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin-top: 1rem; margin-bottom: 0.5rem; }
+  .proof h2 em { font-style: italic; color: var(--indigo); }
+  .proof-intro { font-size: 0.95rem; color: var(--ink-mute); margin-bottom: 2rem; max-width: 480px; }
+  .proof-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; padding-top: 0.5rem; }
+  .proof-item {
+    padding: 1.25rem 1.5rem;
+    background: var(--bg-soft);
+    border: 1px solid var(--rule);
+    border-radius: var(--r-md);
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .proof-item:hover { transform: translateY(-2px); border-color: rgba(91,79,224,0.3); }
+  .proof-item .proof-label {
+    font-size: 0.75rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--ink-mute); margin-bottom: 0.3rem;
+  }
+  .proof-item .proof-val {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    color: var(--ink); line-height: 1.15;
+    margin-bottom: 0.3rem;
+  }
+  .proof-item .proof-desc { font-size: 0.875rem; color: var(--ink-mute); line-height: 1.5; }
+  .proof-item .proof-link {
+    display: inline-block;
+    font-size: 0.8125rem;
+    color: var(--indigo); font-weight: 500;
+    border-bottom: 1px solid rgba(91,79,224,0.25);
+    margin-top: 0.4rem;
+    transition: border-color 0.2s;
+  }
+  .proof-item .proof-link:hover { border-color: var(--indigo); }
+
+  .proof-note {
+    margin-top: 2rem;
+    padding: 1.4rem 1.6rem;
+    background: var(--bg-soft);
+    border-radius: var(--r-md);
+    border-left: 3px solid var(--indigo);
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    font-style: italic;
+    font-family: var(--serif);
+  }
+
+  /* PROCESS */
+  .process { padding: clamp(4rem, 9vw, 6rem) 0; background: var(--bg); }
+  .process h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin-top: 1rem; margin-bottom: 2.5rem; }
+  .process h2 em { font-style: italic; color: var(--indigo); }
+  .process-steps {
+    display: flex; flex-direction: column; gap: 0;
+    border: 1px solid var(--rule);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+  }
+  .process-step {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    align-items: start;
+    gap: 0 1.25rem;
+    padding: 1.4rem 1.75rem;
+    background: rgba(255,255,255,0.55);
+    border-bottom: 1px solid var(--rule);
+    transition: background 0.2s;
+  }
+  .process-step:last-child { border-bottom: 0; }
+  .process-step:hover { background: rgba(255,255,255,0.9); }
+  .step-num {
+    width: 2.2rem; height: 2.2rem;
+    border-radius: 50%;
+    background: var(--bg-soft);
+    border: 1px solid var(--rule);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif);
+    font-size: 0.875rem;
+    color: var(--ink-mute);
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+  }
+  .step-body h4 {
+    font-family: var(--sans);
+    font-size: 0.9375rem; font-weight: 600;
+    color: var(--ink); margin-bottom: 0.3rem;
+    letter-spacing: -0.01em;
+  }
+  .step-body p { font-size: 0.9rem; color: var(--ink-mute); line-height: 1.55; }
+  .step-meta { display: inline-block; font-size: 0.75rem; font-weight: 500; color: var(--indigo); margin-top: 0.35rem; }
+
+  /* CTA */
+  .cta-section {
+    margin: 0 var(--pad) clamp(4rem, 8vw, 6rem);
+    padding: clamp(3rem, 7vw, 5rem) clamp(2rem, 5vw, 4rem);
+    background: var(--ink);
+    border-radius: var(--r-xl);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: ''; position: absolute;
+    top: -40%; left: 20%; right: 20%;
+    height: 200%;
+    background: radial-gradient(ellipse at 50% 0%, rgba(91,79,224,0.25) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cta-section::after {
+    content: ''; position: absolute;
+    bottom: -30%; right: -10%;
+    width: 50%; height: 120%;
+    background: radial-gradient(ellipse at 100% 100%, rgba(255,107,53,0.15) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .cta-inner { position: relative; z-index: 1; }
+  .cta-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--sans); font-size: 0.8125rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 1.5rem;
+  }
+  .cta-eyebrow::before { content: ''; display: block; width: 24px; height: 1.5px; background: rgba(255,255,255,0.3); border-radius: 2px; }
+  .cta-section h2 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    color: #fff; margin-bottom: 0.75rem;
+    max-width: 520px; margin-left: auto; margin-right: auto;
+    line-height: 1.1;
+  }
+  .cta-section h2 em { font-style: italic; color: var(--indigo-soft); }
+  .cta-section .cta-text {
+    color: rgba(255,255,255,0.55);
+    max-width: 440px;
+    margin: 0 auto 2.25rem;
+    font-size: 0.9375rem;
+  }
+  .cta-buttons { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+  .btn-cta-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: var(--sans); font-size: 1rem; font-weight: 600;
+    background: #fff; color: var(--ink);
+    padding: 0.875rem 2rem;
+    border-radius: 999px;
+    transition: opacity 0.2s, transform 0.3s var(--spring);
+  }
+  .btn-cta-primary:hover { opacity: 0.92; transform: translateY(-2px); }
+  .btn-cta-email {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.5);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .btn-cta-email:hover { color: rgba(255,255,255,0.85); border-color: rgba(255,255,255,0.5); }
+
+  .signature-block {
+    margin-top: 2.5rem;
+    display: flex; flex-direction: column;
+    align-items: center; gap: 0.75rem;
+  }
+  .signature-avatar {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgba(255,255,255,0.15);
+  }
+  .signature-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .signature-text {
+    font-family: var(--hand);
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.3;
+    max-width: 320px;
+  }
+  .signature-text em { color: var(--indigo-soft); font-style: normal; }
+  .signature-name {
+    font-family: var(--hand);
+    font-size: 1.4rem;
+    color: rgba(255,255,255,0.92);
+    font-weight: 600;
+  }
+
+  /* FOOTER */
+  footer { padding: 2.5rem 0; border-top: 1px solid rgba(15,15,23,0.06); }
+  .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .footer-left { display: flex; flex-direction: column; gap: 0.4rem; }
+  .footer-identity { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; font-size: 0.8125rem; color: var(--ink-mute); }
+  .flag-badge { display: inline-flex; border-radius: 50%; overflow: hidden; width: 16px; height: 16px; flex-shrink: 0; }
+  .footer-copy { font-size: 0.75rem; color: var(--ink-mute); opacity: 0.6; }
+  nav.footer-nav { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+  nav.footer-nav a { font-size: 0.8125rem; color: var(--ink-mute); padding: 0.3rem 0.65rem; border-radius: 999px; transition: background 0.15s, color 0.15s; }
+  nav.footer-nav a:hover { background: rgba(15,15,23,0.05); color: var(--ink); }
+  .footer-social { display: flex; gap: 0.35rem; }
+  .footer-social a { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--ink-mute); background: rgba(15,15,23,0.05); transition: background 0.2s, color 0.2s; }
+  .footer-social a:hover { background: rgba(15,15,23,0.1); color: var(--ink); }
+  .social-icon svg { width: 16px; height: 16px; fill: currentColor; }
+
+  /* RESPONSIVE */
+  @media (min-width: 768px) {
+    .hero-grid {
+      grid-template-columns: 1.4fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .marc-portrait { display: block; }
+    .portrait-card { display: none; }
+    .marc-portrait .portrait-photo-wrap { width: 280px; height: 280px; }
+  }
+
+  @media (max-width: 767px) {
+    .marc-portrait { display: none; }
+    .portrait-card { display: block; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .service-card { grid-template-columns: 2rem 1fr; gap: 0 1rem; padding: 1.5rem; }
+  }
+
+  @media (max-width: 480px) {
+    .noticed-item { grid-template-columns: 2.75rem 1fr; gap: 0 1rem; }
+    .noticed-emoji { width: 2.5rem; height: 2.5rem; font-size: 1.4rem; }
+    .cta-section { margin-left: calc(var(--pad) * 0.5); margin-right: calc(var(--pad) * 0.5); }
+    .portrait-photo-wrap { width: 180px !important; height: 180px !important; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal-stagger > * { opacity: 1; transform: none; transition: none; }
+    *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Aller au contenu</a>
+
+<!-- NAV (kept in English for site consistency) -->
+<nav class="nav" id="nav" lang="en">
+<div class="nav-inner">
+  <div class="nav-brand">
+    <a aria-label="Boris Nachbaur home" class="logo" href="/">BN<span class="logo-dot">.</span></a>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="/#work">Services</a>
+    <a class="nav-link" href="/me">About</a>
+    <a class="nav-link" href="/projects">Projects</a>
+    <a class="nav-link" href="/reviews">Reviews</a>
+  </div>
+  <div class="nav-right">
+    <a class="nav-cta" href="#contact">Book a call</a>
+    <button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open navigation menu" class="nav-toggle" id="navToggle" type="button">
+      <span aria-hidden="true" class="nav-toggle-lines"><span></span></span>
+    </button>
+  </div>
+</div>
+</nav>
+
+<div aria-hidden="true" class="mobile-menu" id="mobileMenu" lang="en">
+  <div class="mobile-menu-links">
+    <a class="mobile-menu-link" href="/#work">Services <span>01</span></a>
+    <a class="mobile-menu-link" href="/me">About <span>02</span></a>
+    <a class="mobile-menu-link" href="/projects">Projects <span>03</span></a>
+    <a class="mobile-menu-link" href="/reviews">Reviews <span>04</span></a>
+  </div>
+  <a class="mobile-menu-cta" href="#contact">Book a call →</a>
+</div>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap-wide">
+      <div class="hero-grid">
+
+        <div class="hero-content">
+          <div class="greeting-card reveal">
+            <span class="marc-avatar">
+              <img src="/assets/Marc_Lou.png" alt="Marc Lou" loading="eager" decoding="async" width="32" height="32" />
+            </span>
+            <span class="wave" aria-hidden="true">👋</span>
+            <span>Salut Marc</span>
+          </div>
+
+          <h1 class="reveal">
+            T'as dit que t'avais perdu<br />
+            le côté <em>playful.</em>
+          </h1>
+          <p class="hero-sub reveal">C'est exactement ce qui mérite d'être protégé.</p>
+
+          <!-- Mobile portrait -->
+          <div class="portrait-card reveal">
+            <div class="portrait-photo-wrap">
+              <div class="portrait-halo" aria-hidden="true"></div>
+              <div class="portrait-photo">
+                <img src="/assets/Marc_Lou.png" alt="Marc Lou" loading="eager" decoding="async" width="200" height="200" />
+              </div>
+              <span class="portrait-tag">@marc_louvion</span>
+            </div>
+            <p class="portrait-caption">Cette page, je l'ai écrite <em>juste pour toi.</em></p>
+          </div>
+
+          <div class="hero-rule reveal" aria-hidden="true"></div>
+
+          <div class="hero-body reveal">
+            <p>J'ai lu ton post d'avril. Celui où tu galères à ouvrir ton laptop pour la première fois.</p>
+            <p>35 startups, des milliers de tickets support, des onboarding flows que tu refais à minuit — <strong>c'est pas de là que vient le play.</strong></p>
+            <p>Je suis Boris. Je prends cette couche ops sur mes épaules pour que tes 4–6 h de deep work restent intactes.</p>
+          </div>
+
+          <div class="hero-cta reveal">
+            <a class="btn btn-ink" href="#contact">Réserver 20 min →</a>
+            <a class="btn btn-ghost" href="#noticed">Voir ce que j'ai noté ↓</a>
+          </div>
+        </div>
+
+        <!-- Desktop portrait -->
+        <div class="marc-portrait reveal">
+          <div class="portrait-photo-wrap">
+            <div class="portrait-halo" aria-hidden="true"></div>
+            <div class="portrait-photo">
+              <img src="/assets/Marc_Lou.png" alt="Marc Lou" loading="eager" decoding="async" width="280" height="280" />
+            </div>
+            <span class="portrait-tag">@marc_louvion</span>
+          </div>
+          <p class="portrait-caption">Cette page, je l'ai écrite <em>juste pour toi.</em></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT I NOTICED -->
+  <section class="noticed" id="noticed">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Ce que j'ai lu</span>
+        <h2>Trois trucs que j'ai vus,<br />et que je sais <em>fixer.</em></h2>
+      </div>
+
+      <div class="noticed-list reveal-stagger">
+        <div class="noticed-item">
+          <span class="noticed-emoji" aria-hidden="true">⭐️</span>
+          <div class="noticed-content">
+            <span class="noticed-product">TrustMRR</span>
+            <h3>Ta marketplace grandit plus vite que sa couche ops.</h3>
+            <p>OAuth, anti-phishing, vendor verification, 8 payment providers, GitHub integrations pour les vendeurs — tu ships le produit <strong>et</strong> tu fais tourner une marketplace en parallèle. L'un, c'est un job de builder. L'autre, non.</p>
+          </div>
+        </div>
+        <div class="noticed-item">
+          <span class="noticed-emoji" aria-hidden="true">📈</span>
+          <div class="noticed-content">
+            <span class="noticed-product">DataFast</span>
+            <h3>T'as passé 48 h sur ton onboarding flow.</h3>
+            <p>C'est du founder work, une fois. Le système qui le maintient ensuite — séquences, edge cases, configs Resend, mises à jour des docs quand un truc casse — <strong>c'est de l'ops.</strong> À chaque fois.</p>
+          </div>
+        </div>
+        <div class="noticed-item">
+          <span class="noticed-emoji" aria-hidden="true">💬</span>
+          <div class="noticed-content">
+            <span class="noticed-product">Tout le portfolio</span>
+            <h3>« Drowning in hundreds of support messages. »</h3>
+            <p>Ton paywall sur TrustMRR a filtré 95 % du noise. Industrialiser cette logique sur tes 14 produits <strong>sans toucher à ton code</strong>, c'est le move suivant. Et c'est exactement ce que je fais.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHIP LINE -->
+  <section class="ship-line reveal">
+    <p>Toi tu <em>shippes.</em><br />Moi je m'occupe du reste.</p>
+    <span class="arrow-down" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 5v14M6 13l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="work">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Ce que je gère</span>
+        <h2>Trois trucs, faits <em>bien.</em></h2>
+      </div>
+
+      <div class="service-cards reveal-stagger">
+
+        <div class="service-card s-sky">
+          <span class="service-num">01</span>
+          <div>
+            <h3>Support triage &amp; docs en self-serve</h3>
+            <p class="service-desc">Les tickets récurrents deviennent de la doc. Tes users ont des vraies réponses, vite. Toi tu vois plus la file — juste ce qui mérite ton œil.</p>
+            <div class="service-tags">
+              <span class="tag">ticket routing</span>
+              <span class="tag">FAQ upkeep</span>
+              <span class="tag">escalation playbooks</span>
+              <span class="tag tag-product">⭐️ TrustMRR</span>
+            </div>
+            <span class="benefit">Ton bloc deep work préservé.</span>
+          </div>
+        </div>
+
+        <div class="service-card s-lime">
+          <span class="service-num">02</span>
+          <div>
+            <h3>Lifecycle email &amp; onboarding</h3>
+            <p class="service-desc">Resend est déjà en place. J'écris, je teste, je maintiens les séquences pour que l'activation et la rétention tournent sans que tu les refasses après chaque lancement.</p>
+            <div class="service-tags">
+              <span class="tag">onboarding</span>
+              <span class="tag">win-back</span>
+              <span class="tag">launch campaigns</span>
+              <span class="tag tag-product">📈 DataFast</span>
+            </div>
+            <span class="benefit">Plus jamais 48 h sur un onboarding flow.</span>
+          </div>
+        </div>
+
+        <div class="service-card s-indigo">
+          <span class="service-num">03</span>
+          <div>
+            <h3>Marketplace ops</h3>
+            <p class="service-desc">Trust layer, payments, seller ops, anti-abuse, provider sprawl. J'ai opéré Gamoniz — une marketplace digitale — en solo, dans un marché où la confiance est rare. Du dispute Stripe au seller bullshit, je connais le terrain.</p>
+            <div class="service-tags">
+              <span class="tag">seller support</span>
+              <span class="tag">trust &amp; anti-abuse</span>
+              <span class="tag">payment ops</span>
+              <span class="tag tag-product">⭐️ TrustMRR</span>
+            </div>
+            <span class="benefit">Une couche ops pro sans embaucher d'équipe.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section class="proof">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Pourquoi moi</span>
+        <h2>Quatre chiffres. <em>Pas de blabla.</em></h2>
+        <p class="proof-intro">Pour situer rapidement — sans transformer cette page en CV.</p>
+      </div>
+
+      <div class="proof-grid reveal-stagger">
+        <div class="proof-item">
+          <div class="proof-label">Solo digital ops</div>
+          <div class="proof-val">15 ans</div>
+          <div class="proof-desc">Dans la machine depuis 2011. Remote-only, fuseau EU, async-first.</div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-label">Gamoniz · marketplace</div>
+          <div class="proof-val">2 250+</div>
+          <div class="proof-desc">Avis clients vérifiés sur un marché trust-scarce. Opérée en solo.
+            <br /><a class="proof-link" href="/projects">L'histoire complète →</a>
+          </div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-label">Communauté Discord</div>
+          <div class="proof-val">1 900+</div>
+          <div class="proof-desc">Membres. Construite, modérée, animée — seul.</div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-label">Satisfaction client</div>
+          <div class="proof-val">100 %</div>
+          <div class="proof-desc">Sur toute la durée d'activité. Réputation construite transaction par transaction.
+            <br /><a class="proof-link" href="/reviews">Lire les avis →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proof-note reveal">
+        Je suis pas un VA. Je suis le genre d'opérateur à qui tu donnes accès à ton Stripe, ton Resend, ta boîte support — et qui ajoute jamais plus de complexité qu'il n'en retire.
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Comment on bosserait</span>
+        <h2>Sans risque. <em>Sans lock-in.</em> Sans org chart.</h2>
+      </div>
+
+      <div class="process-steps reveal-stagger">
+        <div class="process-step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Call de 20 min</h4>
+            <p>Tu me dis où ça frotte. Je te dis si je peux le fixer. Pas de deck, pas de pitch — juste une conversation.</p>
+            <span class="step-meta">Gratuit · ton agenda</span>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Trial de 4 semaines</h4>
+            <p>Tarif fixe. Async-first sur Slack ou Discord. Un sync hebdo max. Tu vois ce que ça donne avant de t'engager sur quoi que ce soit.</p>
+            <span class="step-meta">4 semaines · fixe</span>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Long terme — si ça matche</h4>
+            <p>Mensuel rolling, tu coupes quand tu veux. Je prends 2 clients max — donc si on continue, t'as mon focus complet.</p>
+            <span class="step-meta">Mensuel · sans lock-in</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="contact">
+    <div class="cta-inner">
+      <div class="cta-eyebrow">On en parle ?</div>
+      <h2>Si ça résonne,<br /><em>on prend 20 min.</em></h2>
+      <p class="cta-text">Pas de deck. Pas de pitch. Juste une conversation honnête pour voir si ça a du sens.</p>
+      <div class="cta-buttons">
+        <a class="btn-cta-primary" href="https://calendly.com/nachboris/20min" rel="noopener" target="_blank">
+          Réserver 20 min →
+        </a>
+        <a class="btn-cta-email" href="mailto:boris@nachboris.fr?subject=Marc%20Lou%20%E2%80%94%20on%20se%20parle%20%3F">boris@nachboris.fr</a>
+      </div>
+
+      <div class="signature-block">
+        <span class="signature-avatar">
+          <img src="/assets/Hero-Boris.webp" alt="Boris Nachbaur" loading="lazy" decoding="async" />
+        </span>
+        <p class="signature-text">Si ça résonne pas — <em>aucun souci.</em><br/>On reste tous les deux à shipper nos trucs.</p>
+        <span class="signature-name">— Boris</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER (kept in English for site consistency) -->
+<footer lang="en">
+  <div class="wrap-wide">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span class="footer-identity">
+          Boris Nachbaur
+          <span>·</span>
+          <span aria-hidden="true" class="flag-badge">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <defs><clipPath id="fr-round"><circle cx="12" cy="12" r="12"/></clipPath></defs>
+              <g clip-path="url(#fr-round)">
+                <rect fill="#1F4AA8" height="24" width="8" x="0"/><rect fill="#FFFFFF" height="24" width="8" x="8"/><rect fill="#E23D28" height="24" width="8" x="16"/>
+              </g>
+            </svg>
+          </span>
+          <span>French</span>
+          <span>·</span>
+          <span aria-hidden="true" class="flag-badge">
+            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <defs><clipPath id="ch-round"><circle cx="12" cy="12" r="12"/></clipPath></defs>
+              <g clip-path="url(#ch-round)">
+                <rect fill="#D52B1E" height="24" width="24"/><rect fill="#FFFFFF" height="14" width="4" x="10" y="5"/><rect fill="#FFFFFF" height="4" width="14" x="5" y="10"/>
+              </g>
+            </svg>
+          </span>
+          <span>Based in Lausanne</span>
+        </span>
+        <span class="footer-copy">© <span id="year">2026</span> Nachboris · Made with ♡ by Boris &amp; Claude.</span>
+      </div>
+      <nav aria-label="Footer" class="footer-nav">
+        <a href="/#work">Services</a>
+        <a href="/me">About</a>
+        <a href="/projects">Projects</a>
+        <a href="/reviews">Reviews</a>
+      </nav>
+      <div class="footer-social">
+        <a aria-label="LinkedIn" href="https://www.linkedin.com/in/borisnch/" rel="noopener" target="_blank">
+          <span aria-hidden="true" class="social-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A1.96 1.96 0 1 0 5.3 6.92 1.96 1.96 0 0 0 5.25 3Zm14.19 9.89c0-3.47-1.85-5.08-4.32-5.08-1.99 0-2.88 1.1-3.38 1.87V8.5H8.36c.04.79 0 11.5 0 11.5h3.38v-6.42c0-.34.02-.68.13-.92.27-.68.88-1.39 1.92-1.39 1.35 0 1.89 1.03 1.89 2.54V20H19.1v-7.11Z"/></svg></span>
+        </a>
+        <a aria-label="X (Twitter)" href="https://x.com/BobuRMT" rel="noopener" target="_blank">
+          <span aria-hidden="true" class="social-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.53 3H20.5l-6.49 7.42L21.75 21h-5.99l-4.69-6.13L5.7 21H2.73l6.94-7.94L2.25 3h6.14l4.24 5.61L17.53 3Zm-1.05 16.2h1.65L7.6 4.7H5.83L16.48 19.2Z"/></svg></span>
+        </a>
+        <a aria-label="Email" href="mailto:boris@nachboris.fr">
+          <span aria-hidden="true" class="social-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6.75A1.75 1.75 0 0 1 4.75 5h14.5A1.75 1.75 0 0 1 21 6.75v10.5A1.75 1.75 0 0 1 19.25 19H4.75A1.75 1.75 0 0 1 3 17.25V6.75Zm1.9-.25 7.1 5.31 7.1-5.31H4.9Zm14.6 11V8.34l-6.98 5.22a.9.9 0 0 1-1.04 0L4.5 8.34v9.16h15Z"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Year
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 12);
+  }, { passive: true });
+
+  // Mobile menu
+  const navToggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const closeMobileMenu = () => {
+    nav.classList.remove('menu-open');
+    mobileMenu.classList.remove('is-open');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Open navigation menu');
+  };
+  navToggle.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.contains('is-open');
+    if (isOpen) { closeMobileMenu(); return; }
+    nav.classList.add('menu-open');
+    mobileMenu.classList.add('is-open');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+    navToggle.setAttribute('aria-expanded', 'true');
+    navToggle.setAttribute('aria-label', 'Close navigation menu');
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileMenu));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileMenu(); });
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
