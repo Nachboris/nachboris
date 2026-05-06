@@ -216,14 +216,17 @@
 
   @media (max-width: 560px) {
     .availability {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       padding-right: 0.6rem;
-      gap: 0.3rem;
+      gap: 0.35rem;
     }
-    .availability-label { display: none; }
-    .availability { padding-right: 0.7rem; }
     .nav-cta-label-full { display: none; }
     .nav-cta-label-short { display: inline; }
+  }
+
+  @media (max-width: 380px) {
+    .availability-label { display: none; }
+    .availability { padding-right: 0.5rem; gap: 0.3rem; }
   }
 
   /* LAYOUT */
@@ -330,13 +333,14 @@
   }
   .h1-underline path {
     fill: none;
-    stroke: var(--orange);
+    stroke: var(--indigo);
     stroke-width: 4;
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-dasharray: 240;
     stroke-dashoffset: 240;
     transition: stroke-dashoffset 1s var(--soft);
+    opacity: 0.85;
   }
   .hero-h1.in .h1-underline path {
     stroke-dashoffset: 0;
@@ -939,13 +943,13 @@
     transform: translateY(14px);
     transition: opacity 0.55s var(--soft), transform 0.55s var(--soft), background 0.25s var(--soft), border-color 0.25s var(--soft);
   }
-  .process-steps.in .process-step:nth-child(1) {
+  .process-steps.in .process-step:nth-of-type(1) {
     opacity: 1; transform: translateY(0); transition-delay: 0.1s;
   }
-  .process-steps.in .process-step:nth-child(2) {
+  .process-steps.in .process-step:nth-of-type(2) {
     opacity: 1; transform: translateY(0); transition-delay: 0.55s;
   }
-  .process-steps.in .process-step:nth-child(3) {
+  .process-steps.in .process-step:nth-of-type(3) {
     opacity: 1; transform: translateY(0); transition-delay: 1s;
   }
   .process-step:last-child { margin-bottom: 0; }
@@ -970,13 +974,13 @@
     position: relative;
     z-index: 2;
   }
-  .process-steps.in .process-step:nth-child(1) .step-num {
+  .process-steps.in .process-step:nth-of-type(1) .step-num {
     animation: stepPulse 0.8s var(--spring) 0.4s both;
   }
-  .process-steps.in .process-step:nth-child(2) .step-num {
+  .process-steps.in .process-step:nth-of-type(2) .step-num {
     animation: stepPulse 0.8s var(--spring) 0.85s both;
   }
-  .process-steps.in .process-step:nth-child(3) .step-num {
+  .process-steps.in .process-step:nth-of-type(3) .step-num {
     animation: stepPulse 0.8s var(--spring) 1.3s both;
   }
   @keyframes stepPulse {
@@ -1188,8 +1192,8 @@
         <span class="availability-label">Available</span>
       </span>
       <a class="nav-cta" href="#contact">
-        <span class="nav-cta-label-full">Réserver 20 min</span>
-        <span class="nav-cta-label-short">Call</span>
+        <span class="nav-cta-label-full">Échanger 20 min</span>
+        <span class="nav-cta-label-short">Échanger</span>
         <span class="arrow" aria-hidden="true">→</span>
       </a>
     </div>
@@ -1505,7 +1509,7 @@
       <p class="cta-text">Un call honnête de 20 min pour voir si on a un truc à faire ensemble — ou pas. Dans les deux cas, t'auras pas perdu ton temps.</p>
       <div class="cta-buttons">
         <a class="btn-cta-primary" href="https://calendly.com/nachboris/20min" rel="noopener" target="_blank">
-          Réserver 20 min →
+          Échanger 20 min →
         </a>
         <a class="btn-cta-email" href="mailto:boris@nachboris.fr?subject=Marc%20Lou%20%E2%80%94%20on%20se%20parle%20%3F">boris@nachboris.fr</a>
       </div>
@@ -1527,7 +1531,7 @@
 <!-- Sticky mobile CTA — appears after scroll on mobile only -->
 <a class="sticky-cta" href="#contact" id="stickyCta" aria-hidden="true">
   <span class="pulse-dot" aria-hidden="true"></span>
-  Réserver 20 min
+  S'appeler 20 min
   <span class="arrow" aria-hidden="true">→</span>
 </a>
 
@@ -1562,7 +1566,6 @@
         <span class="footer-copy">© <span id="year">2026</span> Nachboris · Made with ♡ by Boris &amp; Claude.</span>
       </div>
       <nav aria-label="Footer" class="footer-nav">
-        <a href="/#work">Services</a>
         <a href="/me">About</a>
         <a href="/projects">Projects</a>
         <a href="/reviews">Reviews</a>
