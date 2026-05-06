@@ -187,8 +187,6 @@
     font-family: var(--serif); margin-bottom: 2rem;
   }
 
-  .marc-portrait { display: none; }
-
   .hero-rule {
     width: 40px; height: 2px;
     background: linear-gradient(90deg, var(--indigo), var(--orange));
@@ -199,56 +197,269 @@
   .hero-body strong { color: var(--ink); font-weight: 600; }
   .hero-body p + p { margin-top: 1rem; }
 
-  /* Mobile portrait card */
-  .portrait-card { position: relative; text-align: center; margin: 1rem 0 2rem; }
-  .portrait-photo-wrap { position: relative; width: 200px; height: 200px; margin: 0 auto; }  .portrait-halo {
-    position: absolute; inset: -8%;
-    background: radial-gradient(circle, var(--yellow-soft) 0%, var(--yellow-soft) 35%, transparent 70%);
-    border-radius: 50%;
-    filter: blur(14px);
-    opacity: 0.65; z-index: 0;
-    animation: halo-breathe 6s ease-in-out infinite;
-  }
-  @keyframes halo-breathe {
-    0%, 100% { transform: scale(1); opacity: 0.65; }
-    50% { transform: scale(1.04); opacity: 0.8; }
-  }
-  .portrait-photo {
-    position: relative; width: 100%; height: 100%;
-    border-radius: 50%; overflow: hidden; z-index: 1;
-    border: 4px solid #fff;
-    box-shadow: 0 16px 40px -12px rgba(15,15,23,0.25);
-    transform: rotate(-2deg);
-    transition: transform 0.6s var(--spring);
-  }
-  .portrait-photo:hover { transform: rotate(0deg) translateY(-4px); }
-  .portrait-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .portrait-tag {
-    position: absolute; bottom: -8px; left: 50%;
-    transform: translateX(-50%) rotate(2deg);
-    background: var(--ink); color: var(--bg);
-    font-size: 0.75rem; font-weight: 600;
-    padding: 0.35rem 0.85rem;
-    border-radius: 999px; z-index: 2;
-    white-space: nowrap;
-    box-shadow: 0 4px 12px -4px rgba(15,15,23,0.2);
-  }
-  .portrait-caption {
-    margin-top: 1.5rem;
-    text-align: center;
+  /* Greeting card caption */
+  .greeting-caption {
+    display: block;
+    margin-top: -0.4rem;
+    margin-bottom: 1.5rem;
     font-family: var(--hand);
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     color: var(--ink-mute);
-    font-weight: 500;
+    line-height: 1.3;
+    max-width: 26rem;
   }
-  .portrait-caption em { color: var(--indigo); font-weight: 600; font-style: normal; }
+  .greeting-caption em { color: var(--indigo); font-weight: 600; font-style: normal; }
+
+  /* AI badge from homepage */
+  .ai-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.42rem;
+    padding: 0.28rem 0.74rem;
+    background: linear-gradient(135deg, var(--indigo-tint) 0%, var(--orange-tint) 100%);
+    border: 1px solid var(--indigo-soft);
+    border-radius: 999px;
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--indigo);
+    letter-spacing: 0.01em;
+    transition: transform 0.5s var(--spring), border-color 0.35s var(--soft), box-shadow 0.4s var(--soft);
+    box-shadow: 0 2px 8px -4px rgba(91, 79, 224, 0.2);
+    line-height: 1.3;
+  }
+  .ai-badge:hover {
+    transform: translateY(-1px);
+    border-color: var(--indigo);
+    box-shadow: 0 4px 14px -5px rgba(91, 79, 224, 0.35);
+  }
+  .ai-badge .bolt {
+    font-size: 0.86rem;
+    animation: bolt 2.4s ease-in-out infinite;
+    display: inline-block;
+    transform-origin: center;
+  }
+  @keyframes bolt {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.2) rotate(-8deg); }
+  }
+
+  /* PHOTO COLUMN — copied from homepage */
+  .photo-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    position: relative;
+  }
+  .photo-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 270px;
+    aspect-ratio: 0.86;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    isolation: isolate;
+  }
+  .photo-halo {
+    position: absolute;
+    inset: -14% -18% -10% -18%;
+    background:
+      radial-gradient(circle at 55% 38%, rgba(252, 211, 77, 0.58) 0%, rgba(252, 211, 77, 0.38) 28%, rgba(252, 211, 77, 0.12) 52%, transparent 72%),
+      radial-gradient(circle at 88% 74%, rgba(255, 107, 53, 0.22) 0%, rgba(255, 107, 53, 0.09) 38%, transparent 68%),
+      radial-gradient(circle at 10% 12%, rgba(139, 130, 240, 0.20) 0%, rgba(139, 130, 240, 0.07) 40%, transparent 70%);
+    border-radius: 46%;
+    z-index: 0;
+    filter: blur(18px);
+    transition: transform 0.9s var(--spring), opacity 0.35s var(--soft);
+    will-change: transform;
+    opacity: 0.78;
+  }
+  .photo-cutout {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    overflow: hidden;
+    border-radius: 2.6rem;
+    background:
+      radial-gradient(circle at 50% 38%, rgba(252, 211, 77, 0.62) 0%, rgba(252, 211, 77, 0.40) 29%, rgba(255, 235, 158, 0.26) 48%, rgba(255, 255, 255, 0.48) 68%, rgba(255, 255, 255, 0.34) 100%),
+      linear-gradient(135deg, rgba(139, 130, 240, 0.13) 0%, rgba(255, 255, 255, 0.22) 44%, rgba(255, 107, 53, 0.12) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.82);
+    box-shadow:
+      0 26px 54px -28px rgba(15, 15, 23, 0.44),
+      0 10px 26px -18px rgba(255, 107, 53, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.92);
+    transform: translateY(0);
+    transition: transform 0.7s var(--spring), box-shadow 0.35s var(--soft);
+    will-change: transform;
+  }
+  .photo-cutout::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 32%);
+    z-index: 2;
+    pointer-events: none;
+  }
+  .photo-cutout picture,
+  .photo-cutout img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .photo-cutout img {
+    object-fit: contain;
+    object-position: center bottom;
+    transform: scale(1.055) translateY(1px);
+    transform-origin: center bottom;
+    filter: drop-shadow(0 14px 20px rgba(15, 15, 23, 0.12));
+    position: relative;
+    z-index: 1;
+  }
+  .photo-wrap:hover .photo-cutout {
+    transform: translateY(-4px);
+    box-shadow:
+      0 30px 62px -28px rgba(15, 15, 23, 0.5),
+      0 14px 30px -18px rgba(255, 107, 53, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.96);
+  }
+  .photo-wrap:hover .photo-halo {
+    transform: translate(8px, -6px) scale(1.04);
+  }
+  .photo-col .ai-badge {
+    position: relative;
+    margin-top: -0.2rem;
+    transform: rotate(3deg);
+    z-index: 3;
+  }
+  .photo-col .ai-badge:hover {
+    transform: rotate(0deg) translateY(-2px);
+  }
+  .photo-signature {
+    margin-top: -0.1rem;
+    margin-bottom: -0.55rem;
+    font-family: var(--hand);
+    font-size: clamp(1.65rem, 3vw, 2.05rem);
+    line-height: 1;
+    color: var(--ink);
+    transform: rotate(-2deg);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+  }
+  .photo-note {
+    position: absolute;
+    top: 0.2rem;
+    left: -8.8rem;
+    z-index: 4;
+    width: 150px;
+    pointer-events: none;
+    transform: rotate(-8deg);
+    opacity: 0.92;
+  }
+  .photo-note span {
+    display: block;
+    font-family: var(--hand);
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--orange);
+    white-space: nowrap;
+    margin-bottom: -0.25rem;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+  }
+  .photo-note svg {
+    width: 128px;
+    height: auto;
+    margin-left: 0.7rem;
+    overflow: visible;
+  }
+  .photo-note path {
+    fill: none;
+    stroke: var(--orange);
+    stroke-width: 7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
 
   /* CTA buttons */
   .hero-cta { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
-  .btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--sans); font-size: 0.9375rem; font-weight: 600; border-radius: 999px; padding: 0.75rem 1.5rem; transition: opacity 0.2s, transform 0.3s var(--spring); cursor: pointer; }
-  .btn-ink { background: var(--ink); color: var(--bg); }
-  .btn-ink:hover { opacity: 0.85; transform: translateY(-2px); }
-  .btn-ghost { color: var(--ink-soft); padding: 0.75rem 0; font-weight: 500; border-bottom: 1px solid var(--rule); border-radius: 0; }
+
+  @keyframes beamSpin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    line-height: 1;
+    white-space: nowrap;
+    padding: 0.95rem 1.35rem;
+    border-radius: 999px;
+    transition: transform 0.35s var(--spring), box-shadow 0.35s var(--soft), color 0.25s var(--soft), background 0.25s var(--soft);
+    will-change: transform;
+    position: relative;
+    isolation: isolate;
+    cursor: pointer;
+  }
+  .btn-label, .btn .arrow {
+    position: relative;
+    z-index: 2;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--bg);
+    overflow: hidden;
+    box-shadow: 0 10px 24px -18px rgba(15, 15, 23, 0.55);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 34px -18px rgba(91, 79, 224, 0.45);
+  }
+  .btn-primary .arrow { transition: transform 0.4s var(--spring); }
+  .btn-primary:hover .arrow { transform: translateX(3px); }
+  .btn-primary::before {
+    content: "";
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 190%;
+    aspect-ratio: 1;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 22deg,
+      rgba(139, 130, 240, 0.95) 40deg,
+      rgba(255, 107, 53, 0.9) 74deg,
+      transparent 104deg,
+      transparent 360deg
+    );
+    transform: translate(-50%, -50%);
+    animation: beamSpin 3.6s linear infinite;
+    z-index: 0;
+  }
+  .btn-primary::after {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    background: var(--ink);
+    border-radius: inherit;
+    z-index: 1;
+    transition: background 0.25s var(--soft);
+  }
+  .btn-primary:hover::after { background: #171723; }
+
+  .btn-ink { background: var(--ink); color: var(--bg); box-shadow: 0 10px 24px -18px rgba(15, 15, 23, 0.55); }
+  .btn-ink:hover { transform: translateY(-2px); background: #171723; }
+  .btn-ghost {
+    color: var(--ink-soft);
+    padding: 0.75rem 0;
+    font-weight: 500;
+    border-bottom: 1px solid var(--rule);
+    border-radius: 0;
+  }
   .btn-ghost:hover { color: var(--ink); border-color: var(--ink); }
 
   /* NOTICED */
@@ -605,18 +816,15 @@
   /* RESPONSIVE */
   @media (min-width: 768px) {
     .hero-grid {
-      grid-template-columns: 1.7fr 1fr;
+      grid-template-columns: 1.5fr 1fr;
       gap: 3.5rem;
       align-items: center;
     }
-    .marc-portrait { display: block; text-align: center; }
-    .portrait-card { display: none; }
-    .marc-portrait .portrait-photo-wrap { width: 240px; height: 240px; }
+    .photo-wrap { max-width: 300px; }
   }
 
-  @media (max-width: 767px) {
-    .marc-portrait { display: none; }
-    .portrait-card { display: block; }
+  @media (min-width: 1024px) {
+    .photo-wrap { max-width: 320px; }
   }
 
   @media (max-width: 768px) {
@@ -624,12 +832,31 @@
     .nav-toggle { display: flex; }
     .footer-inner { flex-direction: column; align-items: flex-start; }
     .service-card { grid-template-columns: 2rem 1fr; gap: 0 1rem; padding: 1.5rem; }
+    .photo-wrap { max-width: min(62vw, 232px); }
+    .photo-note {
+      top: 0.1rem;
+      left: -0.75rem;
+      width: 128px;
+      transform: rotate(-7deg);
+    }
+    .photo-note span {
+      font-size: 1.22rem;
+      line-height: 0.95;
+      white-space: normal;
+      max-width: 8.2rem;
+    }
+    .photo-note svg {
+      width: 88px;
+      margin-left: 0.25rem;
+    }
+    .photo-note path {
+      stroke-width: 8;
+    }
   }
 
   @media (max-width: 480px) {
     .noticed-item { grid-template-columns: 2.75rem 1fr; gap: 0 1rem; }
     .noticed-emoji { width: 2.5rem; height: 2.5rem; font-size: 1.4rem; }
-    .portrait-photo-wrap { width: 180px !important; height: 180px !important; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -688,48 +915,54 @@
             <span>Salut Marc</span>
           </div>
 
+          <p class="greeting-caption reveal">Cette page, je l'ai écrite <em>juste pour toi</em><br />.</p>
+
           <h1 class="reveal">
             <em>Keep shipping.</em><br />
             Je m'occupe du reste.
           </h1>
           <p class="hero-sub reveal">Enfin, on essaie. Si ça matche.</p>
 
-          <!-- Mobile portrait -->
-          <div class="portrait-card reveal">
-            <div class="portrait-photo-wrap">
-              <div class="portrait-halo" aria-hidden="true"></div>
-              <div class="portrait-photo">
-                <img src="/assets/Marc_Lou.png" alt="Marc Lou" loading="eager" decoding="async" width="200" height="200" />
-              </div>
-              <span class="portrait-tag">@marc_louvion</span>
-            </div>
-            <p class="portrait-caption">Cette page, je l'ai écrite <em>juste pour toi.</em></p>
-          </div>
-
           <div class="hero-rule reveal" aria-hidden="true"></div>
 
           <div class="hero-body reveal">
             <p>Boris, 31 ans, basé à Lausanne. 15 ans à opérer en solo dans le digital — donc je sais ce que c'est de jongler entre 14 produits et zéro équipe.</p>
             <p>J'ai lu ton post d'avril. Le burnout sous-jacent, l'envie de retrouver le côté <em>playful</em>. Et je me suis dit : <strong>il y a moyen que je puisse aider</strong>.</p>
-            <p>Pas avec un pitch. Avec un essai de quelques semaines. <strong>Si ça matche, on continue. Sinon, no hard feelings.</strong></p>
+            <p>L'idée, c'est pas un grand engagement. Quelques semaines pour voir si on se trouve. <strong>Si ça matche, on continue. Sinon, no hard feelings.</strong></p>
           </div>
 
           <div class="hero-cta reveal">
-            <a class="btn btn-ink" href="#contact">On en discute 20 min ?</a>
+            <a class="btn btn-primary" href="#contact">
+              <span class="btn-label">On en discute 20 min ?</span>
+              <span class="arrow" aria-hidden="true">→</span>
+            </a>
             <a class="btn btn-ghost" href="#noticed">D'abord, ce que j'ai noté ↓</a>
           </div>
         </div>
 
-        <!-- Desktop portrait -->
-        <div class="marc-portrait reveal">
-          <div class="portrait-photo-wrap">
-            <div class="portrait-halo" aria-hidden="true"></div>
-            <div class="portrait-photo">
-              <img src="/assets/Marc_Lou.png" alt="Marc Lou" loading="eager" decoding="async" width="240" height="240" />
+        <!-- Photo Boris (homepage version) -->
+        <div class="photo-col">
+          <div class="photo-wrap reveal">
+            <div aria-hidden="true" class="photo-halo"></div>
+            <div aria-hidden="true" class="photo-note">
+              <span>Your trusted right-hand?</span>
+              <svg focusable="false" viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 13 C42 3, 82 19, 112 45"></path>
+                <path d="M100 45 L120 52 L107 31"></path>
+              </svg>
             </div>
-            <span class="portrait-tag">@marc_louvion</span>
+            <div class="photo-cutout">
+              <picture>
+                <source height="603" media="(max-width: 720px)" srcset="/assets/mobile-Hero.webp" width="560" />
+                <img alt="Boris Nachbaur" decoding="async" fetchpriority="high" height="849" loading="eager" src="/assets/Hero-Boris.webp" width="788" />
+              </picture>
+            </div>
           </div>
-          <p class="portrait-caption">Cette page, je l'ai écrite <em>juste pour toi.</em></p>
+          <span class="photo-signature reveal">Boris Nachbaur</span>
+          <span class="ai-badge reveal">
+            <span aria-hidden="true" class="bolt">⚡</span>
+            AI-native operator
+          </span>
         </div>
 
       </div>
@@ -750,23 +983,23 @@
           <div class="noticed-content">
             <span class="noticed-product">Toute la collection</span>
             <h3>T'as 14 produits qui tournent. Certains cartonnent. D'autres dorment un peu.</h3>
-            <p>Ce qui te fait kiffer, c'est de shipper du nouveau — c'est ton truc, c'est ce qui t'anime. Mais entre les anciens qui pourraient grandir avec un peu d'attention et les nouveaux qui réclament toute la tienne, <strong>il y a clairement un délaissement involontaire</strong>. C'est pas un reproche, c'est juste mécanique.</p>
+            <p>Ce qui te fait kiffer, c'est de shipper du nouveau — c'est ton truc, c'est ce qui t'anime. Mais entre les anciens qui pourraient grandir avec un peu d'attention et les nouveaux qui réclament toute la tienne, <strong>il y a un délaissement involontaire</strong>. C'est pas un reproche, c'est mécanique.</p>
           </div>
         </div>
         <div class="noticed-item">
-          <span class="noticed-emoji" aria-hidden="true">💬</span>
+          <span class="noticed-emoji" aria-hidden="true">📨</span>
           <div class="noticed-content">
-            <span class="noticed-product">Communauté Discord</span>
-            <h3>Ta communauté Discord s'est endormie.</h3>
-            <p>Et c'est dommage — parce que ces gens-là, ils sont déjà clients. Une communauté active, c'est le lieu où tes users deviennent ambassadeurs gratuitement. Là, c'est juste une opportunité de rétention <strong>qui dort tranquillement</strong>.</p>
+            <span class="noticed-product">Support &amp; tickets clients</span>
+            <h3>Des milliers de tickets à traiter, et ça revient chaque semaine.</h3>
+            <p>Tu l'as dit toi-même : la masse de support est devenue chronophage. C'est exactement le genre de tâche opérationnelle qu'on peut absorber sans perdre en qualité — voire en l'améliorant. <strong>En remontant en plus les feedbacks récurrents qui peuvent vraiment alimenter ton roadmap produit.</strong></p>
           </div>
         </div>
         <div class="noticed-item">
           <span class="noticed-emoji" aria-hidden="true">📈</span>
           <div class="noticed-content">
-            <span class="noticed-product">DataFast &amp; co.</span>
-            <h3>« 48 h sur l'onboarding flow. »</h3>
-            <p>Le temps que tu y as mis une fois, c'était nécessaire. Le temps que tu y remettras à chaque update, edge case, ou changement Resend, <strong>c'est de l'ops</strong>. Et l'ops, c'est exactement le genre de truc qu'on peut déléguer sans perdre en qualité.</p>
+            <span class="noticed-product">Anciens projets en sourdine</span>
+            <h3>Tes anciens produits ont du potentiel inexploité.</h3>
+            <p>Ils ont déjà des users, ils ont déjà du revenu — il leur manque juste quelqu'un qui s'en occupe pendant que tu construis le suivant. Lifecycle email, win-back, petits ajustements de funnel. <strong>Pas une refonte, juste un peu de soin régulier.</strong></p>
           </div>
         </div>
       </div>
@@ -789,7 +1022,7 @@
       <div class="section-head reveal">
         <span class="eyebrow">Une proposition</span>
         <h2>Ça pourrait commencer<br />par <em>ces trois trucs.</em></h2>
-        <p class="proof-intro" style="margin-top: 1rem;">Ou par tout autre chose, si t'as déjà des idées en tête. C'est juste pour démarrer.</p>
+        <p class="proof-intro" style="margin-top: 1rem;">Ou par tout autre chose, si t'as déjà des idées. C'est juste une porte d'entrée — pour démarrer petit et voir ce qui colle.</p>
       </div>
 
       <div class="service-cards reveal-stagger">
@@ -797,51 +1030,52 @@
         <div class="service-card s-sky">
           <span class="service-num">01</span>
           <div>
-            <h3>Réveiller ton Discord (et autres communautés)</h3>
-            <p class="service-desc">Welcome flow, role automations, hebdo "ship of the week", events réguliers. Le but : que tes users existants restent engagés et reviennent — au lieu de churn parce que personne ne les anime.</p>
+            <h3>Le tri du support et la voix du client</h3>
+            <p class="service-desc">J'absorbe la masse de tickets. Les récurrents deviennent de la doc, les uniques sont triés. Et chaque semaine, je te remonte une synthèse des feedbacks vraiment utiles pour ton roadmap — ceux que tu n'as pas le temps de lire en ce moment.</p>
             <div class="service-tags">
-              <span class="tag">community ops</span>
-              <span class="tag">welcome flows</span>
-              <span class="tag">events &amp; AMAs</span>
-              <span class="tag tag-product">💬 Discord ML</span>
+              <span class="tag">ticket triage</span>
+              <span class="tag">FAQ &amp; docs</span>
+              <span class="tag">feedback synthesis</span>
+              <span class="tag">escalations</span>
             </div>
-            <span class="benefit">Une communauté qui respire = des users qui restent.</span>
+            <span class="benefit">Ton bloc deep work préservé. Et un signal client lisible chaque semaine.</span>
           </div>
         </div>
 
         <div class="service-card s-lime">
           <span class="service-num">02</span>
           <div>
-            <h3>Funnels &amp; lifecycle email pour les produits qui dorment</h3>
-            <p class="service-desc">Tes produits matures ont du potentiel inexploité. Lead magnet, séquence d'onboarding, win-back, upsell — j'ai 15 ans d'expérience en marketing digital et création de funnels. Resend ou autre, je me débrouille.</p>
+            <h3>Faire vivre les produits qui dorment</h3>
+            <p class="service-desc">Les anciens projets ont déjà des users et du revenu — il leur manque juste de la maintenance commerciale. Lifecycle email, win-back, petites optimisations de funnel, A/B tests sur la landing. 15 ans en marketing digital, je sais où chercher.</p>
             <div class="service-tags">
-              <span class="tag">funnels</span>
               <span class="tag">lifecycle email</span>
               <span class="tag">win-back</span>
-              <span class="tag">upsell</span>
+              <span class="tag">funnel tweaks</span>
+              <span class="tag">landing A/B</span>
             </div>
-            <span class="benefit">Les anciens projets continuent à grandir pendant que tu shippes.</span>
+            <span class="benefit">Tes anciens produits continuent à grandir pendant que tu shippes le suivant.</span>
           </div>
         </div>
 
         <div class="service-card s-indigo">
           <span class="service-num">03</span>
           <div>
-            <h3>Support triage &amp; FAQ self-serve</h3>
-            <p class="service-desc">Tickets récurrents → docs. Tickets uniques → triés et filtrés. Toi tu vois plus que ce qui mérite vraiment ton œil — pas la file complète. C'est l'idée du paywall TrustMRR, étendu au reste.</p>
+            <h3>Le reste de la couche ops</h3>
+            <p class="service-desc">Documentation interne, automatisations légères, suivi vendeurs sur TrustMRR, réveil de communautés (genre ton Discord, tiens), recherche, opérations diverses. Tout ce qui te bouffe du temps sans avoir besoin de toi spécifiquement.</p>
             <div class="service-tags">
-              <span class="tag">ticket routing</span>
-              <span class="tag">FAQ upkeep</span>
-              <span class="tag">escalation</span>
+              <span class="tag">documentation</span>
+              <span class="tag">automatisations</span>
+              <span class="tag">community ops</span>
+              <span class="tag">misc ops</span>
             </div>
-            <span class="benefit">Ton bloc de deep work préservé.</span>
+            <span class="benefit">Une couche ops solide sans embaucher d'équipe.</span>
           </div>
         </div>
 
       </div>
 
       <p class="proof-intro" style="margin-top: 1.5rem; text-align: center; font-style: italic;">
-        Et au-delà de ces trois-là — tout ce qui est ops, marketing, ou growth sur tes anciens projets. À voir ensemble selon ce qui te ferait gagner le plus de temps.
+        On part d'où ça gratte le plus. Le scope évolue à mesure que la confiance s'installe.
       </p>
     </div>
   </section>
@@ -883,7 +1117,7 @@
       </div>
 
       <div class="proof-note reveal">
-        Je suis pas un VA. Pas non plus quelqu'un qui débarque pour gérer ton Stripe demain matin. Je suis juste quelqu'un qui sait opérer en solo, qui veut prouver sa fiabilité sur un essai, et qui — si ça matche — peut prendre plus à mesure que la confiance s'installe.
+        Pour être clair : je suis pas un Virtual Assistant qui clique sur des choses au hasard, et je débarque pas en demandant les clés de ton Stripe demain matin. Je suis quelqu'un qui sait opérer en solo, qui veut prouver sa fiabilité sur un essai, et qui peut prendre plus à mesure que la confiance s'installe.
       </div>
     </div>
   </section>
@@ -902,7 +1136,7 @@
           <div class="step-num">1</div>
           <div class="step-body">
             <h4>Call de 20 min</h4>
-            <p>Tu me dis ce qui te ferait gagner du temps en premier. Je te dis si je peux le prendre. Pas de deck, pas de pitch — juste une conversation.</p>
+            <p>Tu me dis ce qui te ferait gagner du temps en premier. Je te dis si je peux le prendre. Une conversation, simplement — sans deck à présenter ni pitch à dérouler.</p>
             <span class="step-meta">Gratuit · ton agenda</span>
           </div>
         </div>
@@ -932,7 +1166,7 @@
     <div class="cta-inner">
       <div class="cta-eyebrow">On en parle ?</div>
       <h2>Si ça t'a parlé,<br /><em>on prend 20 min.</em></h2>
-      <p class="cta-text">Pas de deck. Pas de pitch. Juste un call honnête pour voir si on a un truc à faire ensemble — ou pas. Dans les deux cas, t'auras pas perdu ton temps.</p>
+      <p class="cta-text">Un call honnête de 20 min pour voir si on a un truc à faire ensemble — ou pas. Dans les deux cas, t'auras pas perdu ton temps.</p>
       <div class="cta-buttons">
         <a class="btn-cta-primary" href="https://calendly.com/nachboris/20min" rel="noopener" target="_blank">
           Réserver 20 min →
