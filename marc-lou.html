@@ -74,6 +74,15 @@
   button { font-family: inherit; border: 0; background: none; cursor: pointer; }
   ::selection { background: var(--indigo); color: var(--bg); }
 
+  /* Image fallback — styled alt text if image fails */
+  img {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    color: var(--ink-mute);
+    text-align: center;
+    background: var(--bg-soft);
+  }
+
   .skip-link {
     position: absolute; top: -100px; left: 1rem; z-index: 9999;
     background: var(--ink); color: var(--bg);
@@ -241,6 +250,8 @@
     align-items: center;
     gap: 1.25rem;
     position: relative;
+  }
+  .photo-col-mobile {
     margin: 2.25rem 0 2.5rem;
   }
   .photo-wrap {
@@ -824,11 +835,23 @@
 
   /* RESPONSIVE */
   @media (min-width: 768px) {
-    .photo-wrap { max-width: 260px; }
+    .hero-grid {
+      grid-template-columns: 1.5fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+    .photo-col-mobile { display: none; }
+    .photo-col-desktop { display: flex; }
+    .photo-wrap { max-width: 300px; }
   }
 
   @media (min-width: 1024px) {
-    .photo-wrap { max-width: 280px; }
+    .photo-wrap { max-width: 320px; }
+  }
+
+  @media (max-width: 767px) {
+    .photo-col-desktop { display: none; }
+    .photo-col-mobile { display: flex; }
   }
 
   @media (max-width: 768px) {
@@ -882,7 +905,7 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="wrap">
+    <div class="wrap-wide">
       <div class="hero-grid">
 
         <div class="hero-content">
@@ -902,8 +925,8 @@
           </h1>
           <p class="hero-sub reveal">Enfin, on essaie. Si ça matche.</p>
 
-          <!-- Photo Boris (intercalée entre H1+sub et hero-body) -->
-          <div class="photo-col">
+          <!-- Photo Boris — mobile only (intercalée entre H1+sub et hero-body) -->
+          <div class="photo-col photo-col-mobile">
             <div class="photo-wrap reveal">
               <div aria-hidden="true" class="photo-halo"></div>
               <div aria-hidden="true" class="photo-note">
@@ -942,6 +965,31 @@
             </a>
             <a class="btn btn-ghost" href="#noticed">D'abord, ce que j'ai noté ↓</a>
           </div>
+        </div>
+
+        <!-- Photo Boris — desktop only (colonne de droite) -->
+        <div class="photo-col photo-col-desktop">
+          <div class="photo-wrap reveal">
+            <div aria-hidden="true" class="photo-halo"></div>
+            <div aria-hidden="true" class="photo-note">
+              <span>Ton bras droit ops &amp; marketing ?</span>
+              <svg focusable="false" viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 13 C42 3, 82 19, 112 45"></path>
+                <path d="M100 45 L120 52 L107 31"></path>
+              </svg>
+            </div>
+            <div class="photo-cutout">
+              <picture>
+                <source height="603" media="(max-width: 720px)" srcset="/assets/mobile-Hero.webp" width="560" />
+                <img alt="Boris Nachbaur" decoding="async" fetchpriority="high" height="849" loading="lazy" src="/assets/Hero-Boris.webp" width="788" />
+              </picture>
+            </div>
+          </div>
+          <span class="photo-signature reveal">Boris Nachbaur</span>
+          <span class="ai-badge reveal">
+            <span aria-hidden="true" class="bolt">⚡</span>
+            AI-native operator
+          </span>
         </div>
 
       </div>
