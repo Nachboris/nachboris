@@ -180,6 +180,12 @@
   .hero-body { font-size: 1.0625rem; line-height: 1.7; color: var(--ink-soft); max-width: 540px; margin-bottom: 2rem; }
   .hero-body strong { color: var(--ink); font-weight: 600; }
   .hero-body p + p { margin-top: 1rem; }
+  .hero-link {
+    color: var(--indigo);
+    border-bottom: 1px solid rgba(91, 79, 224, 0.3);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .hero-link:hover { color: var(--indigo); border-color: var(--indigo); }
 
   /* Greeting card caption */
   .greeting-caption {
@@ -235,6 +241,7 @@
     align-items: center;
     gap: 1.25rem;
     position: relative;
+    margin: 2.25rem 0 2.5rem;
   }
   .photo-wrap {
     position: relative;
@@ -334,9 +341,9 @@
   .photo-note {
     position: absolute;
     top: 0.2rem;
-    left: -8.8rem;
+    left: -10.5rem;
     z-index: 4;
-    width: 150px;
+    width: 175px;
     pointer-events: none;
     transform: rotate(-8deg);
     opacity: 0.92;
@@ -344,11 +351,10 @@
   .photo-note span {
     display: block;
     font-family: var(--hand);
-    font-size: 1.5rem;
-    line-height: 1;
+    font-size: 1.42rem;
+    line-height: 1.05;
     color: var(--orange);
-    white-space: nowrap;
-    margin-bottom: -0.25rem;
+    margin-bottom: -0.15rem;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
   }
   .photo-note svg {
@@ -818,16 +824,11 @@
 
   /* RESPONSIVE */
   @media (min-width: 768px) {
-    .hero-grid {
-      grid-template-columns: 1.5fr 1fr;
-      gap: 3.5rem;
-      align-items: center;
-    }
-    .photo-wrap { max-width: 300px; }
+    .photo-wrap { max-width: 260px; }
   }
 
   @media (min-width: 1024px) {
-    .photo-wrap { max-width: 320px; }
+    .photo-wrap { max-width: 280px; }
   }
 
   @media (max-width: 768px) {
@@ -837,14 +838,14 @@
     .photo-note {
       top: 0.1rem;
       left: -0.75rem;
-      width: 128px;
+      width: 140px;
       transform: rotate(-7deg);
     }
     .photo-note span {
-      font-size: 1.22rem;
-      line-height: 0.95;
+      font-size: 1.18rem;
+      line-height: 1;
       white-space: normal;
-      max-width: 8.2rem;
+      max-width: 9rem;
     }
     .photo-note svg {
       width: 88px;
@@ -881,7 +882,7 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="wrap-wide">
+    <div class="wrap">
       <div class="hero-grid">
 
         <div class="hero-content">
@@ -901,11 +902,36 @@
           </h1>
           <p class="hero-sub reveal">Enfin, on essaie. Si ça matche.</p>
 
+          <!-- Photo Boris (intercalée entre H1+sub et hero-body) -->
+          <div class="photo-col">
+            <div class="photo-wrap reveal">
+              <div aria-hidden="true" class="photo-halo"></div>
+              <div aria-hidden="true" class="photo-note">
+                <span>Ton bras droit ops &amp; marketing ?</span>
+                <svg focusable="false" viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 13 C42 3, 82 19, 112 45"></path>
+                  <path d="M100 45 L120 52 L107 31"></path>
+                </svg>
+              </div>
+              <div class="photo-cutout">
+                <picture>
+                  <source height="603" media="(max-width: 720px)" srcset="/assets/mobile-Hero.webp" width="560" />
+                  <img alt="Boris Nachbaur" decoding="async" fetchpriority="high" height="849" loading="eager" src="/assets/Hero-Boris.webp" width="788" />
+                </picture>
+              </div>
+            </div>
+            <span class="photo-signature reveal">Boris Nachbaur</span>
+            <span class="ai-badge reveal">
+              <span aria-hidden="true" class="bolt">⚡</span>
+              AI-native operator
+            </span>
+          </div>
+
           <div class="hero-rule reveal" aria-hidden="true"></div>
 
           <div class="hero-body reveal">
             <p>Boris, 31 ans, basé à Lausanne. 15 ans à opérer en solo dans le digital — donc je sais ce que c'est de jongler entre 14 produits et zéro équipe.</p>
-            <p>J'ai lu ton post d'avril. Le burnout sous-jacent, l'envie de retrouver le côté <em>playful</em>. Et je me suis dit : <strong>il y a moyen que je puisse aider</strong>.</p>
+            <p>J'ai lu <a href="https://x.com/marclou/status/2042260024643489851" target="_blank" rel="noopener" class="hero-link">ton post d'avril</a> — 5 ans sans jour off, 30 startups, 30 000 tweets, 70 vidéos YouTube, des milliers de tickets support. Et je me suis dit : <strong>il y a un endroit où je peux clairement aider</strong>.</p>
             <p>L'idée, c'est pas un grand engagement. Quelques semaines pour voir si on se trouve. <strong>Si ça matche, on continue. Sinon, no hard feelings.</strong></p>
           </div>
 
@@ -916,31 +942,6 @@
             </a>
             <a class="btn btn-ghost" href="#noticed">D'abord, ce que j'ai noté ↓</a>
           </div>
-        </div>
-
-        <!-- Photo Boris (homepage version) -->
-        <div class="photo-col">
-          <div class="photo-wrap reveal">
-            <div aria-hidden="true" class="photo-halo"></div>
-            <div aria-hidden="true" class="photo-note">
-              <span>Ton futur bras droit ?</span>
-              <svg focusable="false" viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8 13 C42 3, 82 19, 112 45"></path>
-                <path d="M100 45 L120 52 L107 31"></path>
-              </svg>
-            </div>
-            <div class="photo-cutout">
-              <picture>
-                <source height="603" media="(max-width: 720px)" srcset="/assets/mobile-Hero.webp" width="560" />
-                <img alt="Boris Nachbaur" decoding="async" fetchpriority="high" height="849" loading="eager" src="/assets/Hero-Boris.webp" width="788" />
-              </picture>
-            </div>
-          </div>
-          <span class="photo-signature reveal">Boris Nachbaur</span>
-          <span class="ai-badge reveal">
-            <span aria-hidden="true" class="bolt">⚡</span>
-            AI-native operator
-          </span>
         </div>
 
       </div>
@@ -960,16 +961,16 @@
           <span class="noticed-emoji" aria-hidden="true">🚀</span>
           <div class="noticed-content">
             <span class="noticed-product">Toute la collection</span>
-            <h3>T'as 14 produits qui tournent. Certains cartonnent. D'autres dorment un peu.</h3>
+            <h3>T'as 14 produits qui tournent. Certains cartonnent. D'autres dorment.</h3>
             <p>Ce qui te fait kiffer, c'est de shipper du nouveau — c'est ton truc, c'est ce qui t'anime. Mais entre les anciens qui pourraient grandir avec un peu d'attention et les nouveaux qui réclament toute la tienne, <strong>il y a un délaissement involontaire</strong>. </p>
           </div>
         </div>
         <div class="noticed-item">
-          <span class="noticed-emoji" aria-hidden="true">📨</span>
+          <span class="noticed-emoji" aria-hidden="true">🤝</span>
           <div class="noticed-content">
             <span class="noticed-product">Support &amp; tickets clients</span>
             <h3>Des milliers de tickets à traiter, et ça revient chaque semaine.</h3>
-            <p>Tu l'as dit toi-même : la masse de support est devenue chronophage. C'est exactement le genre de tâche opérationnelle qu'on peut absorber sans perdre en qualité — voire en l'améliorant. <strong>En remontant en plus les feedbacks récurrents qui peuvent vraiment alimenter ton roadmap produit.</strong></p>
+            <p>Tu l'as dit toi-même : la masse de support est devenue chronophage. C'est exactement le genre de tâche opérationnelle qu'on peut absorber sans perdre en qualité — voire en l'améliorant. <strong>En remontant les feedbacks récurrents</strong> qui peuvent vraiment alimenter ton roadmap produit, et <strong>en enrichissant ta FAQ</strong> pour réduire le nombre de tickets.</p>
           </div>
         </div>
         <div class="noticed-item">
@@ -997,7 +998,7 @@
       <div class="section-head reveal">
         <span class="eyebrow">Une proposition</span>
         <h2>Ça pourrait commencer<br />par <em>ces trois trucs.</em></h2>
-        <p class="proof-intro" style="margin-top: 1rem;">Ou par tout autre chose, si t'as déjà des idées. C'est juste une porte d'entrée — pour démarrer petit et voir ce qui colle.</p>
+        <p class="proof-intro" style="margin-top: 1rem;">Ou par tout autre chose, si t'as déjà des idées. À terme, le scope peut s'élargir au marketing digital plus large — copywriting, YouTube SEO, repurposing de tweets ou vidéos, prep d'un Product Hunt launch, etc. C'est juste une porte d'entrée pour démarrer petit.</p>
       </div>
 
       <div class="service-cards reveal-stagger">
@@ -1049,7 +1050,7 @@
 
       </div>
 
-      <p class="proof-intro" style="margin-top: 1.5rem; text-align: center; font-style: italic;">
+      <p class="proof-intro" style="margin: 1.5rem auto 0; text-align: center; font-style: italic; max-width: 100%;">
         On part d'où ça gratte le plus. Le scope évolue à mesure que la confiance s'installe.
       </p>
     </div>
