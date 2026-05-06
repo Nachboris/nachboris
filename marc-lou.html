@@ -1397,7 +1397,7 @@
 
           <h1 class="hero-h1 reveal">
             <span class="h1-line h1-line-1">
-              <em class="h1-mantra">Keep shipping,</em>
+              <em class="h1-mantra">Keep shipping</em>
             </span>
             <span class="h1-line h1-line-2">je m'occupe du reste.</span>
           </h1>
@@ -1701,7 +1701,7 @@
 </main>
 
 <!-- Sticky mobile CTA — appears after scroll on mobile only -->
-<a class="sticky-cta" href="#contact" id="stickyCta" aria-hidden="true">
+<a class="sticky-cta" href="#contact" id="stickyCta" aria-hidden="true" tabindex="-1">
   <span class="pulse-dot" aria-hidden="true"></span>
   S'appeler 20 min
   <span class="arrow" aria-hidden="true">→</span>
@@ -1816,6 +1816,11 @@
       const shouldShow = scrollPct > 0.25 && !inView;
       stickyCta.classList.toggle('visible', shouldShow);
       stickyCta.setAttribute('aria-hidden', shouldShow ? 'false' : 'true');
+      if (shouldShow) {
+        stickyCta.removeAttribute('tabindex');
+      } else {
+        stickyCta.setAttribute('tabindex', '-1');
+      }
     };
     window.addEventListener('scroll', updateSticky, { passive: true });
     window.addEventListener('resize', updateSticky, { passive: true });
