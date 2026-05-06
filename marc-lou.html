@@ -46,6 +46,7 @@
     --sky-tint: rgba(56, 189, 248, 0.09);
     --yellow: #FBBF24;
     --yellow-soft: #FCD34D;
+    --coral-soft: #FDA4AF;
     --green: #22C55E;
     --serif: 'Fraunces', Georgia, serif;
     --sans: 'Inter Tight', -apple-system, sans-serif;
@@ -73,6 +74,29 @@
   a { color: inherit; text-decoration: none; }
   button { font-family: inherit; border: 0; background: none; cursor: pointer; }
   ::selection { background: var(--indigo); color: var(--bg); }
+
+  /* Scroll progress indicator */
+  .scroll-progress {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: transparent;
+    z-index: 200;
+    pointer-events: none;
+  }
+  .scroll-progress-bar {
+    display: block;
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--indigo) 0%, var(--orange) 50%, var(--lime) 100%);
+    transition: width 0.08s linear;
+    box-shadow: 0 0 8px rgba(91, 79, 224, 0.4);
+  }
+
+  /* Scroll-margin fix for anchor links (compensates fixed topbar) */
+  section[id], main[id] {
+    scroll-margin-top: 6rem;
+  }
 
   /* STICKY MOBILE CTA */
   .sticky-cta {
@@ -246,10 +270,87 @@
 
   /* HERO */
   .hero { padding-top: clamp(8rem, 16vw, 10rem); padding-bottom: clamp(3rem, 7vw, 5rem); position: relative; overflow: hidden; }
+
+  /* Mesh gradient background — copied from homepage */
+  .hero-mesh {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .hero-mesh::before,
+  .hero-mesh::after,
+  .hero-mesh .blob {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    will-change: transform;
+  }
+  .hero-mesh::before {
+    top: -10%;
+    left: -10%;
+    width: 55%;
+    height: 70%;
+    background: radial-gradient(circle, var(--indigo-soft) 0%, transparent 65%);
+    opacity: 0.38;
+    animation: meshMove1 22s ease-in-out infinite;
+  }
+  .hero-mesh::after {
+    top: 20%;
+    right: -15%;
+    width: 60%;
+    height: 80%;
+    background: radial-gradient(circle, var(--orange-soft) 0%, transparent 65%);
+    opacity: 0.38;
+    animation: meshMove2 26s ease-in-out infinite;
+  }
+  .hero-mesh .blob-1 {
+    bottom: -20%;
+    left: 20%;
+    width: 50%;
+    height: 60%;
+    background: radial-gradient(circle, var(--yellow-soft) 0%, transparent 65%);
+    opacity: 0.24;
+    animation: meshMove3 24s ease-in-out infinite;
+  }
+  .hero-mesh .blob-2 {
+    top: 50%;
+    left: 40%;
+    width: 40%;
+    height: 50%;
+    background: radial-gradient(circle, var(--coral-soft) 0%, transparent 60%);
+    opacity: 0.18;
+    animation: meshMove4 28s ease-in-out infinite;
+  }
+  @keyframes meshMove1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(12%, 15%) scale(1.2); }
+    66% { transform: translate(-8%, 10%) scale(0.9); }
+  }
+  @keyframes meshMove2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(-14%, 10%) scale(1.15); }
+    66% { transform: translate(6%, -12%) scale(0.85); }
+  }
+  @keyframes meshMove3 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-12%, -16%) scale(1.25); }
+  }
+  @keyframes meshMove4 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(18%, -12%) scale(1.2); }
+  }
+  /* Soft fade-out at top of hero (under topbar) */
   .hero::before {
-    content: ''; position: absolute; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-    opacity: 0.4; pointer-events: none; z-index: 0;
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 120px;
+    background: linear-gradient(to bottom, var(--bg) 0%, rgba(247, 245, 242, 0) 100%);
+    pointer-events: none;
+    z-index: 0;
   }
   .hero .wrap-wide { position: relative; z-index: 1; }
 
@@ -322,29 +423,23 @@
     font-style: italic;
     color: var(--indigo);
   }
-  .h1-underline {
-    position: absolute;
-    left: 0;
-    bottom: -0.05em;
-    width: 100%;
-    height: 0.32em;
-    overflow: visible;
-    pointer-events: none;
+  /* Highlight effect on "je m'occupe du reste." — animated swipe from left */
+  .h1-highlight {
+    position: relative;
+    display: inline;
+    padding: 0 0.15em;
+    color: var(--ink);
+    font-weight: 600;
+    font-style: normal;
+    background-image: linear-gradient(180deg, transparent 60%, var(--orange-soft) 60%);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    background-position: 0 0;
+    transition: background-size 0.9s var(--soft);
   }
-  .h1-underline path {
-    fill: none;
-    stroke: var(--indigo);
-    stroke-width: 4;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dasharray: 240;
-    stroke-dashoffset: 240;
-    transition: stroke-dashoffset 1s var(--soft);
-    opacity: 0.85;
-  }
-  .hero-h1.in .h1-underline path {
-    stroke-dashoffset: 0;
-    transition-delay: 1.1s;
+  .hero-h1.in .h1-highlight {
+    background-size: 100% 100%;
+    transition-delay: 1.2s;
   }
 
   .hero-sub {
@@ -366,8 +461,23 @@
     color: var(--indigo);
     border-bottom: 1px solid rgba(91, 79, 224, 0.3);
     transition: border-color 0.2s, color 0.2s;
+    position: relative;
+    display: inline;
+  }
+  .hero-link::after {
+    content: '↗';
+    display: inline-block;
+    margin-left: 0.15em;
+    font-size: 0.85em;
+    opacity: 0;
+    transform: translateX(-3px) translateY(0);
+    transition: opacity 0.25s var(--soft), transform 0.3s var(--spring);
   }
   .hero-link:hover { color: var(--indigo); border-color: var(--indigo); }
+  .hero-link:hover::after {
+    opacity: 1;
+    transform: translateX(0) translateY(-1px);
+  }
 
   /* Greeting card caption */
   .greeting-caption {
@@ -414,6 +524,22 @@
   @keyframes bolt {
     0%, 100% { transform: scale(1) rotate(0deg); }
     50% { transform: scale(1.2) rotate(-8deg); }
+  }
+
+  /* Korean flag flutter */
+  .kr-flag {
+    display: inline-block;
+    transform-origin: 50% 50%;
+    animation: flagFlutter 4s ease-in-out infinite;
+    animation-delay: 2.5s;
+  }
+  @keyframes flagFlutter {
+    0%, 75%, 100% { transform: rotate(0deg) scale(1); }
+    78% { transform: rotate(-7deg) scale(1.05); }
+    82% { transform: rotate(8deg) scale(1.05); }
+    86% { transform: rotate(-5deg) scale(1.05); }
+    90% { transform: rotate(4deg) scale(1.02); }
+    93% { transform: rotate(0deg) scale(1); }
   }
 
   /* PHOTO COLUMN — copied from homepage */
@@ -811,6 +937,20 @@
   }
   .service-card .service-desc { font-size: 0.9375rem; color: var(--ink-mute); line-height: 1.6; margin-bottom: 0.85rem; }
   .service-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.85rem; }
+  /* Cascade reveal of tags when service card enters viewport */
+  .service-card .tag {
+    opacity: 0;
+    transform: translateY(8px) scale(0.92);
+    transition: opacity 0.4s var(--soft), transform 0.4s var(--spring);
+  }
+  .service-card.tags-in .tag {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  .service-card.tags-in .tag:nth-child(1) { transition-delay: 0.15s; }
+  .service-card.tags-in .tag:nth-child(2) { transition-delay: 0.25s; }
+  .service-card.tags-in .tag:nth-child(3) { transition-delay: 0.35s; }
+  .service-card.tags-in .tag:nth-child(4) { transition-delay: 0.45s; }
   .tag {
     font-size: 0.75rem; font-weight: 500;
     padding: 0.25rem 0.65rem;
@@ -1151,6 +1291,9 @@
       white-space: normal;
       max-width: 9rem;
     }
+    .photo-note .note-l2 {
+      display: block;
+    }
     .photo-note svg {
       width: 88px;
       margin-left: 0.25rem;
@@ -1168,19 +1311,22 @@
   @media (prefers-reduced-motion: reduce) {
     .reveal, .reveal-stagger > * { opacity: 1; transform: none; transition: none; }
     .hero-h1 .h1-line { opacity: 1; transform: none; }
-    .h1-underline path { stroke-dashoffset: 0; }
+    .h1-highlight { background-size: 100% 100%; }
     .process-step { opacity: 1; transform: none; }
     .process-line path { stroke-dashoffset: 0; }
     .photo-note { opacity: 0.92; }
     .photo-note span { clip-path: none; }
     .photo-note path { stroke-dashoffset: 0; }
     .greeting-card .wave { animation: none; }
+    .hero-mesh::before, .hero-mesh::after, .hero-mesh .blob { animation: none; }
+    .service-card .tag { opacity: 1; transform: none; }
     *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
   }
 </style>
 </head>
 <body>
 <a class="skip-link" href="#main">Aller au contenu</a>
+<div class="scroll-progress" aria-hidden="true"><span class="scroll-progress-bar"></span></div>
 
 <!-- MINIMAL TOP BAR — no nav on dedicated pages -->
 <header class="topbar">
@@ -1204,6 +1350,10 @@
 
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-mesh" aria-hidden="true">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+    </div>
     <div class="wrap-wide">
       <div class="hero-grid">
 
@@ -1216,18 +1366,15 @@
             <span>Salut Marc</span>
           </div>
 
-          <p class="greeting-caption reveal">Cette page, je l'ai écrite <em>juste pour toi.</em><br /><span style="font-size: 1rem; color: var(--ink-mute); opacity: 0.75;">— et annyeong à ta femme 🇰🇷</span></p>
+          <p class="greeting-caption reveal">Cette page, je l'ai écrite <em>juste pour toi.</em><br /><span style="font-size: 1rem; color: var(--ink-mute); opacity: 0.75;">— et annyeong à ta femme <span class="kr-flag" aria-hidden="true">🇰🇷</span></span></p>
 
           <h1 class="hero-h1 reveal">
             <span class="h1-line h1-line-1">
-              <em class="h1-mantra">
-                Keep shipping.
-                <svg class="h1-underline" viewBox="0 0 220 14" aria-hidden="true" focusable="false">
-                  <path d="M4 8 C 40 2, 90 12, 130 6 C 170 2, 200 8, 216 5" />
-                </svg>
-              </em>
+              <em class="h1-mantra">Keep shipping</em>
             </span>
-            <span class="h1-line h1-line-2">Je m'occupe du reste.</span>
+            <span class="h1-line h1-line-2">
+              <span class="h1-highlight">je m'occupe du reste.</span>
+            </span>
           </h1>
           <p class="hero-sub reveal">Enfin, on essaie. Si ça matche.</p>
 
@@ -1236,7 +1383,7 @@
             <div class="photo-wrap reveal">
               <div aria-hidden="true" class="photo-halo"></div>
               <div aria-hidden="true" class="photo-note">
-                <span>Ton bras droit ops &amp; marketing ?</span>
+                <span><span class="note-l1">Ton bras droit ops</span><span class="note-l2"> <span>Ton bras droit ops &amp; marketing ?</span>amp; marketing ?</span></span>
                 <svg focusable="false" viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
                   <path d="M8 13 C42 3, 82 19, 112 45"></path>
                   <path d="M100 45 L120 52 L107 31"></path>
@@ -1278,7 +1425,7 @@
           <div class="photo-wrap reveal">
             <div aria-hidden="true" class="photo-halo"></div>
             <div aria-hidden="true" class="photo-note">
-              <span>Ton bras droit ops &amp; marketing ?</span>
+              <span><span class="note-l1">Ton bras droit ops</span><span class="note-l2"> <span>Ton bras droit ops &amp; marketing ?</span>amp; marketing ?</span></span>
               <svg focusable="false" viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
                 <path d="M8 13 C42 3, 82 19, 112 45"></path>
                 <path d="M100 45 L120 52 L107 31"></path>
@@ -1595,6 +1742,41 @@
     }, { passive: true });
   }
 
+  // Scroll progress bar
+  const progressBar = document.querySelector('.scroll-progress-bar');
+  if (progressBar) {
+    const updateProgress = () => {
+      const scrolled = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? Math.min((scrolled / docHeight) * 100, 100) : 0;
+      progressBar.style.width = pct + '%';
+    };
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  }
+
+  // Hero photo subtle parallax (desktop only, respects reduced-motion)
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReducedMotion && window.matchMedia('(min-width: 768px)').matches) {
+    const desktopPhoto = document.querySelector('.photo-col-desktop .photo-wrap');
+    if (desktopPhoto) {
+      let ticking = false;
+      const updateParallax = () => {
+        const scrolled = window.scrollY;
+        // Subtle: 0.08 multiplier means photo lifts slowly as user scrolls down
+        const offset = Math.min(scrolled * 0.08, 30);
+        desktopPhoto.style.transform = `translateY(${-offset}px)`;
+        ticking = false;
+      };
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          requestAnimationFrame(updateParallax);
+          ticking = true;
+        }
+      }, { passive: true });
+    }
+  }
+
   // Sticky mobile CTA — visible after 50% scroll, hidden inside contact section
   const stickyCta = document.getElementById('stickyCta');
   const contactSection = document.getElementById('contact');
@@ -1658,6 +1840,17 @@
     });
   }, { threshold: 0.5 });
   document.querySelectorAll('.count').forEach(el => countObserver.observe(el));
+
+  // Service cards: cascade reveal of tags on scroll
+  const tagsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('tags-in');
+        tagsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.35 });
+  document.querySelectorAll('.service-card').forEach(el => tagsObserver.observe(el));
 </script>
 </body>
 </html>
