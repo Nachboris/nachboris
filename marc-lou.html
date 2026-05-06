@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Pour Marc Lou — Boris Nachbaur</title>
-<meta name="description" content="Une page perso pour Marc Lou. J'absorbe le support, les onboarding flows et l'ops marketplace pour que tu gardes ton bloc de deep work intact." />
+<meta name="description" content="Marc — j'ai écrit une page rien que pour toi. (Si tu n'es pas Marc, tu peux quand même jeter un œil.)" />
 <meta name="author" content="Boris Nachbaur" />
 <meta name="robots" content="noindex, nofollow" />
 <link rel="canonical" href="https://nachboris.fr/marc-lou" />
@@ -91,13 +91,17 @@
     line-height: 1.1;
   }
 
-  /* NAV */
-  .nav { position: fixed; top: 1rem; left: 0; right: 0; z-index: 100; background: transparent; pointer-events: none; }
-  .nav-inner {
+  /* TOPBAR — minimal, no nav links */
+  .topbar {
+    position: fixed;
+    top: 1rem; left: 0; right: 0;
+    z-index: 100;
+    pointer-events: none;
+  }
+  .topbar-inner {
     max-width: calc(var(--max-wide) + 2rem); margin: 0 auto;
     padding: 0.72rem 0.85rem 0.72rem 1.15rem;
-    display: grid; grid-template-columns: auto 1fr auto;
-    align-items: center; gap: 1.25rem;
+    display: flex; align-items: center; justify-content: space-between;
     background: rgba(255, 255, 255, 0.74);
     border: 1px solid rgba(15, 15, 23, 0.07);
     border-radius: 18px;
@@ -105,33 +109,13 @@
     backdrop-filter: saturate(150%) blur(18px);
     -webkit-backdrop-filter: saturate(150%) blur(18px);
     pointer-events: auto;
+    transition: background 0.3s;
   }
-  .nav.scrolled .nav-inner { background: rgba(255, 255, 255, 0.9); }
-  .nav-brand { display: flex; align-items: center; min-width: 0; }
+  .topbar.scrolled .topbar-inner { background: rgba(255, 255, 255, 0.92); }
   .logo { font-family: var(--serif); font-size: 1.15rem; color: var(--ink); display: flex; align-items: center; }
   .logo-dot { color: var(--orange); }
-  .nav-links { display: flex; align-items: center; justify-content: center; gap: 0.25rem; }
-  .nav-link { font-size: 0.9rem; font-weight: 500; color: var(--ink-mute); padding: 0.42rem 0.85rem; border-radius: 999px; transition: color 0.2s, background 0.2s; }
-  .nav-link:hover { color: var(--ink); background: rgba(15,15,23,0.05); }
-  .nav-right { display: flex; align-items: center; gap: 0.75rem; }
   .nav-cta { font-size: 0.875rem; font-weight: 600; color: var(--bg); background: var(--ink); padding: 0.5rem 1.1rem; border-radius: 999px; transition: opacity 0.2s, transform 0.2s var(--spring); }
   .nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
-  .nav-toggle { display: none; width: 38px; height: 38px; border-radius: 50%; background: rgba(15,15,23,0.06); align-items: center; justify-content: center; }
-  .nav-toggle:hover { background: rgba(15,15,23,0.1); }
-  .nav-toggle-lines { display: flex; flex-direction: column; gap: 5px; width: 18px; }
-  .nav-toggle-lines span,
-  .nav-toggle-lines::before,
-  .nav-toggle-lines::after { content: ''; display: block; height: 1.5px; background: var(--ink); border-radius: 2px; transition: transform 0.3s var(--soft), opacity 0.2s; }
-  .nav.menu-open .nav-toggle-lines span { opacity: 0; }
-  .nav.menu-open .nav-toggle-lines::before { transform: rotate(45deg) translate(4.5px, 4.5px); }
-  .nav.menu-open .nav-toggle-lines::after { transform: rotate(-45deg) translate(4.5px, -4.5px); }
-
-  .mobile-menu { position: fixed; inset: 0; z-index: 90; background: rgba(247, 245, 242, 0.97); backdrop-filter: blur(20px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; opacity: 0; pointer-events: none; transition: opacity 0.3s var(--soft); }
-  .mobile-menu.is-open { opacity: 1; pointer-events: auto; }
-  .mobile-menu-links { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; }
-  .mobile-menu-link { font-family: var(--serif); font-size: 2.2rem; color: var(--ink); padding: 0.4rem 1.5rem; display: flex; align-items: baseline; gap: 0.75rem; }
-  .mobile-menu-link span { font-family: var(--sans); font-size: 0.75rem; color: var(--ink-mute); }
-  .mobile-menu-cta { margin-top: 1.5rem; font-size: 1rem; font-weight: 600; color: var(--bg); background: var(--ink); padding: 0.75rem 2rem; border-radius: 999px; }
 
   /* LAYOUT */
   .wrap { max-width: var(--max); margin: 0 auto; padding-left: var(--pad); padding-right: var(--pad); }
@@ -488,6 +472,7 @@
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
     box-shadow: 0 4px 12px -6px rgba(15,15,23,0.1);
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
   }
   .noticed-product {
     display: inline-block;
@@ -506,29 +491,27 @@
   .noticed-content p { font-size: 0.9375rem; color: var(--ink-mute); line-height: 1.65; }
   .noticed-content p strong { color: var(--ink-soft); font-weight: 600; }
 
-  /* SHIP LINE — handwritten transition */
-  .ship-line {
-    background: var(--bg-soft);
-    text-align: center;
-    padding: 3rem var(--pad) 4.5rem;
-    position: relative;
+  /* SECTION BREAK */
+  .section-break {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 2rem var(--pad);
+    max-width: var(--max);
+    margin: 0 auto;
   }
-  .ship-line p {
-    font-family: var(--hand);
-    font-size: clamp(1.7rem, 3.5vw, 2.4rem);
-    color: var(--ink); line-height: 1.25;
-    max-width: 580px; margin: 0 auto;
+  .section-break-line {
+    flex: 1; height: 1px;
+    background: var(--rule);
+    border-radius: 1px;
+  }
+  .section-break-label {
+    font-family: var(--sans);
+    font-size: 0.75rem;
     font-weight: 500;
-  }
-  .ship-line p em { color: var(--indigo); font-style: normal; font-weight: 600; }
-  .ship-line .arrow-down {
-    margin: 1.25rem auto 0;
-    display: flex; align-items: center; justify-content: center;
-    width: 32px; height: 32px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
     color: var(--ink-mute);
+    white-space: nowrap;
   }
-  .ship-line .arrow-down svg { width: 100%; height: 100%; animation: bounce 2.5s ease-in-out infinite; }
-  @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
 
   /* SERVICES */
   .services { padding: clamp(4rem, 9vw, 6rem) 0; background: var(--bg-soft); }
@@ -667,6 +650,26 @@
     border: 1px solid var(--rule);
     border-radius: var(--r-lg);
     overflow: hidden;
+    position: relative;
+  }
+  /* Vertical connector line through the step numbers */
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    left: calc(1.75rem + 1.1rem); /* padding-left + half of step-num width */
+    top: 3.5rem;
+    bottom: 3.5rem;
+    width: 1px;
+    background: repeating-linear-gradient(
+      to bottom,
+      var(--indigo) 0px,
+      var(--indigo) 4px,
+      transparent 4px,
+      transparent 10px
+    );
+    opacity: 0.25;
+    z-index: 1;
+    pointer-events: none;
   }
   .process-step {
     display: grid;
@@ -793,7 +796,7 @@
   .signature-text em { color: var(--indigo-soft); font-style: normal; }
   .signature-name {
     font-family: var(--hand);
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     color: rgba(255,255,255,0.92);
     font-weight: 600;
   }
@@ -828,8 +831,6 @@
   }
 
   @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .nav-toggle { display: flex; }
     .footer-inner { flex-direction: column; align-items: flex-start; }
     .service-card { grid-template-columns: 2rem 1fr; gap: 0 1rem; padding: 1.5rem; }
     .photo-wrap { max-width: min(62vw, 232px); }
@@ -868,36 +869,13 @@
 <body>
 <a class="skip-link" href="#main">Aller au contenu</a>
 
-<!-- NAV (kept in English for site consistency) -->
-<nav class="nav" id="nav" lang="en">
-<div class="nav-inner">
-  <div class="nav-brand">
+<!-- MINIMAL TOP BAR — no nav on dedicated pages -->
+<header class="topbar">
+  <div class="topbar-inner">
     <a aria-label="Boris Nachbaur home" class="logo" href="/">BN<span class="logo-dot">.</span></a>
+    <a class="nav-cta" href="#contact">Réserver 20 min →</a>
   </div>
-  <div class="nav-links">
-    <a class="nav-link" href="/#work">Services</a>
-    <a class="nav-link" href="/me">About</a>
-    <a class="nav-link" href="/projects">Projects</a>
-    <a class="nav-link" href="/reviews">Reviews</a>
-  </div>
-  <div class="nav-right">
-    <a class="nav-cta" href="#contact">Book a call</a>
-    <button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open navigation menu" class="nav-toggle" id="navToggle" type="button">
-      <span aria-hidden="true" class="nav-toggle-lines"><span></span></span>
-    </button>
-  </div>
-</div>
-</nav>
-
-<div aria-hidden="true" class="mobile-menu" id="mobileMenu" lang="en">
-  <div class="mobile-menu-links">
-    <a class="mobile-menu-link" href="/#work">Services <span>01</span></a>
-    <a class="mobile-menu-link" href="/me">About <span>02</span></a>
-    <a class="mobile-menu-link" href="/projects">Projects <span>03</span></a>
-    <a class="mobile-menu-link" href="/reviews">Reviews <span>04</span></a>
-  </div>
-  <a class="mobile-menu-cta" href="#contact">Book a call →</a>
-</div>
+</header>
 
 <main id="main">
 
@@ -915,7 +893,7 @@
             <span>Salut Marc</span>
           </div>
 
-          <p class="greeting-caption reveal">Cette page, je l'ai écrite <em>juste pour toi</em><br />.</p>
+          <p class="greeting-caption reveal">Cette page, je l'ai écrite <em>juste pour toi.</em><br /><span style="font-size: 1rem; color: var(--ink-mute); opacity: 0.75;">— et annyeong à ta femme 🇰🇷</span></p>
 
           <h1 class="reveal">
             <em>Keep shipping.</em><br />
@@ -945,7 +923,7 @@
           <div class="photo-wrap reveal">
             <div aria-hidden="true" class="photo-halo"></div>
             <div aria-hidden="true" class="photo-note">
-              <span>Your trusted right-hand?</span>
+              <span>Ton futur bras droit ?</span>
               <svg focusable="false" viewBox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
                 <path d="M8 13 C42 3, 82 19, 112 45"></path>
                 <path d="M100 45 L120 52 L107 31"></path>
@@ -983,7 +961,7 @@
           <div class="noticed-content">
             <span class="noticed-product">Toute la collection</span>
             <h3>T'as 14 produits qui tournent. Certains cartonnent. D'autres dorment un peu.</h3>
-            <p>Ce qui te fait kiffer, c'est de shipper du nouveau — c'est ton truc, c'est ce qui t'anime. Mais entre les anciens qui pourraient grandir avec un peu d'attention et les nouveaux qui réclament toute la tienne, <strong>il y a un délaissement involontaire</strong>. C'est pas un reproche, c'est mécanique.</p>
+            <p>Ce qui te fait kiffer, c'est de shipper du nouveau — c'est ton truc, c'est ce qui t'anime. Mais entre les anciens qui pourraient grandir avec un peu d'attention et les nouveaux qui réclament toute la tienne, <strong>il y a un délaissement involontaire</strong>. </p>
           </div>
         </div>
         <div class="noticed-item">
@@ -1006,15 +984,12 @@
     </div>
   </section>
 
-  <!-- SHIP LINE -->
-  <section class="ship-line reveal">
-    <p>Toi tu brilles là où tu es bon — <em>shipper du nouveau.</em><br />Moi je m'occupe de faire vivre ce qui existe déjà.</p>
-    <span class="arrow-down" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 5v14M6 13l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </span>
-  </section>
+  <!-- SECTION BREAK -->
+  <div class="section-break reveal" aria-hidden="true">
+    <span class="section-break-line"></span>
+    <span class="section-break-label">ce que je propose</span>
+    <span class="section-break-line"></span>
+  </div>
 
   <!-- SERVICES -->
   <section class="services" id="work">
@@ -1085,7 +1060,7 @@
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">Pourquoi pas un random</span>
-        <h2>Quatre chiffres, <em>vite fait.</em></h2>
+        <h2 style="font-size: clamp(1.25rem, 2.5vw, 1.6rem); opacity: 0.85;">Quatre chiffres, <em>vite fait.</em></h2>
         <p class="proof-intro">Pas un CV — juste pour situer. Si tu veux le détail, tu as <a href="/me" style="color: var(--indigo); border-bottom: 1px solid rgba(91,79,224,0.25);">/me</a> et <a href="/projects" style="color: var(--indigo); border-bottom: 1px solid rgba(91,79,224,0.25);">/projects</a>.</p>
       </div>
 
@@ -1098,14 +1073,14 @@
         <div class="proof-item">
           <div class="proof-label">Avis vérifiés</div>
           <div class="proof-val">2 250+</div>
-          <div class="proof-desc">Accumulés sur mon e-commerce solo, dans un marché où la confiance est rare. La preuve publique du track record.
+          <div class="proof-desc">Accumulés sur mon e-commerce solo, dans un marché où la confiance est rare, et en tant qu'escrow (j'ai aussi fait une marketplace). La preuve publique du track record.
             <br /><a class="proof-link" href="/projects">Voir le détail →</a>
           </div>
         </div>
         <div class="proof-item">
           <div class="proof-label">Communauté Discord</div>
           <div class="proof-val">1 900+</div>
-          <div class="proof-desc">Membres. Construite, modérée, animée — seul. Donc je sais ce que c'est de réveiller un Discord.</div>
+          <div class="proof-desc">Membres. Construite, modérée, animée — seul (et en sollicitant ceux qui veulent s'impliquer). Donc je sais ce que c'est d'animer un Discord.</div>
         </div>
         <div class="proof-item">
           <div class="proof-label">Satisfaction client</div>
@@ -1128,7 +1103,7 @@
       <div class="section-head reveal">
         <span class="eyebrow">Comment on essaie</span>
         <h2>Un essai pour <em>nous deux.</em><br />Zéro risque, zéro lock-in.</h2>
-        <p class="proof-intro" style="margin-top: 1rem;">L'idée, c'est de voir si ça matche — pour toi <em>et</em> pour moi. Si ça matche pas, no hard feelings.</p>
+        <p class="proof-intro" style="margin-top: 1rem;">L'idée, c'est de voir si ça matche — pour toi <em>et</em> pour moi. <br> Si ça matche pas, no hard feelings.</p>
       </div>
 
       <div class="process-steps reveal-stagger">
@@ -1176,10 +1151,11 @@
 
       <div class="signature-block">
         <span class="signature-avatar">
-          <img src="/assets/Hero-Boris.webp" alt="Boris Nachbaur" loading="lazy" decoding="async" />
+          <img src="/assets/boris.webp" alt="Boris Nachbaur" loading="lazy" decoding="async" />
         </span>
         <p class="signature-text">Et si ça matche pas — <em>aucun souci.</em><br/>On reste tous les deux à shipper nos trucs.</p>
         <span class="signature-name">— Boris</span>
+        <span style="font-family: var(--sans); font-size: 0.78rem; color: rgba(255,255,255,0.3); margin-top: 0.25rem; letter-spacing: 0.02em;">Je réponds sous 24h, ouvré.</span>
       </div>
     </div>
   </section>
@@ -1243,33 +1219,13 @@
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // Nav scroll
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 12);
-  }, { passive: true });
-
-  // Mobile menu
-  const navToggle = document.getElementById('navToggle');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const closeMobileMenu = () => {
-    nav.classList.remove('menu-open');
-    mobileMenu.classList.remove('is-open');
-    mobileMenu.setAttribute('aria-hidden', 'true');
-    navToggle.setAttribute('aria-expanded', 'false');
-    navToggle.setAttribute('aria-label', 'Open navigation menu');
-  };
-  navToggle.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.contains('is-open');
-    if (isOpen) { closeMobileMenu(); return; }
-    nav.classList.add('menu-open');
-    mobileMenu.classList.add('is-open');
-    mobileMenu.setAttribute('aria-hidden', 'false');
-    navToggle.setAttribute('aria-expanded', 'true');
-    navToggle.setAttribute('aria-label', 'Close navigation menu');
-  });
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileMenu));
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileMenu(); });
+  // Topbar scroll
+  const topbar = document.querySelector('.topbar');
+  if (topbar) {
+    window.addEventListener('scroll', () => {
+      topbar.classList.toggle('scrolled', window.scrollY > 12);
+    }, { passive: true });
+  }
 
   // Reveal on scroll
   const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
