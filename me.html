@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport" />
   <title>About — Boris Nachbaur, operator for solo founders</title>
   <meta name="description" content="The geek behind nachboris.fr. 31, Lausanne-based, hooked on AI, business and personal finance since I was 15." />
   <meta name="author" content="Boris Nachbaur" />
@@ -208,6 +208,7 @@
       background: transparent;
       transition: transform 0.35s var(--soft);
       pointer-events: none;
+      padding-top: env(safe-area-inset-top);
     }
     .nav.scrolled { background: transparent; box-shadow: none; }
 
@@ -523,6 +524,12 @@
       background: radial-gradient(circle, var(--orange-soft) 0%, transparent 65%);
       opacity: 0.20;
     }
+    .hero-mesh::before, 
+.hero-mesh::after, 
+.hero-mesh .blob {
+  will-change: transform;
+  transform: translateZ(0); /* Le hack magique pour forcer la carte graphique */
+}
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -891,9 +898,9 @@
        FOOTER
        ========================================================== */
     footer {
-      padding: 2.75rem 0 3rem;
-      border-top: 1px solid rgba(15, 15, 23, 0.06);
-    }
+  padding: 2.75rem 0 calc(3rem + env(safe-area-inset-bottom));
+  border-top: 1px solid rgba(15, 15, 23, 0.06);
+}
     .footer-inner {
       max-width: var(--max);
       margin: 0 auto;
