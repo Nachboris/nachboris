@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport" />
   <title>Projects — Boris Nachbaur</title>
   <meta name="description" content="15+ years building and operating digital businesses solo. From a side hustle started at 15 to a full-time business with 100% satisfaction — the proof behind the operator." />
   <meta name="author" content="Boris Nachbaur" />
@@ -181,6 +181,7 @@
       background: transparent;
       transition: transform 0.35s var(--soft);
       pointer-events: none;
+      padding-top: env(safe-area-inset-top);
     }
     .nav-inner {
       max-width: calc(var(--max) + 2rem);
@@ -1078,9 +1079,9 @@
        FOOTER — mirrored from index.html
        ========================================================== */
     footer {
-      padding: 2.75rem 0 3rem;
-      border-top: 1px solid rgba(15, 15, 23, 0.06);
-    }
+  padding: 2.75rem 0 calc(3rem + env(safe-area-inset-bottom));
+  border-top: 1px solid rgba(15, 15, 23, 0.06);
+}
     .footer-inner {
       max-width: var(--max);
       margin: 0 auto;
