@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport" />
 <title>Pour Marc Lou — Boris Nachbaur</title>
 <meta name="description" content="Marc — j'ai écrit une page rien que pour toi. (Si tu n'es pas Marc, tu peux quand même jeter un œil.)" />
 <meta name="author" content="Boris Nachbaur" />
@@ -96,46 +96,6 @@
   /* Scroll-margin fix for anchor links (compensates fixed topbar) */
   section[id], main[id] {
     scroll-margin-top: 6rem;
-  }
-
-  /* STICKY MOBILE CTA */
-  .sticky-cta {
-    display: none;
-    position: fixed;
-    bottom: 1rem;
-    left: 50%;
-    transform: translateX(-50%) translateY(120%);
-    z-index: 80;
-    align-items: center;
-    gap: 0.55rem;
-    padding: 0.85rem 1.35rem 0.85rem 1.1rem;
-    background: var(--ink);
-    color: var(--bg);
-    font-family: var(--sans);
-    font-size: 0.9rem;
-    font-weight: 600;
-    border-radius: 999px;
-    box-shadow: 0 16px 40px -12px rgba(15,15,23,0.45), 0 4px 12px -4px rgba(91,79,224,0.3);
-    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
-    opacity: 0;
-    pointer-events: none;
-    white-space: nowrap;
-  }
-  .sticky-cta .pulse-dot {
-    background: var(--green);
-    box-shadow: 0 0 5px rgba(34, 197, 94, 0.7);
-  }
-  .sticky-cta .arrow {
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-  .sticky-cta.visible {
-    transform: translateX(-50%) translateY(0);
-    opacity: 1;
-    pointer-events: auto;
-  }
-  .sticky-cta:active { transform: translateX(-50%) translateY(-2px); }
-  @media (max-width: 768px) {
-    .sticky-cta { display: inline-flex; }
   }
 
   .skip-link {
@@ -1221,7 +1181,10 @@
   }
 
   /* FOOTER */
-  footer { padding: 2.5rem 0; border-top: 1px solid rgba(15,15,23,0.06); }
+  footer {
+  padding: 2.75rem 0 calc(3rem + env(safe-area-inset-bottom));
+  border-top: 1px solid rgba(15, 15, 23, 0.06);
+}
   .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
   .footer-left { display: flex; flex-direction: column; gap: 0.4rem; }
   .footer-identity { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; font-size: 0.8125rem; color: var(--ink-mute); }
@@ -1298,7 +1261,7 @@
     .photo-note > span { clip-path: none; }
     .photo-note path { stroke-dashoffset: 0; }
     .greeting-card .wave { animation: none; }
-    .hero-mesh::before, .hero-mesh::after, .hero-mesh .blob { animation: none; }
+    .hero-mesh::before, .hero-mesh::after, .hero-mesh .blob { animation: none; will-change: transform;  transform: translateZ(0); /* Le hack magique pour forcer la carte graphique */}
     .service-card .tag { opacity: 1; transform: none; }
     *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
   }
@@ -1691,13 +1654,6 @@
 
 </main>
 
-<!-- Sticky mobile CTA — appears after scroll on mobile only -->
-<a class="sticky-cta" href="#contact" id="stickyCta" aria-hidden="true" tabindex="-1">
-  <span class="pulse-dot" aria-hidden="true"></span>
-  S'appeler 20 min
-  <span class="arrow" aria-hidden="true">→</span>
-</a>
-
 <!-- FOOTER (kept in English for site consistency) -->
 <footer lang="en">
   <div class="wrap-wide">
@@ -1791,30 +1747,6 @@
         }
       }, { passive: true });
     }
-  }
-
-  // Sticky mobile CTA — visible after 50% scroll, hidden inside contact section
-  const stickyCta = document.getElementById('stickyCta');
-  const contactSection = document.getElementById('contact');
-  if (stickyCta && contactSection) {
-    const updateSticky = () => {
-      const scrolled = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPct = docHeight > 0 ? scrolled / docHeight : 0;
-      const contactTop = contactSection.getBoundingClientRect().top;
-      // Show after 25% scroll, hide when contact section enters viewport
-      const inView = contactTop < window.innerHeight * 0.85;
-      const shouldShow = scrollPct > 0.25 && !inView;
-      stickyCta.classList.toggle('visible', shouldShow);
-      stickyCta.setAttribute('aria-hidden', shouldShow ? 'false' : 'true');
-      if (shouldShow) {
-        stickyCta.removeAttribute('tabindex');
-      } else {
-        stickyCta.setAttribute('tabindex', '-1');
-      }
-    };
-    window.addEventListener('scroll', updateSticky, { passive: true });
-    window.addEventListener('resize', updateSticky, { passive: true });
   }
 
   // Reveal on scroll
