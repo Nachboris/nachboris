@@ -706,7 +706,8 @@
        OFF-WORK CHIPS
        ========================================================== */
     .offwork { padding: clamp(3rem, 7vw, 5.5rem) 0; }
-    .offwork .head { text-align: left; max-width: 640px; margin: 0 auto clamp(1.75rem, 3.5vw, 2.5rem); }
+    .offwork .head { text-align: center; max-width: 640px; margin: 0 auto clamp(1.75rem, 3.5vw, 2.5rem); }
+    .offwork .head .eyebrow { justify-content: center; }
     .offwork .head h2 em { font-style: italic; color: var(--orange); font-weight: 300; }
     .offwork .head p { margin-top: 0.9rem; color: var(--ink-soft); line-height: 1.65; }
 
@@ -716,6 +717,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.65rem;
+      justify-content: center;
     }
     .chip {
       display: inline-flex;
@@ -922,6 +924,34 @@
       box-shadow: 0 0 0 1px rgba(15, 15, 23, 0.08);
     }
     .flag-badge svg { width: 100%; height: 100%; }
+
+    /* Swiss flag flutter */
+    .ch-flag {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      vertical-align: -0.15em;
+      margin: 0 0.1em;
+      transform-origin: 50% 50%;
+      animation: flagFlutter 4s ease-in-out infinite;
+      animation-delay: 2.5s;
+      border-radius: 2px;
+      overflow: hidden;
+      box-shadow: 0 1px 2px rgba(15, 15, 23, 0.15);
+      flex-shrink: 0;
+    }
+    .ch-flag svg { display: block; width: 100%; height: 100%; }
+    @keyframes flagFlutter {
+      0%, 75%, 100% { transform: rotate(0deg) scale(1); }
+      78% { transform: rotate(-7deg) scale(1.05); }
+      82% { transform: rotate(8deg) scale(1.05); }
+      86% { transform: rotate(-5deg) scale(1.05); }
+      90% { transform: rotate(4deg) scale(1.02); }
+      93% { transform: rotate(0deg) scale(1); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .ch-flag { animation: none; }
+    }
     .footer-copy { font-size: 0.78rem; color: var(--ink-mute); }
     .footer-nav {
       display: inline-flex;
@@ -1126,12 +1156,12 @@
         <div class="chips reveal">
           <span class="chip"><span class="chip-emoji" aria-hidden="true">✈️</span> Travel <span class="chip-aside">/ 30+ countries, 1 year across Asia</span></span>
           <span class="chip"><span class="chip-emoji" aria-hidden="true">🏸</span> Badminton <span class="chip-aside">/ pure fun, played 100% for the win</span></span>
-          <span class="chip"><span class="chip-emoji" aria-hidden="true">🏋️</span> Home workouts <span class="chip-aside">/ no gym, no excuse</span></span>
-          <span class="chip"><span class="chip-emoji" aria-hidden="true">🎬</span> Cinema &amp; series <span class="chip-aside">/ way too many</span></span>
+          <span class="chip"><span class="chip-emoji" aria-hidden="true">🏋️</span> Home workouts <span class="chip-aside">/ when I can't find an excuse</span></span>
+          <span class="chip"><span class="chip-emoji" aria-hidden="true">🎬</span> Cinema <span class="chip-aside">/ who doesn't love a good story</span></span>
           <span class="chip"><span class="chip-emoji" aria-hidden="true">🖥️</span> Technology <span class="chip-aside">/ I build my own PCs</span></span>
           <span class="chip"><span class="chip-emoji" aria-hidden="true">🏔️</span> Lake &amp; mountains <span class="chip-aside">/ 1h from Lausanne</span></span>
           <span class="chip"><span class="chip-emoji" aria-hidden="true">🎮</span> Gaming <span class="chip-aside">/ where it all started</span></span>
-          <span class="chip"><span class="chip-emoji" aria-hidden="true">🎙️</span> Podcasts <span class="chip-aside">/ at 2× speed, sorry</span></span>
+          <span class="chip"><span class="chip-emoji" aria-hidden="true">🎙️</span> Podcasts &amp; YT <span class="chip-aside">/ at 2× speed, sorry</span></span>
         </div>
       </div>
     </section>
@@ -1163,9 +1193,9 @@
           <div class="value-row">
             <span class="value-mark" aria-hidden="true">01</span>
             <div>
-              <div class="value-title">Honesty &mdash; even when it's awkward.</div>
+              <div class="value-title">Honesty &mdash; the boring kind.</div>
               <p class="value-body">
-                I'll tell you on day three that something isn't working, instead of pretending on day thirty. If your idea is shaky, I'll say so &mdash; once, with tact &mdash; then it's your call. <strong>I'd rather lose a contract than write you a bill for three months of polite nodding.</strong>
+                Nobody's perfect, and I don't pretend otherwise. <strong>Simplicity and honesty</strong> &mdash; with you, with myself, with the work. No corporate bullshit, no theatre, no hiding behind jargon when a plain sentence would do.
               </p>
             </div>
           </div>
@@ -1185,7 +1215,7 @@
             <div>
               <div class="value-title">Open-mindedness &mdash; default state.</div>
               <p class="value-body">
-                Different industries, different personalities, different countries (I've lived in five). I genuinely don't care where the good idea comes from &mdash; the intern, the customer, the competitor, a Discord lurker at 2am. <strong>If it's true, it's true.</strong> Pride is the most expensive blocker in operations.
+                Different industries, different personalities, different countries (I've lived in five). I genuinely don't care where you're from, what you do or what you look like &mdash; <strong>what matters to me is your values and how you treat people.</strong> The rest is decoration.
               </p>
             </div>
           </div>
