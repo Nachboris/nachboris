@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport" />
 <title>Boris Nachbaur — Trusted operator for founders &amp; creators</title>
 <meta name="description" content="I run the operational weight — support, community, AI workflows, content ops — so solo founders and creators can stay on their highest-value work." />
 <meta name="author" content="Boris Nachbaur" />
@@ -248,6 +248,7 @@
       background: transparent;
       transition: transform 0.35s var(--soft);
       pointer-events: none;
+	  padding-top: env(safe-area-inset-top);
     }
     .nav::after { display: none; }
     .nav.scrolled {
@@ -2533,9 +2534,9 @@
        FOOTER
        ========================================================== */
     footer {
-      padding: 2.75rem 0 3rem;
-      border-top: 1px solid rgba(15, 15, 23, 0.06);
-    }
+  padding: 2.75rem 0 calc(3rem + env(safe-area-inset-bottom));
+  border-top: 1px solid rgba(15, 15, 23, 0.06);
+}
     .footer-inner {
       max-width: var(--max);
       margin: 0 auto;
@@ -2666,7 +2667,7 @@
       .marquee-track { animation: none; }
       .pulse-dot::after { animation: none; }
       .ai-badge .bolt { animation: none; }
-      .hero-mesh::before, .hero-mesh::after, .hero-mesh .blob { animation: none; }
+      .hero-mesh::before, .hero-mesh::after, .hero-mesh .blob { animation: none; will-change: transform; transform: translateZ(0); /* Le hack magique pour forcer la carte graphique */}
       .services-aurora::before, .services-aurora::after, .services-aurora .a-blob { animation: none; }
     }
   </style>
