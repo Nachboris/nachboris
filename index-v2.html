@@ -1171,25 +1171,17 @@
       }
       .photo-note {
         display: block;
-        top: -0.55rem;
-        left: 0.35rem;
-        width: 132px;
-        max-width: calc(100vw - 2rem);
+        top: 0.1rem;
+        left: -0.75rem;
+        width: 128px;
         transform: rotate(-7deg);
         opacity: 0.92;
       }
       .photo-note span {
-        width: auto;
         font-size: 1.22rem;
         line-height: 0.95;
         white-space: normal;
         max-width: 8.2rem;
-        margin: 0 0 -0.25rem 0;
-        padding: 0;
-        clip-path: inset(0 100% 0 0);
-      }
-      .photo-wrap.in .photo-note span {
-        clip-path: inset(0 0 0 0);
       }
       .photo-note svg {
         width: 88px;
@@ -1653,46 +1645,16 @@
       margin-bottom: 0.8rem;
     }
     .service-examples {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.38rem;
+      font-size: 0.8rem;
+      color: var(--ink-mute);
       font-family: var(--sans);
       line-height: 1.5;
     }
-    .service-chip {
-      display: inline-flex;
-      align-items: center;
-      min-height: 1.55rem;
-      padding: 0.24rem 0.52rem;
-      border-radius: 999px;
-      background: color-mix(in srgb, var(--c) 10%, rgba(255, 255, 255, 0.68));
-      border: 1px solid color-mix(in srgb, var(--c) 18%, transparent);
-      color: var(--ink-mute);
-      font-size: 0.76rem;
-      line-height: 1;
-      opacity: 0;
-      transform: translateY(8px) scale(0.96);
-      transition: opacity 0.42s var(--soft), transform 0.42s var(--spring), border-color 0.25s var(--soft), color 0.25s var(--soft);
-    }
-    .service:hover .service-chip {
-      border-color: color-mix(in srgb, var(--c) 30%, transparent);
-      color: var(--ink);
-    }
-    .service:nth-child(1) { --card-stagger: 0.04s; }
-    .service:nth-child(2) { --card-stagger: 0.10s; }
-    .service:nth-child(3) { --card-stagger: 0.16s; }
-    .service:nth-child(4) { --card-stagger: 0.22s; }
-    .service:nth-child(5) { --card-stagger: 0.28s; }
-    .service:nth-child(6) { --card-stagger: 0.34s; }
-    .service-chip:nth-child(1) { --chip-stagger: 0.00s; }
-    .service-chip:nth-child(2) { --chip-stagger: 0.045s; }
-    .service-chip:nth-child(3) { --chip-stagger: 0.09s; }
-    .service-chip:nth-child(4) { --chip-stagger: 0.135s; }
-    .service-chip:nth-child(5) { --chip-stagger: 0.18s; }
-    .services.in .service-chip {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-      transition-delay: calc(var(--card-stagger, 0s) + var(--chip-stagger, 0s));
+    .service-examples .dot {
+      color: var(--c);
+      margin: 0 0.4rem;
+      font-weight: 700;
+      opacity: 0.65;
     }
 
     .service.s-indigo { --c: var(--indigo); --c-soft: var(--indigo-soft); --c-tint: var(--indigo-tint); }
@@ -2837,7 +2799,6 @@
       .photo-note,
       .photo-note span,
       .photo-note path,
-      .service-chip,
       .process-card.in .process-num::after,
       .photo-cutout {
         animation: none;
@@ -2845,11 +2806,6 @@
       }
       .hero-h1 .h1-line,
       .photo-wrap.in .photo-note,
-      .services.in .service-chip {
-        opacity: 1;
-        transform: none;
-        clip-path: none;
-      }
       .photo-note path {
         stroke-dashoffset: 0;
       }
@@ -3033,7 +2989,7 @@
 <h3>Funnels &amp; lifecycle email</h3>
 <p>Lead magnets, landing pages, welcome sequences, launch campaigns, re-engagement. Written in your voice, tested, shipped.</p>
 <div class="service-examples">
-                <span class="service-chip">lead magnets</span><span class="service-chip">onboarding</span><span class="service-chip">launches</span><span class="service-chip">win-back</span><span class="service-chip">follow-ups</span>
+                lead magnets<span class="dot">·</span>onboarding<span class="dot">·</span>launches<span class="dot">·</span>win-back<span class="dot">·</span>follow-ups
               </div>
 </div>
 </div>
@@ -3043,7 +2999,7 @@
 <h3>Light vibe coding</h3>
 <p>Landing pages, marketing site fixes, small integrations. The backlog items that never make it to a real dev sprint.</p>
 <div class="service-examples">
-                <span class="service-chip">landing pages</span><span class="service-chip">integrations</span><span class="service-chip">automations</span><span class="service-chip">quick fixes</span>
+                landing pages<span class="dot">·</span>integrations<span class="dot">·</span>automations<span class="dot">·</span>quick fixes
               </div>
 </div>
 </div>
@@ -3053,7 +3009,7 @@
 <h3>Content repurposing &amp; ops</h3>
 <p>One long-form piece becomes a newsletter, five posts, and a thread — on schedule, in your voice.</p>
 <div class="service-examples">
-                <span class="service-chip">newsletter ops</span><span class="service-chip">video-to-post</span><span class="service-chip">threads</span><span class="service-chip">scheduling</span>
+                newsletter ops<span class="dot">·</span>video-to-post<span class="dot">·</span>threads<span class="dot">·</span>scheduling
               </div>
 </div>
 </div>
@@ -3063,7 +3019,7 @@
 <h3>Community operations</h3>
 <p>Discord, Slack, Circle. Moderation, onboarding, engagement — making a space feel alive, not abandoned.</p>
 <div class="service-examples">
-                <span class="service-chip">welcome flows</span><span class="service-chip">role automations</span><span class="service-chip">events</span><span class="service-chip">moderation</span>
+                welcome flows<span class="dot">·</span>role automations<span class="dot">·</span>events<span class="dot">·</span>moderation
               </div>
 </div>
 </div>
@@ -3073,7 +3029,7 @@
 <h3>Customer support L2</h3>
 <p>Real answers to complex tickets, fast. Your users feel heard. You never see the queue.</p>
 <div class="service-examples">
-                <span class="service-chip">refund flows</span><span class="service-chip">ticket SLAs</span><span class="service-chip">FAQ upkeep</span><span class="service-chip">escalation playbooks</span>
+                refund flows<span class="dot">·</span>ticket SLAs<span class="dot">·</span>FAQ upkeep<span class="dot">·</span>escalation playbooks
               </div>
 </div>
 </div>
@@ -3083,7 +3039,7 @@
 <h3>General ops &amp; admin leverage</h3>
 <p>Inbox triage, vendor coordination, SOPs, the small fires. The things that quietly drain a founder's week.</p>
 <div class="service-examples">
-                <span class="service-chip">inbox zero</span><span class="service-chip">vendor ops</span><span class="service-chip">documentation</span><span class="service-chip">firefighting</span>
+                inbox zero<span class="dot">·</span>vendor ops<span class="dot">·</span>documentation<span class="dot">·</span>firefighting
               </div>
 </div>
 </div>
