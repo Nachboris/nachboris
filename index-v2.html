@@ -930,6 +930,7 @@
       align-items: flex-end;
       justify-content: center;
       isolation: isolate;
+      overflow: visible;
     }
 
     .photo-halo {
@@ -1028,7 +1029,7 @@
     .photo-note {
       position: absolute;
       top: -0.15rem;
-      left: clamp(-3.25rem, -4.8vw, -1.55rem);
+      left: max(clamp(-3.25rem, -4.8vw, -1.55rem), calc((100% - 100vw) / 2 + 1rem));
       z-index: 4;
       width: max-content;
       max-width: calc(100vw - 2rem);
@@ -1120,7 +1121,7 @@
     }
     @media (min-width: 860px) and (max-width: 1080px) {
       .photo-note {
-        left: clamp(-2.15rem, -3.6vw, -1rem);
+        left: max(clamp(-2.15rem, -3.6vw, -1rem), calc((100% - 100vw) / 2 + 1rem));
       }
       .photo-note span {
         max-width: none;
@@ -1167,23 +1168,28 @@
       }
       .photo-note {
         display: block;
-        top: -0.55rem;
-        left: 0.35rem;
-        width: 132px;
+        top: -1.15rem;
+        left: 50%;
+        width: min(17.5rem, calc(100vw - 2rem));
         max-width: calc(100vw - 2rem);
-        transform: rotate(-7deg);
+        transform: translateX(-50%) rotate(-7deg);
         opacity: 0.92;
+        text-align: left;
+      }
+      .photo-wrap.in .photo-note {
+        transform: translateX(-50%) rotate(-7deg);
       }
       .photo-note span {
-        width: auto;
-        font-size: 1.22rem;
+        width: 100%;
+        font-size: clamp(1.18rem, 5.4vw, 1.42rem);
         line-height: 0.95;
-        white-space: normal;
-        max-width: 8.2rem;
+        white-space: nowrap;
+        max-width: none;
+        padding: 0 0.15rem 0.05rem;
       }
       .photo-note svg {
-        width: 88px;
-        margin-left: 0.25rem;
+        width: clamp(84px, 28vw, 112px);
+        margin-left: clamp(1.1rem, 18vw, 4.8rem);
       }
       .photo-note path {
         stroke-width: 8;
