@@ -142,28 +142,6 @@
 
     ::selection { background: var(--indigo); color: var(--bg); }
 
-    /* Scroll progress bar */
-    .scroll-progress {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      z-index: 150;
-      pointer-events: none;
-      background: transparent;
-    }
-    .scroll-progress-bar {
-      display: block;
-      width: 0%;
-      height: 100%;
-      border-radius: 0 999px 999px 0;
-      background: linear-gradient(90deg, var(--indigo), var(--orange), var(--lime));
-      box-shadow: 0 0 14px rgba(91, 79, 224, 0.36);
-      transform-origin: left center;
-      transition: width 0.08s linear;
-    }
-
     /* Animated section breaks */
     .section-break {
       width: min(calc(100% - (var(--pad) * 2)), var(--max));
@@ -928,13 +906,8 @@
     }
     .ai-badge .bolt {
       font-size: 0.86rem;
-      animation: bolt 2.4s ease-in-out infinite;
       display: inline-block;
       transform-origin: center;
-    }
-    @keyframes bolt {
-      0%, 100% { transform: scale(1) rotate(0deg); }
-      50% { transform: scale(1.2) rotate(-8deg); }
     }
 
     /* ==========================================================
@@ -1054,11 +1027,11 @@
 
     .photo-note {
       position: absolute;
-      top: 0.2rem;
-      left: clamp(-8.2rem, -11vw, -5.4rem);
+      top: -0.15rem;
+      left: clamp(-3.25rem, -4.8vw, -1.55rem);
       z-index: 4;
-      width: min(230px, calc(100vw - 2rem));
-      max-width: 230px;
+      width: max-content;
+      max-width: calc(100vw - 2rem);
       pointer-events: none;
       transform: rotate(-8deg) translateY(6px);
       opacity: 0;
@@ -1073,7 +1046,7 @@
     .photo-note span {
       display: block;
       width: max-content;
-      max-width: min(230px, calc(100vw - 2rem));
+      max-width: none;
       font-family: var(--hand);
       font-size: 1.5rem;
       line-height: 1;
@@ -1145,19 +1118,28 @@
     @media (min-width: 1100px) {
       .photo-wrap { max-width: 351px; }
     }
-
-
     @media (min-width: 860px) and (max-width: 1080px) {
       .photo-note {
-        left: clamp(-6.2rem, -8.8vw, -4.6rem);
-        width: min(220px, calc(100vw - 2rem));
+        left: clamp(-2.15rem, -3.6vw, -1rem);
       }
       .photo-note span {
-        max-width: min(220px, calc(100vw - 2rem));
+        max-width: none;
         font-size: 1.42rem;
       }
       .photo-note svg {
         width: 118px;
+      }
+    }
+
+
+    @media (min-width: 860px) and (max-width: 940px) {
+      .photo-note {
+        top: -0.85rem;
+        left: 0.2rem;
+        transform: rotate(-6deg) translateY(6px);
+      }
+      .photo-wrap.in .photo-note {
+        transform: rotate(-6deg) translateY(0);
       }
     }
 
@@ -1185,9 +1167,10 @@
       }
       .photo-note {
         display: block;
-        top: 0.1rem;
-        left: -0.75rem;
-        width: 128px;
+        top: -0.55rem;
+        left: 0.35rem;
+        width: 132px;
+        max-width: calc(100vw - 2rem);
         transform: rotate(-7deg);
         opacity: 0.92;
       }
@@ -1623,21 +1606,6 @@
       will-change: transform;
       position: relative;
       overflow: hidden;
-    }
-    .service::before {
-      content: "";
-      position: absolute;
-      inset: -40% auto -40% -55%;
-      width: 42%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.62), transparent);
-      transform: skewX(-18deg) translateX(0);
-      opacity: 0;
-      pointer-events: none;
-      transition: transform 0.72s var(--soft), opacity 0.28s var(--soft);
-    }
-    .service:hover::before {
-      transform: skewX(-18deg) translateX(360%);
-      opacity: 1;
     }
     .service > * {
       position: relative;
@@ -2116,6 +2084,18 @@
       color: var(--bg);
       font-weight: 650;
     }
+
+    @media (min-width: 860px) and (max-width: 940px) {
+      .photo-note {
+        top: -0.85rem;
+        left: 0.2rem;
+        transform: rotate(-6deg) translateY(6px);
+      }
+      .photo-wrap.in .photo-note {
+        transform: rotate(-6deg) translateY(0);
+      }
+    }
+
     @media (max-width: 859px) {
       .trust-proof-card {
         max-width: 100%;
@@ -2237,13 +2217,6 @@
       opacity: 0;
       transform: scale(0.86);
       z-index: -1;
-    }
-    .process-card.in .process-num::after {
-      animation: processPulse 2.2s var(--soft) infinite;
-    }
-    @keyframes processPulse {
-      0% { opacity: 0.46; transform: scale(0.86); }
-      70%, 100% { opacity: 0; transform: scale(1.22); }
     }
     .process-content {
       min-width: 0;
@@ -2849,14 +2822,12 @@
     }
   
     @media (prefers-reduced-motion: reduce) {
-      .scroll-progress-bar,
       .section-break span,
       .hero-h1 .h1-line,
       .photo-note,
       .photo-note span,
       .photo-note path,
       .service-chip,
-      .service::before,
       .process-card.in .process-num::after,
       .photo-cutout {
         animation: none;
@@ -2877,7 +2848,6 @@
 </style>
 </head>
 <body>
-<div aria-hidden="true" class="scroll-progress"><span class="scroll-progress-bar" id="scrollProgressBar"></span></div>
 <a class="skip-link" href="#top">Skip to main content</a>
 <!-- NAV with Available pill next to logo -->
 <nav class="nav" id="nav">
@@ -3109,7 +3079,7 @@
 </div>
 </div>
 <p class="positioning reveal">
-          I'm not a VA. I'm the operator <strong>you can trust with your passwords.</strong>
+          I'm not a Virtual Assistant. I'm <strong>the kind of operator founders trust with real responsibility.</strong>
 </p>
 </div>
 </section>
@@ -3123,7 +3093,7 @@
 <h2 style="margin-top: 1.25rem;">Choose the right kind of help.</h2>
 </div>
 <p>
-            Specialists go deep. VAs keep costs low. Full-time hires bring continuity. I sit in the flexible middle: trusted, business-minded, and useful when the work keeps moving.
+            Specialists go deep. Virtual Assistants keep costs low. Full-time hires bring continuity. I sit in the flexible middle: trusted, business-minded, and useful when the work keeps moving.
           </p>
 </div>
 <div class="fit-map reveal">
@@ -3162,7 +3132,7 @@
 <span class="fit-option-meta">Flexible operator</span>
 </div>
 <div>
-<div class="fit-cell fit-best">Messy, changing ops across support, community, tools, content, and admin.</div>
+<div class="fit-cell fit-best">Business-aware, technically fluent ops across support, community, AI workflows, content, and admin.</div>
 <div class="fit-chips" aria-label="Boris advantages">
 <span class="fit-chip">Builder mindset</span>
 <span class="fit-chip">Flexible range</span>
@@ -3438,16 +3408,8 @@
       if (event.key === 'Escape') closeMobileMenu();
     });
 
-    const scrollProgressBar = document.getElementById('scrollProgressBar');
     const photoCutout = document.querySelector('.photo-cutout');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    const updateScrollProgress = () => {
-      if (!scrollProgressBar) return;
-      const maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
-      const progress = Math.min(Math.max(window.scrollY / maxScroll, 0), 1);
-      scrollProgressBar.style.width = `${progress * 100}%`;
-    };
 
     const updatePhotoParallax = () => {
       if (!photoCutout || reduceMotion || !window.matchMedia('(min-width: 860px)').matches) {
@@ -3464,7 +3426,6 @@
     const onScroll = () => {
       if (window.scrollY > 12) nav.classList.add('scrolled');
       else nav.classList.remove('scrolled');
-      updateScrollProgress();
       updatePhotoParallax();
     };
     window.addEventListener('scroll', onScroll, { passive: true });
