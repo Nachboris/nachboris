@@ -2193,27 +2193,40 @@
     .process-content {
       min-width: 0;
     }
-    .process-heading {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 0.9rem;
-      align-items: center;
-      margin-bottom: 0.6rem;
-    }
-    .process-title {
-      min-width: 0;
-    }
-    .process-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      margin-bottom: 0.2rem;
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--c);
-      font-weight: 700;
-    }
+.process-heading {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.9rem;
+  align-items: start;
+  margin-bottom: 0.7rem;
+}
+
+.process-title {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 0.18rem;
+}
+
+.process-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 1rem;
+  margin-bottom: 0.32rem;
+
+  font-size: 0.72rem;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c);
+  font-weight: 700;
+}
+
+.process-title h3 {
+  line-height: 1.08;
+}
     .process-content h3 {
       font-size: 1.12rem;
       margin-bottom: 0;
@@ -2927,7 +2940,7 @@
 <!-- PROOF -->
 <section class="proof" id="results">
 <div class="wrap">
-<p class="proof-head reveal">the receipts</p>
+<p class="proof-head reveal">Years of operational trust — visible and verifiable.</p>
 <div class="proof-grid reveal-stagger">
 <a class="stat" href="/reviews">
 <span class="num"><span class="count" data-target="2250">0</span><em>+</em></span>
@@ -2975,9 +2988,9 @@
 <span class="service-num">01</span>
 <div>
 <h3>Funnels &amp; lifecycle email</h3>
-<p>Lead magnets, landing pages, welcome sequences, launch campaigns, re-engagement. Written in your voice, tested, shipped.</p>
+<p>Lead magnets, welcome sequences, launch campaigns, re-engagement. Written in your voice.</p>
 <div class="service-examples">
-                lead magnets<span class="dot">·</span>onboarding<span class="dot">·</span>launches<span class="dot">·</span>win-back<span class="dot">·</span>follow-ups
+                onboarding<span class="dot">·</span>launches<span class="dot">·</span>win-back
               </div>
 </div>
 </div>
@@ -2987,7 +3000,7 @@
 <h3>Light vibe coding</h3>
 <p>Landing pages, marketing site fixes, small integrations. The backlog items that never make it to a real dev sprint.</p>
 <div class="service-examples">
-                landing pages<span class="dot">·</span>integrations<span class="dot">·</span>automations<span class="dot">·</span>quick fixes
+                landing pages<span class="dot">·</span>integrations<span class="dot">·</span>automations
               </div>
 </div>
 </div>
@@ -2997,7 +3010,7 @@
 <h3>Content repurposing &amp; ops</h3>
 <p>One long-form piece becomes a newsletter, five posts, and a thread — on schedule, in your voice.</p>
 <div class="service-examples">
-                newsletter ops<span class="dot">·</span>video-to-post<span class="dot">·</span>threads<span class="dot">·</span>scheduling
+                newsletter ops<span class="dot">·</span>video-to-post<span class="dot">·</span>scheduling
               </div>
 </div>
 </div>
@@ -3005,9 +3018,9 @@
 <span class="service-num">04</span>
 <div>
 <h3>Community operations</h3>
-<p>Discord, Slack, Circle. Moderation, onboarding, engagement — making a space feel alive, not abandoned.</p>
+<p>Discord, Slack, Circle. Onboarding, engagement — making a space feel alive, not abandoned.</p>
 <div class="service-examples">
-                welcome flows<span class="dot">·</span>role automations<span class="dot">·</span>events<span class="dot">·</span>moderation
+                welcome flows<span class="dot">·</span>role automations<span class="dot">·</span>events
               </div>
 </div>
 </div>
@@ -3017,7 +3030,7 @@
 <h3>Customer support L2</h3>
 <p>Real answers to complex tickets, fast. Your users feel heard. You never see the queue.</p>
 <div class="service-examples">
-                refund flows<span class="dot">·</span>ticket SLAs<span class="dot">·</span>FAQ upkeep<span class="dot">·</span>escalation playbooks
+                refund flows<span class="dot">·</span>ticket SLAs<span class="dot">·</span>FAQ upkeep
               </div>
 </div>
 </div>
@@ -3025,15 +3038,15 @@
 <span class="service-num">06</span>
 <div>
 <h3>General ops &amp; admin leverage</h3>
-<p>Inbox triage, vendor coordination, SOPs, the small fires. The things that quietly drain a founder's week.</p>
+<p>The operational loose ends founders should stop spending their best hours on.</p>
 <div class="service-examples">
-                inbox zero<span class="dot">·</span>vendor ops<span class="dot">·</span>documentation<span class="dot">·</span>firefighting
+                inbox zero<span class="dot">·</span>documentation<span class="dot">·</span>firefighting
               </div>
 </div>
 </div>
 </div>
 <p class="positioning reveal">
-          I'm not a Virtual Assistant. I'm <strong>the kind of operator founders trust with real responsibility.</strong>
+          I'm not a simple Assistant. I'm the kind of operator <strong>founders trust with real responsibility</strong>.
 </p>
 </div>
 </section>
@@ -3044,10 +3057,11 @@
 <div class="section-head">
 <div>
 <span class="eyebrow">Where I fit</span>
-<h2 style="margin-top: 1.25rem;">Choose the right kind of help.</h2>
+<h2 style="margin-top: 1.25rem;">The right kind of help.</h2>
 </div>
 <p>
-            Specialists go deep. Virtual Assistants keep costs low. Full-time hires bring continuity. I sit in the flexible middle: trusted, business-minded, and useful when the work keeps moving.
+            Specialists go deep. Virtual Assistants keep costs low. Full-time hires bring continuity.
+			I fit when the business is already working — but the founder is still carrying too much of the operational load.
           </p>
 </div>
 <div class="fit-map reveal">
@@ -3061,7 +3075,7 @@
 <span class="fit-option-name">Specialist</span>
 <span class="fit-option-meta">Deep expertise</span>
 </div>
-<div class="fit-cell fit-best">One clear problem that needs real depth.</div>
+<div class="fit-cell fit-best">Scaling a $1M+/yr business with a team of 5+ and one function that needs serious depth.</div>
 <div class="fit-cell fit-tradeoff">Less useful when support, tools, content, and customers all move at once.</div>
 </article>
 <article class="fit-row">
@@ -3069,15 +3083,15 @@
 <span class="fit-option-name">Full-time hire</span>
 <span class="fit-option-meta">Continuity</span>
 </div>
-<div class="fit-cell fit-best">A stable role with enough work every week.</div>
-<div class="fit-cell fit-tradeoff">Expensive and slow if the scope is still changing.</div>
+<div class="fit-cell fit-best">A stable role with enough recurring work every week to justify a permanent seat.</div>
+<div class="fit-cell fit-tradeoff">Expensive and slow if the scope is still changing or you are not ready to manage another person.</div>
 </article>
 <article class="fit-row">
 <div class="fit-option">
 <span class="fit-option-name">Virtual Assistant</span>
 <span class="fit-option-meta">Clear tasks</span>
 </div>
-<div class="fit-cell fit-best">Simple execution with clear instructions.</div>
+<div class="fit-cell fit-best">Simple execution with clear instructions and low-risk tasks.</div>
 <div class="fit-cell fit-tradeoff">Usually less judgement, ownership, and reputation-level trust.</div>
 </article>
 <article class="fit-row fit-row-me">
@@ -3086,7 +3100,7 @@
 <span class="fit-option-meta">Flexible operator</span>
 </div>
 <div>
-<div class="fit-cell fit-best">Business-aware, technically fluent ops across support, community, AI workflows, content, and admin.</div>
+<div class="fit-cell fit-best">Founders who need a reliable second pair of hands — without hiring a full team.</div>
 <div class="fit-chips" aria-label="Boris advantages">
 <span class="fit-chip">Builder mindset</span>
 <span class="fit-chip">Flexible range</span>
@@ -3187,7 +3201,6 @@
 </div>
 <div class="artifact-meta">
 <span class="artifact-time-pill">20 min</span>
-<span class="artifact-live">ready</span>
 </div>
 </div>
 <div class="artifact-agenda-list">
