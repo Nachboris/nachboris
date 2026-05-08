@@ -828,6 +828,156 @@
     }
 
     /* ==========================================================
+       CURRENT WORK — freelance offer block
+       ========================================================== */
+    .current-work {
+      padding-top: clamp(1rem, 3vw, 2rem);
+      padding-bottom: clamp(2rem, 5vw, 3.5rem);
+    }
+    .current-card {
+      border-radius: var(--r-lg);
+      padding: clamp(1.75rem, 4vw, 2.75rem);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.5) 100%),
+        linear-gradient(135deg, var(--lime-tint) 0%, var(--indigo-tint) 100%);
+      border: 1px solid rgba(15, 15, 23, 0.06);
+      box-shadow: 0 18px 50px -36px rgba(15, 15, 23, 0.35), 0 1px 0 rgba(255, 255, 255, 0.7) inset;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      gap: 1.75rem;
+    }
+    .current-card::before {
+      content: "";
+      position: absolute;
+      bottom: -60px; right: -60px;
+      width: 220px; height: 220px;
+      background: radial-gradient(circle, var(--lime-tint) 0%, transparent 70%);
+      filter: blur(20px);
+      pointer-events: none;
+    }
+    @media (min-width: 860px) {
+      .current-card {
+        grid-template-columns: 1.55fr 1fr;
+        align-items: stretch;
+        gap: 2.25rem;
+      }
+    }
+    .current-card > * { position: relative; z-index: 1; }
+
+    .current-card-head { display: flex; flex-direction: column; gap: 0.55rem; }
+    .current-card-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+    .current-card-eyebrow::before {
+      content: "";
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 5px rgba(34, 197, 94, 0.7);
+      flex-shrink: 0;
+      position: relative;
+    }
+    .current-card h2 {
+      font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+      margin: 0;
+      line-height: 1.1;
+    }
+    .current-card h2 em { font-style: italic; color: var(--orange); font-weight: 300; }
+    .current-card-since {
+      font-family: var(--hand);
+      font-size: 1.15rem;
+      color: var(--ink-mute);
+    }
+    .current-card-intro {
+      margin-top: 0.5rem;
+      color: var(--ink-soft);
+      font-size: var(--fs-17);
+      line-height: 1.6;
+    }
+    .current-card-intro strong { color: var(--ink); font-weight: 600; }
+
+    .current-services {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 600px) { .current-services { grid-template-columns: repeat(2, 1fr); } }
+    .current-service {
+      padding: 1rem 1.15rem;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(15, 15, 23, 0.05);
+      border-radius: var(--r-md);
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .current-service .service-label {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--indigo);
+    }
+    .current-service:nth-child(2) .service-label { color: var(--orange); }
+    .current-service p {
+      font-size: var(--fs-15);
+      color: var(--ink-soft);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .current-card-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 0.85rem;
+      padding: 1.25rem;
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid rgba(15, 15, 23, 0.05);
+      border-radius: var(--r-md);
+    }
+    @media (min-width: 860px) {
+      .current-card-cta { padding: 1.5rem; }
+    }
+    .current-card-cta-label {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+    }
+    .current-card-cta-headline {
+      font-family: var(--serif);
+      font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.4;
+      margin: 0;
+    }
+    .current-card-cta .btn { width: 100%; }
+    .current-card-cta .btn-ghost { padding-left: 0; padding-right: 0; align-self: flex-start; width: auto; }
+    .current-card-note {
+      font-size: 0.78rem;
+      color: var(--ink-mute);
+      line-height: 1.5;
+      margin-top: 0.25rem;
+    }
+
+    /* ==========================================================
        SIDE PROJECTS
        ========================================================== */
     .side-head { margin-bottom: clamp(2rem, 4vw, 3rem); max-width: 680px; margin-left: auto; margin-right: auto; text-align: center; }
@@ -1197,8 +1347,53 @@
           <span class="eyebrow">Projects &amp; experience</span>
           <h1>15+ years shipping things <em>solo.</em></h1>
           <p class="lede">
-            Every project below was run end-to-end &mdash; acquisition, sales, support, community, ops. Counted together with my Master in Digital Business Management at Rennes School of Business and two business-developer stints in early-stage startups, that's more than 15 years in the trenches of digital operations.
+            Every project on this page was run end-to-end &mdash; acquisition, sales, support, community, ops. Counted together with my Master in Digital Business Management at Rennes School of Business and two business-developer stints in early-stage startups, that's more than 15 years in the trenches of digital operations.
           </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CURRENT WORK -->
+    <section class="current-work">
+      <div class="wrap">
+        <div class="current-card reveal">
+
+          <div>
+            <div class="current-card-head">
+              <span class="current-card-eyebrow">Currently available</span>
+              <h2>Freelance <em>consulting</em></h2>
+              <span class="current-card-since">Since April 2026</span>
+            </div>
+
+            <p class="current-card-intro">
+              The reason this site exists. <strong>I help SMEs and solopreneurs</strong> on two fronts where I've actually shipped things, not just read about them &mdash; AI, and digital marketing. Short, focused engagements.
+            </p>
+
+            <div class="current-services">
+              <div class="current-service">
+                <span class="service-label">AI consulting</span>
+                <p>Demystifying AI for non-technical teams &mdash; education, hands-on workshops, and concrete process implementation in their day-to-day workflows.</p>
+              </div>
+              <div class="current-service">
+                <span class="service-label">Digital marketing</span>
+                <p>Sales funnel design and optimization &mdash; audit, structure, copy, and execution for founders who want more conversions, less noise.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="current-card-cta">
+            <span class="current-card-cta-label">Get in touch</span>
+            <p class="current-card-cta-headline">
+              Curious if I can help? A 20-minute call costs nothing and tells you fast.
+            </p>
+            <a href="https://calendly.com/nachboris/20min" class="btn btn-ink" target="_blank" rel="noopener">
+              <span>Book a call</span>
+              <span class="arrow">→</span>
+            </a>
+            <a href="mailto:boris@nachboris.fr" class="btn btn-ghost">boris@nachboris.fr</a>
+            <span class="current-card-note">This site went live mid-April 2026 to support this activity.</span>
+          </div>
+
         </div>
       </div>
     </section>
