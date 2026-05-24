@@ -2813,53 +2813,68 @@
     }
 
     /* ==========================================================
-       LANG TOGGLE (FR / EN)
+       LANG TOGGLE — flag + code (cible : la langue vers laquelle on switch)
        ========================================================== */
     .lang-toggle {
       display: inline-flex;
       align-items: center;
-      gap: 0.18rem;
-      padding: 0.42rem 0.72rem;
+      gap: 0.42rem;
+      padding: 0.32rem 0.7rem 0.32rem 0.36rem;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.55);
+      background: rgba(255, 255, 255, 0.6);
       border: 1px solid rgba(15, 15, 23, 0.08);
       font-family: var(--sans);
       font-size: 0.74rem;
-      font-weight: 600;
-      color: var(--ink-mute);
-      letter-spacing: 0.04em;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: 0.05em;
       line-height: 1;
       cursor: pointer;
-      transition: transform 0.3s var(--spring), background 0.25s var(--soft), border-color 0.25s var(--soft), color 0.25s var(--soft);
+      transition: transform 0.3s var(--spring), background 0.25s var(--soft), border-color 0.25s var(--soft);
     }
     .lang-toggle:hover {
-      background: rgba(255, 255, 255, 0.85);
-      border-color: rgba(15, 15, 23, 0.14);
+      background: rgba(255, 255, 255, 0.92);
+      border-color: rgba(15, 15, 23, 0.18);
       transform: translateY(-1px);
-      color: var(--ink);
     }
-    .lang-toggle .lang-opt {
-      padding: 0 0.18rem;
-      transition: color 0.2s var(--soft), font-weight 0.2s var(--soft);
+    .lang-toggle:hover .lang-flag {
+      transform: scale(1.06);
     }
-    .lang-toggle .lang-opt.is-active {
-      color: var(--ink);
-      font-weight: 800;
+    .lang-flag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.05rem;
+      height: 1.05rem;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: inset 0 0 0 0.5px rgba(15, 15, 23, 0.14);
+      transition: transform 0.35s var(--spring);
     }
-    .lang-toggle .lang-sep {
-      opacity: 0.4;
-      font-weight: 400;
+    .lang-flag svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .lang-code {
+      display: inline-block;
+      line-height: 1;
     }
     @media (max-width: 560px) {
       .lang-toggle {
-        padding: 0.36rem 0.6rem;
+        padding: 0.3rem 0.6rem 0.3rem 0.32rem;
         font-size: 0.7rem;
+        gap: 0.36rem;
+      }
+      .lang-flag {
+        width: 0.95rem;
+        height: 0.95rem;
       }
     }
     /* Mobile menu variant lives inside mobile-menu-foot */
     .mobile-menu-foot .lang-toggle {
-      width: auto;
-      background: rgba(255, 255, 255, 0.62);
+      background: rgba(255, 255, 255, 0.7);
     }
 
     /* ==========================================================
@@ -2995,10 +3010,9 @@
 <a class="nav-link" href="/reviews" data-i18n="nav.reviews">Avis</a>
 </div>
 <div class="nav-actions">
-<button class="lang-toggle" id="langToggle" type="button" aria-label="Changer de langue">
-<span class="lang-opt" data-lang="fr">FR</span>
-<span class="lang-sep" aria-hidden="true">/</span>
-<span class="lang-opt" data-lang="en">EN</span>
+<button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">
+<span class="lang-flag" aria-hidden="true"></span>
+<span class="lang-code">EN</span>
 </button>
 <span class="availability">
 <span class="pulse-dot"></span>
@@ -3023,10 +3037,9 @@
 </div>
 <div class="mobile-menu-foot">
 <a class="mobile-menu-cta" href="#contact"><span data-i18n="nav.cta.full">Réserver un appel</span> <span aria-hidden="true">→</span></a>
-<button class="lang-toggle" id="langToggleMobile" type="button" aria-label="Changer de langue">
-<span class="lang-opt" data-lang="fr">FR</span>
-<span class="lang-sep" aria-hidden="true">/</span>
-<span class="lang-opt" data-lang="en">EN</span>
+<button class="lang-toggle" id="langToggleMobile" type="button" aria-label="Switch language">
+<span class="lang-flag" aria-hidden="true"></span>
+<span class="lang-code">EN</span>
 </button>
 <span class="availability">
 <span class="pulse-dot"></span>
@@ -3968,6 +3981,16 @@
       }
     };
 
+    /* Flag SVGs — inline, no clipPath ID collisions thanks to CSS border-radius wrapper */
+    const flagSVG = {
+      fr: '<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect fill="#1F4AA8" height="24" width="8" x="0"></rect><rect fill="#FFFFFF" height="24" width="8" x="8"></rect><rect fill="#E23D28" height="24" width="8" x="16"></rect></svg>',
+      en: '<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect fill="#012169" height="24" width="24"></rect><path d="M0 0L24 24M24 0L0 24" stroke="#FFFFFF" stroke-width="3.2"></path><path d="M0 0L24 24M24 0L0 24" stroke="#C8102E" stroke-width="1.4"></path><rect fill="#FFFFFF" height="4.4" width="24" y="9.8"></rect><rect fill="#FFFFFF" height="24" width="4.4" x="9.8"></rect><rect fill="#C8102E" height="2.6" width="24" y="10.7"></rect><rect fill="#C8102E" height="24" width="2.6" x="10.7"></rect></svg>'
+    };
+    const langLabel = {
+      fr: { code: 'FR', aria: 'Switch to French' },
+      en: { code: 'EN', aria: 'Switch to English' }
+    };
+
     function detectInitialLang() {
       try {
         const saved = localStorage.getItem('nachboris_lang');
@@ -3980,15 +4003,28 @@
       return nav.startsWith('fr') ? 'fr' : 'en';
     }
 
+    function renderToggle(currentLang) {
+      const targetLang = currentLang === 'fr' ? 'en' : 'fr';
+      document.querySelectorAll('.lang-toggle').forEach((btn) => {
+        const flag = btn.querySelector('.lang-flag');
+        const code = btn.querySelector('.lang-code');
+        if (flag) flag.innerHTML = flagSVG[targetLang];
+        if (code) code.textContent = langLabel[targetLang].code;
+        btn.setAttribute('aria-label', langLabel[targetLang].aria);
+        btn.setAttribute('data-target-lang', targetLang);
+      });
+    }
+
     function applyLang(lang) {
       if (lang !== 'fr' && lang !== 'en') lang = 'fr';
       const dict = i18n[lang];
       if (!dict) return;
 
-      // Update each translatable node
+      /* Use innerHTML for both attribute kinds : content is author-controlled,
+         so entities (&amp; &nbsp; «&nbsp;» etc.) are decoded properly. */
       document.querySelectorAll('[data-i18n]').forEach((el) => {
         const key = el.getAttribute('data-i18n');
-        if (dict[key] !== undefined) el.textContent = dict[key];
+        if (dict[key] !== undefined) el.innerHTML = dict[key];
       });
       document.querySelectorAll('[data-i18n-html]').forEach((el) => {
         const key = el.getAttribute('data-i18n-html');
@@ -4005,10 +4041,8 @@
         if (desc && i18nMeta[lang].description) desc.setAttribute('content', i18nMeta[lang].description);
       }
 
-      // Toggle button active state
-      document.querySelectorAll('.lang-toggle .lang-opt').forEach((opt) => {
-        opt.classList.toggle('is-active', opt.getAttribute('data-lang') === lang);
-      });
+      // Toggle button : show the OTHER language as next-click target
+      renderToggle(lang);
 
       // Persist + sync URL (without reload)
       try { localStorage.setItem('nachboris_lang', lang); } catch (e) { /* blocked */ }
@@ -4019,19 +4053,12 @@
       } catch (e) { /* old browser */ }
     }
 
-    // Wire the toggle buttons (nav + mobile)
+    // Wire the toggle buttons (nav + mobile) : click = flip to the target lang
     document.querySelectorAll('.lang-toggle').forEach((btn) => {
-      btn.addEventListener('click', (e) => {
-        // If a specific <span> was clicked, set that lang; otherwise flip
-        const target = e.target.closest('.lang-opt');
-        let next;
-        if (target && target.getAttribute('data-lang')) {
-          next = target.getAttribute('data-lang');
-        } else {
-          const current = document.documentElement.getAttribute('lang') || 'fr';
-          next = current === 'fr' ? 'en' : 'fr';
-        }
-        applyLang(next);
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-target-lang')
+          || (document.documentElement.getAttribute('lang') === 'fr' ? 'en' : 'fr');
+        applyLang(target);
       });
     });
 
