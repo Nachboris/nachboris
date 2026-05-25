@@ -331,8 +331,14 @@
     .nav-actions {
       display: inline-flex;
       align-items: center;
-      justify-self: end;
       gap: 1rem;
+    }
+
+    .nav-end {
+      display: inline-flex;
+      align-items: center;
+      justify-self: end;
+      gap: 0.7rem;
     }
 
     .nav-toggle {
@@ -838,13 +844,13 @@
     }
 
     .hero h1 {
-      max-width: 15.5ch;
-      font-size: clamp(2.45rem, 5.2vw, 4.2rem);
+      font-size: clamp(2.2rem, 4.6vw, 3.55rem);
     }
 
 
     .hero-h1 .h1-line {
       display: block;
+      white-space: nowrap;
       opacity: 0;
       transform: translateY(18px);
       transition: opacity 0.72s var(--soft), transform 0.72s var(--soft);
@@ -1014,6 +1020,9 @@
     }
 
     .photo-signature {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
       margin-top: -0.1rem;
       margin-bottom: -0.55rem;
       font-family: var(--hand);
@@ -1022,6 +1031,22 @@
       color: var(--ink);
       transform: rotate(-2deg);
       text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+    }
+    .photo-signature .ch-flag {
+      display: inline-flex;
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(15, 15, 23, 0.18);
+      transform: rotate(2deg);
+      text-shadow: none;
+      flex-shrink: 0;
+    }
+    .photo-signature .ch-flag svg {
+      width: 100%;
+      height: 100%;
+      display: block;
     }
 
 
@@ -1197,8 +1222,11 @@
         max-width: none;
         width: 100%;
         text-align: center;
-        font-size: clamp(2.65rem, 10.6vw, 3.35rem);
-        line-height: 1.02;
+        font-size: clamp(2rem, 7.8vw, 2.75rem);
+        line-height: 1.05;
+      }
+      .hero-h1 .h1-line {
+        white-space: normal;
       }
       .hero-sub {
         margin-top: 1.35rem;
@@ -1296,7 +1324,6 @@
       padding: 0 0.15em;
       font-weight: 600;
       color: var(--ink);
-      white-space: nowrap;
     }
 
     .highlight-sky {
@@ -1304,7 +1331,6 @@
       padding: 0 0.15em;
       font-weight: 600;
       color: var(--ink);
-      white-space: nowrap;
     }
 
     .why-signoff {
@@ -1786,13 +1812,13 @@
     .fit-chip {
       display: inline-flex;
       align-items: center;
-      padding: 0.26rem 0.58rem;
+      padding: 0.22rem 0.5rem;
       border-radius: 999px;
       background: rgba(91, 79, 224, 0.1);
       color: var(--indigo);
-      font-size: 0.7rem;
+      font-size: 0.64rem;
       font-weight: 800;
-      letter-spacing: 0.07em;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
       white-space: nowrap;
     }
@@ -1892,7 +1918,7 @@
       margin-top: 0.75rem;
       font-size: var(--fs-15);
       color: var(--ink-mute);
-      max-width: 44ch;
+      max-width: 80ch;
       margin-left: auto;
       margin-right: auto;
     }
@@ -2861,6 +2887,12 @@
       display: inline-block;
       line-height: 1;
     }
+    .lang-code-full { display: inline; }
+    .lang-code-short { display: none; }
+    @media (max-width: 720px) {
+      .lang-code-full { display: none; }
+      .lang-code-short { display: inline; }
+    }
     @media (max-width: 560px) {
       .lang-toggle {
         padding: 0.3rem 0.6rem 0.3rem 0.32rem;
@@ -2871,10 +2903,6 @@
         width: 0.95rem;
         height: 0.95rem;
       }
-    }
-    /* Mobile menu variant lives inside mobile-menu-foot */
-    .mobile-menu-foot .lang-toggle {
-      background: rgba(255, 255, 255, 0.7);
     }
 
     /* ==========================================================
@@ -3009,11 +3037,8 @@
 <a class="nav-link nav-link-toolkit" href="/projects" data-i18n="nav.projects">Projets</a>
 <a class="nav-link" href="/reviews" data-i18n="nav.reviews">Avis</a>
 </div>
+<div class="nav-end">
 <div class="nav-actions">
-<button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">
-<span class="lang-flag" aria-hidden="true"></span>
-<span class="lang-code">EN</span>
-</button>
 <span class="availability">
 <span class="pulse-dot"></span>
 <span class="availability-label" data-i18n="nav.available">Disponible</span>
@@ -3023,9 +3048,14 @@
 <span class="arrow">→</span>
 </a>
 </div>
+<button class="lang-toggle" id="langToggle" type="button" aria-label="Switch to English">
+<span class="lang-flag" aria-hidden="true"></span>
+<span class="lang-code"><span class="lang-code-full">Switch to English</span><span class="lang-code-short">EN</span></span>
+</button>
 <button aria-controls="mobileMenu" aria-expanded="false" aria-label="Ouvrir le menu de navigation" class="nav-toggle" id="navToggle" type="button">
 <span aria-hidden="true" class="nav-toggle-lines"><span></span></span>
 </button>
+</div>
 </div>
 </nav>
 <div aria-hidden="true" class="mobile-menu" id="mobileMenu">
@@ -3037,10 +3067,6 @@
 </div>
 <div class="mobile-menu-foot">
 <a class="mobile-menu-cta" href="#contact"><span data-i18n="nav.cta.full">Réserver un appel</span> <span aria-hidden="true">→</span></a>
-<button class="lang-toggle" id="langToggleMobile" type="button" aria-label="Switch language">
-<span class="lang-flag" aria-hidden="true"></span>
-<span class="lang-code">EN</span>
-</button>
 <span class="availability">
 <span class="pulse-dot"></span>
 <span class="availability-label" data-i18n="nav.available">Disponible</span>
@@ -3062,14 +3088,14 @@
 <span class="h1-line h1-line-2"><span class="italic-accent" data-i18n="hero.h1.line2">Je l'amplifie avec l'IA.</span></span>
 </h1>
 <p class="hero-sub reveal" data-i18n-html="hero.sub">
-              J'aide les <span class="hero-sub-strong">coachs, consultants et formateurs</span> établis à intégrer l'IA dans leur métier, sans diluer ce qui les rend uniques. Audit, implémentation ou accompagnement, selon ce dont tu as besoin. Basé à Lausanne.
+              J'aide les <span class="hero-sub-strong">coachs, consultants et formateurs</span> établis à intégrer l'IA dans leur métier, sans diluer ce qui les rend uniques. Audit, implémentation ou accompagnement, selon ce dont tu as besoin.
             </p>
 </div>
 <div class="photo-col">
 <div class="photo-wrap reveal">
 <div aria-hidden="true" class="photo-halo"></div>
 <div aria-hidden="true" class="photo-note">
-<span data-i18n="hero.photoNote">ton bras droit IA &amp; marketing&nbsp;?</span>
+<span data-i18n="hero.photoNote">ton bras droit IA &amp; digital&nbsp;?</span>
 <svg focusable="false" viewbox="0 0 140 90" xmlns="http://www.w3.org/2000/svg">
 <path d="M8 13 C42 3, 82 19, 112 45"></path>
 <path d="M100 45 L120 52 L107 31"></path>
@@ -3082,7 +3108,7 @@
 </picture>
 </div>
 </div>
-<span class="photo-signature reveal">Boris Nachbaur</span>
+<span class="photo-signature reveal"><span>Boris Nachbaur</span><span class="ch-flag" aria-hidden="true" title="Basé en Suisse"><svg viewbox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" fill="#DA291C"></rect><rect x="13" y="6" width="6" height="20" fill="#FFFFFF"></rect><rect x="6" y="13" width="20" height="6" fill="#FFFFFF"></rect></svg></span></span>
 <span class="ai-badge reveal">
 <span aria-hidden="true" class="bolt">⚡</span>
               <span data-i18n="hero.badge">Opérateur IA</span>
@@ -3107,13 +3133,13 @@
           </div>
 <div class="why-body reveal">
 <p data-i18n-html="why.p1">
-              Depuis 2011, je construis et j'opère des projets digitaux en solo. <span class="highlight-orange">Je sais ce que c'est de porter chaque casquette en même temps.</span>
-</p>
+              Depuis 2011, je construis et j'opère des projets digitaux en solo. <span class="highlight-orange">Quinze ans à porter toutes les casquettes en même temps</span>, à apprendre par expérience ce qu'on peut déléguer et ce qui doit rester humain.
+            </p>
 <p data-i18n-html="why.p2">
-              L'IA change beaucoup de choses dans ce métier. Mais ce qui te rend unique, c'est <strong>toi</strong>&nbsp;: ton expérience, ta voix, ta manière de penser. Aucun prompt générique ne remplace ça.
+              L'IA est en train de redessiner ces règles. Beaucoup de tâches peuvent maintenant passer aux systèmes IA. Mais certaines doivent absolument rester entre tes mains, parce que c'est précisément là qu'est <strong>ta valeur</strong> pour tes clients.
             </p>
 <p data-i18n-html="why.p3">
-              Mon métier aujourd'hui, c'est de <span class="highlight-sky">capter ce qui fait ta valeur</span> et de construire les systèmes IA autour de ça, pas l'inverse.
+              Mon métier aujourd'hui, c'est de <span class="highlight-sky">t'aider à faire ce tri honnêtement</span>, puis à construire les systèmes IA autour de ce qui doit rester toi.
             </p>
 <p class="why-signoff" data-i18n="why.signoff">Boris</p>
 </div>
@@ -3161,7 +3187,7 @@
 <div class="section-head">
 <div>
 <span class="eyebrow" data-i18n="services.eyebrow">Mes services</span>
-<h2 style="margin-top: 1.25rem;" data-i18n="services.h2">Là où l'IA peut payer dans ton activité.</h2>
+<h2 style="margin-top: 1.25rem;" data-i18n="services.h2">Là où l'IA s'inscrit vraiment dans ton activité.</h2>
 </div>
 <p data-i18n-html="services.sub">
             Trois façons de travailler ensemble&nbsp;: un audit court pour démarrer, une implémentation cadrée ensuite, ou un accompagnement mensuel dans la durée. <strong>L'objectif reste le même&nbsp;: simplifier ton activité, pas multiplier les outils que tu dois apprendre.</strong>
@@ -3309,16 +3335,16 @@
 <div>
 <div class="fit-cell fit-best" data-i18n="fit.row4.best">Amplifier ton expertise dans la durée, avec quelqu'un qui comprend ton métier et qui opère vraiment.</div>
 <div class="fit-chips" aria-label="Mes avantages">
-<span class="fit-chip" data-i18n="fit.row4.chip1">Implémentation concrète</span>
+<span class="fit-chip" data-i18n="fit.row4.chip1">Implémentation</span>
 <span class="fit-chip" data-i18n="fit.row4.chip2">15 ans d'ops</span>
-<span class="fit-chip" data-i18n="fit.row4.chip3">Suisse romande</span>
+<span class="fit-chip" data-i18n="fit.row4.chip3">Couteau Suisse Digital</span>
 </div>
 </div>
 <div class="fit-cell fit-tradeoff" data-i18n="fit.row4.tradeoff">Pas pour les déploiements multinationaux ni les budgets corporate à six chiffres.</div>
 </article>
 </div>
 <div class="fit-note reveal" data-i18n-html="fit.note">
-          Je communique étroit&nbsp;: coachs, consultants, formateurs, professions libérales. Si tu es une PME romande avec un vrai besoin, on en discute aussi.
+          Avec qui je travaille en priorité&nbsp;: coachs, consultants, formateurs, professions libérales. Si tu es une PME romande avec un vrai besoin, on en discute aussi.
         </div>
 </div>
 </section>
@@ -3329,7 +3355,7 @@
 <div class="toolkit-head reveal">
 <span class="eyebrow" data-i18n="toolkit.eyebrow">Mon stack</span>
 <h2 data-i18n="toolkit.h2">Fluent dans les outils que tu utilises déjà.</h2>
-<p data-i18n="toolkit.sub">Pas de friction d'onboarding. Je m'intègre dans tes workflows dès le premier jour.</p>
+<p data-i18n="toolkit.sub">Pas de friction d'onboarding. Je m'intègre dans tes workflows dès le jour 1.</p>
 </div>
 
 
@@ -3668,17 +3694,17 @@
         // HERO
         'hero.h1.line1': "Tu as l'expertise.",
         'hero.h1.line2': "Je l'amplifie avec l'IA.",
-        'hero.sub': "J'aide les <span class=\"hero-sub-strong\">coachs, consultants et formateurs</span> établis à intégrer l'IA dans leur métier, sans diluer ce qui les rend uniques. Audit, implémentation ou accompagnement, selon ce dont tu as besoin. Basé à Lausanne.",
-        'hero.photoNote': 'ton bras droit IA &amp; marketing&nbsp;?',
+        'hero.sub': "J'aide les <span class=\"hero-sub-strong\">coachs, consultants et formateurs</span> établis à intégrer l'IA dans leur métier, sans diluer ce qui les rend uniques. Audit, implémentation ou accompagnement, selon ce dont tu as besoin.",
+        'hero.photoNote': 'ton bras droit IA &amp; digital&nbsp;?',
         'hero.badge': 'Opérateur IA',
         'hero.cta.primary': 'Réserver un appel',
         'hero.cta.secondary': 'Voir comment je travaille',
 
         // WHY
         'why.hi': '<span aria-hidden="true" class="wave">👋</span> Salut.',
-        'why.p1': "Depuis 2011, je construis et j'opère des projets digitaux en solo. <span class=\"highlight-orange\">Je sais ce que c'est de porter chaque casquette en même temps.</span>",
-        'why.p2': "L'IA change beaucoup de choses dans ce métier. Mais ce qui te rend unique, c'est <strong>toi</strong>&nbsp;: ton expérience, ta voix, ta manière de penser. Aucun prompt générique ne remplace ça.",
-        'why.p3': "Mon métier aujourd'hui, c'est de <span class=\"highlight-sky\">capter ce qui fait ta valeur</span> et de construire les systèmes IA autour de ça, pas l'inverse.",
+        'why.p1': "Depuis 2011, je construis et j'opère des projets digitaux en solo. <span class=\"highlight-orange\">Quinze ans à porter toutes les casquettes en même temps</span>, à apprendre par expérience ce qu'on peut déléguer et ce qui doit rester humain.",
+        'why.p2': "L'IA est en train de redessiner ces règles. Beaucoup de tâches peuvent maintenant passer aux systèmes IA. Mais certaines doivent absolument rester entre tes mains, parce que c'est précisément là qu'est <strong>ta valeur</strong> pour tes clients.",
+        'why.p3': "Mon métier aujourd'hui, c'est de <span class=\"highlight-sky\">t'aider à faire ce tri honnêtement</span>, puis à construire les systèmes IA autour de ce qui doit rester toi.",
         'why.signoff': 'Boris',
 
         // PROOF
@@ -3695,7 +3721,7 @@
 
         // SERVICES
         'services.eyebrow': 'Mes services',
-        'services.h2': "Là où l'IA peut payer dans ton activité.",
+        'services.h2': "Là où l'IA s'inscrit vraiment dans ton activité.",
         'services.sub': "Trois façons de travailler ensemble&nbsp;: un audit court pour démarrer, une implémentation cadrée ensuite, ou un accompagnement mensuel dans la durée. <strong>L'objectif reste le même&nbsp;: simplifier ton activité, pas multiplier les outils que tu dois apprendre.</strong>",
         'services.format1': 'Audit IA',
         'services.format2': 'Implémentation',
@@ -3751,16 +3777,16 @@
         'fit.row4.name': 'Boris',
         'fit.row4.meta': 'Opérateur IA',
         'fit.row4.best': "Amplifier ton expertise dans la durée, avec quelqu'un qui comprend ton métier et qui opère vraiment.",
-        'fit.row4.chip1': 'Implémentation concrète',
+        'fit.row4.chip1': 'Implémentation',
         'fit.row4.chip2': "15 ans d'ops",
-        'fit.row4.chip3': 'Suisse romande',
+        'fit.row4.chip3': 'Couteau Suisse Digital',
         'fit.row4.tradeoff': 'Pas pour les déploiements multinationaux ni les budgets corporate à six chiffres.',
-        'fit.note': 'Je communique étroit&nbsp;: coachs, consultants, formateurs, professions libérales. Si tu es une PME romande avec un vrai besoin, on en discute aussi.',
+        'fit.note': 'Avec qui je travaille en priorité&nbsp;: coachs, consultants, formateurs, professions libérales. Si tu es une PME romande avec un vrai besoin, on en discute aussi.',
 
         // TOOLKIT
         'toolkit.eyebrow': 'Mon stack',
         'toolkit.h2': 'Fluent dans les outils que tu utilises déjà.',
-        'toolkit.sub': "Pas de friction d'onboarding. Je m'intègre dans tes workflows dès le premier jour.",
+        'toolkit.sub': "Pas de friction d'onboarding. Je m'intègre dans tes workflows dès le jour 1.",
 
         // TRUST
         'trust.eyebrow': 'Pourquoi me faire confiance',
@@ -3821,17 +3847,17 @@
         // HERO
         'hero.h1.line1': "You have the expertise.",
         'hero.h1.line2': "I amplify it with AI.",
-        'hero.sub': "I help established <span class=\"hero-sub-strong\">coaches, consultants and trainers</span> integrate AI into their practice, without diluting what makes them unique. Audit, implementation, or partnership, depending on what you need. Based in Lausanne.",
-        'hero.photoNote': 'your right-hand for AI &amp; marketing?',
+        'hero.sub': "I help established <span class=\"hero-sub-strong\">coaches, consultants and trainers</span> integrate AI into their practice, without diluting what makes them unique. Audit, implementation, or partnership, depending on what you need.",
+        'hero.photoNote': 'your right-hand for AI &amp; digital?',
         'hero.badge': 'AI Operator',
         'hero.cta.primary': 'Book a call',
         'hero.cta.secondary': 'See how I work',
 
         // WHY
         'why.hi': '<span aria-hidden="true" class="wave">👋</span> Hi.',
-        'why.p1': "Since 2011, I’ve been building and running digital projects solo. <span class=\"highlight-orange\">I know what it’s like to wear every hat at once.</span>",
-        'why.p2': "AI is changing a lot about this work. But what makes you unique is <strong>you</strong>: your experience, your voice, the way you think. No generic prompt replaces that.",
-        'why.p3': "What I do today is <span class=\"highlight-sky\">capture what makes your practice yours</span>, and build the AI systems around that, not the other way around.",
+        'why.p1': "Since 2011, I’ve been building and running digital projects solo. <span class=\"highlight-orange\">Fifteen years wearing every hat at once</span>, learning by doing what can be handed off and what has to stay human.",
+        'why.p2': "AI is rewriting these rules right now. A lot of tasks can finally be handed off to systems. But some have to stay in your hands, because that’s precisely where <strong>your value</strong> to your clients lives.",
+        'why.p3': "What I do today is <span class=\"highlight-sky\">help you make that call honestly</span>, then build the AI systems around what has to stay you.",
         'why.signoff': 'Boris',
 
         // PROOF
@@ -3848,7 +3874,7 @@
 
         // SERVICES
         'services.eyebrow': 'My services',
-        'services.h2': "Where AI can actually pay off in your practice.",
+        'services.h2': "Where AI actually earns its place in your practice.",
         'services.sub': "Three ways to work together: a short audit to start, a scoped implementation next, or a monthly partnership for the long run. <strong>The goal stays the same: simplify your practice, not multiply the tools you have to learn.</strong>",
         'services.format1': 'AI Audit',
         'services.format2': 'Implementation',
@@ -3904,16 +3930,16 @@
         'fit.row4.name': 'Boris',
         'fit.row4.meta': 'AI Operator',
         'fit.row4.best': "Amplifying your expertise over time, with someone who understands your practice and actually operates.",
-        'fit.row4.chip1': 'Real implementation',
+        'fit.row4.chip1': 'Implementation',
         'fit.row4.chip2': "15 yrs of ops",
-        'fit.row4.chip3': 'Swiss-based',
+        'fit.row4.chip3': 'Swiss generalist',
         'fit.row4.tradeoff': 'Not for multinational rollouts or six-figure corporate budgets.',
-        'fit.note': "I keep the focus tight: coaches, consultants, trainers, independent professionals. If you’re a Swiss SME with a real need, we can talk too.",
+        'fit.note': "Who I work with, primarily: coaches, consultants, trainers, independent professionals. If you’re a Swiss SME with a real need, we can talk too.",
 
         // TOOLKIT
         'toolkit.eyebrow': 'My stack',
         'toolkit.h2': 'Fluent in the tools you already use.',
-        'toolkit.sub': "No onboarding friction. I plug into your workflows on day one.",
+        'toolkit.sub': "No onboarding friction. I plug into your workflows on day 1.",
 
         // TRUST
         'trust.eyebrow': 'Why trust me',
@@ -3981,8 +4007,8 @@
       en: '<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect fill="#012169" height="24" width="24"></rect><path d="M0 0L24 24M24 0L0 24" stroke="#FFFFFF" stroke-width="3.2"></path><path d="M0 0L24 24M24 0L0 24" stroke="#C8102E" stroke-width="1.4"></path><rect fill="#FFFFFF" height="4.4" width="24" y="9.8"></rect><rect fill="#FFFFFF" height="24" width="4.4" x="9.8"></rect><rect fill="#C8102E" height="2.6" width="24" y="10.7"></rect><rect fill="#C8102E" height="24" width="2.6" x="10.7"></rect></svg>'
     };
     const langLabel = {
-      fr: { code: 'FR', aria: 'Switch to French' },
-      en: { code: 'EN', aria: 'Switch to English' }
+      fr: { code: 'FR', full: 'Passer en français', aria: 'Passer en français' },
+      en: { code: 'EN', full: 'Switch to English', aria: 'Switch to English' }
     };
 
     function detectInitialLang() {
@@ -4001,9 +4027,16 @@
       const targetLang = currentLang === 'fr' ? 'en' : 'fr';
       document.querySelectorAll('.lang-toggle').forEach((btn) => {
         const flag = btn.querySelector('.lang-flag');
-        const code = btn.querySelector('.lang-code');
+        const codeFull = btn.querySelector('.lang-code-full');
+        const codeShort = btn.querySelector('.lang-code-short');
         if (flag) flag.innerHTML = flagSVG[targetLang];
-        if (code) code.textContent = langLabel[targetLang].code;
+        if (codeFull) codeFull.textContent = langLabel[targetLang].full;
+        if (codeShort) codeShort.textContent = langLabel[targetLang].code;
+        // Legacy single-span fallback : if no inner full/short, fill the wrapper
+        if (!codeFull && !codeShort) {
+          const code = btn.querySelector('.lang-code');
+          if (code) code.textContent = langLabel[targetLang].code;
+        }
         btn.setAttribute('aria-label', langLabel[targetLang].aria);
         btn.setAttribute('data-target-lang', targetLang);
       });
