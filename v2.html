@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Boris Nachbaur, Opérateur IA pour coachs, consultants et formateurs</title>
-<meta name="description" content="J'aide les coachs, consultants et formateurs établis à intégrer l'IA dans leur métier, sans diluer ce qui les rend uniques. Audit, implémentation ou accompagnement. Basé à Lausanne." />
+<meta name="description" content="J'aide les coachs, consultants et formateurs établis à intégrer intelligemment l'IA dans leur métier, sans diluer ce qui les rend uniques. Audit, implémentation ou accompagnement. Basé à Lausanne." />
 <meta name="author" content="Boris Nachbaur" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
 <meta name="theme-color" content="#F7F5F2" />
@@ -885,6 +885,21 @@
       flex-wrap: wrap;
       gap: 1rem 2rem;
       align-items: center;
+    }
+    .btn-label-full { display: inline; }
+    .btn-label-short { display: none; }
+    @media (max-width: 520px) {
+      .btn-label-full { display: none; }
+      .btn-label-short { display: inline; }
+      .hero-ctas {
+        flex-wrap: nowrap;
+        gap: 0.6rem;
+        justify-content: center;
+      }
+      .hero-ctas .btn {
+        padding: 0.78rem 0.95rem;
+        font-size: 0.875rem;
+      }
     }
 
     /* ===== AI badge — tighter border ===== */
@@ -2702,6 +2717,21 @@
         gap: 2rem;
       }
     }
+    /* Mobile : nav + socials on the same row, footer-meta full width above */
+    @media (max-width: 859px) {
+      .footer-inner {
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+          "meta meta"
+          "nav  social";
+        align-items: center;
+        column-gap: 1rem;
+        row-gap: 1.2rem;
+      }
+      .footer-meta { grid-area: meta; }
+      .footer-nav { grid-area: nav; }
+      .footer-social { grid-area: social; justify-self: end; }
+    }
     .footer-meta {
       display: grid;
       gap: 0.45rem;
@@ -2720,7 +2750,7 @@
     .footer-copy {
       font-size: 0.88rem;
       line-height: 1.6;
-      max-width: 42ch;
+      max-width: 56ch;
     }
     .flag-badge {
       display: inline-flex;
@@ -2887,12 +2917,9 @@
       display: inline-block;
       line-height: 1;
     }
-    .lang-code-full { display: inline; }
-    .lang-code-short { display: none; }
-    @media (max-width: 720px) {
-      .lang-code-full { display: none; }
-      .lang-code-short { display: inline; }
-    }
+    /* Always show short code (EN/FR) — full label kept available for future use */
+    .lang-code-full { display: none; }
+    .lang-code-short { display: inline; }
     @media (max-width: 560px) {
       .lang-toggle {
         padding: 0.3rem 0.6rem 0.3rem 0.32rem;
@@ -2973,6 +3000,7 @@
       border: 1px solid rgba(15, 15, 23, 0.07);
       overflow: hidden;
       box-shadow: 0 26px 60px -40px rgba(15, 15, 23, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.75);
+      text-align: center;
     }
     .edge-card::before {
       content: "";
@@ -2984,11 +3012,16 @@
       background: linear-gradient(180deg, var(--orange), var(--indigo));
       border-radius: 999px;
     }
-    .edge-card .eyebrow { color: var(--orange); }
+    .edge-card .eyebrow {
+      color: var(--orange);
+      justify-content: center;
+    }
     .edge-card .eyebrow::before { background: var(--orange); }
     .edge-card h2 {
       margin-top: 1rem;
-      max-width: 22ch;
+      max-width: 28ch;
+      margin-left: auto;
+      margin-right: auto;
     }
     .edge-card p {
       margin-top: 1.4rem;
@@ -2996,6 +3029,8 @@
       line-height: 1.7;
       color: var(--ink-soft);
       max-width: 62ch;
+      margin-left: auto;
+      margin-right: auto;
     }
     .edge-card p strong {
       color: var(--ink);
@@ -3006,6 +3041,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
+      justify-content: center;
     }
     .edge-chip {
       display: inline-flex;
@@ -3088,7 +3124,7 @@
 <span class="h1-line h1-line-2"><span class="italic-accent" data-i18n="hero.h1.line2">Je l'amplifie avec l'IA.</span></span>
 </h1>
 <p class="hero-sub reveal" data-i18n-html="hero.sub">
-              J'aide les <span class="hero-sub-strong">coachs, consultants et formateurs</span> établis à intégrer l'IA dans leur métier, sans diluer ce qui les rend uniques. Audit, implémentation ou accompagnement, selon ce dont tu as besoin.
+              J'aide les <span class="hero-sub-strong">coachs, consultants et formateurs</span> établis à intégrer intelligemment l'IA dans leur métier, sans diluer ce qui les rend uniques. Audit, implémentation ou accompagnement, selon ce dont tu as besoin.
             </p>
 </div>
 <div class="photo-col">
@@ -3115,10 +3151,14 @@
             </span>
 </div>
 <div class="hero-ctas reveal"><a class="btn btn-primary" href="#contact">
-<span class="btn-label" data-i18n="hero.cta.primary">Réserver un appel</span>
+<span class="btn-label btn-label-full" data-i18n="hero.cta.primary">Réserver un appel</span>
+<span class="btn-label btn-label-short" data-i18n="hero.cta.primary.short">Réserver</span>
 <span class="arrow">→</span>
 </a>
-<a class="btn btn-ghost" href="#work"><span class="btn-label" data-i18n="hero.cta.secondary">Voir comment je travaille</span></a>
+<a class="btn btn-ghost" href="#work">
+<span class="btn-label btn-label-full" data-i18n="hero.cta.secondary">Voir comment je travaille</span>
+<span class="btn-label btn-label-short" data-i18n="hero.cta.secondary.short">Mon process</span>
+</a>
 </div>
 </div>
 </div>
@@ -3187,7 +3227,7 @@
 <div class="section-head">
 <div>
 <span class="eyebrow" data-i18n="services.eyebrow">Mes services</span>
-<h2 style="margin-top: 1.25rem;" data-i18n="services.h2">Là où l'IA s'inscrit vraiment dans ton activité.</h2>
+<h2 style="margin-top: 1.25rem;" data-i18n="services.h2">IA et marketing digital, là où je peux vraiment t'aider.</h2>
 </div>
 <p data-i18n-html="services.sub">
             Trois façons de travailler ensemble&nbsp;: un audit court pour démarrer, une implémentation cadrée ensuite, ou un accompagnement mensuel dans la durée. <strong>L'objectif reste le même&nbsp;: simplifier ton activité, pas multiplier les outils que tu dois apprendre.</strong>
@@ -3202,28 +3242,28 @@
 <div class="service s-sky">
 <span class="service-num">01</span>
 <div>
-<h3 data-i18n="services.card1.title">Funnels &amp; acquisition</h3>
-<p data-i18n="services.card1.desc">Landing pages, capture de leads, scoring, parcours de conversion. Le moteur de ta croissance, branché à l'IA là où ça change vraiment quelque chose.</p>
+<h3 data-i18n="services.card1.title">Formation &amp; autonomie IA</h3>
+<p data-i18n="services.card1.desc">Je te forme à utiliser Claude et les autres IA pour ton activité. Tu repars autonome sur ce qui compte, jamais dépendant d'un prestataire.</p>
 <div class="service-examples" data-i18n-html="services.card1.tags">
-                landings<span class="dot">·</span>capture<span class="dot">·</span>scoring
+                claude<span class="dot">·</span>prompts métier<span class="dot">·</span>workflows IA
               </div>
 </div>
 </div>
 <div class="service s-lime">
 <span class="service-num">02</span>
 <div>
-<h3 data-i18n="services.card2.title">Email &amp; lifecycle</h3>
-<p data-i18n="services.card2.desc">Welcome, onboarding, réengagement, lancements. Écrit dans ta voix, pas dans celle de ChatGPT.</p>
+<h3 data-i18n="services.card2.title">Skills Claude sur-mesure</h3>
+<p data-i18n="services.card2.desc">Des agents IA pensés pour ton métier, ta voix et tes process. Pensés sur-mesure plutôt qu'un GPT générique recyclé pour la dixième fois.</p>
 <div class="service-examples" data-i18n-html="services.card2.tags">
-                onboarding<span class="dot">·</span>lancements<span class="dot">·</span>win-back
+                agents métier<span class="dot">·</span>prompts<span class="dot">·</span>knowledge base
               </div>
 </div>
 </div>
 <div class="service s-coral">
 <span class="service-num">03</span>
 <div>
-<h3 data-i18n="services.card3.title">Contenu &amp; repurposing</h3>
-<p data-i18n="services.card3.desc">Un long format devient une newsletter, cinq posts et un script vidéo. Sur ton calendrier, dans ton ton, sans usine à gaz.</p>
+<h3 data-i18n="services.card3.title">Contenu &amp; repurposing avec l'IA</h3>
+<p data-i18n="services.card3.desc">Un long format devient une newsletter, cinq posts et un script vidéo. Sur ton calendrier, dans ton ton, avec l'IA en coulisse.</p>
 <div class="service-examples" data-i18n-html="services.card3.tags">
                 newsletter<span class="dot">·</span>posts<span class="dot">·</span>vidéo
               </div>
@@ -3232,30 +3272,30 @@
 <div class="service s-indigo">
 <span class="service-num">04</span>
 <div>
-<h3 data-i18n="services.card4.title">Skills Claude sur-mesure</h3>
-<p data-i18n="services.card4.desc">Des agents IA pensés pour ton métier, ta voix et tes process. Pas un GPT générique recyclé pour la dixième fois.</p>
+<h3 data-i18n="services.card4.title">Création de funnels &amp; acquisition</h3>
+<p data-i18n="services.card4.desc">Création de landing pages, capture de leads, parcours de conversion. Le moteur de ta croissance, branché à l'IA là où ça change vraiment quelque chose.</p>
 <div class="service-examples" data-i18n-html="services.card4.tags">
-                agents métier<span class="dot">·</span>prompts<span class="dot">·</span>knowledge base
+                landings<span class="dot">·</span>capture<span class="dot">·</span>conversion
               </div>
 </div>
 </div>
 <div class="service s-yellow">
 <span class="service-num">05</span>
 <div>
-<h3 data-i18n="services.card5.title">Automatisations</h3>
-<p data-i18n="services.card5.desc">n8n, Make, Zapier, Notion. Les workflows qui mangent ton attention, gérés en arrière-plan, sans empiler les outils.</p>
+<h3 data-i18n="services.card5.title">Campagnes email &amp; copywriting</h3>
+<p data-i18n="services.card5.desc">Séquences welcome, onboarding, réengagement, lancements. Écrites dans ta voix, pas dans celle de ChatGPT.</p>
 <div class="service-examples" data-i18n-html="services.card5.tags">
-                n8n<span class="dot">·</span>zapier<span class="dot">·</span>notion
+                onboarding<span class="dot">·</span>lancements<span class="dot">·</span>win-back
               </div>
 </div>
 </div>
 <div class="service s-orange">
 <span class="service-num">06</span>
 <div>
-<h3 data-i18n="services.card6.title">Formation &amp; autonomie</h3>
-<p data-i18n="services.card6.desc">Je te forme à utiliser Claude et les autres IA dans ton métier. Tu finis autonome sur ce qui compte, jamais dépendant d'un prestataire.</p>
+<h3 data-i18n="services.card6.title">Automatisations IA</h3>
+<p data-i18n="services.card6.desc">n8n, Make, Zapier, Notion. Les workflows qui mangent ton attention, gérés en arrière-plan, sans empiler les outils.</p>
 <div class="service-examples" data-i18n-html="services.card6.tags">
-                claude<span class="dot">·</span>prompts métier<span class="dot">·</span>workflows
+                n8n<span class="dot">·</span>zapier<span class="dot">·</span>notion
               </div>
 </div>
 </div>
@@ -3381,7 +3421,7 @@
 </div>
 <div class="trust-body reveal">
 <p data-i18n="trust.p1">
-              J'ai opéré une marketplace de biens digitaux dans un environnement où la fraude était la norme, où l'acheteur avait toutes les raisons de disparaître après une seule mauvaise expérience.
+              J'ai opéré un e-commerce &amp; marketplace de biens digitaux dans un environnement où la fraude était la norme, où l'acheteur avait toutes les raisons de disparaître après une seule mauvaise expérience.
             </p>
 <p data-i18n="trust.p2">
               La seule façon de scaler au-delà de 20&nbsp;000 transactions, c'était d'être absurdement fiable. Répondre vite, réparer ce qui casse, et ne jamais laisser un client courir après moi pour avoir une réponse. Quand un litige arrivait, j'apprenais à le résoudre, ou à transformer un acheteur énervé en cinq étoiles.
@@ -3407,10 +3447,10 @@
 <div class="section-head">
 <div>
 <span class="eyebrow" data-i18n="process.eyebrow">Comment on travaille ensemble</span>
-<h2 style="margin-top: 1.25rem;" data-i18n="process.h2">Trois étapes simples, sans engagement long ni lock-in.</h2>
+<h2 style="margin-top: 1.25rem;" data-i18n="process.h2">Trois étapes simples, flexibles, sans engagement long.</h2>
 </div>
 <p data-i18n="process.sub">
-            Assez de structure pour bâtir la confiance, pas assez pour ralentir le travail. Et tu peux t'arrêter à n'importe quelle étape.
+            Un cadre simple qui démarre doucement. Tu choisis où on s'arrête, et à quel rythme on avance.
           </p>
 </div>
 <div class="process-timeline">
@@ -3448,12 +3488,12 @@
 <div class="process-heading">
 <span class="process-num">02</span>
 <div class="process-title">
-<span class="process-kicker" data-i18n="process.card2.kicker">court · cadré ensemble</span>
+<span class="process-kicker" data-i18n="process.card2.kicker">court · recommandé</span>
 <h3 data-i18n="process.card2.title">Audit IA</h3>
 </div>
 </div>
 <div class="process-content">
-<p data-i18n="process.card2.desc">Je creuse ton activité, je regarde où l'IA peut vraiment payer chez toi, et je te livre une feuille de route claire. De ton côté, il me faudra accès à ton workflow, pas ton agenda.</p>
+<p data-i18n="process.card2.desc">Je creuse ton activité, je regarde où l'IA peut vraiment payer chez toi, et je te livre une feuille de route claire. <strong>Optionnel si tu sais déjà ce que tu veux mettre en place.</strong> De ton côté, il me faudra accès à ton workflow, pas ton agenda.</p>
 </div>
 <div aria-hidden="true" class="process-artifact">
 <div class="artifact-checklist">
@@ -3694,11 +3734,13 @@
         // HERO
         'hero.h1.line1': "Tu as l'expertise.",
         'hero.h1.line2': "Je l'amplifie avec l'IA.",
-        'hero.sub': "J'aide les <span class=\"hero-sub-strong\">coachs, consultants et formateurs</span> établis à intégrer l'IA dans leur métier, sans diluer ce qui les rend uniques. Audit, implémentation ou accompagnement, selon ce dont tu as besoin.",
+        'hero.sub': "J'aide les <span class=\"hero-sub-strong\">coachs, consultants et formateurs</span> établis à intégrer intelligemment l'IA dans leur métier, sans diluer ce qui les rend uniques. Audit, implémentation ou accompagnement, selon ce dont tu as besoin.",
         'hero.photoNote': 'ton bras droit IA &amp; digital&nbsp;?',
         'hero.badge': 'Opérateur IA',
         'hero.cta.primary': 'Réserver un appel',
+        'hero.cta.primary.short': 'Réserver',
         'hero.cta.secondary': 'Voir comment je travaille',
+        'hero.cta.secondary.short': 'Mon process',
 
         // WHY
         'why.hi': '<span aria-hidden="true" class="wave">👋</span> Salut.',
@@ -3721,29 +3763,29 @@
 
         // SERVICES
         'services.eyebrow': 'Mes services',
-        'services.h2': "Là où l'IA s'inscrit vraiment dans ton activité.",
+        'services.h2': "IA et marketing digital, là où je peux vraiment t'aider.",
         'services.sub': "Trois façons de travailler ensemble&nbsp;: un audit court pour démarrer, une implémentation cadrée ensuite, ou un accompagnement mensuel dans la durée. <strong>L'objectif reste le même&nbsp;: simplifier ton activité, pas multiplier les outils que tu dois apprendre.</strong>",
         'services.format1': 'Audit IA',
         'services.format2': 'Implémentation',
         'services.format3': 'Accompagnement',
-        'services.card1.title': 'Funnels &amp; acquisition',
-        'services.card1.desc': "Landing pages, capture de leads, scoring, parcours de conversion. Le moteur de ta croissance, branché à l'IA là où ça change vraiment quelque chose.",
-        'services.card1.tags': 'landings<span class="dot">·</span>capture<span class="dot">·</span>scoring',
-        'services.card2.title': 'Email &amp; lifecycle',
-        'services.card2.desc': "Welcome, onboarding, réengagement, lancements. Écrit dans ta voix, pas dans celle de ChatGPT.",
-        'services.card2.tags': 'onboarding<span class="dot">·</span>lancements<span class="dot">·</span>win-back',
-        'services.card3.title': 'Contenu &amp; repurposing',
-        'services.card3.desc': "Un long format devient une newsletter, cinq posts et un script vidéo. Sur ton calendrier, dans ton ton, sans usine à gaz.",
+        'services.card1.title': 'Formation &amp; autonomie IA',
+        'services.card1.desc': "Je te forme à utiliser Claude et les autres IA pour ton activité. Tu repars autonome sur ce qui compte, jamais dépendant d'un prestataire.",
+        'services.card1.tags': 'claude<span class="dot">·</span>prompts métier<span class="dot">·</span>workflows IA',
+        'services.card2.title': 'Skills Claude sur-mesure',
+        'services.card2.desc': "Des agents IA pensés pour ton métier, ta voix et tes process. Pensés sur-mesure plutôt qu'un GPT générique recyclé pour la dixième fois.",
+        'services.card2.tags': 'agents métier<span class="dot">·</span>prompts<span class="dot">·</span>knowledge base',
+        'services.card3.title': "Contenu &amp; repurposing avec l'IA",
+        'services.card3.desc': "Un long format devient une newsletter, cinq posts et un script vidéo. Sur ton calendrier, dans ton ton, avec l'IA en coulisse.",
         'services.card3.tags': 'newsletter<span class="dot">·</span>posts<span class="dot">·</span>vidéo',
-        'services.card4.title': 'Skills Claude sur-mesure',
-        'services.card4.desc': "Des agents IA pensés pour ton métier, ta voix et tes process. Pas un GPT générique recyclé pour la dixième fois.",
-        'services.card4.tags': 'agents métier<span class="dot">·</span>prompts<span class="dot">·</span>knowledge base',
-        'services.card5.title': 'Automatisations',
-        'services.card5.desc': "n8n, Make, Zapier, Notion. Les workflows qui mangent ton attention, gérés en arrière-plan, sans empiler les outils.",
-        'services.card5.tags': 'n8n<span class="dot">·</span>zapier<span class="dot">·</span>notion',
-        'services.card6.title': 'Formation &amp; autonomie',
-        'services.card6.desc': "Je te forme à utiliser Claude et les autres IA dans ton métier. Tu finis autonome sur ce qui compte, jamais dépendant d'un prestataire.",
-        'services.card6.tags': 'claude<span class="dot">·</span>prompts métier<span class="dot">·</span>workflows',
+        'services.card4.title': 'Création de funnels &amp; acquisition',
+        'services.card4.desc': "Création de landing pages, capture de leads, parcours de conversion. Le moteur de ta croissance, branché à l'IA là où ça change vraiment quelque chose.",
+        'services.card4.tags': 'landings<span class="dot">·</span>capture<span class="dot">·</span>conversion',
+        'services.card5.title': 'Campagnes email &amp; copywriting',
+        'services.card5.desc': "Séquences welcome, onboarding, réengagement, lancements. Écrites dans ta voix, pas dans celle de ChatGPT.",
+        'services.card5.tags': 'onboarding<span class="dot">·</span>lancements<span class="dot">·</span>win-back',
+        'services.card6.title': 'Automatisations IA',
+        'services.card6.desc': "n8n, Make, Zapier, Notion. Les workflows qui mangent ton attention, gérés en arrière-plan, sans empiler les outils.",
+        'services.card6.tags': 'n8n<span class="dot">·</span>zapier<span class="dot">·</span>notion',
         'services.positioning': "« L'IA doit amplifier ton expertise, pas la remplacer. Et simplifier ton quotidien, pas le complexifier. »",
 
         // EDGE
@@ -3792,7 +3834,7 @@
         'trust.eyebrow': 'Pourquoi me faire confiance',
         'trust.h2': "Dix ans dans un marché où la seule monnaie, c'était la confiance.",
         'trust.proofLabel': "<strong>Avis vérifiés cumulés</strong> sur 15 ans d'opérations digitales en solo.",
-        'trust.p1': "J'ai opéré une marketplace de biens digitaux dans un environnement où la fraude était la norme, où l'acheteur avait toutes les raisons de disparaître après une seule mauvaise expérience.",
+        'trust.p1': "J'ai opéré un e-commerce &amp; marketplace de biens digitaux dans un environnement où la fraude était la norme, où l'acheteur avait toutes les raisons de disparaître après une seule mauvaise expérience.",
         'trust.p2': "La seule façon de scaler au-delà de 20 000 transactions, c'était d'être absurdement fiable. Répondre vite, réparer ce qui casse, et ne jamais laisser un client courir après moi pour avoir une réponse. Quand un litige arrivait, j'apprenais à le résoudre, ou à transformer un acheteur énervé en cinq étoiles.",
         'trust.p3': "Cette fiabilité, je ne l'ai pas apprise en formation. Je l'ai gagnée sur des milliers de touchpoints, un par un. <strong>C'est pourquoi je sais intégrer l'IA chez toi sans casser la confiance que tu as mis dix ans à construire avec tes clients.</strong>",
         'trust.quote': "« Sur 2 250 avis vérifiés, aucun négatif. La fiabilité finit par devenir une habitude. »",
@@ -3800,8 +3842,8 @@
 
         // PROCESS
         'process.eyebrow': 'Comment on travaille ensemble',
-        'process.h2': 'Trois étapes simples, sans engagement long ni lock-in.',
-        'process.sub': "Assez de structure pour bâtir la confiance, pas assez pour ralentir le travail. Et tu peux t'arrêter à n'importe quelle étape.",
+        'process.h2': 'Trois étapes simples, flexibles, sans engagement long.',
+        'process.sub': "Un cadre simple qui démarre doucement. Tu choisis où on s'arrête, et à quel rythme on avance.",
         'process.card1.kicker': '20 min · gratuit',
         'process.card1.title': 'Appel découverte',
         'process.card1.desc': "Tu me parles de ton métier et de ce que tu cherches à faire bouger. Je te dis honnêtement si je peux aider, ou pas.",
@@ -3810,9 +3852,9 @@
         'process.card1.artifact.item1': 'Comprendre ton activité',
         'process.card1.artifact.item2': "Repérer où l'IA peut servir",
         'process.card1.artifact.item3': 'Décider si on continue',
-        'process.card2.kicker': 'court · cadré ensemble',
+        'process.card2.kicker': 'court · recommandé',
         'process.card2.title': 'Audit IA',
-        'process.card2.desc': "Je creuse ton activité, je regarde où l'IA peut vraiment payer chez toi, et je te livre une feuille de route claire. De ton côté, il me faudra accès à ton workflow, pas ton agenda.",
+        'process.card2.desc': "Je creuse ton activité, je regarde où l'IA peut vraiment payer chez toi, et je te livre une feuille de route claire. <strong>Optionnel si tu sais déjà ce que tu veux mettre en place.</strong> De ton côté, il me faudra accès à ton workflow, pas ton agenda.",
         'process.card2.artifact.item1': 'Appel de cadrage',
         'process.card2.artifact.item2': 'Partage du workflow',
         'process.card2.artifact.item3': 'Analyse en autonomie',
@@ -3847,11 +3889,13 @@
         // HERO
         'hero.h1.line1': "You have the expertise.",
         'hero.h1.line2': "I amplify it with AI.",
-        'hero.sub': "I help established <span class=\"hero-sub-strong\">coaches, consultants and trainers</span> integrate AI into their practice, without diluting what makes them unique. Audit, implementation, or partnership, depending on what you need.",
+        'hero.sub': "I help established <span class=\"hero-sub-strong\">coaches, consultants and trainers</span> integrate AI smartly into their practice, without diluting what makes them unique. Audit, implementation, or ongoing support, depending on what you need.",
         'hero.photoNote': 'your right-hand for AI &amp; digital?',
         'hero.badge': 'AI Operator',
         'hero.cta.primary': 'Book a call',
+        'hero.cta.primary.short': 'Book',
         'hero.cta.secondary': 'See how I work',
+        'hero.cta.secondary.short': 'My process',
 
         // WHY
         'why.hi': '<span aria-hidden="true" class="wave">👋</span> Hi.',
@@ -3874,29 +3918,29 @@
 
         // SERVICES
         'services.eyebrow': 'My services',
-        'services.h2': "Where AI actually earns its place in your practice.",
-        'services.sub': "Three ways to work together: a short audit to start, a scoped implementation next, or a monthly partnership for the long run. <strong>The goal stays the same: simplify your practice, not multiply the tools you have to learn.</strong>",
+        'services.h2': "AI and digital marketing, where I can actually help.",
+        'services.sub': "Three ways to work together: a short audit to start, a scoped implementation next, or ongoing monthly support for the long run. <strong>The goal stays the same: simplify your practice, not multiply the tools you have to learn.</strong>",
         'services.format1': 'AI Audit',
         'services.format2': 'Implementation',
-        'services.format3': 'Partnership',
-        'services.card1.title': 'Funnels &amp; acquisition',
-        'services.card1.desc': "Landing pages, lead capture, scoring, conversion paths. Your growth engine, plugged into AI where it actually moves the needle.",
-        'services.card1.tags': 'landings<span class="dot">·</span>capture<span class="dot">·</span>scoring',
-        'services.card2.title': 'Email &amp; lifecycle',
-        'services.card2.desc': "Welcome, onboarding, re-engagement, launches. Written in your voice, not in ChatGPT’s.",
-        'services.card2.tags': 'onboarding<span class="dot">·</span>launches<span class="dot">·</span>win-back',
-        'services.card3.title': 'Content &amp; repurposing',
-        'services.card3.desc': "One long-form piece becomes a newsletter, five posts and a video script. On your calendar, in your tone, without the moving parts.",
+        'services.format3': 'Ongoing support',
+        'services.card1.title': 'AI training &amp; autonomy',
+        'services.card1.desc': "I train you to use Claude and the other AI tools for your practice. You walk away autonomous on what matters, never dependent on a vendor.",
+        'services.card1.tags': 'claude<span class="dot">·</span>domain prompts<span class="dot">·</span>AI workflows',
+        'services.card2.title': 'Custom Claude skills',
+        'services.card2.desc': "AI agents designed for your practice, your voice and your process. Built to fit, not another generic GPT recycled for the tenth time.",
+        'services.card2.tags': 'domain agents<span class="dot">·</span>prompts<span class="dot">·</span>knowledge base',
+        'services.card3.title': 'Content &amp; AI repurposing',
+        'services.card3.desc': "One long-form piece becomes a newsletter, five posts and a video script. On your calendar, in your tone, with AI working in the background.",
         'services.card3.tags': 'newsletter<span class="dot">·</span>posts<span class="dot">·</span>video',
-        'services.card4.title': 'Custom Claude skills',
-        'services.card4.desc': "AI agents designed for your practice, your voice and your process. Not another generic GPT recycled for the tenth time.",
-        'services.card4.tags': 'domain agents<span class="dot">·</span>prompts<span class="dot">·</span>knowledge base',
-        'services.card5.title': 'Automations',
-        'services.card5.desc': "n8n, Make, Zapier, Notion. The workflows eating your attention, handled in the background, without stacking more tools.",
-        'services.card5.tags': 'n8n<span class="dot">·</span>zapier<span class="dot">·</span>notion',
-        'services.card6.title': 'Training &amp; autonomy',
-        'services.card6.desc': "I train you to use Claude and the other AI tools in your practice. You end up autonomous on what matters, never dependent on a vendor.",
-        'services.card6.tags': 'claude<span class="dot">·</span>domain prompts<span class="dot">·</span>workflows',
+        'services.card4.title': 'Funnel creation &amp; acquisition',
+        'services.card4.desc': "Landing pages, lead capture, conversion paths. Your growth engine, plugged into AI where it actually moves the needle.",
+        'services.card4.tags': 'landings<span class="dot">·</span>capture<span class="dot">·</span>conversion',
+        'services.card5.title': 'Email campaigns &amp; copywriting',
+        'services.card5.desc': "Welcome sequences, onboarding, re-engagement, launches. Written in your voice, not in ChatGPT’s.",
+        'services.card5.tags': 'onboarding<span class="dot">·</span>launches<span class="dot">·</span>win-back',
+        'services.card6.title': 'AI automations',
+        'services.card6.desc': "n8n, Make, Zapier, Notion. The workflows eating your attention, handled in the background, without stacking more tools.",
+        'services.card6.tags': 'n8n<span class="dot">·</span>zapier<span class="dot">·</span>notion',
         'services.positioning': '&ldquo;AI should amplify your expertise, not replace it. And simplify your day, not complicate it.&rdquo;',
 
         // EDGE
@@ -3945,7 +3989,7 @@
         'trust.eyebrow': 'Why trust me',
         'trust.h2': "Ten years in a market where the only currency was trust.",
         'trust.proofLabel': "<strong>Verified customer reviews</strong> from 15 years of solo digital operations.",
-        'trust.p1': "I ran a marketplace for digital goods in an environment where fraud was the norm, and where buyers had every reason to disappear after a single bad experience.",
+        'trust.p1': "I ran an e-commerce &amp; marketplace for digital goods in an environment where fraud was the norm, and where buyers had every reason to disappear after a single bad experience.",
         'trust.p2': "The only way to scale past 20,000 transactions was to be absurdly reliable. Reply fast, fix what breaks, and never make a customer chase me for an answer. When a dispute came up, I learned to resolve it, or to turn an angry buyer into five stars.",
         'trust.p3': "That reliability, I didn’t learn it in a course. I earned it on thousands of touchpoints, one at a time. <strong>That’s why I know how to bring AI into your practice without breaking the trust you spent ten years building with your clients.</strong>",
         'trust.quote': '&ldquo;Across 2,250 verified reviews, zero negatives. Reliability eventually becomes a habit.&rdquo;',
@@ -3953,8 +3997,8 @@
 
         // PROCESS
         'process.eyebrow': "How we’d work together",
-        'process.h2': 'Three simple steps, no long commitment, no lock-in.',
-        'process.sub': "Enough structure to build trust, not enough to slow the work down. And you can stop at any step.",
+        'process.h2': 'Three simple steps, fully flexible, no long commitment.',
+        'process.sub': "A simple frame, starting slow. You decide where we stop, and the pace we keep going.",
         'process.card1.kicker': '20 min · free',
         'process.card1.title': 'Discovery call',
         'process.card1.desc': "You tell me about your practice and what you’re trying to move forward. I tell you honestly whether I can help, or not.",
@@ -3963,15 +4007,15 @@
         'process.card1.artifact.item1': 'Understand your practice',
         'process.card1.artifact.item2': "Spot where AI can help",
         'process.card1.artifact.item3': 'Decide if we continue',
-        'process.card2.kicker': 'short · scoped together',
+        'process.card2.kicker': 'short · recommended',
         'process.card2.title': 'AI Audit',
-        'process.card2.desc': "I dig into your practice, I look at where AI can actually pay off, and I deliver a clear roadmap. On your end, I need access to your workflow, not your calendar.",
+        'process.card2.desc': "I dig into your practice, I look at where AI can actually pay off, and I deliver a clear roadmap. <strong>Optional if you already know what you want to put in place.</strong> On your end, I need access to your workflow, not your calendar.",
         'process.card2.artifact.item1': 'Scoping call',
         'process.card2.artifact.item2': 'Workflow access',
         'process.card2.artifact.item3': 'Analysis on my side',
         'process.card2.artifact.item4': 'Written roadmap',
         'process.card3.kicker': 'monthly · scope grows',
-        'process.card3.title': 'Implementation and partnership',
+        'process.card3.title': 'Implementation and ongoing support',
         'process.card3.desc': "If the audit checks out, we move into implementation. You decide what to roll out next and the pace we keep going.",
         'process.card3.artifact.scope': 'scope grows',
         'process.card3.artifact.trust': 'trust ↑',
@@ -3993,11 +4037,11 @@
     const i18nMeta = {
       fr: {
         title: 'Boris Nachbaur, Opérateur IA pour coachs, consultants et formateurs',
-        description: "J'aide les coachs, consultants et formateurs établis à intégrer l'IA dans leur métier, sans diluer ce qui les rend uniques. Audit, implémentation ou accompagnement. Basé à Lausanne."
+        description: "J'aide les coachs, consultants et formateurs établis à intégrer intelligemment l'IA dans leur métier, sans diluer ce qui les rend uniques. Audit, implémentation ou accompagnement. Basé à Lausanne."
       },
       en: {
         title: 'Boris Nachbaur, AI Operator for coaches, consultants and trainers',
-        description: "I help established coaches, consultants and trainers integrate AI into their practice, without diluting what makes them unique. Audit, implementation, or partnership. Based in Lausanne."
+        description: "I help established coaches, consultants and trainers integrate AI smartly into their practice, without diluting what makes them unique. Audit, implementation, or ongoing support. Based in Lausanne."
       }
     };
 
