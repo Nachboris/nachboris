@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport" />
-  <title>About — Boris Nachbaur, operator for solo founders</title>
-  <meta name="description" content="The geek behind nachboris.fr. 31, Lausanne-based, hooked on AI, business and personal finance since I was 15." />
+  <title>À propos · Boris Nachbaur, Opérateur IA</title>
+  <meta name="description" content="Le geek derrière nachboris.fr. 31 ans, basé à Lausanne, accroché à l'IA, au business et à la finance perso depuis mes 15 ans." />
   <meta name="author" content="Boris Nachbaur" />
   <link rel="canonical" href="https://nachboris.fr/me" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Boris Nachbaur" />
-  <meta property="og:title" content="Hi, I'm Boris — the geek behind nachboris.fr" />
-  <meta property="og:description" content="The geek behind nachboris.fr. 31, Lausanne-based, hooked on AI, business and personal finance since I was 15." />
+  <meta property="og:title" content="Salut, moi c'est Boris · le geek derrière nachboris.fr" />
+  <meta property="og:description" content="Le geek derrière nachboris.fr. 31 ans, basé à Lausanne, accroché à l'IA, au business et à la finance perso depuis mes 15 ans." />
   <meta property="og:url" content="https://nachboris.fr/me" />
   <meta property="og:image" content="https://nachboris.fr/assets/og-image.webp" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="631" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Hi, I'm Boris — the geek behind nachboris.fr" />
-  <meta name="twitter:description" content="The geek behind nachboris.fr. 31, Lausanne-based, hooked on AI, business and personal finance since I was 15." />
+  <meta name="twitter:title" content="Salut, moi c'est Boris · le geek derrière nachboris.fr" />
+  <meta name="twitter:description" content="Le geek derrière nachboris.fr. 31 ans, basé à Lausanne, accroché à l'IA, au business et à la finance perso depuis mes 15 ans." />
   <meta name="twitter:image" content="https://nachboris.fr/assets/og-image.webp" />
 
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
@@ -37,7 +37,7 @@
     "name": "Boris Nachbaur",
     "url": "https://nachboris.fr",
     "image": "https://nachboris.fr/assets/og-image.webp",
-    "jobTitle": "Operator for solo founders and creators",
+    "jobTitle": "Opérateur IA",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Lausanne",
@@ -45,10 +45,9 @@
     },
     "nationality": "French",
     "sameAs": [
-      "https://www.linkedin.com/in/borisnch/",
-      "https://x.com/BobuRMT"
+      "https://www.linkedin.com/in/borisnch/"
     ],
-    "knowsAbout": ["Operations", "AI workflows", "Community management", "Customer support", "Digital marketing", "Personal finance"],
+    "knowsAbout": ["AI workflows", "Custom Claude skills", "Digital marketing", "Email & funnels", "Content repurposing", "Personal finance"],
     "alumniOf": {
       "@type": "EducationalOrganization",
       "name": "Rennes School of Business",
@@ -278,7 +277,78 @@
     .nav-link:hover { color: var(--indigo); }
     .nav-link:hover::after { transform: scaleX(1); transform-origin: left; }
 
-    .nav-actions { display: inline-flex; align-items: center; justify-self: end; gap: 1rem; }
+    .nav-actions { display: inline-flex; align-items: center; gap: 1rem; }
+
+    .nav-end {
+      display: inline-flex;
+      align-items: center;
+      justify-self: end;
+      gap: 0.7rem;
+    }
+
+    /* ==========================================================
+       LANG TOGGLE — flag + code (cible : la langue vers laquelle on switch)
+       ========================================================== */
+    .lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.42rem;
+      padding: 0.32rem 0.7rem 0.32rem 0.36rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(15, 15, 23, 0.08);
+      font-family: var(--sans);
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: 0.05em;
+      line-height: 1;
+      cursor: pointer;
+      transition: transform 0.3s var(--spring), background 0.25s var(--soft), border-color 0.25s var(--soft);
+    }
+    .lang-toggle:hover {
+      background: rgba(255, 255, 255, 0.92);
+      border-color: rgba(15, 15, 23, 0.18);
+      transform: translateY(-1px);
+    }
+    .lang-toggle:hover .lang-flag {
+      transform: scale(1.06);
+    }
+    .lang-flag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.05rem;
+      height: 1.05rem;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: inset 0 0 0 0.5px rgba(15, 15, 23, 0.14);
+      transition: transform 0.35s var(--spring);
+    }
+    .lang-flag svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .lang-code {
+      display: inline-block;
+      line-height: 1;
+    }
+    /* Always show short code (EN/FR) — full label kept available for future use */
+    .lang-code-full { display: none; }
+    .lang-code-short { display: inline; }
+    @media (max-width: 560px) {
+      .lang-toggle {
+        padding: 0.3rem 0.6rem 0.3rem 0.32rem;
+        font-size: 0.7rem;
+        gap: 0.36rem;
+      }
+      .lang-flag {
+        width: 0.95rem;
+        height: 0.95rem;
+      }
+    }
 
     .nav-cta {
       display: inline-flex;
@@ -302,6 +372,7 @@
     }
     .nav-cta .arrow { transition: transform 0.35s var(--spring); }
     .nav-cta:hover .arrow { transform: translateX(2px); }
+    .cta-phone { width: 1em; height: 1em; display: inline-block; vertical-align: -0.12em; flex: none; }
 
     .availability {
       display: inline-flex;
@@ -913,6 +984,21 @@
     @media (min-width: 760px) {
       .footer-inner { grid-template-columns: 1fr auto auto; gap: 1.75rem; }
     }
+    /* Mobile : nav + socials on the same row, footer-meta full width above */
+    @media (max-width: 759px) {
+      .footer-inner {
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+          "meta meta"
+          "nav  social";
+        align-items: center;
+        column-gap: 1rem;
+        row-gap: 1.2rem;
+      }
+      .footer-meta { grid-area: meta; }
+      .footer-nav { grid-area: nav; }
+      .footer-social { grid-area: social; justify-self: end; }
+    }
     .footer-meta { display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.86rem; color: var(--ink-mute); }
     .footer-identity {
       display: inline-flex;
@@ -959,7 +1045,7 @@
     @media (prefers-reduced-motion: reduce) {
       .ch-flag { animation: none; }
     }
-    .footer-copy { font-size: 0.78rem; color: var(--ink-mute); }
+    .footer-copy { font-size: 0.78rem; color: var(--ink-mute); max-width: 56ch; line-height: 1.6; }
     .footer-nav {
       display: inline-flex;
       gap: 1.1rem;
@@ -989,45 +1075,50 @@
   <nav class="nav" id="nav">
     <div class="nav-inner">
       <div class="nav-brand">
-        <a href="/" class="logo logo-mark" aria-label="Boris Nachbaur home">BN<span class="logo-dot">.</span></a>
+        <a href="/" class="logo logo-mark" aria-label="Boris Nachbaur, accueil">BN<span class="logo-dot">.</span></a>
       </div>
 
       <div class="nav-links nav-menu">
-        <a href="/#work" class="nav-link">Services</a>
-        <a href="/me" class="nav-link active">About</a>
-        <a href="/projects" class="nav-link">Projects</a>
-        <a href="/reviews" class="nav-link">Reviews</a>
+        <a href="/#work" class="nav-link" data-i18n="nav.services">Services</a>
+        <a href="/me" class="nav-link active" data-i18n="nav.about">À propos</a>
+        <a href="/projects" class="nav-link" data-i18n="nav.projects">Projets</a>
+        <a href="/reviews" class="nav-link" data-i18n="nav.reviews">Avis</a>
       </div>
 
-      <div class="nav-actions">
-        <span class="availability">
-          <span class="pulse-dot"></span>
-          <span class="availability-label">Available</span>
-        </span>
-        <a href="/#contact" class="nav-cta">
-          <span>Book a call</span>
-          <span class="arrow">→</span>
-        </a>
+      <div class="nav-end">
+        <div class="nav-actions">
+          <span class="availability">
+            <span class="pulse-dot"></span>
+            <span class="availability-label" data-i18n="nav.available">Disponible</span>
+          </span>
+          <a href="/#contact" class="nav-cta">
+            <span data-i18n="nav.cta.full">Réserver un appel</span>
+            <svg class="arrow cta-phone" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </a>
+        </div>
+        <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch to English">
+          <span class="lang-flag" aria-hidden="true"></span>
+          <span class="lang-code"><span class="lang-code-full">Switch to English</span><span class="lang-code-short">EN</span></span>
+        </button>
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="mobileMenu">
+          <span class="nav-toggle-lines" aria-hidden="true"><span></span></span>
+        </button>
       </div>
-
-      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
-        <span class="nav-toggle-lines" aria-hidden="true"><span></span></span>
-      </button>
     </div>
   </nav>
 
   <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
     <div class="mobile-menu-links">
-      <a href="/#work" class="mobile-menu-link">Services <span>01</span></a>
-      <a href="/me" class="mobile-menu-link">About <span>02</span></a>
-      <a href="/projects" class="mobile-menu-link">Projects <span>03</span></a>
-      <a href="/reviews" class="mobile-menu-link">Reviews <span>04</span></a>
+      <a href="/#work" class="mobile-menu-link"><span data-i18n="nav.services">Services</span> <span>01</span></a>
+      <a href="/me" class="mobile-menu-link"><span data-i18n="nav.about">À propos</span> <span>02</span></a>
+      <a href="/projects" class="mobile-menu-link"><span data-i18n="nav.projects">Projets</span> <span>03</span></a>
+      <a href="/reviews" class="mobile-menu-link"><span data-i18n="nav.reviews">Avis</span> <span>04</span></a>
     </div>
     <div class="mobile-menu-foot">
-      <a href="/#contact" class="mobile-menu-cta">Book a call <span aria-hidden="true">→</span></a>
+      <a href="/#contact" class="mobile-menu-cta"><span data-i18n="nav.cta.full">Réserver un appel</span> <svg class="cta-phone" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
       <span class="availability">
         <span class="pulse-dot"></span>
-        <span class="availability-label">Available</span>
+        <span class="availability-label" data-i18n="nav.available">Disponible</span>
       </span>
     </div>
   </div>
@@ -1040,21 +1131,21 @@
       <div class="wrap">
         <div class="hero-grid">
           <div class="hero-text reveal">
-            <span class="eyebrow">A bit about me</span>
-            <h1>Hi, I'm <em>Boris.</em></h1>
-            <p class="hero-lede">
-              <strong>31, French, based in Lausanne</strong> with my wife Élodie &mdash; she teaches kids in a primary school here, the <em>real</em> hard job in the household. I do the laptop one.
+            <span class="eyebrow" data-i18n="hero.eyebrow">Un peu de moi</span>
+            <h1 data-i18n-html="hero.h1">Salut, moi c'est <em>Boris.</em></h1>
+            <p class="hero-lede" data-i18n-html="hero.lede1">
+              <strong>31 ans, français, basé à Lausanne</strong> avec ma femme Élodie. Elle enseigne dans une école primaire ici, le <em>vrai</em> boulot dur du couple. Moi je fais celui derrière l'écran.
             </p>
-            <p class="hero-lede" style="margin-top: 1rem;">
-              This page is the <em style="font-style: italic; color: var(--orange);">unfiltered</em> version of me &mdash; : my personality, what I'm passionate about, my ethic... The CV-friendly stuff lives on <a href="/projects" class="inline-link">/projects</a>.
+            <p class="hero-lede" style="margin-top: 1rem;" data-i18n-html="hero.lede2">
+              Cette page, c'est la version <em style="font-style: italic; color: var(--orange);">sans filtre</em> de moi&nbsp;: ma personnalité, ce qui m'anime, mon éthique. Le côté CV est sur <a href="/projects" class="inline-link">/projects</a>.
             </p>
           </div>
 
           <figure class="hero-photo reveal">
             <div class="photo-frame">
-              <img src="/assets/Leman.webp" alt="Boris Nachbaur and Élodie by Lake Geneva, Lausanne, Switzerland" width="800" height="1000" loading="eager" fetchpriority="high" />
+              <img src="/assets/Leman.webp" alt="Boris Nachbaur et Élodie au bord du Léman, Lausanne, Suisse" width="800" height="1000" loading="eager" fetchpriority="high" />
             </div>
-            <figcaption class="photo-caption">Élodie &amp; me, Lac Léman
+            <figcaption class="photo-caption" data-i18n-html="hero.photoCaption">Élodie &amp; moi, Léman
   <span class="ch-flag" aria-hidden="true">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
       <rect width="32" height="32" fill="#FF0000"/>
@@ -1071,16 +1162,16 @@
     <section class="intro">
       <div class="wrap-prose">
         <div class="reveal">
-          <span class="eyebrow">The short version</span>
-          <h2 style="margin-top: 0.85rem;">Born <em>online,</em> still here.</h2>
-          <p>
-            At 15, I sold <strong>$800 worth of in-game currency</strong> to a stranger on the internet. I found out later the buyer had resold it for double. I wasn't annoyed for long &mdash; I'd just discovered there was <strong>a whole value chain behind a video game</strong>, and I was sitting at the bottom of it. <a href="https://gamoniz.com/how-i-made-first-1000-from-video-games/" target="_blank" rel="noopener" class="inline-link">Full story here</a> if you're curious.
+          <span class="eyebrow" data-i18n="intro.eyebrow">La version courte</span>
+          <h2 style="margin-top: 0.85rem;" data-i18n-html="intro.h2">Né <em>en ligne,</em> j'y suis resté.</h2>
+          <p data-i18n-html="intro.p1">
+            À 15 ans, j'ai vendu <strong>800 $ de monnaie virtuelle</strong> à un inconnu sur internet. J'ai appris plus tard qu'il l'avait revendue au double. Je n'étais pas vexé longtemps&nbsp;: je venais de découvrir qu'il y avait <strong>toute une chaîne de valeur derrière un jeu vidéo</strong>, et que j'étais tout en bas. <a href="https://gamoniz.com/how-i-made-first-1000-from-video-games/" target="_blank" rel="noopener" class="inline-link">Histoire complète ici</a> si tu es curieux.
           </p>
-          <p>
-            That trade was 16 years ago. Since then I've explored every corner of the field &mdash; botting, <a href="https://gamoniz.com/what-is-rmt/" target="_blank" rel="noopener" class="inline-link">RMT</a>, diversifying services &mdash; then professionalised the whole thing: built suppliers, an email list, a Discord community, went full-time, lived a year across Asia as a digital nomad, and somewhere along the way became the guy who listens to business and personal-finance podcasts no one around me wants to hear about. <span class="hand-aside">(Sorry, Élodie.)</span>
+          <p data-i18n-html="intro.p2">
+            Ce premier deal date d'il y a 16 ans. Depuis, j'ai testé tous les coins du terrain&nbsp;: botting, <a href="https://gamoniz.com/what-is-rmt/" target="_blank" rel="noopener" class="inline-link">RMT</a>, diversification des services. Puis j'ai professionnalisé l'ensemble&nbsp;: fournisseurs, liste email, communauté Discord, passage en full-time, une année passée à voyager en Asie en digital nomad. Et quelque part en cours de route, je suis devenu le gars qui écoute des podcasts business et finance perso dont personne autour ne veut entendre parler. <span class="hand-aside">(Désolé, Élodie.)</span>
           </p>
-          <p>
-            Today I help solo founders and creators run the operational half of their business. I'm the wrong fit for big teams, equity-based deals, or anyone who needs a 12-month strategy deck &mdash; the right fit if you want a quiet pair of hands taking the unglamorous half off your plate.
+          <p data-i18n-html="intro.p3">
+            Aujourd'hui, j'aide les <strong>coachs, consultants et formateurs</strong> à intégrer intelligemment l'IA dans leur métier, sans diluer ce qui les rend uniques. Je suis le mauvais profil pour les grosses équipes, les deals en equity, ou ceux qui veulent une feuille de route sur 12 mois. Je suis le bon profil si tu veux <strong>quelqu'un qui opère pour de vrai</strong>, qui comprend ton métier et qui sait où l'IA doit s'inscrire chez toi.
           </p>
         </div>
       </div>
@@ -1090,10 +1181,10 @@
     <section class="obsessions">
       <div class="wrap">
         <header class="head reveal">
-          <span class="eyebrow">My rabbit holes</span>
-          <h2 style="margin-top: 0.85rem;">Four topics I'd happily <em>bore you with.</em></h2>
-          <p>
-            The kind of stuff I read, watch and listen to in my spare time &mdash; not because I should, but because I genuinely cannot stop. If we ever have coffee, you've been warned.
+          <span class="eyebrow" data-i18n="obs.eyebrow">Mes obsessions</span>
+          <h2 style="margin-top: 0.85rem;" data-i18n-html="obs.h2">Quatre sujets sur lesquels <em>je peux te saouler.</em></h2>
+          <p data-i18n="obs.sub">
+            Le genre de choses que je lis, regarde et écoute quand je décroche parce que je ne peux pas m'en empêcher. Si on prend un café ensemble un jour, tu es prévenu.
           </p>
         </header>
 
@@ -1101,45 +1192,45 @@
           <article class="ob-card o-ai reveal">
             <div class="ob-card-head">
               <span class="ob-emoji" aria-hidden="true">🤖</span>
-              <h3>AI</h3>
+              <h3 data-i18n="obs.card1.title">IA</h3>
             </div>
-            <p>
-              Early adopter, fascinated, slightly obsessed. I'm not a developer &mdash; I'm a geek who tests everything, vibe-codes his own apps and sites (yes, including this one), and refuses to miss what's coming next.
+            <p data-i18n="obs.card1.desc">
+              Adoption précoce, fasciné, légèrement obsédé. Je ne suis pas développeur. Je suis un geek qui teste tout, vibe-code ses propres apps et sites (celui-ci compris), et refuse de manquer ce qui arrive.
             </p>
-            <span class="ob-tag">Currently nerding on: agentic workflows.</span>
+            <span class="ob-tag" data-i18n="obs.card1.tag">En ce moment je creuse&nbsp;: les workflows agentiques.</span>
           </article>
 
           <article class="ob-card o-business reveal">
             <div class="ob-card-head">
               <span class="ob-emoji" aria-hidden="true">📈</span>
-              <h3>Business, broadly</h3>
+              <h3 data-i18n="obs.card2.title">Business, au sens large</h3>
             </div>
-            <p>
-              Indie hackers, bootstrapped SaaS, marketplaces, niche newsletters, weird Shopify stores doing 8 figures from a garage. I love a good business teardown the way other people love true crime podcasts.
+            <p data-i18n="obs.card2.desc">
+              Indie hackers, SaaS bootstrappés, marketplaces, newsletters de niche, boutiques Shopify bizarres qui font 8 chiffres depuis un garage. J'adore une bonne dissection business comme d'autres aiment les podcasts de true crime.
             </p>
-            <span class="ob-tag">Hero list: Hormozi, Martell, Suby, Abdaal, Marc Lou.</span>
+            <span class="ob-tag" data-i18n="obs.card2.tag">Liste héros&nbsp;: Hormozi, Martell, Suby, Abdaal, Marc Lou.</span>
           </article>
 
           <article class="ob-card o-finance reveal">
             <div class="ob-card-head">
               <span class="ob-emoji" aria-hidden="true">💰</span>
-              <h3>Personal finance</h3>
+              <h3 data-i18n="obs.card3.title">Finance perso</h3>
             </div>
-            <p>
-              Hooked for 15 years. Explored everything &mdash; stocks, bonds, real estate, crowdfunding, private credit, crypto &mdash; and landed on simplicity (ETFs do the job). Soft spot for Bitcoin and the case for decentralisation.
+            <p data-i18n="obs.card3.desc">
+              Accroché depuis 15 ans. J'ai tout essayé&nbsp;: actions, obligations, immobilier, crowdfunding, private credit, crypto. Et j'ai fini par tomber sur la simplicité (les ETFs font le job). Aimant l'innovation, j'ai un faible pour le Bitcoin & le Nasdaq.
             </p>
-            <span class="ob-tag">Side hobby: farming stablecoin yields & airdrops.</span>
+            <span class="ob-tag" data-i18n="obs.card3.tag">Hobby secondaire&nbsp;: yields stablecoin et airdrops.</span>
           </article>
 
           <article class="ob-card o-marketing reveal">
             <div class="ob-card-head">
               <span class="ob-emoji" aria-hidden="true">🎯</span>
-              <h3>Digital marketing</h3>
+              <h3 data-i18n="obs.card4.title">Marketing digital</h3>
             </div>
-            <p>
-              Master's in Digital Business Management, then thirteen years sitting on every side of the funnel &mdash; acquisition, retention, community ops, the dark arts of email deliverability. I have opinions. Most of them involve doing less, more consistently.
+            <p data-i18n="obs.card4.desc">
+              Master en Digital Business Management, puis treize ans à m'asseoir sur tous les côtés du funnel&nbsp;: acquisition, rétention, ops communauté, l'art de la délivrabilité email. J'ai des opinions. La plupart consistent à faire moins, plus régulièrement.
             </p>
-            <span class="ob-tag">Pet peeve: vanity metrics.</span>
+            <span class="ob-tag" data-i18n="obs.card4.tag">Bête noire&nbsp;: les métriques de vanité.</span>
           </article>
         </div>
       </div>
@@ -1150,9 +1241,9 @@
       <div class="wrap">
         <figure class="photo-break-figure reveal">
           <div class="photo-break-frame">
-            <img src="/assets/Skydive.webp" alt="Boris Nachbaur grinning before a tandem skydive in New Zealand" width="1200" height="900" loading="lazy" />
+            <img src="/assets/Skydive.webp" alt="Boris Nachbaur souriant avant un saut en parachute tandem en Nouvelle-Zélande" width="1200" height="900" loading="lazy" />
           </div>
-          <figcaption class="photo-break-caption">About to jump out of a plane in New Zealand. The closest thing to starting a new business.</figcaption>
+          <figcaption class="photo-break-caption" data-i18n="break.skydive">Sur le point de sauter d'un avion en Nouvelle-Zélande. Ce qui ressemble le plus à lancer une nouvelle activité.</figcaption>
         </figure>
       </div>
     </section>
@@ -1161,22 +1252,22 @@
     <section class="offwork">
       <div class="wrap">
         <header class="head reveal">
-          <span class="eyebrow">When the laptop closes</span>
-          <h2 style="margin-top: 0.85rem;">Other things I <em>genuinely care</em> about.</h2>
-          <p>
-            Not in any particular order. All of them eat too much of my brain space.
+          <span class="eyebrow" data-i18n="off.eyebrow">Quand l'ordi se referme</span>
+          <h2 style="margin-top: 0.85rem;" data-i18n-html="off.h2">D'autres trucs qui <em>comptent vraiment</em> pour moi.</h2>
+          <p data-i18n="off.sub">
+            Pas par ordre d'importance. Tous occupent trop de place dans ma tête.
           </p>
         </header>
 
         <div class="chips reveal">
-          <span class="chip"><span class="chip-emoji" aria-hidden="true">✈️</span> Travel <span class="chip-aside">/ 30+ countries, 1 year across Asia</span></span>
-          <span class="chip"><span class="chip-emoji" aria-hidden="true">🏸</span> Badminton <span class="chip-aside">/ pure fun, played 100% for the win</span></span>
-          <span class="chip"><span class="chip-emoji" aria-hidden="true">🏋️</span> Home workouts <span class="chip-aside">/ when I can't find an excuse</span></span>
-          <span class="chip"><span class="chip-emoji" aria-hidden="true">🎬</span> Cinema <span class="chip-aside">/ who doesn't love a good story</span></span>
-          <span class="chip"><span class="chip-emoji" aria-hidden="true">🖥️</span> Technology <span class="chip-aside">/ I build my own PCs</span></span>
-          <span class="chip"><span class="chip-emoji" aria-hidden="true">🏔️</span> Lake &amp; mountains <span class="chip-aside">/ 1h from Lausanne</span></span>
-          <span class="chip"><span class="chip-emoji" aria-hidden="true">🎮</span> Gaming <span class="chip-aside">/ where it all started</span></span>
-          <span class="chip"><span class="chip-emoji" aria-hidden="true">🎙️</span> Podcasts &amp; YT <span class="chip-aside">/ at 2× speed, sorry</span></span>
+          <span class="chip"><span class="chip-emoji" aria-hidden="true">✈️</span> <span data-i18n="off.chip1.label">Voyages</span> <span class="chip-aside" data-i18n="off.chip1.aside">/ 30+ pays, 1 an en Asie</span></span>
+          <span class="chip"><span class="chip-emoji" aria-hidden="true">🏸</span> <span data-i18n="off.chip2.label">Badminton</span> <span class="chip-aside" data-i18n="off.chip2.aside">/ pur plaisir, joué à 100% pour gagner</span></span>
+          <span class="chip"><span class="chip-emoji" aria-hidden="true">🏋️</span> <span data-i18n="off.chip3.label">Sport à la maison</span> <span class="chip-aside" data-i18n="off.chip3.aside">/ quand je n'ai plus d'excuse</span></span>
+          <span class="chip"><span class="chip-emoji" aria-hidden="true">🎬</span> <span data-i18n="off.chip4.label">Cinéma</span> <span class="chip-aside" data-i18n="off.chip4.aside">/ qui n'aime pas une bonne histoire</span></span>
+          <span class="chip"><span class="chip-emoji" aria-hidden="true">🖥️</span> <span data-i18n="off.chip5.label">Technologie</span> <span class="chip-aside" data-i18n="off.chip5.aside">/ je monte mes propres PC</span></span>
+          <span class="chip"><span class="chip-emoji" aria-hidden="true">🏔️</span> <span data-i18n="off.chip6.label">Lac et montagnes</span> <span class="chip-aside" data-i18n="off.chip6.aside">/ autour de Lausanne</span></span>
+          <span class="chip"><span class="chip-emoji" aria-hidden="true">🎮</span> <span data-i18n="off.chip7.label">Gaming</span> <span class="chip-aside" data-i18n="off.chip7.aside">/ là où tout a commencé</span></span>
+          <span class="chip"><span class="chip-emoji" aria-hidden="true">🎙️</span> <span data-i18n="off.chip8.label">Podcasts et YT</span> <span class="chip-aside" data-i18n="off.chip8.aside">/ en x2, désolé</span></span>
         </div>
       </div>
     </section>
@@ -1186,9 +1277,9 @@
       <div class="wrap">
         <figure class="photo-break-figure reveal">
           <div class="photo-break-frame is-portrait">
-            <img src="/assets/connected.webp" alt="Boris Nachbaur pressing his phone against a 5G antenna abroad" width="800" height="1000" loading="lazy" />
+            <img src="/assets/connected.webp" alt="Boris Nachbaur collant son téléphone contre une antenne 5G à l'étranger" width="800" height="1000" loading="lazy" />
           </div>
-          <figcaption class="photo-break-caption">Three weeks abroad, no roaming, weak signal. Solution: hug the 5G tower.</figcaption>
+          <figcaption class="photo-break-caption" data-i18n="break.connected">Trois semaines à l'étranger, pas de roaming, signal faible. Solution&nbsp;: enlacer l'antenne 5G.</figcaption>
         </figure>
       </div>
     </section>
@@ -1197,10 +1288,10 @@
     <section class="values">
       <div class="wrap">
         <header class="head reveal">
-          <span class="eyebrow">What I actually value</span>
-          <h2 style="margin-top: 0.85rem;">Three things I won't <em>compromise on.</em></h2>
-          <p>
-            If you took these three away, I'd have to find a different job.
+          <span class="eyebrow" data-i18n="values.eyebrow">Ce à quoi je tiens vraiment</span>
+          <h2 style="margin-top: 0.85rem;" data-i18n-html="values.h2">Trois choses sur lesquelles <em>je ne plierai pas.</em></h2>
+          <p data-i18n="values.sub">
+            Si tu m'enlèves ces trois-là, il faut que je change de métier.
           </p>
         </header>
 
@@ -1208,9 +1299,9 @@
           <div class="value-row">
             <span class="value-mark" aria-hidden="true">01</span>
             <div>
-              <div class="value-title">Honesty &mdash; the boring kind.</div>
-              <p class="value-body">
-                Nobody's perfect, and I don't pretend otherwise. <strong>Simplicity and honesty</strong> &mdash; with you, with myself, with the work. No corporate bullshit, no theatre, no hiding behind jargon when a plain sentence would do.
+              <div class="value-title" data-i18n="values.v1.title">L'honnêteté, version ennuyeuse.</div>
+              <p class="value-body" data-i18n-html="values.v1.body">
+                Personne n'est parfait, et je ne fais pas semblant. <strong>Simplicité et honnêteté</strong>, avec toi, avec moi-même, avec le travail. Je n'ai pas de patience pour le blabla corporate, le théâtre ou le jargon qui cache ce qu'une phrase simple ferait mieux.
               </p>
             </div>
           </div>
@@ -1218,9 +1309,9 @@
           <div class="value-row">
             <span class="value-mark" aria-hidden="true">02</span>
             <div>
-              <div class="value-title">Curiosity &mdash; the incurable kind.</div>
-              <p class="value-body">
-                I read on AI, business, finance and individual freedom. Probably more than I should. I love diving into how systems work; I just haven't figured out how to care about gossip yet.
+              <div class="value-title" data-i18n="values.v2.title">La curiosité, version incurable.</div>
+              <p class="value-body" data-i18n="values.v2.body">
+                Je lis sur l'IA, le business, la finance et les libertés individuelles. Probablement plus que je ne devrais. J'adore creuser comment les systèmes fonctionnent. Je n'ai juste pas encore trouvé comment m'intéresser aux ragots.
               </p>
             </div>
           </div>
@@ -1228,9 +1319,9 @@
           <div class="value-row">
             <span class="value-mark" aria-hidden="true">03</span>
             <div>
-              <div class="value-title">Open-mindedness &mdash; default state.</div>
-              <p class="value-body">
-                Different industries, different personalities, different countries (I've lived in five). I genuinely don't care where you're from, what you do or what you look like &mdash; <strong>what matters to me is your values and how you treat people.</strong> The rest is decoration.
+              <div class="value-title" data-i18n="values.v3.title">L'ouverture d'esprit, par défaut.</div>
+              <p class="value-body" data-i18n-html="values.v3.body">
+                Différents secteurs, différentes personnalités, différents pays (j'ai vécu dans cinq). Je me fous franchement d'où tu viens, de ce que tu fais, de ta tête. <strong>Ce qui compte pour moi, c'est tes valeurs et la façon dont tu traites les gens.</strong> Le reste, c'est de la décoration.
               </p>
             </div>
           </div>
@@ -1240,8 +1331,8 @@
 
     <!-- BRIDGE TO /PROJECTS -->
     <section class="bridge">
-      <div class="bridge-inner reveal">
-        Want the work-version, with receipts? <a href="/projects">See <em>/projects</em> <span class="bridge-arrow">→</span></a>
+      <div class="bridge-inner reveal" data-i18n-html="bridge.text">
+        Tu veux la version travail, avec preuves&nbsp;? <a href="/projects">Voir <em>/projects</em> <span class="bridge-arrow">→</span></a>
       </div>
     </section>
 
@@ -1250,15 +1341,15 @@
       <div class="wrap">
         <div class="closing-card reveal">
           <div class="closing-inner">
-            <span class="eyebrow">Still here?</span>
-            <h2>Then you probably already know if <em>we'd get along.</em></h2>
-            <p>
-              The first call is 20 min, free, no pitch. Worst case, you waste 20 minutes. Best case, you stop doing the part of your job you secretly hate.
+            <span class="eyebrow" data-i18n="closing.eyebrow">Toujours là&nbsp;?</span>
+            <h2 data-i18n-html="closing.h2">Alors tu sais probablement déjà si <em>on peut bien s'entendre.</em></h2>
+            <p data-i18n="closing.p">
+              Le premier appel est gratuit et dure 20 min. Au pire des cas, tu perds 20 minutes. Meilleur des cas, tu arrêtes de faire la partie de ton job que tu détestes secrètement.
             </p>
             <div class="closing-ctas">
               <a class="btn btn-ink" href="https://calendly.com/nachboris/20min" rel="noopener" target="_blank">
-                <span class="btn-label">Book a 20-min call</span>
-                <span class="arrow">→</span>
+                <span class="btn-label" data-i18n="closing.cta.primary">Réserver un appel de 20 min</span>
+                <svg class="arrow cta-phone" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               </a>
               <a class="btn btn-ghost" href="mailto:boris@nachboris.fr"><span class="btn-label">boris@nachboris.fr</span></a>
             </div>
@@ -1292,7 +1383,7 @@
       </g>
     </svg>
   </span>
-  <span>French</span>
+  <span data-i18n="footer.lang">Français</span>
   <span>·</span>
   <span aria-hidden="true" class="flag-badge">
     <svg role="img" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1304,28 +1395,21 @@
       </g>
     </svg>
   </span>
-  <span>Based in Lausanne</span>
+  <span data-i18n="footer.location">Basé à Lausanne</span>
 </span>
-        <span class="footer-copy">© 2026 Nachboris · Made with ♡ by Boris &amp; Claude.</span>
+        <span class="footer-copy">© <span id="year">2026</span> Nachboris · <span data-i18n="footer.copy">Fait avec ♡ par Boris &amp; Claude.</span></span>
       </div>
       <nav class="footer-nav" aria-label="Footer">
-        <a href="/#work">Services</a>
-        <a href="/#contact">Contact</a>
-        <a href="/projects">Projects</a>
-        <a href="/reviews">Reviews</a>
+        <a href="/#work" data-i18n="nav.services">Services</a>
+        <a href="/me" data-i18n="nav.about">À propos</a>
+        <a href="/projects" data-i18n="nav.projects">Projets</a>
+        <a href="/reviews" data-i18n="nav.reviews">Avis</a>
       </nav>
       <div class="footer-social">
         <a href="https://www.linkedin.com/in/borisnch/" target="_blank" rel="noopener" aria-label="LinkedIn">
           <span class="social-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A1.96 1.96 0 1 0 5.3 6.92 1.96 1.96 0 0 0 5.25 3Zm14.19 9.89c0-3.47-1.85-5.08-4.32-5.08-1.99 0-2.88 1.1-3.38 1.87V8.5H8.36c.04.79 0 11.5 0 11.5h3.38v-6.42c0-.34.02-.68.13-.92.27-.68.88-1.39 1.92-1.39 1.35 0 1.89 1.03 1.89 2.54V20H19.1v-7.11Z"/>
-            </svg>
-          </span>
-        </a>
-        <a aria-label="X (Twitter)" href="https://x.com/BobuRMT" rel="noopener" target="_blank">
-          <span aria-hidden="true" class="social-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17.53 3H20.5l-6.49 7.42L21.75 21h-5.99l-4.69-6.13L5.7 21H2.73l6.94-7.94L2.25 3h6.14l4.24 5.61L17.53 3Zm-1.05 16.2h1.65L7.6 4.7H5.83L16.48 19.2Z"/>
             </svg>
           </span>
         </a>
@@ -1341,6 +1425,10 @@
   </footer>
 
   <script>
+    // Auto-update copyright year
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
     const nav = document.getElementById('nav');
     const navToggle = document.getElementById('navToggle');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -1351,7 +1439,7 @@
       mobileMenu.classList.remove('is-open');
       mobileMenu.setAttribute('aria-hidden', 'true');
       navToggle.setAttribute('aria-expanded', 'false');
-      navToggle.setAttribute('aria-label', 'Open navigation menu');
+      navToggle.setAttribute('aria-label', document.documentElement.getAttribute('lang') === 'fr' ? 'Ouvrir le menu de navigation' : 'Open navigation menu');
     };
 
     const toggleMobileMenu = () => {
@@ -1359,7 +1447,10 @@
       nav.classList.toggle('menu-open', isOpen);
       mobileMenu.setAttribute('aria-hidden', String(!isOpen));
       navToggle.setAttribute('aria-expanded', String(isOpen));
-      navToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+      const lang = document.documentElement.getAttribute('lang');
+      const openLabel = lang === 'fr' ? 'Ouvrir le menu de navigation' : 'Open navigation menu';
+      const closeLabel = lang === 'fr' ? 'Fermer le menu de navigation' : 'Close navigation menu';
+      navToggle.setAttribute('aria-label', isOpen ? closeLabel : openLabel);
     };
 
     navToggle.addEventListener('click', toggleMobileMenu);
@@ -1388,6 +1479,282 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
     document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+    /* ==========================================================
+       i18n FR/EN — 1-click switch, localStorage + URL persistence
+       ========================================================== */
+    const i18n = {
+      fr: {
+        // NAV
+        'nav.services': 'Services',
+        'nav.about': 'À propos',
+        'nav.projects': 'Projets',
+        'nav.reviews': 'Avis',
+        'nav.available': 'Disponible',
+        'nav.cta.full': 'Réserver un appel',
+
+        // HERO
+        'hero.eyebrow': 'Un peu de moi',
+        'hero.h1': "Salut, moi c'est <em>Boris.</em>",
+        'hero.lede1': "<strong>31 ans, français, basé à Lausanne</strong> avec ma femme Élodie. Elle enseigne dans une école primaire ici, le <em>vrai</em> boulot dur du couple. Moi je fais celui derrière l'écran.",
+        'hero.lede2': "Cette page, c'est la version <em style=\"font-style: italic; color: var(--orange);\">sans filtre</em> de moi&nbsp;: ma personnalité, ce qui m'anime, mon éthique. Le côté CV est sur <a href=\"/projects\" class=\"inline-link\">/projects</a>.",
+        'hero.photoCaption': 'Élodie &amp; moi, Léman\n  <span class="ch-flag" aria-hidden="true">\n    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">\n      <rect width="32" height="32" fill="#FF0000"/>\n      <path fill="#FFF" d="M24 13h-5V8h-6v5H8v6h5v5h6v-5h5z"/>\n    </svg>\n  </span>',
+
+        // INTRO
+        'intro.eyebrow': 'La version courte',
+        'intro.h2': "Né <em>en ligne,</em> j'y suis resté.",
+        'intro.p1': "À 15 ans, j'ai vendu <strong>800 $ de monnaie virtuelle</strong> à un inconnu sur internet. J'ai appris plus tard qu'il l'avait revendue au double. Je n'étais pas vexé longtemps&nbsp;: je venais de découvrir qu'il y avait <strong>toute une chaîne de valeur derrière un jeu vidéo</strong>, et que j'étais tout en bas. <a href=\"https://gamoniz.com/how-i-made-first-1000-from-video-games/\" target=\"_blank\" rel=\"noopener\" class=\"inline-link\">Histoire complète ici</a> si tu es curieux.",
+        'intro.p2': "Ce premier deal date d'il y a 16 ans. Depuis, j'ai testé tous les coins du terrain&nbsp;: botting, <a href=\"https://gamoniz.com/what-is-rmt/\" target=\"_blank\" rel=\"noopener\" class=\"inline-link\">RMT</a>, diversification des services. Puis j'ai professionnalisé l'ensemble&nbsp;: fournisseurs, liste email, communauté Discord, passage en full-time, une année passée à voyager en Asie en digital nomad. Et quelque part en cours de route, je suis devenu le gars qui écoute des podcasts business et finance perso dont personne autour ne veut entendre parler. <span class=\"hand-aside\">(Désolé, Élodie.)</span>",
+        'intro.p3': "Aujourd'hui, j'aide les <strong>coachs, consultants et formateurs</strong> à intégrer intelligemment l'IA dans leur métier, sans diluer ce qui les rend uniques. Je suis le mauvais profil pour les grosses équipes, les deals en equity, ou ceux qui veulent une feuille de route sur 12 mois. Je suis le bon profil si tu veux <strong>quelqu'un qui opère pour de vrai</strong>, qui comprend ton métier et qui sait où l'IA doit s'inscrire chez toi.",
+
+        // OBSESSIONS
+        'obs.eyebrow': 'Mes obsessions',
+        'obs.h2': "Quatre sujets sur lesquels <em>je peux te saouler.</em>",
+        'obs.sub': "Le genre de choses que je lis, regarde et écoute quand je décroche parce que je ne peux pas m'en empêcher. Si on prend un café ensemble un jour, tu es prévenu.",
+        'obs.card1.title': 'IA',
+        'obs.card1.desc': "Adoption précoce, fasciné, légèrement obsédé. Je ne suis pas développeur. Je suis un geek qui teste tout, vibe-code ses propres apps et sites (celui-ci compris), et refuse de manquer ce qui arrive.",
+        'obs.card1.tag': 'En ce moment je creuse&nbsp;: les workflows agentiques.',
+        'obs.card2.title': 'Business, au sens large',
+        'obs.card2.desc': "Indie hackers, SaaS bootstrappés, marketplaces, newsletters de niche, boutiques Shopify bizarres qui font 8 chiffres depuis un garage. J'adore une bonne dissection business comme d'autres aiment les podcasts de true crime.",
+        'obs.card2.tag': 'Liste héros&nbsp;: Hormozi, Martell, Suby, Abdaal, Marc Lou.',
+        'obs.card3.title': 'Finance perso',
+        'obs.card3.desc': "Accroché depuis 15 ans. J'ai tout essayé&nbsp;: actions, obligations, immobilier, crowdfunding, private credit, crypto. Et j'ai fini par tomber sur la simplicité (les ETFs font le job). Aimant l'innovation, j'ai un faible pour le Bitcoin & le Nasdaq.",
+        'obs.card3.tag': 'Hobby secondaire&nbsp;: yields stablecoin et airdrops.',
+        'obs.card4.title': 'Marketing digital',
+        'obs.card4.desc': "Master en Digital Business Management, puis treize ans à m'asseoir sur tous les côtés du funnel&nbsp;: acquisition, rétention, ops communauté, l'art de la délivrabilité email. J'ai des opinions. La plupart consistent à faire moins, plus régulièrement.",
+        'obs.card4.tag': 'Bête noire&nbsp;: les métriques de vanité.',
+
+        // PHOTO BREAKS
+        'break.skydive': "Sur le point de sauter d'un avion en Nouvelle-Zélande. Ce qui ressemble le plus à lancer une nouvelle activité.",
+        'break.connected': "Trois semaines à l'étranger, pas de roaming, signal faible. Solution&nbsp;: enlacer l'antenne 5G.",
+
+        // OFF-WORK
+        'off.eyebrow': "Quand l'ordi se referme",
+        'off.h2': "D'autres trucs qui <em>comptent vraiment</em> pour moi.",
+        'off.sub': "Pas par ordre d'importance. Tous occupent trop de place dans ma tête.",
+        'off.chip1.label': 'Voyages',
+        'off.chip1.aside': '/ 30+ pays, 1 an en Asie',
+        'off.chip2.label': 'Badminton',
+        'off.chip2.aside': '/ pur plaisir, joué à 100% pour gagner',
+        'off.chip3.label': 'Sport à la maison',
+        'off.chip3.aside': "/ quand je n'ai plus d'excuse",
+        'off.chip4.label': 'Cinéma',
+        'off.chip4.aside': "/ qui n'aime pas une bonne histoire",
+        'off.chip5.label': 'Technologie',
+        'off.chip5.aside': '/ je monte mes propres PC',
+        'off.chip6.label': 'Lac et montagnes',
+        'off.chip6.aside': '/ autour de Lausanne',
+        'off.chip7.label': 'Gaming',
+        'off.chip7.aside': '/ là où tout a commencé',
+        'off.chip8.label': 'Podcasts et YT',
+        'off.chip8.aside': '/ en x2, désolé',
+
+        // VALUES
+        'values.eyebrow': 'Ce à quoi je tiens vraiment',
+        'values.h2': 'Trois choses sur lesquelles <em>je ne plierai pas.</em>',
+        'values.sub': "Si tu m'enlèves ces trois-là, il faut que je change de métier.",
+        'values.v1.title': "L'honnêteté, version ennuyeuse.",
+        'values.v1.body': "Personne n'est parfait, et je ne fais pas semblant. <strong>Simplicité et honnêteté</strong>, avec toi, avec moi-même, avec le travail. Je n'ai pas de patience pour le blabla corporate, le théâtre ou le jargon qui cache ce qu'une phrase simple ferait mieux.",
+        'values.v2.title': 'La curiosité, version incurable.',
+        'values.v2.body': "Je lis sur l'IA, le business, la finance et les libertés individuelles. Probablement plus que je ne devrais. J'adore creuser comment les systèmes fonctionnent. Je n'ai juste pas encore trouvé comment m'intéresser aux ragots.",
+        'values.v3.title': "L'ouverture d'esprit, par défaut.",
+        'values.v3.body': "Différents secteurs, différentes personnalités, différents pays (j'ai vécu dans cinq). Je me fous franchement d'où tu viens, de ce que tu fais, de ta tête. <strong>Ce qui compte pour moi, c'est tes valeurs et la façon dont tu traites les gens.</strong> Le reste, c'est de la décoration.",
+
+        // BRIDGE + CLOSING
+        'bridge.text': "Tu veux la version travail, avec preuves&nbsp;? <a href=\"/projects\">Voir <em>/projects</em> <span class=\"bridge-arrow\">→</span></a>",
+        'closing.eyebrow': 'Toujours là&nbsp;?',
+        'closing.h2': "Alors tu sais probablement déjà si <em>on peut bien s'entendre.</em>",
+        'closing.p': "Le premier appel est gratuit et dure 20 min. Au pire des cas, tu perds 20 minutes. Meilleur des cas, tu arrêtes de faire la partie de ton job que tu détestes secrètement.",
+        'closing.cta.primary': 'Réserver un appel de 20 min',
+
+        // FOOTER
+        'footer.lang': 'Français',
+        'footer.location': 'Basé à Lausanne',
+        'footer.copy': 'Fait avec ♡ par Boris &amp; Claude.',
+      },
+      en: {
+        // NAV
+        'nav.services': 'Services',
+        'nav.about': 'About',
+        'nav.projects': 'Projects',
+        'nav.reviews': 'Reviews',
+        'nav.available': 'Available',
+        'nav.cta.full': 'Book a call',
+
+        // HERO
+        'hero.eyebrow': 'A bit about me',
+        'hero.h1': "Hi, I’m <em>Boris.</em>",
+        'hero.lede1': "<strong>31, French, based in Lausanne</strong> with my wife Élodie. She teaches kids in a primary school here, the <em>real</em> hard job in the household. I do the laptop one.",
+        'hero.lede2': "This page is the <em style=\"font-style: italic; color: var(--orange);\">unfiltered</em> version of me: my personality, what drives me, my ethic. The CV-friendly stuff lives on <a href=\"/projects\" class=\"inline-link\">/projects</a>.",
+        'hero.photoCaption': 'Élodie &amp; me, Lake Geneva\n  <span class="ch-flag" aria-hidden="true">\n    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">\n      <rect width="32" height="32" fill="#FF0000"/>\n      <path fill="#FFF" d="M24 13h-5V8h-6v5H8v6h5v5h6v-5h5z"/>\n    </svg>\n  </span>',
+
+        // INTRO
+        'intro.eyebrow': 'The short version',
+        'intro.h2': "Born <em>online,</em> still here.",
+        'intro.p1': "At 15, I sold <strong>$800 worth of in-game currency</strong> to a stranger on the internet. I found out later the buyer had resold it for double. I wasn’t annoyed for long: I’d just discovered there was <strong>a whole value chain behind a video game</strong>, and I was sitting at the bottom of it. <a href=\"https://gamoniz.com/how-i-made-first-1000-from-video-games/\" target=\"_blank\" rel=\"noopener\" class=\"inline-link\">Full story here</a> if you’re curious.",
+        'intro.p2': "That first trade was 16 years ago. Since then I’ve poked every corner of the field: botting, <a href=\"https://gamoniz.com/what-is-rmt/\" target=\"_blank\" rel=\"noopener\" class=\"inline-link\">RMT</a>, diversifying services. Then I professionalised the whole thing: built suppliers, an email list, a Discord community, went full-time, lived a year across Asia as a digital nomad. Somewhere along the way, I became the guy who listens to business and personal-finance podcasts no one around him wants to hear about. <span class=\"hand-aside\">(Sorry, Élodie.)</span>",
+        'intro.p3': "Today I help <strong>coaches, consultants and trainers</strong> integrate AI smartly into their practice, without diluting what makes them unique. I’m the wrong fit for big teams, equity-based deals, or anyone who needs a 12-month strategy deck. I’m the right fit if you want <strong>someone who actually operates</strong>, who understands your practice, and who knows exactly where AI has to plug in.",
+
+        // OBSESSIONS
+        'obs.eyebrow': 'My rabbit holes',
+        'obs.h2': "Four topics I’d happily <em>bore you with.</em>",
+        'obs.sub': "The kind of stuff I read, watch and listen to in my spare time. Not because I should, but because I genuinely cannot stop. If we ever have coffee, you’ve been warned.",
+        'obs.card1.title': 'AI',
+        'obs.card1.desc': "Early adopter, fascinated, slightly obsessed. I’m not a developer. I’m a geek who tests everything, vibe-codes his own apps and sites (yes, including this one), and refuses to miss what’s coming next.",
+        'obs.card1.tag': 'Currently nerding on: agentic workflows.',
+        'obs.card2.title': 'Business, broadly',
+        'obs.card2.desc': "Indie hackers, bootstrapped SaaS, marketplaces, niche newsletters, weird Shopify stores doing 8 figures from a garage. I love a good business teardown the way other people love true-crime podcasts.",
+        'obs.card2.tag': 'Hero list: Hormozi, Martell, Suby, Abdaal, Marc Lou.',
+        'obs.card3.title': 'Personal finance',
+        'obs.card3.desc': "Hooked for 15 years. Tried everything: stocks, bonds, real estate, crowdfunding, private credit, crypto. Landed on simplicity (ETFs do the job). As a tech-lover, I have a soft spot for Bitcoin and Nasdaq.",
+        'obs.card3.tag': 'Side hobby: farming stablecoin yields and airdrops.',
+        'obs.card4.title': 'Digital marketing',
+        'obs.card4.desc': "Master’s in Digital Business Management, then thirteen years sitting on every side of the funnel: acquisition, retention, community ops, the dark arts of email deliverability. I have opinions. Most of them involve doing less, more consistently.",
+        'obs.card4.tag': 'Pet peeve: vanity metrics.',
+
+        // PHOTO BREAKS
+        'break.skydive': "About to jump out of a plane in New Zealand. The closest thing to starting a new business.",
+        'break.connected': "Three weeks abroad, no roaming, weak signal. Solution: hug the 5G tower.",
+
+        // OFF-WORK
+        'off.eyebrow': 'When the laptop closes',
+        'off.h2': "Other things I <em>genuinely care</em> about.",
+        'off.sub': "Not in any particular order. All of them eat too much of my brain space.",
+        'off.chip1.label': 'Travel',
+        'off.chip1.aside': '/ 30+ countries, 1 year across Asia',
+        'off.chip2.label': 'Badminton',
+        'off.chip2.aside': '/ pure fun, played 100% for the win',
+        'off.chip3.label': 'Home workouts',
+        'off.chip3.aside': "/ when I can’t find an excuse",
+        'off.chip4.label': 'Cinema',
+        'off.chip4.aside': "/ who doesn’t love a good story",
+        'off.chip5.label': 'Technology',
+        'off.chip5.aside': '/ I build my own PCs',
+        'off.chip6.label': 'Lake &amp; mountains',
+        'off.chip6.aside': '/ 1h from Lausanne',
+        'off.chip7.label': 'Gaming',
+        'off.chip7.aside': '/ where it all started',
+        'off.chip8.label': 'Podcasts &amp; YT',
+        'off.chip8.aside': '/ at 2× speed, sorry',
+
+        // VALUES
+        'values.eyebrow': 'What I actually value',
+        'values.h2': "Three things I won’t <em>compromise on.</em>",
+        'values.sub': "If you took these three away, I’d have to find a different job.",
+        'values.v1.title': 'Honesty, the boring kind.',
+        'values.v1.body': "Nobody’s perfect, and I don’t pretend otherwise. <strong>Simplicity and honesty</strong>, with you, with myself, with the work. I have no patience for corporate fluff, theatre, or jargon that hides what a plain sentence would do better.",
+        'values.v2.title': 'Curiosity, the incurable kind.',
+        'values.v2.body': "I read on AI, business, finance and individual freedom. Probably more than I should. I love digging into how systems work. I just haven’t figured out how to care about gossip yet.",
+        'values.v3.title': 'Open-mindedness, by default.',
+        'values.v3.body': "Different industries, different personalities, different countries (I’ve lived in five). I genuinely don’t care where you’re from, what you do, or what you look like. <strong>What matters to me is your values and how you treat people.</strong> The rest is decoration.",
+
+        // BRIDGE + CLOSING
+        'bridge.text': "Want the work-version, with receipts? <a href=\"/projects\">See <em>/projects</em> <span class=\"bridge-arrow\">→</span></a>",
+        'closing.eyebrow': 'Still here?',
+        'closing.h2': "Then you probably already know if <em>we’d get along.</em>",
+        'closing.p': "The first call is 20 min, free, no pitch. Worst case, you waste 20 minutes. Best case, you stop doing the part of your job you secretly hate.",
+        'closing.cta.primary': 'Book a 20-min call',
+
+        // FOOTER
+        'footer.lang': 'French speaker',
+        'footer.location': 'Based in Lausanne',
+        'footer.copy': 'Made with ♡ by Boris &amp; Claude.',
+      }
+    };
+
+    /* Meta tags swapped per lang */
+    const i18nMeta = {
+      fr: {
+        title: 'À propos · Boris Nachbaur, Opérateur IA',
+        description: "Le geek derrière nachboris.fr. 31 ans, basé à Lausanne, accroché à l'IA, au business et à la finance perso depuis mes 15 ans."
+      },
+      en: {
+        title: 'About · Boris Nachbaur, AI Operator',
+        description: "The geek behind nachboris.fr. 31, Lausanne-based, hooked on AI, business and personal finance since I was 15."
+      }
+    };
+
+    /* Flag SVGs — inline */
+    const flagSVG = {
+      fr: '<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect fill="#1F4AA8" height="24" width="8" x="0"></rect><rect fill="#FFFFFF" height="24" width="8" x="8"></rect><rect fill="#E23D28" height="24" width="8" x="16"></rect></svg>',
+      en: '<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect fill="#012169" height="24" width="24"></rect><path d="M0 0L24 24M24 0L0 24" stroke="#FFFFFF" stroke-width="3.2"></path><path d="M0 0L24 24M24 0L0 24" stroke="#C8102E" stroke-width="1.4"></path><rect fill="#FFFFFF" height="4.4" width="24" y="9.8"></rect><rect fill="#FFFFFF" height="24" width="4.4" x="9.8"></rect><rect fill="#C8102E" height="2.6" width="24" y="10.7"></rect><rect fill="#C8102E" height="24" width="2.6" x="10.7"></rect></svg>'
+    };
+    const langLabel = {
+      fr: { code: 'FR', full: 'Passer en français', aria: 'Passer en français' },
+      en: { code: 'EN', full: 'Switch to English', aria: 'Switch to English' }
+    };
+
+    function detectInitialLang() {
+      try {
+        const saved = localStorage.getItem('nachboris_lang');
+        if (saved === 'fr' || saved === 'en') return saved;
+      } catch (e) { /* localStorage blocked */ }
+      const params = new URLSearchParams(window.location.search);
+      const fromUrl = params.get('lang');
+      if (fromUrl === 'fr' || fromUrl === 'en') return fromUrl;
+      const nav = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+      return nav.startsWith('fr') ? 'fr' : 'en';
+    }
+
+    function renderToggle(currentLang) {
+      const targetLang = currentLang === 'fr' ? 'en' : 'fr';
+      document.querySelectorAll('.lang-toggle').forEach((btn) => {
+        const flag = btn.querySelector('.lang-flag');
+        const codeFull = btn.querySelector('.lang-code-full');
+        const codeShort = btn.querySelector('.lang-code-short');
+        if (flag) flag.innerHTML = flagSVG[targetLang];
+        if (codeFull) codeFull.textContent = langLabel[targetLang].full;
+        if (codeShort) codeShort.textContent = langLabel[targetLang].code;
+        if (!codeFull && !codeShort) {
+          const code = btn.querySelector('.lang-code');
+          if (code) code.textContent = langLabel[targetLang].code;
+        }
+        btn.setAttribute('aria-label', langLabel[targetLang].aria);
+        btn.setAttribute('data-target-lang', targetLang);
+      });
+    }
+
+    function applyLang(lang) {
+      if (lang !== 'fr' && lang !== 'en') lang = 'fr';
+      const dict = i18n[lang];
+      if (!dict) return;
+
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key] !== undefined) el.innerHTML = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach((el) => {
+        const key = el.getAttribute('data-i18n-html');
+        if (dict[key] !== undefined) el.innerHTML = dict[key];
+      });
+
+      document.documentElement.setAttribute('lang', lang);
+
+      if (i18nMeta[lang]) {
+        if (i18nMeta[lang].title) document.title = i18nMeta[lang].title;
+        const desc = document.querySelector('meta[name="description"]');
+        if (desc && i18nMeta[lang].description) desc.setAttribute('content', i18nMeta[lang].description);
+      }
+
+      renderToggle(lang);
+
+      try { localStorage.setItem('nachboris_lang', lang); } catch (e) { /* blocked */ }
+      try {
+        const url = new URL(window.location.href);
+        url.searchParams.set('lang', lang);
+        window.history.replaceState({}, '', url.toString());
+      } catch (e) { /* old browser */ }
+    }
+
+    document.querySelectorAll('.lang-toggle').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-target-lang')
+          || (document.documentElement.getAttribute('lang') === 'fr' ? 'en' : 'fr');
+        applyLang(target);
+      });
+    });
+
+    applyLang(detectInitialLang());
   </script>
 </body>
 </html>
