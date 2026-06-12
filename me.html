@@ -26,8 +26,6 @@
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
-  <link href="https://fonts.googleapis.com" rel="preconnect" />
-  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&amp;family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..500&amp;family=Inter+Tight:wght@400;500;600&amp;display=swap" rel="stylesheet" />
 
   <script type="application/ld+json">
@@ -1106,7 +1104,7 @@
     </div>
   </nav>
 
-  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu" id="mobileMenu" inert>
     <div class="mobile-menu-links">
       <a href="/#work" class="mobile-menu-link"><span data-i18n="nav.services">Services</span> <span>01</span></a>
       <a href="/me" class="mobile-menu-link"><span data-i18n="nav.about">À propos</span> <span>02</span></a>
@@ -1435,7 +1433,7 @@
     const closeMobileMenu = () => {
       nav.classList.remove('menu-open');
       mobileMenu.classList.remove('is-open');
-      mobileMenu.setAttribute('aria-hidden', 'true');
+      mobileMenu.setAttribute('inert', '');
       navToggle.setAttribute('aria-expanded', 'false');
       navToggle.setAttribute('aria-label', document.documentElement.getAttribute('lang') === 'fr' ? 'Ouvrir le menu de navigation' : 'Open navigation menu');
     };
@@ -1443,7 +1441,7 @@
     const toggleMobileMenu = () => {
       const isOpen = mobileMenu.classList.toggle('is-open');
       nav.classList.toggle('menu-open', isOpen);
-      mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+      if (isOpen) { mobileMenu.removeAttribute('inert'); } else { mobileMenu.setAttribute('inert', ''); }
       navToggle.setAttribute('aria-expanded', String(isOpen));
       const lang = document.documentElement.getAttribute('lang');
       const openLabel = lang === 'fr' ? 'Ouvrir le menu de navigation' : 'Open navigation menu';

@@ -49,8 +49,6 @@
   ]
 }
 </script>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&amp;family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..500&amp;family=Inter+Tight:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <style>
     :root {
@@ -3139,7 +3137,7 @@
 </div>
 </div>
 </nav>
-<div aria-hidden="true" class="mobile-menu" id="mobileMenu">
+<div inert class="mobile-menu" id="mobileMenu">
 <div class="mobile-menu-links">
 <a class="mobile-menu-link" href="/#work"><span data-i18n="nav.services">Services</span> <span>01</span></a>
 <a class="mobile-menu-link" href="/me"><span data-i18n="nav.about">À propos</span> <span>02</span></a>
@@ -3672,7 +3670,7 @@
     const closeMobileMenu = () => {
       nav.classList.remove('menu-open');
       mobileMenu.classList.remove('is-open');
-      mobileMenu.setAttribute('aria-hidden', 'true');
+      mobileMenu.setAttribute('inert', '');
       navToggle.setAttribute('aria-expanded', 'false');
       navToggle.setAttribute('aria-label', 'Open navigation menu');
     };
@@ -3680,7 +3678,7 @@
     const toggleMobileMenu = () => {
       const isOpen = mobileMenu.classList.toggle('is-open');
       nav.classList.toggle('menu-open', isOpen);
-      mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+      if (isOpen) { mobileMenu.removeAttribute('inert'); } else { mobileMenu.setAttribute('inert', ''); }
       navToggle.setAttribute('aria-expanded', String(isOpen));
       navToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
     };
