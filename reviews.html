@@ -899,6 +899,12 @@
       .footer-nav { grid-area: nav; }
       .footer-social { grid-area: social; justify-content: flex-start; }
     }
+    /* Responsive CTA label (harmonized with homepage) */
+    .nav-cta-label-short { display: none; }
+    @media (max-width: 560px) {
+      .nav-cta-label-full { display: none; }
+      .nav-cta-label-short { display: inline; }
+    }
   </style>
 </head>
 <body>
@@ -923,8 +929,8 @@
             <span class="pulse-dot"></span>
             <span class="availability-label" data-i18n="nav.available">Disponible</span>
           </span>
-          <a href="https://calendly.com/nachboris/20min" target="_blank" rel="noopener" class="nav-cta">
-            <span data-i18n="nav.cta.full">Réserver un appel</span>
+          <a href="https://calendly.com/nachboris/20min" target="_blank" rel="noopener noreferrer" class="nav-cta">
+            <span class="nav-cta-label nav-cta-label-full" data-i18n="nav.cta.full">Réserver un appel</span><span class="nav-cta-label nav-cta-label-short" data-i18n="nav.cta.short">Appeler</span>
             <svg class="arrow cta-phone" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           </a>
         </div>
@@ -1765,6 +1771,7 @@
         'nav.reviews': 'Avis',
         'nav.available': 'Disponible',
         'nav.cta.full': 'Réserver un appel',
+        'nav.cta.short': 'Appeler',
 
         'rev.skip': 'Aller au contenu',
 
@@ -1830,6 +1837,7 @@
         'nav.reviews': 'Reviews',
         'nav.available': 'Available',
         'nav.cta.full': 'Book a call',
+        'nav.cta.short': 'Call',
 
         'rev.skip': 'Skip to content',
 
