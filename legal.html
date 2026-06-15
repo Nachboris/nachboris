@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<!-- nachboris build: flags-fixed -->
 <html lang="fr">
 <head>
 <meta charset="utf-8"/>
@@ -562,9 +562,6 @@
     }
     .nav-cta .arrow { transition: transform 0.35s var(--spring); }
     .nav-cta:hover .arrow { transform: translateX(2px); }
-
-    @media (max-width: 560px) {
-      .nav-cta { padding: 0.52rem 0.9rem; font-size: var(--fs-13); }
     .lang-toggle {
       display: inline-flex;
       align-items: center;
@@ -624,6 +621,7 @@
         width: 0.95rem;
         height: 0.95rem;
       }
+    }
     footer {
       padding: 2.75rem 0 3rem;
       border-top: 1px solid rgba(15, 15, 23, 0.06);
@@ -723,9 +721,16 @@
       height: 100%;
       display: block;
       fill: currentColor;
+    }
 
+    /* labels CTA : un seul visible selon le viewport */
+    .nav-cta-label-short{display:none;}
+    @media (max-width:560px){
+      .nav-cta-label-full{display:none;}
+      .nav-cta-label-short{display:inline;}
+    }
     /* ---- page utilitaire ---- */
-    .util-hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:8rem var(--pad) 5rem;}
+    .util-hero{min-height:66vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:7rem var(--pad) 2.5rem;}
     .util-hero-inner{max-width:580px;}
     .error-code{font-family:var(--serif);font-weight:400;font-size:clamp(5.5rem,20vw,11rem);line-height:.95;letter-spacing:-.03em;font-variation-settings:"opsz" 144,"SOFT" 50;color:var(--ink);}
     .util-hero h1{font-size:clamp(1.9rem,5vw,2.8rem);margin:.5rem 0 1rem;}
@@ -832,66 +837,21 @@
 </div>
 </footer>
 <script>
-    const i18n = {"fr": {"nav.services": "Services", "nav.about": "À propos", "nav.projects": "Projets", "nav.reviews": "Avis", "nav.available": "Disponible", "nav.cta.full": "Réserver un appel", "nav.cta.short": "Appeler", "footer.lang": "Français", "footer.location": "Basé à Lausanne", "footer.copy": "Fait avec ♡ par Boris &amp; Claude.", "footer.legal": "Mentions légales", "err.h1": "Cette page <span class=\"italic-accent\">n'existe pas</span>.", "err.sub": "Le lien est peut-être cassé, ou la page a déménagé. Pas de panique — tout le reste est à l'accueil.", "err.cta": "Retour à l'accueil", "legal.h1": "Mentions légales", "legal.lead": "Rien de compliqué ici — juste ce que la loi demande, dit simplement.", "legal.s1.t": "Qui édite ce site", "legal.s1.b": "Ce site est le portfolio personnel de Boris Nachbaur, freelance basé à Lausanne, en Suisse. Pour me joindre : <a href=\"mailto:boris@nachboris.ch\">boris@nachboris.ch</a>.", "legal.s2.t": "Où il est hébergé", "legal.s2.b": "Le site est hébergé par Cloudflare, Inc. — 101 Townsend Street, San Francisco, CA 94107, États-Unis.", "legal.s3.t": "Tes données", "legal.s3.b": "Ce site ne récolte rien sur toi : pas de formulaire, pas de cookie, pas de tracking publicitaire. Si une mesure d'audience est en place, elle reste anonyme et sans cookie. Si tu réserves un appel, tu passes par Calendly, qui gère le rendez-vous selon ses propres conditions. Et si tu m'écris, je garde ton message juste le temps de te répondre.", "legal.s4.t": "Le contenu", "legal.s4.b": "Les textes, le design et les images de ce site sont les miens. Merci de ne pas les réutiliser sans me demander d'abord."}, "en": {"nav.services": "Services", "nav.about": "About", "nav.projects": "Projects", "nav.reviews": "Reviews", "nav.available": "Available", "nav.cta.full": "Book a call", "nav.cta.short": "Call", "footer.lang": "French speaker", "footer.location": "Based in Lausanne", "footer.copy": "Made with ♡ by Boris &amp; Claude.", "footer.legal": "Legal notice", "err.h1": "This page <span class=\"italic-accent\">doesn't exist</span>.", "err.sub": "The link may be broken, or the page has moved. No worries — everything else is back home.", "err.cta": "Back to home", "legal.h1": "Legal notice", "legal.lead": "Nothing complicated here — just what the law asks for, in plain words.", "legal.s1.t": "Who runs this site", "legal.s1.b": "This site is the personal portfolio of Boris Nachbaur, a freelancer based in Lausanne, Switzerland. Reach me at <a href=\"mailto:boris@nachboris.ch\">boris@nachboris.ch</a>.", "legal.s2.t": "Where it's hosted", "legal.s2.b": "The site is hosted by Cloudflare, Inc. — 101 Townsend Street, San Francisco, CA 94107, USA.", "legal.s3.t": "Your data", "legal.s3.b": "This site collects nothing about you: no form, no cookie, no advertising tracking. If any audience measurement is in place, it stays anonymous and cookie-free. If you book a call, you go through Calendly, which handles it under its own terms. And if you email me, I keep your message just long enough to reply.", "legal.s4.t": "The content", "legal.s4.b": "The text, design and images on this site are mine. Please don't reuse them without asking me first."}};
-    const i18nMeta = {"fr": {"title": "Mentions légales · Boris Nachbaur", "description": "Mentions légales du site nachboris.ch : éditeur, hébergement et données personnelles, en clair."}, "en": {"title": "Legal notice · Boris Nachbaur", "description": "Legal notice for nachboris.ch: publisher, hosting and personal data, in plain words."}};
-    const flagSVG = {"fr": "<svg viewbox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"><rect fill=\"#1F4AA8\" height=\"24\" width=\"8\" x=\"0\"></rect><rect fill=\"#FFFFFF\" height=\"24\" width=\"8\" x=\"8\"></rect><rect fill=\"#E23D28\" height=\"24\" width=\"8\" x=\"16\"></rect></svg>", "en": "<svg viewbox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"><rect fill=\"#012169\" height=\"24\" width=\"24\"></rect><path d=\"M0 0L24 24M24 0L0 24\" stroke=\"#FFFFFF\" stroke-width=\"3.2\"></path><path d=\"M0 0L24 24M24 0L0 24\" stroke=\"#C8102E\" stroke-width=\"1.4\"></path><rect fill=\"#FFFFFF\" height=\"4.4\" width=\"24\" y=\"9.8\"></rect><rect fill=\"#FFFFFF\" height=\"24\" width=\"4.4\" x=\"9.8\"></rect><rect fill=\"#C8102E\" height=\"2.6\" width=\"24\" y=\"10.7\"></rect><rect fill=\"#C8102E\" height=\"24\" width=\"2.6\" x=\"10.7\"></rect></svg>"};
-    const langLabel = {"fr": {"code": "FR", "full": "Passer en français", "aria": "Passer en français"}, "en": {"code": "EN", "full": "Switch to English", "aria": "Switch to English"}};
-
-    function detectInitialLang(){
-      try{const s=localStorage.getItem('nachboris_lang');if(s==='fr'||s==='en')return s;}catch(e){}
-      const p=new URLSearchParams(window.location.search).get('lang');
-      if(p==='fr'||p==='en')return p;
-      const n=(navigator.language||'en').toLowerCase();
-      return n.startsWith('fr')?'fr':'en';
-    }
-    function renderToggle(cur){
-      const t=cur==='fr'?'en':'fr';
-      document.querySelectorAll('.lang-toggle').forEach((btn)=>{
-        const flag=btn.querySelector('.lang-flag');
-        const cf=btn.querySelector('.lang-code-full');
-        const cs=btn.querySelector('.lang-code-short');
-        if(flag)flag.innerHTML=flagSVG[t];
-        if(cf)cf.textContent=langLabel[t].full;
-        if(cs)cs.textContent=langLabel[t].code;
-        btn.setAttribute('aria-label',langLabel[t].aria);
-        btn.setAttribute('data-target-lang',t);
-      });
-    }
-    function applyLang(lang){
-      if(lang!=='fr'&&lang!=='en')lang='fr';
-      const dict=i18n[lang];if(!dict)return;
-      document.querySelectorAll('[data-i18n]').forEach((el)=>{
-        const k=el.getAttribute('data-i18n');
-        if(dict[k]!==undefined)el.innerHTML=dict[k];
-      });
-      document.documentElement.setAttribute('lang',lang);
-      if(i18nMeta[lang]){
-        if(i18nMeta[lang].title)document.title=i18nMeta[lang].title;
-        const d=document.querySelector('meta[name="description"]');
-        if(d&&i18nMeta[lang].description)d.setAttribute('content',i18nMeta[lang].description);
-      }
-      renderToggle(lang);
-      try{localStorage.setItem('nachboris_lang',lang);}catch(e){}
-      try{const u=new URL(window.location.href);u.searchParams.set('lang',lang);window.history.replaceState({},'',u.toString());}catch(e){}
-    }
-    document.querySelectorAll('.lang-toggle').forEach((btn)=>{
-      btn.addEventListener('click',()=>{
-        const t=btn.getAttribute('data-target-lang')||(document.documentElement.getAttribute('lang')==='fr'?'en':'fr');
-        applyLang(t);
-      });
-    });
-
-    const yearEl=document.getElementById('year');
-    if(yearEl)yearEl.textContent=new Date().getFullYear();
-    const nav=document.getElementById('nav');
-    const navToggle=document.getElementById('navToggle');
-    const mobileMenu=document.getElementById('mobileMenu');
-    const closeMobileMenu=()=>{nav.classList.remove('menu-open');mobileMenu.classList.remove('is-open');mobileMenu.setAttribute('inert','');navToggle.setAttribute('aria-expanded','false');};
-    const toggleMobileMenu=()=>{const o=mobileMenu.classList.toggle('is-open');nav.classList.toggle('menu-open',o);if(o)mobileMenu.removeAttribute('inert');else mobileMenu.setAttribute('inert','');navToggle.setAttribute('aria-expanded',String(o));};
-    navToggle.addEventListener('click',toggleMobileMenu);
-    mobileMenu.querySelectorAll('a').forEach((l)=>l.addEventListener('click',closeMobileMenu));
-    window.addEventListener('keydown',(e)=>{if(e.key==='Escape')closeMobileMenu();});
-
+    const i18n={"fr": {"nav.services": "Services", "nav.about": "À propos", "nav.projects": "Projets", "nav.reviews": "Avis", "nav.available": "Disponible", "nav.cta.full": "Réserver un appel", "nav.cta.short": "Appeler", "footer.lang": "Français", "footer.location": "Basé à Lausanne", "footer.copy": "Fait avec ♡ par Boris &amp; Claude.", "footer.legal": "Mentions légales", "err.h1": "Cette page <span class=\"italic-accent\">n'existe pas</span>.", "err.sub": "Le lien est peut-être cassé, ou la page a déménagé. Pas de panique — tout le reste est à l'accueil.", "err.cta": "Retour à l'accueil", "legal.h1": "Mentions légales", "legal.lead": "Rien de compliqué ici — juste ce que la loi demande, dit simplement.", "legal.s1.t": "Qui édite ce site", "legal.s1.b": "Ce site est le portfolio personnel de Boris Nachbaur, freelance basé à Lausanne, en Suisse. Pour me joindre : <a href=\"mailto:boris@nachboris.ch\">boris@nachboris.ch</a>.", "legal.s2.t": "Où il est hébergé", "legal.s2.b": "Le site est hébergé par Cloudflare, Inc. — 101 Townsend Street, San Francisco, CA 94107, États-Unis.", "legal.s3.t": "Tes données", "legal.s3.b": "Ce site ne récolte rien sur toi : pas de formulaire, pas de cookie, pas de tracking publicitaire. Si une mesure d'audience est en place, elle reste anonyme et sans cookie. Si tu réserves un appel, tu passes par Calendly, qui gère le rendez-vous selon ses propres conditions. Et si tu m'écris, je garde ton message juste le temps de te répondre.", "legal.s4.t": "Le contenu", "legal.s4.b": "Les textes, le design et les images de ce site sont les miens. Merci de ne pas les réutiliser sans me demander d'abord."}, "en": {"nav.services": "Services", "nav.about": "About", "nav.projects": "Projects", "nav.reviews": "Reviews", "nav.available": "Available", "nav.cta.full": "Book a call", "nav.cta.short": "Call", "footer.lang": "French speaker", "footer.location": "Based in Lausanne", "footer.copy": "Made with ♡ by Boris &amp; Claude.", "footer.legal": "Legal notice", "err.h1": "This page <span class=\"italic-accent\">doesn't exist</span>.", "err.sub": "The link may be broken, or the page has moved. No worries — everything else is back home.", "err.cta": "Back to home", "legal.h1": "Legal notice", "legal.lead": "Nothing complicated here — just what the law asks for, in plain words.", "legal.s1.t": "Who runs this site", "legal.s1.b": "This site is the personal portfolio of Boris Nachbaur, a freelancer based in Lausanne, Switzerland. Reach me at <a href=\"mailto:boris@nachboris.ch\">boris@nachboris.ch</a>.", "legal.s2.t": "Where it's hosted", "legal.s2.b": "The site is hosted by Cloudflare, Inc. — 101 Townsend Street, San Francisco, CA 94107, USA.", "legal.s3.t": "Your data", "legal.s3.b": "This site collects nothing about you: no form, no cookie, no advertising tracking. If any audience measurement is in place, it stays anonymous and cookie-free. If you book a call, you go through Calendly, which handles it under its own terms. And if you email me, I keep your message just long enough to reply.", "legal.s4.t": "The content", "legal.s4.b": "The text, design and images on this site are mine. Please don't reuse them without asking me first."}};
+    const i18nMeta={"fr": {"title": "Mentions légales · Boris Nachbaur", "description": "Mentions légales du site nachboris.ch : éditeur, hébergement et données personnelles, en clair."}, "en": {"title": "Legal notice · Boris Nachbaur", "description": "Legal notice for nachboris.ch: publisher, hosting and personal data, in plain words."}};
+    const flagSVG={"fr": "<svg viewbox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"><rect fill=\"#1F4AA8\" height=\"24\" width=\"8\" x=\"0\"></rect><rect fill=\"#FFFFFF\" height=\"24\" width=\"8\" x=\"8\"></rect><rect fill=\"#E23D28\" height=\"24\" width=\"8\" x=\"16\"></rect></svg>", "en": "<svg viewbox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\"><rect fill=\"#012169\" height=\"24\" width=\"24\"></rect><path d=\"M0 0L24 24M24 0L0 24\" stroke=\"#FFFFFF\" stroke-width=\"3.2\"></path><path d=\"M0 0L24 24M24 0L0 24\" stroke=\"#C8102E\" stroke-width=\"1.4\"></path><rect fill=\"#FFFFFF\" height=\"4.4\" width=\"24\" y=\"9.8\"></rect><rect fill=\"#FFFFFF\" height=\"24\" width=\"4.4\" x=\"9.8\"></rect><rect fill=\"#C8102E\" height=\"2.6\" width=\"24\" y=\"10.7\"></rect><rect fill=\"#C8102E\" height=\"24\" width=\"2.6\" x=\"10.7\"></rect></svg>"};
+    const langLabel={"fr": {"code": "FR", "full": "Passer en français", "aria": "Passer en français"}, "en": {"code": "EN", "full": "Switch to English", "aria": "Switch to English"}};
+    function detectInitialLang(){try{const s=localStorage.getItem('nachboris_lang');if(s==='fr'||s==='en')return s;}catch(e){}const p=new URLSearchParams(window.location.search).get('lang');if(p==='fr'||p==='en')return p;const n=(navigator.language||'en').toLowerCase();return n.startsWith('fr')?'fr':'en';}
+    function renderToggle(cur){const t=cur==='fr'?'en':'fr';document.querySelectorAll('.lang-toggle').forEach((b)=>{const f=b.querySelector('.lang-flag'),cf=b.querySelector('.lang-code-full'),cs=b.querySelector('.lang-code-short');if(f)f.innerHTML=flagSVG[t];if(cf)cf.textContent=langLabel[t].full;if(cs)cs.textContent=langLabel[t].code;b.setAttribute('aria-label',langLabel[t].aria);b.setAttribute('data-target-lang',t);});}
+    function applyLang(lang){if(lang!=='fr'&&lang!=='en')lang='fr';const d=i18n[lang];if(!d)return;document.querySelectorAll('[data-i18n]').forEach((el)=>{const k=el.getAttribute('data-i18n');if(d[k]!==undefined)el.innerHTML=d[k];});document.documentElement.setAttribute('lang',lang);if(i18nMeta[lang]){if(i18nMeta[lang].title)document.title=i18nMeta[lang].title;const de=document.querySelector('meta[name="description"]');if(de&&i18nMeta[lang].description)de.setAttribute('content',i18nMeta[lang].description);}renderToggle(lang);try{localStorage.setItem('nachboris_lang',lang);}catch(e){}try{const u=new URL(window.location.href);u.searchParams.set('lang',lang);window.history.replaceState({},'',u.toString());}catch(e){}}
+    document.querySelectorAll('.lang-toggle').forEach((b)=>{b.addEventListener('click',()=>{const t=b.getAttribute('data-target-lang')||(document.documentElement.getAttribute('lang')==='fr'?'en':'fr');applyLang(t);});});
+    const yearEl=document.getElementById('year');if(yearEl)yearEl.textContent=new Date().getFullYear();
+    const nav=document.getElementById('nav'),navToggle=document.getElementById('navToggle'),mobileMenu=document.getElementById('mobileMenu');
+    const closeM=()=>{nav.classList.remove('menu-open');mobileMenu.classList.remove('is-open');mobileMenu.setAttribute('inert','');navToggle.setAttribute('aria-expanded','false');};
+    const toggleM=()=>{const o=mobileMenu.classList.toggle('is-open');nav.classList.toggle('menu-open',o);if(o)mobileMenu.removeAttribute('inert');else mobileMenu.setAttribute('inert','');navToggle.setAttribute('aria-expanded',String(o));};
+    navToggle.addEventListener('click',toggleM);
+    mobileMenu.querySelectorAll('a').forEach((l)=>l.addEventListener('click',closeM));
+    window.addEventListener('keydown',(e)=>{if(e.key==='Escape')closeM();});
     applyLang(detectInitialLang());
   </script>
 </body>
