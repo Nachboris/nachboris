@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8" />
  <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport" />
-  <title>Projets · Boris Nachbaur, Opérateur IA</title>
-  <meta name="description" content="15 ans à lancer et faire tourner des business en ligne en solo. D'un side-business démarré à 15 ans à une activité full-time à 100% de satisfaction. La preuve concrète, pas juste des promesses." />
+  <title>Projets · Boris Nachbaur, Opérateur digital &amp; IA · Lausanne</title>
+  <meta name="description" content="15 ans à lancer et faire tourner des business en ligne en solo. 20 000+ transactions, 2 250+ avis vérifiés, 100% de satisfaction. Opérateur digital & IA basé à Lausanne, Suisse romande." />
   <meta name="author" content="Boris Nachbaur" />
   <link rel="canonical" href="https://nachboris.ch/projects" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Boris Nachbaur" />
   <meta property="og:title" content="Projets · Boris Nachbaur" />
-  <meta property="og:description" content="15 ans à lancer et faire tourner des business en ligne en solo. D'un side-business démarré à 15 ans à une activité full-time à 100% de satisfaction. La preuve concrète, pas juste des promesses." />
+  <meta property="og:description" content="15 ans à lancer et faire tourner des business en ligne en solo. 20 000+ transactions, 2 250+ avis vérifiés, 100% de satisfaction. Opérateur digital & IA basé à Lausanne, Suisse romande." />
   <meta property="og:url" content="https://nachboris.ch/projects" />
   <meta property="og:image" content="https://nachboris.ch/assets/og-image.webp" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="631" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Projets · Boris Nachbaur" />
-  <meta name="twitter:description" content="15 ans à lancer et faire tourner des business en ligne en solo. D'un side-business démarré à 15 ans à une activité full-time à 100% de satisfaction. La preuve concrète, pas juste des promesses." />
+  <meta name="twitter:description" content="15 ans à lancer et faire tourner des business en ligne en solo. 20 000+ transactions, 2 250+ avis vérifiés, 100% de satisfaction. Opérateur digital & IA basé à Lausanne, Suisse romande." />
   <meta name="twitter:image" content="https://nachboris.ch/assets/og-image.webp" />
 
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
@@ -544,6 +544,140 @@
     }
     .page-head .eyebrow {
       justify-content: center;
+    }
+
+    /* ==========================================================
+       SYNTH — stats band + timeline 2011-2026
+       ========================================================== */
+    .synth {
+      padding-top: 0.5rem;
+      padding-bottom: clamp(2.5rem, 6vw, 4rem);
+    }
+    .synth-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(1rem, 3vw, 2.5rem);
+      padding: clamp(1.5rem, 3.5vw, 2.25rem) 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .synth-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .synth-stat .num {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+      line-height: 1.05;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+    .synth-stat .num em {
+      font-style: italic;
+      color: var(--orange);
+      font-size: 0.62em;
+      margin-left: 0.22em;
+    }
+    .synth-stat-label {
+      font-family: var(--sans);
+      font-size: var(--fs-14);
+      color: var(--ink-mute);
+      line-height: 1.45;
+      max-width: 22ch;
+    }
+    .synth-timeline {
+      margin-top: clamp(2.25rem, 5vw, 3.5rem);
+      position: relative;
+    }
+    .tl-points {
+      list-style: none;
+      margin: 0; padding: 0;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      position: relative;
+    }
+    .tl-points::before {
+      content: "";
+      position: absolute;
+      left: 0; right: 0;
+      top: 2.35rem;
+      height: 2px;
+      background: var(--rule);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+    }
+    .synth-timeline.in .tl-points::before { transform: scaleX(1); }
+    .tl-point {
+      position: relative;
+      padding-right: 0.75rem;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .synth-timeline.in .tl-point { opacity: 1; transform: none; }
+    .synth-timeline.in .tl-point:nth-child(1) { transition-delay: 0.20s; }
+    .synth-timeline.in .tl-point:nth-child(2) { transition-delay: 0.40s; }
+    .synth-timeline.in .tl-point:nth-child(3) { transition-delay: 0.60s; }
+    .synth-timeline.in .tl-point:nth-child(4) { transition-delay: 0.80s; }
+    .synth-timeline.in .tl-point:nth-child(5) { transition-delay: 1.00s; }
+    .synth-timeline.in .tl-point:nth-child(6) { transition-delay: 1.20s; }
+    .tl-year {
+      display: block;
+      font-family: var(--hand);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 0.85rem;
+    }
+    .tl-dot {
+      display: block;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--indigo);
+      box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--indigo-tint);
+      margin-bottom: 0.9rem;
+      position: relative;
+      z-index: 1;
+    }
+    .tl-label {
+      display: block;
+      font-family: var(--sans);
+      font-size: var(--fs-13);
+      color: var(--ink-soft);
+      line-height: 1.45;
+      max-width: 17ch;
+    }
+    @media (max-width: 860px) {
+      .synth-stats { grid-template-columns: repeat(2, 1fr); }
+      .tl-points {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding-left: 1.6rem;
+      }
+      .tl-points::before {
+        left: 5px; right: auto;
+        top: 0.35rem; bottom: 0.35rem;
+        width: 2px; height: auto;
+        transform: scaleY(0);
+        transform-origin: top center;
+      }
+      .synth-timeline.in .tl-points::before { transform: scaleY(1); }
+      .tl-point { padding-right: 0; }
+      .tl-dot {
+        position: absolute;
+        left: -1.6rem;
+        top: 0.35rem;
+        margin-bottom: 0;
+      }
+      .tl-year { margin-bottom: 0.3rem; }
+      .tl-label { max-width: 40ch; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .tl-points::before, .tl-point { transition: none; transform: none; opacity: 1; }
     }
 
     /* ==========================================================
@@ -1440,10 +1574,68 @@
       <div class="wrap">
         <div class="page-head-inner reveal">
           <span class="eyebrow" data-i18n="proj.head.eyebrow">Projets &amp; expérience</span>
-          <h1 data-i18n-html="proj.head.h1">Plus de 15 ans à <em>opérer en solo.</em></h1>
+          <h1 data-i18n-html="proj.head.h1">J'ai déjà construit <em>ce que je te vends.</em></h1>
           <p class="lede" data-i18n="proj.head.lede">
-            Chaque projet de cette page, je l'ai mené de bout en bout&nbsp;: acquisition, ventes, support, communauté, opérations. En comptant mon Master en Digital Business Management à Rennes School of Business et deux postes de business developer en startup early-stage, ça fait plus de 15 ans sur le terrain du digital.
+            Sites, funnels, systèmes&nbsp;: tout ce que je te propose, je l'ai d'abord opéré pour moi, de bout en bout. Voici les preuves — chiffres, parcours et projets.
           </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SYNTH: aggregated stats + timeline -->
+    <section class="synth" aria-label="Synthèse du parcours">
+      <div class="wrap">
+        <div class="synth-stats reveal">
+          <div class="synth-stat">
+            <span class="num"><span class="count" data-target="15">0</span><em data-i18n="proj.sy.s1.unit">ans</em></span>
+            <span class="synth-stat-label" data-i18n="proj.sy.s1.label">à opérer des business en ligne, en solo</span>
+          </div>
+          <div class="synth-stat">
+            <span class="num"><span class="count" data-target="20000">0</span><em>+</em></span>
+            <span class="synth-stat-label" data-i18n="proj.sy.s2.label">transactions traitées de bout en bout</span>
+          </div>
+          <div class="synth-stat">
+            <span class="num"><span class="count" data-target="2250">0</span><em>+</em></span>
+            <span class="synth-stat-label" data-i18n="proj.sy.s3.label">avis clients vérifiés, publics</span>
+          </div>
+          <div class="synth-stat">
+            <span class="num"><span class="count" data-target="100">0</span><em>%</em></span>
+            <span class="synth-stat-label" data-i18n="proj.sy.s4.label">de satisfaction, sur toute la période</span>
+          </div>
+        </div>
+        <div class="synth-timeline reveal" aria-label="Frise chronologique 2011-2026">
+          <ol class="tl-points">
+            <li class="tl-point">
+              <span class="tl-year">2011</span>
+              <span class="tl-dot" aria-hidden="true"></span>
+              <span class="tl-label" data-i18n="proj.tl.p1">Premier deal en ligne, à 15 ans</span>
+            </li>
+            <li class="tl-point">
+              <span class="tl-year">2012</span>
+              <span class="tl-dot" aria-hidden="true"></span>
+              <span class="tl-label" data-i18n="proj.tl.p2">Lancement de Bobu (e-commerce)</span>
+            </li>
+            <li class="tl-point">
+              <span class="tl-year">2018</span>
+              <span class="tl-dot" aria-hidden="true"></span>
+              <span class="tl-label" data-i18n="proj.tl.p3">Master Digital Business Management</span>
+            </li>
+            <li class="tl-point">
+              <span class="tl-year">2021</span>
+              <span class="tl-dot" aria-hidden="true"></span>
+              <span class="tl-label" data-i18n="proj.tl.p4">Bobu full-time, opéré depuis l'Asie</span>
+            </li>
+            <li class="tl-point">
+              <span class="tl-year">2024</span>
+              <span class="tl-dot" aria-hidden="true"></span>
+              <span class="tl-label" data-i18n="proj.tl.p5">Sortie à mes conditions · Gamoniz financé à 226%</span>
+            </li>
+            <li class="tl-point">
+              <span class="tl-year">2026</span>
+              <span class="tl-dot" aria-hidden="true"></span>
+              <span class="tl-label" data-i18n="proj.tl.p6">Opérateur digital &amp; IA, Lausanne</span>
+            </li>
+          </ol>
         </div>
       </div>
     </section>
@@ -1456,24 +1648,27 @@
           <div>
             <div class="current-card-head">
               <span class="current-card-eyebrow" data-i18n="proj.cw.eyebrow">Disponible en ce moment</span>
-              <h2 data-i18n-html="proj.cw.h2">Opérateur IA, <em>en freelance.</em></h2>
+              <h2 data-i18n-html="proj.cw.h2">Opérateur digital &amp; IA, <em>en freelance.</em></h2>
               <span class="current-card-since" data-i18n="proj.cw.since">Depuis avril 2026</span>
             </div>
 
             <p class="current-card-intro" data-i18n-html="proj.cw.intro">
-              La raison d'être de ce site. <strong>J'aide les coachs, consultants et formateurs</strong> à intégrer intelligemment l'IA dans leur métier, sans diluer ce qui les rend uniques. Je m'appuie sur ce que j'ai vraiment fait tourner, pas juste lu quelque part.
+              La raison d'être de ce site. <strong>J'aide les experts indépendants de Suisse romande</strong> — coachs, consultants, formateurs, professions libérales — à transformer leur présence en ligne en système qui attire et convertit. Je m'appuie sur ce que j'ai vraiment fait tourner, pas juste lu quelque part.
             </p>
 
             <div class="current-services">
               <div class="current-service">
-                <span class="service-label" data-i18n="proj.cw.s1.label">Conseil &amp; formation IA</span>
-                <p data-i18n="proj.cw.s1.desc">Démystifier l'IA pour des équipes non techniques&nbsp;: pédagogie, ateliers concrets, et implémentation de process directement dans leur quotidien.</p>
+                <span class="service-label" data-i18n="proj.cw.s1.label">Sites, funnels &amp; email</span>
+                <p data-i18n="proj.cw.s1.desc">Conception, copy et exécution de bout en bout&nbsp;: la page qui convertit, la séquence qui relance, le parcours qui amène jusqu'à l'appel réservé.</p>
               </div>
               <div class="current-service">
-                <span class="service-label" data-i18n="proj.cw.s2.label">Marketing digital</span>
-                <p data-i18n="proj.cw.s2.desc">Conception et optimisation de funnels&nbsp;: audit, structure, copy et exécution, pour celles et ceux qui veulent plus de conversions et moins de bruit.</p>
+                <span class="service-label" data-i18n="proj.cw.s2.label">Systèmes &amp; IA</span>
+                <p data-i18n="proj.cw.s2.desc">Outils sur-mesure, automatisations, skills Claude entraînés sur ta méthode. La tuyauterie tourne pendant que tu es avec tes clients.</p>
               </div>
             </div>
+            <!-- CASE STUDY CLIENT À VENIR — première mission documentée (coach exécutif, refonte de page d'offre,
+                 pivot vers le coaching de groupe). Format : situation → ce que j'ai construit → résultat.
+                 Dé-commenter et remplir après livraison, avec accord client. -->
           </div>
 
           <div class="current-card-cta">
@@ -1486,7 +1681,7 @@
               <svg class="arrow cta-phone" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             </a>
             <a href="mailto:boris@nachboris.ch" class="btn btn-ghost">boris@nachboris.ch</a>
-            <span class="current-card-note" data-i18n-html="proj.cw.note">Ce site est en ligne depuis mi-avril 2026 pour soutenir cette activité (Github public <a href="https://github.com/Nachboris/nachboris/activity">ici</a>).</span>
+            <span class="current-card-note" data-i18n-html="proj.cw.note">Ce site est en ligne depuis mi-avril 2026 pour soutenir cette activité.</span>
           </div>
 
         </div>
@@ -1552,7 +1747,7 @@
             <div class="proved-body">
               <span class="proved-label" data-i18n="proj.feat.proved.label">Ce que ça prouve</span>
               <p data-i18n="proj.feat.proved.body">
-                Je sais emmener un business en ligne de zéro à full-time, bâtir une réputation sur un marché hostile, et le faire tourner de façon rentable pendant plus de dix ans sans cramer la confiance que j'ai gagnée.
+                Je sais emmener un business en ligne de zéro à full-time, bâtir une réputation sur un marché hostile, et le faire tourner de façon rentable pendant plus de dix ans sans cramer la confiance que j'ai gagnée. <strong>Pour toi&nbsp;:</strong> les mêmes mécanismes — livraison automatisée, emails qui tournent, fiabilité systématique — appliqués à ton activité.
               </p>
             </div>
           </div>
@@ -1615,7 +1810,7 @@
                   Vivre sur la route a forcé des décisions que j'évitais&nbsp;: chaque tâche qui ne pouvait pas être automatisée devait disparaître ou imposer un correctif. J'ai construit une boutique WordPress sur-mesure (GW2Rewards), <strong>automatisé la livraison de clés CD de bout en bout</strong>, mené des campagnes email via MailerLite, et basculé vers un marché plus grand avec une vraie sécurité opérationnelle. Le faible coût de la vie m'a donné la marge pour construire patiemment, au lieu de courir après chaque vente rapide.
                 </p>
                 <p>
-                  Il n'y a pas eu de moment dramatique «&nbsp;je quitte mon job&nbsp;». À la fin de cette année, le business marchait mieux qu'un emploi. Alors je ne suis simplement pas revenu. Pendant les trois années suivantes, c'était mon revenu à plein temps, dûment déclaré, taxé, et assez rentable pour <strong>générer 500K$+ de chiffre d'affaires cumulé</strong>, financer la vie que je voulais, et investir dans l'immobilier en France.
+                  Il n'y a pas eu de moment dramatique «&nbsp;je quitte mon job&nbsp;». À la fin de cette année, le business marchait mieux qu'un emploi. Alors je ne suis simplement pas revenu. Pendant les trois années suivantes, c'était mon revenu à plein temps, dûment déclaré, taxé, et assez rentable pour financer la vie que je voulais, et investir dans l'immobilier en France.
                 </p>
                 <p>
                   En 2024, avec 2 250+ avis positifs vérifiés et 100% de satisfaction sur toute son histoire, j'avais étiré ce modèle aussi loin qu'il pouvait aller seul. Je l'ai fermé à mes conditions, pour aller construire quelque chose de plus ambitieux&nbsp;: une vraie marketplace.
@@ -1671,7 +1866,7 @@
               <span><strong>Équipe&nbsp;:</strong> 3 stagiaires pilotés au lancement</span>
             </div>
             <p class="project-proved" data-i18n="proj.p1.proved">
-              Mener un vrai lancement (marque, GTM, communauté), arrêter un projet quand la réalité l'exige, et pivoter sans perdre son audience.
+              <strong>Pour toi&nbsp;:</strong> quelqu'un qui a déjà mené un lancement complet — marque, go-to-market, communauté, petite équipe pilotée — et qui sait pivoter quand la réalité l'exige, sans perdre l'audience.
             </p>
           </article>
 
@@ -1684,8 +1879,7 @@
             <span class="project-period" data-i18n="proj.p2.period">En continu · version minimaliste</span>
             <div class="project-body" data-i18n-html="proj.p2.body">
               <p>
-                Un petit projet volontairement léger que j'aime vraiment&nbsp;: sélectionner les meilleures offres de parrainage pour les consommateurs français et les partager avec ma communauté. Le principe est simple&nbsp;: <strong>tu t'inscris, tu fais une chose facile, tu reçois un bonus en cash</strong>.
-              </p>
+Un projet né de ma passion pour les finances personnelles&nbsp;: je teste en continu les plateformes bancaires, crypto et invest, et je partage deux types de contenus&nbsp;: des <strong>coups de cœur</strong> (avis et comparatifs sur les outils que j'utilise vraiment) et des <strong>offres à prime</strong> — tu t'inscris, tu fais une chose facile, tu reçois un bonus en cash.</p><p>Un seul article phare sur Finary a généré <strong>1 000+ parrainages</strong>, plus des revenus d'affiliation via un code promo exclusif. C'est gardé petit volontairement&nbsp;: quelques centaines d'euros par mois, avec un entretien minimal.</p><p>Je ne partage que les offres et outils qui valent le temps qu'ils prennent. Conçu comme un site minimaliste, adossé à une liste email à laquelle j'écris 2 à 3 fois par mois avec les meilleurs plans.</p>
               <p>
                 Un seul article phare sur Finary a généré <strong>1 000+ parrainages</strong>, plus des revenus d'affiliation via un code promo exclusif. C'est gardé petit volontairement&nbsp;: quelques centaines d'euros par mois, avec un entretien minimal.
               </p>
@@ -1700,7 +1894,7 @@
               <span><strong>Rythme&nbsp;:</strong> 2 à 3 emails / mois</span>
             </div>
             <p class="project-proved" data-i18n="proj.p2.proved">
-              Un actif secondaire qui rapporte tranquillement tout en étant vraiment utile à ceux qui le suivent.
+              <strong>Pour toi&nbsp;:</strong> je sais construire un actif de contenu qui rapporte pendant des années avec un entretien minimal. Un seul article bien fait a généré 1&nbsp;000+ parrainages.
             </p>
           </article>
 
@@ -1725,7 +1919,7 @@
               <span><strong>Utilisateurs&nbsp;:</strong> moi seulement</span>
             </div>
             <p class="project-proved" data-i18n="proj.p3.proved">
-              Construire quelque chose juste pour le plaisir «&nbsp;juste pour moi&nbsp;» tout en étant sain.
+              <strong>Pour toi&nbsp;:</strong> si j'ai construit une app complète pour le plaisir, ton espace client ou ton outil interne est un projet à ma portée — vite, léger, sans agence.
             </p>
           </article>
 
@@ -1750,7 +1944,7 @@
               <span><strong>Bénévolat&nbsp;:</strong> association Well'Come</span>
             </div>
             <p class="project-proved" data-i18n="proj.p4.proved">
-              Le regard d'opérateur n'est pas juste de la théorie&nbsp;: j'ai été des deux côtés de la relation fondateur/opérateur.
+              <strong>Pour toi&nbsp;:</strong> j'ai été des deux côtés de la relation fondateur/opérateur. Je sais ce qu'on attend de quelqu'un à qui on confie ses systèmes.
             </p>
           </article>
 
@@ -1776,7 +1970,7 @@
             <span class="eyebrow" data-i18n="proj.close.eyebrow">Ce que ça veut dire pour toi</span>
             <h2 data-i18n-html="proj.close.h2">Si j'ai fait tourner un business <em>en solo pendant 12 ans,</em> je peux aider le tien.</h2>
             <p data-i18n="proj.close.p">
-              C'est la réaction que j'espère. Si tu es coach, consultant ou formateur et que tu veux intégrer intelligemment l'IA dans ton activité sans diluer ce qui te rend unique, tu sais maintenant d'où je viens. On en parle&nbsp;?
+              C'est la réaction que j'espère. Si tu es coach, consultant, formateur ou profession libérale en Suisse romande et que tu veux une présence en ligne qui attire et convertit — sans y passer tes soirées — tu sais maintenant d'où je viens. On en parle&nbsp;?
             </p>
             <div class="closing-ctas">
               <a href="https://calendly.com/nachboris/20min" class="btn btn-ink" target="_blank" rel="noopener">
@@ -1902,6 +2096,32 @@
 
     document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => io.observe(el));
 
+    // Animated counters (synth stats) — locale-aware formatting
+    const countLocale = () => (document.documentElement.getAttribute('lang') === 'fr' ? 'fr-FR' : 'en-US');
+    const formatNum = (v, target) => (target >= 1000 ? v.toLocaleString(countLocale()) : String(v));
+    const animateCount = (el) => {
+      const target = parseInt(el.dataset.target, 10);
+      const duration = 1800;
+      const start = performance.now();
+      const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+      const step = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        el.textContent = formatNum(Math.floor(easeOut(progress) * target), target);
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = formatNum(target, target);
+      };
+      requestAnimationFrame(step);
+    };
+    const countIo = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          animateCount(e.target);
+          countIo.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.count').forEach((el) => countIo.observe(el));
+
     // Read-more story toggle
     const storyBody = document.getElementById('storyBody');
     const storyToggle = document.getElementById('storyToggle');
@@ -1927,17 +2147,29 @@
         'nav.cta.short': 'Appeler',
 
         'proj.head.eyebrow': 'Projets &amp; expérience',
-        'proj.head.h1': 'Plus de 15 ans à <em>opérer en solo.</em>',
-        'proj.head.lede': "Chaque projet de cette page, je l'ai mené de bout en bout&nbsp;: acquisition, ventes, support, communauté, opérations. En comptant mon Master en Digital Business Management à Rennes School of Business et deux postes de business developer en startup early-stage, ça fait plus de 15 ans sur le terrain du digital.",
+
+        'proj.sy.s1.unit': 'ans',
+        'proj.sy.s1.label': 'à opérer des business en ligne, en solo',
+        'proj.sy.s2.label': 'transactions traitées de bout en bout',
+        'proj.sy.s3.label': 'avis clients vérifiés, publics',
+        'proj.sy.s4.label': 'de satisfaction, sur toute la période',
+        'proj.tl.p1': 'Premier deal en ligne, à 15 ans',
+        'proj.tl.p2': 'Lancement de Bobu (e-commerce)',
+        'proj.tl.p3': 'Master Digital Business Management',
+        'proj.tl.p4': "E-commerce full-time",
+        'proj.tl.p5': 'Création projet Gamoniz',
+        'proj.tl.p6': 'Opérateur digital &amp; IA, Lausanne',
+        'proj.head.h1': "J'ai déjà construit <em>ce que je te vends.</em>",
+        'proj.head.lede': "Sites, funnels, systèmes&nbsp;: tout ce que je te propose, je l'ai d'abord opéré pour moi, de bout en bout. Voici les preuves — chiffres, parcours et projets.",
 
         'proj.cw.eyebrow': 'Disponible en ce moment',
-        'proj.cw.h2': 'Opérateur IA, <em>en freelance.</em>',
+        'proj.cw.h2': 'Opérateur digital &amp; IA, <em>en freelance.</em>',
         'proj.cw.since': 'Depuis avril 2026',
-        'proj.cw.intro': "La raison d'être de ce site. <strong>J'aide les coachs, consultants et formateurs</strong> à intégrer intelligemment l'IA dans leur métier, sans diluer ce qui les rend uniques. Je m'appuie sur ce que j'ai vraiment fait tourner, pas juste lu quelque part.",
-        'proj.cw.s1.label': 'Conseil &amp; formation IA',
-        'proj.cw.s1.desc': "Démystifier l'IA pour des équipes non techniques&nbsp;: pédagogie, ateliers concrets, et implémentation de process directement dans leur quotidien.",
-        'proj.cw.s2.label': 'Marketing digital',
-        'proj.cw.s2.desc': 'Conception et optimisation de funnels&nbsp;: audit, structure, copy et exécution, pour celles et ceux qui veulent plus de conversions et moins de bruit.',
+        'proj.cw.intro': "La raison d'être de ce site. <strong>J'aide les experts indépendants de Suisse romande</strong> — coachs, consultants, formateurs, professions libérales — à transformer leur présence en ligne en système qui attire et convertit. Je m'appuie sur ce que j'ai vraiment fait tourner, pas juste lu quelque part.",
+        'proj.cw.s1.label': 'Sites, funnels &amp; email',
+        'proj.cw.s1.desc': "Conception, copy et exécution de bout en bout&nbsp;: la page qui convertit, la séquence qui relance, le parcours qui amène jusqu'à l'appel réservé.",
+        'proj.cw.s2.label': 'Systèmes &amp; IA',
+        'proj.cw.s2.desc': 'Outils sur-mesure, automatisations, skills Claude entraînés sur ta méthode. La tuyauterie tourne pendant que tu es avec tes clients.',
         'proj.cw.cta.label': 'Parlons-en',
         'proj.cw.cta.headline': 'Curieux de voir si je peux aider&nbsp;? Un appel de 20 minutes ne coûte rien et te le dira vite.',
         'proj.cw.note': 'Ce site est en ligne depuis mi-avril 2026 pour soutenir cette activité (Github public <a href="https://github.com/Nachboris/nachboris/activity">ici</a>).',
@@ -1966,7 +2198,7 @@
         'proj.feat.story.meta': '3 chapitres · ~4 min de lecture',
         'proj.feat.act1': "<span class=\"act-label\">Acte 1 · Le side-business (2012-2021)</span><h3>Neuf ans de services pour une communauté de joueurs passionnés</h3><p>Tout a commencé à 15 ans, en vendant 800 $ de biens numériques à un inconnu sur internet. J'avais les mains qui tremblaient en cliquant sur «&nbsp;confirmer&nbsp;». Ce seul échange a ouvert la porte à neuf ans de side-business.</p><p>Avec le temps, l'offre s'est élargie. D'un seul type de produit à un vrai menu de services&nbsp;: <strong>clés d'activation, transferts de comptes, et un service d'escrow pour sécuriser les échanges de valeur entre inconnus</strong>. Au début, tout se faisait à la main&nbsp;: chaque livraison une par une, chaque échange déroulé message après message. Au fil des années, j'ai automatisé ce qui pouvait l'être, en commençant par les plus gros volumes, tout en gardant l'humain là où ça comptait vraiment pour le client.</p><blockquote>La réputation se capitalise plus vite que le chiffre d'affaires. Chaque client satisfait devient un client récurrent. Chaque client récurrent amène des recommandations.</blockquote><p>À la fin de cette période, j'étais une référence connue dans ma niche&nbsp;: 1 000+ avis positifs vérifiés, 100% de satisfaction, et un business qui tournait en parallèle d'un emploi à plein temps, sans un seul litige que je ne savais pas clôturer proprement.</p>",
         'proj.feat.act2': "<span class=\"act-label\">Acte 2 · De producteur à revendeur</span><h3>Le virage qui a transformé l'activité en vrai business</h3><p>Au début, j'ai fait ce que la plupart des acteurs du secteur finissent par faire&nbsp;: essayer de scaler en devenant le producteur. Génération automatisée de l'offre, structures multi-comptes, tout l'attirail opérationnel — ce qui ressemblait à du «&nbsp;revenu passif&nbsp;» sur le papier. J'ai fonctionné comme ça pendant des années.</p><p>Il m'a fallu longtemps pour admettre que ce n'était pas vraiment passif. C'était un tapis roulant&nbsp;: plus de production, des marges plus fines, une maintenance sans fin, et un point de défaillance unique que je ne maîtriserais jamais vraiment. Le changement de regard a été lent, et honnêtement, ça remet à sa place.</p><p>Alors j'ai fait le mouvement inverse. J'ai arrêté de vouloir être le plus gros producteur pour devenir le vendeur le plus fiable. <strong>J'ai bâti un réseau de fournisseurs fiables, je me suis approvisionné via eux, et j'ai mis mon énergie dans la boutique, la relation client et la diversification des services.</strong></p><p>C'est là que l'offre a vraiment mûri&nbsp;: comptes reconditionnés vendus aux acheteurs, un <strong>service de tiers de confiance pour sécuriser les échanges de grande valeur entre inconnus</strong>, et des standards opérationnels que les autres vendeurs n'avaient tout simplement pas. Ce rôle de tiers de confiance en particulier, assis entre deux inconnus qui font un échange risqué, a été la graine de l'idée que je transformerai plus tard en projet de marketplace.</p><blockquote>J'ai arrêté de vouloir être le plus gros producteur pour devenir le vendeur le plus fiable. Tout a changé.</blockquote>",
-        'proj.feat.act3': "<span class=\"act-label\">Acte 3 · Full-time, sur la route (2021-2024)</span><h3>De side-project à business à <em>500K$+</em>, en voyageant en Asie du Sud-Est</h3><p>En 2021, ma copine et moi sommes partis un an à travers la Thaïlande, le Cambodge, le Vietnam, l'Indonésie, la Corée du Sud, la Malaisie et la Nouvelle-Zélande. Sur le papier, le pire moment pour scaler un business. En pratique, la meilleure chose qui lui soit arrivée.</p><p>Vivre sur la route a forcé des décisions que j'évitais&nbsp;: chaque tâche qui ne pouvait pas être automatisée devait disparaître ou imposer un correctif. J'ai construit une boutique WordPress sur-mesure, <strong>automatisé la livraison de produits numériques de bout en bout</strong>, mené des campagnes email via MailerLite, et basculé vers un marché plus grand avec une vraie sécurité opérationnelle. Le faible coût de la vie m'a donné la marge pour construire patiemment, au lieu de courir après chaque vente rapide.</p><p>Il n'y a pas eu de moment dramatique «&nbsp;je quitte mon job&nbsp;». À la fin de cette année, le business marchait mieux qu'un emploi. Alors je ne suis simplement pas revenu. Pendant les trois années suivantes, c'était mon revenu à plein temps, dûment déclaré, taxé, et assez rentable pour <strong>générer 500K$+ de chiffre d'affaires cumulé</strong>, financer la vie que je voulais, et investir dans l'immobilier en France.</p><p>En 2024, avec 2 250+ avis positifs vérifiés et 100% de satisfaction sur toute son histoire, j'avais étiré ce modèle aussi loin qu'il pouvait aller seul. Je l'ai fermé à mes conditions, pour aller construire quelque chose de plus ambitieux&nbsp;: une vraie marketplace.</p>",
+        'proj.feat.act3': "<span class=\"act-label\">Acte 3 · Full-time, sur la route (2021-2024)</span><h3>De side-project à business à <em>500K$+</em>, en voyageant en Asie du Sud-Est</h3><p>En 2021, ma copine et moi sommes partis un an à travers la Thaïlande, le Cambodge, le Vietnam, l'Indonésie, la Corée du Sud, la Malaisie et la Nouvelle-Zélande. Sur le papier, le pire moment pour scaler un business. En pratique, la meilleure chose qui lui soit arrivée.</p><p>Vivre sur la route a forcé des décisions que j'évitais&nbsp;: chaque tâche qui ne pouvait pas être automatisée devait disparaître ou imposer un correctif. J'ai construit une boutique WordPress sur-mesure, <strong>automatisé la livraison de produits numériques de bout en bout</strong>, mené des campagnes email via MailerLite, et basculé vers un marché plus grand avec une vraie sécurité opérationnelle. Le faible coût de la vie m'a donné la marge pour construire patiemment, au lieu de courir après chaque vente rapide.</p><p>Il n'y a pas eu de moment dramatique «&nbsp;je quitte mon job&nbsp;». À la fin de cette année, le business marchait mieux qu'un emploi. Alors je ne suis simplement pas revenu. Pendant les trois années suivantes, c'était mon revenu à plein temps, dûment déclaré, taxé, et assez rentable pour financer la vie que je voulais, et investir dans l'immobilier en France.</p><p>En 2024, avec 2 250+ avis positifs vérifiés et 100% de satisfaction sur toute son histoire, j'avais étiré ce modèle aussi loin qu'il pouvait aller seul. Je l'ai fermé à mes conditions, pour aller construire quelque chose de plus ambitieux&nbsp;: une vraie marketplace.</p>",
         'proj.feat.toggle.closed': "Lire l'histoire complète",
         'proj.feat.toggle.open': "Masquer l'histoire",
 
@@ -1985,29 +2217,29 @@
         'proj.p1.period': "Fin 2024 · aujourd'hui",
         'proj.p1.body': "<p>Lancé au départ comme une marketplace de biens numériques, portée par une <strong>campagne de crowdfunding financée à 226% de son objectif</strong>, avec une petite équipe de 3 stagiaires que j'ai pilotée sur la marque, le go-to-market, le build WordPress et le lancement.</p><p>La marketplace a dû fermer en 2025 après un lancement réussi, pour des contraintes légales propres au secteur. Honnêtement, une décision franchement frustrante&nbsp;: rien dans la loi ne m'empêchait de la faire tourner, mais d'autres acteurs du secteur en ont décidé autrement, et j'ai choisi de partir plutôt que de mener une bataille qui aurait cramé des années d'énergie pour pas grand-chose. J'ai gardé la communauté (~2 000 abonnés email, 300+ membres Discord) et j'ai fait pivoter Gamoniz vers ce qu'elle est aujourd'hui&nbsp;: une marque de contenu &amp; coaching où je partage mon expérience d'opérateur, via des articles, Twitter, un produit low-ticket et du coaching en 1-on-1.</p>",
         'proj.p1.meta': "<span><strong>URL&nbsp;:</strong> <a class=\"meta-link\" href=\"https://gamoniz.com\" target=\"_blank\" rel=\"noopener\">gamoniz.com</a></span><span><strong>Rôle&nbsp;:</strong> Fondateur, opérateur solo</span><span><strong>Crowdfunding&nbsp;:</strong> 226% de l'objectif</span><span><strong>Communauté&nbsp;:</strong> 2 000+ email · 300+ Discord</span><span><strong>Équipe&nbsp;:</strong> 3 stagiaires pilotés au lancement</span>",
-        'proj.p1.proved': "Mener un vrai lancement (marque, GTM, communauté), arrêter un projet quand la réalité l'exige, et pivoter sans perdre son audience.",
+        'proj.p1.proved': "<strong>Pour toi&nbsp;:</strong> quelqu'un qui a déjà mené un lancement complet — marque, go-to-market, communauté, petite équipe pilotée — et qui sait pivoter quand la réalité l'exige, sans perdre l'audience.",
 
         'proj.p2.title': 'PrimeParrain <em>(Affiliation)</em>',
         'proj.p2.period': 'En continu · version minimaliste',
-        'proj.p2.body': "<p>Un petit projet volontairement léger que j'aime vraiment&nbsp;: sélectionner les meilleures offres de parrainage pour les consommateurs français et les partager avec ma communauté. Le principe est simple&nbsp;: <strong>tu t'inscris, tu fais une chose facile, tu reçois un bonus en cash</strong>.</p><p>Un seul article phare sur Finary a généré <strong>1 000+ parrainages</strong>, plus des revenus d'affiliation via un code promo exclusif. C'est gardé petit volontairement&nbsp;: quelques centaines d'euros par mois, avec un entretien minimal.</p><p>Je ne partage que les offres qui valent les 10 minutes qu'elles prennent. Conçu comme un site minimaliste, adossé à une liste email à laquelle j'écris 2 à 3 fois par mois avec les meilleurs plans.</p>",
+		'proj.p2.body': "<p>Un projet né de ma passion pour les finances personnelles&nbsp;: je teste en continu les plateformes bancaires, crypto et invest, et je partage deux types de contenus&nbsp;: des <strong>coups de cœur</strong> (avis et comparatifs sur les outils que j'utilise vraiment) et des <strong>offres à prime</strong> — tu t'inscris, tu fais une chose facile, tu reçois un bonus en cash.</p><p>Un seul article phare sur Finary a généré <strong>1 000+ parrainages</strong>, plus des revenus d'affiliation via un code promo exclusif. C'est gardé petit volontairement&nbsp;: quelques centaines d'euros par mois, avec un entretien minimal.</p><p>Je ne partage que les offres et outils qui valent le temps qu'ils prennent. Conçu comme un site minimaliste, adossé à une liste email à laquelle j'écris 2 à 3 fois par mois avec les meilleurs plans.</p>",
         'proj.p2.meta': "<span><strong>URL&nbsp;:</strong> <a class=\"meta-link\" href=\"https://primeparrain.fr/avis-finary-code-parrainage-2026/\" target=\"_blank\" rel=\"noopener\">Article Finary (exemple)</a></span><span><strong>Rôle&nbsp;:</strong> Opérateur solo</span><span><strong>Cas Finary&nbsp;:</strong> 1 000+ parrainages</span><span><strong>Rythme&nbsp;:</strong> 2 à 3 emails / mois</span>",
-        'proj.p2.proved': 'Un actif secondaire qui rapporte tranquillement tout en étant vraiment utile à ceux qui le suivent.',
+        'proj.p2.proved': '<strong>Pour toi&nbsp;:</strong> je sais construire un actif de contenu qui rapporte pendant des années avec un entretien minimal. Un seul article bien fait a généré 1&nbsp;000+ parrainages.',
 
         'proj.p3.title': 'BodyFlow <em>(App de sport à la maison)</em>',
         'proj.p3.period': 'Construit pour le plaisir · et pour moi',
         'proj.p3.body': "<p>Un prétexte pour tester le vibe coding avec Claude, et finir avec quelque chose de vraiment utile. BodyFlow est une app de sport à la maison entièrement personnalisée, calée sur mon niveau exact, mon matériel, et la façon dont j'ai vraiment envie de m'entraîner.</p><p>Le vrai problème qu'elle règle&nbsp;: rester motivé à s'entraîner seul chez soi, c'est dur. Alors j'ai ajouté une <strong>couche de gamification (défis, système de carotte et de bâton, timers, et un tableau de bord)</strong> qui rend ça moins corvée. Gratuit, sans pub, à moi.</p>",
         'proj.p3.meta': "<span><strong>URL&nbsp;:</strong> <a class=\"meta-link\" href=\"https://nachboris.github.io/BODYFLOW/\" target=\"_blank\" rel=\"noopener\">Démo en ligne</a></span><span><strong>Construit avec&nbsp;:</strong> Claude + vibe coding</span><span><strong>Utilisateurs&nbsp;:</strong> moi seulement</span>",
-        'proj.p3.proved': "Construire quelque chose juste pour le plaisir «&nbsp;juste pour moi&nbsp;» tout en étant sain.",
+        'proj.p3.proved': "<strong>Pour toi&nbsp;:</strong> si j'ai construit une app complète pour le plaisir, ton espace client ou ton outil interne est un projet à ma portée — vite, léger, sans agence.",
 
         'proj.p4.title': 'Au-delà des <em>projets solo</em>',
         'proj.p4.period': 'Études &amp; débuts de carrière',
         'proj.p4.body': "<p>En parallèle de Bobu, j'ai obtenu un <strong>Master en Digital Business Management</strong> à Rennes School of Business et occupé deux postes de <strong>business developer</strong> en startup early-stage, où j'ai vu l'autre côté de la table&nbsp;: des fondateurs qui recrutent des opérateurs, font grandir les ventes, et construisent des process à partir de zéro.</p><p>J'ai aussi géré les ops communauté de <strong>Well'Come</strong>, une association étudiante qui accueille les étudiants internationaux. Une autre leçon précoce et bénévole de community building, qui m'est restée.</p>",
         'proj.p4.meta': "<span><strong>Diplôme&nbsp;:</strong> Master Digital Business Mgmt</span><span><strong>Rôles&nbsp;:</strong> Biz dev × 2 startups</span><span><strong>Bénévolat&nbsp;:</strong> association Well'Come</span>",
-        'proj.p4.proved': "Le regard d'opérateur n'est pas juste de la théorie&nbsp;: j'ai été des deux côtés de la relation fondateur/opérateur.",
+        'proj.p4.proved': "<strong>Pour toi&nbsp;:</strong> j'ai été des deux côtés de la relation fondateur/opérateur. Je sais ce qu'on attend de quelqu'un à qui on confie ses systèmes.",
 
         'proj.close.eyebrow': 'Ce que ça veut dire pour toi',
         'proj.close.h2': "Si j'ai fait tourner un business <em>en solo pendant 12 ans,</em> je peux aider le tien.",
-        'proj.close.p': "C'est la réaction que j'espère. Si tu es coach, consultant ou formateur et que tu veux intégrer intelligemment l'IA dans ton activité sans diluer ce qui te rend unique, tu sais maintenant d'où je viens. On en parle&nbsp;?",
+        'proj.close.p': "C'est la réaction que j'espère. Si tu es coach, consultant, formateur ou profession libérale en Suisse romande et que tu veux une présence en ligne qui attire et convertit — sans y passer tes soirées — tu sais maintenant d'où je viens. On en parle&nbsp;?",
         'proj.close.cta': 'Réserver un appel de 20 min',
 
         'footer.lang': 'Français',
@@ -2024,20 +2256,32 @@
         'nav.cta.short': 'Call',
 
         'proj.head.eyebrow': 'Projects &amp; experience',
-        'proj.head.h1': '15+ years shipping things <em>solo.</em>',
-        'proj.head.lede': "Every project on this page was run end-to-end &mdash; acquisition, sales, support, community, ops. Counted together with my Master in Digital Business Management at Rennes School of Business and two business-developer stints in early-stage startups, that's more than 15 years in the trenches of digital operations.",
+
+        'proj.sy.s1.unit': 'yrs',
+        'proj.sy.s1.label': 'operating online businesses, solo',
+        'proj.sy.s2.label': 'transactions handled end to end',
+        'proj.sy.s3.label': 'verified public customer reviews',
+        'proj.sy.s4.label': 'satisfaction across the entire run',
+        'proj.tl.p1': 'First online deal, at 15',
+        'proj.tl.p2': 'Bobu launches (e-commerce)',
+        'proj.tl.p3': "Master's in Digital Business Management",
+        'proj.tl.p4': 'Full-time E-commerce',
+        'proj.tl.p5': 'New project: Gamoniz (marketplace / consulting)',
+        'proj.tl.p6': 'Digital &amp; AI Operator',
+        'proj.head.h1': "I’ve already built <em>what I’m selling you.</em>",
+        'proj.head.lede': "Websites, funnels, systems: everything I offer, I first ran for myself, end to end. Here’s the proof — numbers, track record and projects.",
 
         'proj.cw.eyebrow': 'Currently available',
-        'proj.cw.h2': 'AI Operator, <em>freelance.</em>',
+        'proj.cw.h2': 'Digital &amp; AI Operator, <em>freelance.</em>',
         'proj.cw.since': 'Since April 2026',
-        'proj.cw.intro': "The reason this site exists. <strong>I help coaches, consultants and trainers</strong> integrate AI smartly into their practice, without diluting what makes them unique. I lean on what I've actually run, not just read about.",
-        'proj.cw.s1.label': 'AI consulting &amp; training',
-        'proj.cw.s1.desc': 'Demystifying AI for non-technical teams: education, hands-on workshops, and concrete process implementation in their day-to-day.',
-        'proj.cw.s2.label': 'Digital marketing',
-        'proj.cw.s2.desc': 'Sales funnel design and optimization: audit, structure, copy, and execution for those who want more conversions, less noise.',
+        'proj.cw.intro': "The reason this site exists. <strong>I help independent experts in French-speaking Switzerland</strong> — coaches, consultants, trainers — turn their online presence into a system that attracts and converts. I lean on what I’ve actually run, not just read about.",
+        'proj.cw.s1.label': 'Websites, funnels &amp; email',
+        'proj.cw.s1.desc': "Design, copy and execution end to end: the page that converts, the sequence that re-engages, the path that leads to a booked call.",
+        'proj.cw.s2.label': 'Systems &amp; AI',
+        'proj.cw.s2.desc': "Custom tools, automations, Claude skills trained on your method. The plumbing runs while you’re with your clients.",
         'proj.cw.cta.label': 'Get in touch',
         'proj.cw.cta.headline': 'Curious if I can help? A 20-minute call costs nothing and tells you fast.',
-        'proj.cw.note': 'This site went live mid-April 2026 to support this activity (public Github <a href="https://github.com/Nachboris/nachboris/activity">here</a>).',
+        'proj.cw.note': 'This site went live mid-April 2026 to support this activity.',
 
         'proj.feat.tag': 'Flagship project',
         'proj.feat.h2': 'Bobu <span class="italic-accent">· e-commerce, 2012 → 2024</span>',
@@ -2058,12 +2302,12 @@
         'proj.feat.sum1': 'I sold <strong>digital goods to an audience of enthusiasts in a high-distrust market</strong> &mdash; the kind of niche where most sellers are anonymous and reputation is the actual product. Activation keys, second-hand accounts, escrow services for peer-to-peer trades. A real e-commerce operation, run solo.',
         'proj.feat.sum2': "The first nine years (2012&mdash;2021) ran in the background of my life, alongside high school, a Master in Digital Business Management at Rennes School of Business, and my early career as a business developer in startups. The next three years (2021&mdash;2024) were full-time, properly declared, with a custom storefront, automation, and the operations of a real small business.",
         'proj.feat.proved.label': 'What it proved',
-        'proj.feat.proved.body': 'I can take a digital business from zero to full-time, build a reputation in a hostile market, and operate it profitably for over a decade without burning out the trust I earned.',
+        'proj.feat.proved.body': "I can take a digital business from zero to full-time, build a reputation in a hostile market, and operate it profitably for over a decade without burning out the trust I earned.",
         'proj.feat.story.label': 'Full story',
         'proj.feat.story.meta': '3 chapters · ~4 min read',
         'proj.feat.act1': "<span class=\"act-label\">Act 1 &mdash; The side hustle (2012 &mdash; 2021)</span><h3>Nine years of services for a community of enthusiasts</h3><p>It started at 15, selling $800 of digital goods to a stranger on the internet. My hands were shaking when I clicked confirm. That single trade opened the door to nine years of side-hustling.</p><p>Over time, the offer kept widening. From a single product type to a full menu of services: <strong>activation keys, second-hand account transfers, and an escrow service to secure high-value trades between strangers</strong>. At first, everything was done by hand: every delivery one at a time, every trade walked through message by message. Over the years, I gradually automated the parts that could be &mdash; starting with the highest-volume ones &mdash; while keeping the human touch where it actually mattered to the customer.</p><blockquote>Reputation compounds faster than revenue. Every happy customer becomes a returning customer. Every returning customer brings referrals.</blockquote><p>By the end of that period I was a known reference in my niche, with 1,000+ verified positive reviews, a 100% satisfaction rate, and a business that ran in parallel with a full-time job &mdash; without a single dispute I couldn't close cleanly.</p>",
         'proj.feat.act2': "<span class=\"act-label\">Act 2 &mdash; From producer to reseller</span><h3>The shift that turned the operation into a real business</h3><p>Early on, I did what most operators in this space eventually do: I tried to scale by becoming the producer. Automated supply generation, parallel account structures, the whole operational stack &mdash; what looked like \"passive income\" on paper. I ran it that way for years.</p><p>It took me a long time to admit it wasn't actually passive. It was a treadmill: more output, thinner margins, endless maintenance, and a single point of failure I'd never really own. The shift in thinking was slow, and honestly, humbling.</p><p>So I made the opposite move. I stopped trying to be the biggest producer and started being the most trusted seller. <strong>I built a network of reliable suppliers, sourced inventory through them, and put my energy into the storefront, the customer relationship, and the diversification of services.</strong></p><p>That's when the offer really matured: second-hand accounts sold to buyers, a <strong>middleman service to secure high-value trades between strangers</strong>, and operational standards that other sellers simply didn't have. The middleman work in particular &mdash; sitting between two strangers making a risky exchange &mdash; was the seed of an idea I'd later turn into my marketplace project.</p><blockquote>I stopped trying to be the biggest producer and started being the most trusted seller. Everything changed.</blockquote>",
-        'proj.feat.act3': "<span class=\"act-label\">Act 3 &mdash; Full-time, on the road (2021 &mdash; 2024)</span><h3>From side project to <em>$500K+</em> business &mdash; while traveling Southeast Asia</h3><p>In 2021, my girlfriend and I left for a year across Thailand, Cambodia, Vietnam, Indonesia, South Korea, Malaysia and New Zealand. On paper, terrible timing to scale a business. In practice, the best thing that ever happened to it.</p><p>Living on the road forced decisions I'd been avoiding: every task that couldn't be automated had to disappear or force a fix. I built a custom WordPress storefront, <strong>fully automated digital product delivery end-to-end</strong>, ran email campaigns through MailerLite, and shifted into a bigger market with proper operational security. The low cost of living gave me runway to build patiently instead of grabbing every quick sale.</p><p>There was no dramatic \"I quit my job\" moment. By the end of that year, the business was doing better than a job. So I just didn't go back. For the next three years, this was my full-time income &mdash; properly declared, taxed, and profitable enough to <strong>generate $500K+ in cumulative revenue</strong>, fund the life I wanted, and invest in real estate back in France.</p><p>By 2024, with 2,250+ verified positive reviews and a 100% satisfaction rate across its entire history, I'd stretched that model about as far as it could go alone. I closed it on my terms &mdash; to go build something more ambitious: a proper marketplace.</p>",
+        'proj.feat.act3': "<span class=\"act-label\">Act 3 &mdash; Full-time, on the road (2021 &mdash; 2024)</span><h3>From side project to <em>$500K+</em> business &mdash; while traveling Southeast Asia</h3><p>In 2021, my girlfriend and I left for a year across Thailand, Cambodia, Vietnam, Indonesia, South Korea, Malaysia and New Zealand. On paper, terrible timing to scale a business. In practice, the best thing that ever happened to it.</p><p>Living on the road forced decisions I'd been avoiding: every task that couldn't be automated had to disappear or force a fix. I built a custom WordPress storefront, <strong>fully automated digital product delivery end-to-end</strong>, ran email campaigns through MailerLite, and shifted into a bigger market with proper operational security. The low cost of living gave me runway to build patiently instead of grabbing every quick sale.</p><p>There was no dramatic \"I quit my job\" moment. By the end of that year, the business was doing better than a job. So I just didn't go back. For the next three years, this was my full-time income &mdash; properly declared, taxed, and profitable enough to fund the life I wanted, and invest in real estate back in France.</p><p>By 2024, with 2,250+ verified positive reviews and a 100% satisfaction rate across its entire history, I'd stretched that model about as far as it could go alone. I closed it on my terms &mdash; to go build something more ambitious: a proper marketplace.</p>",
         'proj.feat.toggle.closed': 'Read the full story',
         'proj.feat.toggle.open': 'Hide story',
 
@@ -2082,29 +2326,29 @@
         'proj.p1.period': 'Late 2024 &mdash; present',
         'proj.p1.body': "<p>Originally launched as a digital-goods marketplace backed by a <strong>crowdfunding campaign that raised 226% of its goal</strong>, with a small team of 3 interns I managed through brand, go-to-market, WordPress build and launch.</p><p>Pivot: The marketplace had to close in 2025 despite a successful launch, forced by an industry player. Honestly, it was a deeply frustrating decision: the market was promising and the framework was completely legitimate, but I chose to walk away rather than fight a battle that would have drained years of energy for little upside. I kept the community (~2,000 email subscribers, 300+ Discord members) and pivoted Gamoniz into what it is today: a content &amp; coaching brand where I share my operator experience through articles, Twitter, a low-ticket product, and 1-on-1 coaching.</p>",
         'proj.p1.meta': "<span><strong>URL:</strong> <a class=\"meta-link\" href=\"https://gamoniz.com\" target=\"_blank\" rel=\"noopener\">gamoniz.com</a></span><span><strong>Role:</strong> Founder, solo operator</span><span><strong>Crowdfunding:</strong> 226% of goal</span><span><strong>Community:</strong> 2,000+ email · 300+ Discord</span><span><strong>Team:</strong> Managed 3 interns at launch</span>",
-        'proj.p1.proved': 'Running a proper launch (brand, GTM, community), killing a project when reality requires it, and pivoting without losing the audience.',
+        'proj.p1.proved': "<strong>For you:</strong> someone who has already run a full launch — brand, go-to-market, community, a small team — and knows how to pivot when reality demands it, without losing the audience.",
 
         'proj.p2.title': 'PrimeParrain <em>(Affiliation)</em>',
         'proj.p2.period': 'Ongoing &mdash; minimalist side',
-        'proj.p2.body': "<p>A small, deliberately low-effort project I genuinely enjoy: curating the best referral deals for French consumers and sharing them with my community. The pitch is simple — <strong>sign up, do one easy thing, get a cash bonus</strong>.</p><p>One flagship deep-dive on Finary alone drove <strong>1,000+ referrals</strong> plus affiliate revenue via an exclusive promo code. It's deliberately kept small &mdash; a steady few hundred euros a month with minimal upkeep.</p><p>I only share deals I find worth the 10 minutes they take. Built as a minimalist site backed by an email list I write to 2&ndash;3 times a month with the most rewarding picks.</p>",
+		'proj.p2.body': "<p>A project born from my passion for personal finance&nbsp;: I continuously test banking, crypto, and investment platforms, and I share two types of content&nbsp;: <strong>favorites</strong> (reviews and comparisons of the tools I actually use) and <strong>bonus offers</strong> — you sign up, do one easy thing, and get a cash bonus.</p><p>A single flagship article on Finary generated <strong>1,000+ referrals</strong>, plus affiliate revenue through an exclusive promo code. Kept deliberately small&nbsp;: a few hundred euros a month, with minimal upkeep.</p><p>I only share offers and tools that are worth the time they take. Built as a minimalist site, backed by an email list I write to 2 to 3 times a month with the best deals.</p>",
         'proj.p2.meta': "<span><strong>URL:</strong> <a class=\"meta-link\" href=\"https://primeparrain.fr/avis-finary-code-parrainage-2026/\" target=\"_blank\" rel=\"noopener\">Finary article (sample)</a></span><span><strong>Role:</strong> Solo operator</span><span><strong>Finary case:</strong> 1,000+ referrals</span><span><strong>Cadence:</strong> 2&ndash;3 emails / month</span>",
-        'proj.p2.proved': 'A side asset that earns quietly while being actually useful to the people who follow it.',
+        'proj.p2.proved': "<strong>For you:</strong> I know how to build a content asset that pays for years with minimal upkeep. One well-made article generated 1,000+ referrals.",
 
         'proj.p3.title': 'BodyFlow <em>(Home-workout app)</em>',
         'proj.p3.period': 'Built for fun &mdash; and for me',
         'proj.p3.body': "<p>An excuse to explore vibe coding with Claude — and end up with something genuinely useful. BodyFlow is a fully personalized home-workout app built around my exact level, my equipment, and the way I actually want to train.</p><p>The real problem it solves: staying motivated to train alone at home is hard. So I built in a <strong>gamification layer — challenges, a carrot-and-stick system, timers, and a dashboard</strong> that makes it feel less like a chore. Free, ad-free, mine.</p>",
         'proj.p3.meta': "<span><strong>URL:</strong> <a class=\"meta-link\" href=\"https://nachboris.github.io/BODYFLOW/\" target=\"_blank\" rel=\"noopener\">Live demo</a></span><span><strong>Built with:</strong> Claude + vibe coding</span><span><strong>Users:</strong> me only</span>",
-        'proj.p3.proved': 'Building something for the joy of it &mdash; and discovering that "just for me" can still be genuinely good.',
+        'proj.p3.proved': "<strong>For you:</strong> if I built a complete app for fun, your client portal or internal tool is well within reach — fast, light, no agency required.",
 
         'proj.p4.title': 'Beyond <em>solo projects</em>',
         'proj.p4.period': 'Studies &amp; early career',
         'proj.p4.body': "<p>Alongside Bobu, I earned a <strong>Master in Digital Business Management</strong> at Rennes School of Business and worked two stints as a <strong>business developer</strong> in early-stage startups &mdash; where I saw the other side of the table: founders hiring operators, scaling sales, building processes from scratch.</p><p>I also ran community ops for <strong>Well'Come</strong>, a student association welcoming international students &mdash; another early, unpaid lesson in community building that stuck.</p>",
         'proj.p4.meta': "<span><strong>Degree:</strong> Master Digital Business Mgmt</span><span><strong>Roles:</strong> Biz dev × 2 startups</span><span><strong>Volunteer:</strong> Well'Come student association</span>",
-        'proj.p4.proved': "The operator view isn't just theory &mdash; I've been on both sides of the founder/operator relationship.",
+        'proj.p4.proved': "<strong>For you:</strong> I’ve been on both sides of the founder/operator relationship. I know what’s expected of someone you trust with your systems.",
 
         'proj.close.eyebrow': 'What this means for you',
         'proj.close.h2': 'If I ran a business <em>solo for 12 years,</em> I can help with yours.',
-        'proj.close.p': "That's the reaction I'm hoping for. If you're a coach, consultant or trainer who wants to integrate AI smartly into your work without diluting what makes you unique, you now know where I come from. Let's talk.",
+        'proj.close.p': "That’s the reaction I’m hoping for. If you’re a coach, consultant or trainer in French-speaking Switzerland and you want an online presence that attracts and converts — without spending your evenings on it — you now know where I come from. Let’s talk.",
         'proj.close.cta': 'Book a 20-min call',
 
         'footer.lang': 'French speaker',
@@ -2115,12 +2359,12 @@
 
     const i18nMeta = {
       fr: {
-        title: 'Projets · Boris Nachbaur, Opérateur IA',
-        description: '15 ans à lancer et faire tourner des business en ligne en solo. D\'un side-business démarré à 15 ans à une activité full-time à 100% de satisfaction. La preuve concrète, pas juste des promesses.'
+        title: 'Projets · Boris Nachbaur, Opérateur digital & IA · Lausanne',
+        description: "15 ans à lancer et faire tourner des business en ligne en solo. 20 000+ transactions, 2 250+ avis vérifiés, 100% de satisfaction. Opérateur digital & IA basé à Lausanne, Suisse romande."
       },
       en: {
-        title: 'Projects · Boris Nachbaur, AI Operator',
-        description: '15+ years building and operating digital businesses solo. From a side hustle started at 15 to a full-time business with 100% satisfaction — the proof behind the operator.'
+        title: 'Projects · Boris Nachbaur, Digital & AI Operator · Lausanne',
+        description: '15+ years building and operating digital businesses solo. 20,000+ transactions, 2,250+ verified reviews, 100% satisfaction. Digital & AI Operator based in Lausanne, Switzerland.'
       }
     };
 
