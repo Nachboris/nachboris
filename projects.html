@@ -565,7 +565,15 @@
       display: flex;
       flex-direction: column;
       gap: 0.35rem;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     }
+    .synth-stats.in .synth-stat { opacity: 1; transform: none; }
+    .synth-stats.in .synth-stat:nth-child(1) { transition-delay: 0.05s; }
+    .synth-stats.in .synth-stat:nth-child(2) { transition-delay: 0.15s; }
+    .synth-stats.in .synth-stat:nth-child(3) { transition-delay: 0.25s; }
+    .synth-stats.in .synth-stat:nth-child(4) { transition-delay: 0.35s; }
     .synth-stat .num {
       font-family: var(--serif);
       font-weight: 500;
@@ -602,7 +610,7 @@
       content: "";
       position: absolute;
       left: 0; right: 0;
-      top: 2.35rem;
+      top: calc(2.2rem + 5px);
       height: 2px;
       background: var(--rule);
       transform: scaleX(0);
@@ -655,7 +663,7 @@
       .synth-stats { grid-template-columns: repeat(2, 1fr); }
       .tl-points {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1.1rem;
         padding-left: 1.6rem;
       }
       .tl-points::before {
@@ -677,7 +685,7 @@
       .tl-label { max-width: 40ch; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .tl-points::before, .tl-point { transition: none; transform: none; opacity: 1; }
+      .tl-points::before, .tl-point, .synth-stat { transition: none; transform: none; opacity: 1; }
     }
 
     /* ==========================================================
@@ -1254,7 +1262,7 @@
       border: 1px solid;
     }
     .status-active {
-      color: var(--green);
+      color: #15803D;
       background: rgba(34, 197, 94, 0.08);
       border-color: rgba(34, 197, 94, 0.25);
     }
@@ -1271,12 +1279,12 @@
       border-color: rgba(107, 107, 122, 0.2);
     }
     .status-passive {
-      color: var(--lime);
+      color: #4D7C0F;
       background: var(--lime-tint);
       border-color: rgba(132, 204, 22, 0.3);
     }
     .status-personal {
-      color: var(--sky);
+      color: #0284C7;
       background: var(--sky-tint);
       border-color: rgba(56, 189, 248, 0.25);
     }
@@ -1583,28 +1591,28 @@
     </section>
 
     <!-- SYNTH: aggregated stats + timeline -->
-    <section class="synth" aria-label="Synthèse du parcours">
+    <section class="synth" aria-label="Synthèse du parcours" data-aria-i18n="proj.sy.aria">
       <div class="wrap">
         <div class="synth-stats reveal">
           <div class="synth-stat">
-            <span class="num"><span class="count" data-target="15">0</span><em data-i18n="proj.sy.s1.unit">ans</em></span>
+            <span class="num"><span class="count" data-target="15">15</span><em data-i18n="proj.sy.s1.unit">ans</em></span>
             <span class="synth-stat-label" data-i18n="proj.sy.s1.label">à opérer des business en ligne, en solo</span>
           </div>
           <div class="synth-stat">
-            <span class="num"><span class="count" data-target="20000">0</span><em>+</em></span>
+            <span class="num"><span class="count" data-target="20000">20&nbsp;000</span><em>+</em></span>
             <span class="synth-stat-label" data-i18n="proj.sy.s2.label">transactions traitées de bout en bout</span>
           </div>
           <div class="synth-stat">
-            <span class="num"><span class="count" data-target="2250">0</span><em>+</em></span>
+            <span class="num"><span class="count" data-target="2250">2&nbsp;250</span><em>+</em></span>
             <span class="synth-stat-label" data-i18n="proj.sy.s3.label">avis clients vérifiés, publics</span>
           </div>
           <div class="synth-stat">
-            <span class="num"><span class="count" data-target="100">0</span><em>%</em></span>
+            <span class="num"><span class="count" data-target="100">100</span><em>%</em></span>
             <span class="synth-stat-label" data-i18n="proj.sy.s4.label">de satisfaction, sur toute la période</span>
           </div>
         </div>
-        <div class="synth-timeline reveal" aria-label="Frise chronologique 2011-2026">
-          <ol class="tl-points">
+        <div class="synth-timeline reveal">
+          <ol class="tl-points" data-aria-i18n="proj.tl.aria">
             <li class="tl-point">
               <span class="tl-year">2011</span>
               <span class="tl-dot" aria-hidden="true"></span>
@@ -1623,12 +1631,12 @@
             <li class="tl-point">
               <span class="tl-year">2021</span>
               <span class="tl-dot" aria-hidden="true"></span>
-              <span class="tl-label" data-i18n="proj.tl.p4">Bobu full-time, opéré depuis l'Asie</span>
+              <span class="tl-label" data-i18n="proj.tl.p4">E-commerce full-time</span>
             </li>
             <li class="tl-point">
               <span class="tl-year">2024</span>
               <span class="tl-dot" aria-hidden="true"></span>
-              <span class="tl-label" data-i18n="proj.tl.p5">Sortie à mes conditions · Gamoniz financé à 226%</span>
+              <span class="tl-label" data-i18n="proj.tl.p5">Création projet Gamoniz</span>
             </li>
             <li class="tl-point">
               <span class="tl-year">2026</span>
@@ -1656,6 +1664,10 @@
               La raison d'être de ce site. <strong>J'aide les experts indépendants de Suisse romande</strong> — coachs, consultants, formateurs, professions libérales — à transformer leur présence en ligne en système qui attire et convertit. Je m'appuie sur ce que j'ai vraiment fait tourner, pas juste lu quelque part.
             </p>
 
+            <p class="current-card-intro" data-i18n-html="proj.cw.proof">
+              <strong>Premiers clients accompagnés depuis avril 2026</strong> — dont une refonte de page d'offre pour un coach exécutif.
+            </p>
+
             <div class="current-services">
               <div class="current-service">
                 <span class="service-label" data-i18n="proj.cw.s1.label">Sites, funnels &amp; email</span>
@@ -1680,8 +1692,6 @@
               <span data-i18n="nav.cta.full">Réserver un appel</span>
               <svg class="arrow cta-phone" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             </a>
-            <a href="mailto:boris@nachboris.ch" class="btn btn-ghost">boris@nachboris.ch</a>
-            <span class="current-card-note" data-i18n-html="proj.cw.note">Ce site est en ligne depuis mi-avril 2026 pour soutenir cette activité.</span>
           </div>
 
         </div>
@@ -1714,25 +1724,6 @@
             </div>
           </div>
 
-          <!-- Stats: no revenue here — kept for the full-time act -->
-          <div class="featured-meta reveal-stagger">
-            <div class="meta-item">
-              <div class="meta-label" data-i18n="proj.feat.m1.label">Durée</div>
-              <div class="meta-value" data-i18n-html="proj.feat.m1.value">12 <em>ans</em></div>
-              <span class="meta-sub" data-i18n="proj.feat.m1.sub">2012-2024</span>
-            </div>
-            <div class="meta-item">
-              <div class="meta-label" data-i18n="proj.feat.m2.label">Transactions</div>
-              <div class="meta-value" data-i18n-html="proj.feat.m2.value">20 000<em>+</em></div>
-              <span class="meta-sub" data-i18n="proj.feat.m2.sub">traitées en solo</span>
-            </div>
-            <div class="meta-item">
-              <div class="meta-label" data-i18n="proj.feat.m3.label">Satisfaction</div>
-              <div class="meta-value" data-i18n-html="proj.feat.m3.value">100<em>%</em></div>
-              <span class="meta-sub" data-i18n="proj.feat.m3.sub">2 250+ avis vérifiés</span>
-            </div>
-          </div>
-
           <div class="featured-summary">
             <p data-i18n-html="proj.feat.sum1">
               Je vendais <strong>des biens et services numériques pour joueurs de jeux vidéo</strong>&nbsp;: le genre de choses qui épargnent aux joueurs exigeants des centaines d'heures de farm répétitif. Objets en jeu, monnaie virtuelle, comptes prémontés, service d'escrow (échanges sécurisés entre inconnus) et clés d'activation. Un vrai e-commerce de niche, sur un marché où la plupart des vendeurs sont là pour un coup et où la confiance est le vrai produit.
@@ -1747,7 +1738,7 @@
             <div class="proved-body">
               <span class="proved-label" data-i18n="proj.feat.proved.label">Ce que ça prouve</span>
               <p data-i18n="proj.feat.proved.body">
-                Je sais emmener un business en ligne de zéro à full-time, bâtir une réputation sur un marché hostile, et le faire tourner de façon rentable pendant plus de dix ans sans cramer la confiance que j'ai gagnée. <strong>Pour toi&nbsp;:</strong> les mêmes mécanismes — livraison automatisée, emails qui tournent, fiabilité systématique — appliqués à ton activité.
+                Je sais emmener un business en ligne de zéro à full-time, bâtir une réputation sur un marché hostile, et le faire tourner de façon rentable pendant plus de dix ans sans cramer la confiance que j'ai gagnée.
               </p>
             </div>
           </div>
@@ -1810,7 +1801,7 @@
                   Vivre sur la route a forcé des décisions que j'évitais&nbsp;: chaque tâche qui ne pouvait pas être automatisée devait disparaître ou imposer un correctif. J'ai construit une boutique WordPress sur-mesure (GW2Rewards), <strong>automatisé la livraison de clés CD de bout en bout</strong>, mené des campagnes email via MailerLite, et basculé vers un marché plus grand avec une vraie sécurité opérationnelle. Le faible coût de la vie m'a donné la marge pour construire patiemment, au lieu de courir après chaque vente rapide.
                 </p>
                 <p>
-                  Il n'y a pas eu de moment dramatique «&nbsp;je quitte mon job&nbsp;». À la fin de cette année, le business marchait mieux qu'un emploi. Alors je ne suis simplement pas revenu. Pendant les trois années suivantes, c'était mon revenu à plein temps, dûment déclaré, taxé, et assez rentable pour financer la vie que je voulais, et investir dans l'immobilier en France.
+                  Il n'y a pas eu de moment dramatique «&nbsp;je quitte mon job&nbsp;». À la fin de cette année, le business marchait mieux qu'un emploi. Alors je ne suis simplement pas revenu. Pendant les trois années suivantes, c'était mon revenu à plein temps, dûment déclaré, taxé — <strong>500K$+ de chiffre cumulé sur la période</strong> — assez pour financer la vie que je voulais et investir dans l'immobilier en France.
                 </p>
                 <p>
                   En 2024, avec 2 250+ avis positifs vérifiés et 100% de satisfaction sur toute son histoire, j'avais étiré ce modèle aussi loin qu'il pouvait aller seul. Je l'ai fermé à mes conditions, pour aller construire quelque chose de plus ambitieux&nbsp;: une vraie marketplace.
@@ -1879,12 +1870,13 @@
             <span class="project-period" data-i18n="proj.p2.period">En continu · version minimaliste</span>
             <div class="project-body" data-i18n-html="proj.p2.body">
               <p>
-Un projet né de ma passion pour les finances personnelles&nbsp;: je teste en continu les plateformes bancaires, crypto et invest, et je partage deux types de contenus&nbsp;: des <strong>coups de cœur</strong> (avis et comparatifs sur les outils que j'utilise vraiment) et des <strong>offres à prime</strong> — tu t'inscris, tu fais une chose facile, tu reçois un bonus en cash.</p><p>Un seul article phare sur Finary a généré <strong>1 000+ parrainages</strong>, plus des revenus d'affiliation via un code promo exclusif. C'est gardé petit volontairement&nbsp;: quelques centaines d'euros par mois, avec un entretien minimal.</p><p>Je ne partage que les offres et outils qui valent le temps qu'ils prennent. Conçu comme un site minimaliste, adossé à une liste email à laquelle j'écris 2 à 3 fois par mois avec les meilleurs plans.</p>
+                Un projet né de ma passion pour les finances personnelles&nbsp;: je teste en continu les plateformes bancaires, crypto et invest, et je partage deux types de contenus&nbsp;: des <strong>coups de cœur</strong> (avis et comparatifs sur les outils que j'utilise vraiment) et des <strong>offres à prime</strong> — tu t'inscris, tu fais une chose facile, tu reçois un bonus en cash.
+              </p>
               <p>
                 Un seul article phare sur Finary a généré <strong>1 000+ parrainages</strong>, plus des revenus d'affiliation via un code promo exclusif. C'est gardé petit volontairement&nbsp;: quelques centaines d'euros par mois, avec un entretien minimal.
               </p>
               <p>
-                Je ne partage que les offres qui valent les 10 minutes qu'elles prennent. Conçu comme un site minimaliste, adossé à une liste email à laquelle j'écris 2 à 3 fois par mois avec les meilleurs plans.
+                Je ne partage que les offres et outils qui valent le temps qu'ils prennent. Conçu comme un site minimaliste, adossé à une liste email à laquelle j'écris 2 à 3 fois par mois avec les meilleurs plans.
               </p>
             </div>
             <div class="project-meta" data-i18n-html="proj.p2.meta">
@@ -1968,7 +1960,7 @@ Un projet né de ma passion pour les finances personnelles&nbsp;: je teste en co
         <div class="closing-card reveal">
           <div class="closing-inner">
             <span class="eyebrow" data-i18n="proj.close.eyebrow">Ce que ça veut dire pour toi</span>
-            <h2 data-i18n-html="proj.close.h2">Si j'ai fait tourner un business <em>en solo pendant 12 ans,</em> je peux aider le tien.</h2>
+            <h2 data-i18n-html="proj.close.h2">Si j'ai fait tourner des business <em>en solo pendant 15 ans,</em> je peux aider le tien.</h2>
             <p data-i18n="proj.close.p">
               C'est la réaction que j'espère. Si tu es coach, consultant, formateur ou profession libérale en Suisse romande et que tu veux une présence en ligne qui attire et convertit — sans y passer tes soirées — tu sais maintenant d'où je viens. On en parle&nbsp;?
             </p>
@@ -2112,10 +2104,13 @@ Un projet né de ma passion pour les finances personnelles&nbsp;: je teste en co
       };
       requestAnimationFrame(step);
     };
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const countIo = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         if (e.isIntersecting) {
-          animateCount(e.target);
+          const target = parseInt(e.target.dataset.target, 10);
+          if (reducedMotion) e.target.textContent = formatNum(target, target);
+          else animateCount(e.target);
           countIo.unobserve(e.target);
         }
       });
@@ -2148,6 +2143,8 @@ Un projet né de ma passion pour les finances personnelles&nbsp;: je teste en co
 
         'proj.head.eyebrow': 'Projets &amp; expérience',
 
+        'proj.sy.aria': 'Synthèse du parcours',
+        'proj.tl.aria': 'Frise chronologique 2011-2026',
         'proj.sy.s1.unit': 'ans',
         'proj.sy.s1.label': 'à opérer des business en ligne, en solo',
         'proj.sy.s2.label': 'transactions traitées de bout en bout',
@@ -2165,6 +2162,7 @@ Un projet né de ma passion pour les finances personnelles&nbsp;: je teste en co
         'proj.cw.eyebrow': 'Disponible en ce moment',
         'proj.cw.h2': 'Opérateur digital &amp; IA, <em>en freelance.</em>',
         'proj.cw.since': 'Depuis avril 2026',
+        'proj.cw.proof': "<strong>Premiers clients accompagnés depuis avril 2026</strong> — dont une refonte de page d'offre pour un coach exécutif.",
         'proj.cw.intro': "La raison d'être de ce site. <strong>J'aide les experts indépendants de Suisse romande</strong> — coachs, consultants, formateurs, professions libérales — à transformer leur présence en ligne en système qui attire et convertit. Je m'appuie sur ce que j'ai vraiment fait tourner, pas juste lu quelque part.",
         'proj.cw.s1.label': 'Sites, funnels &amp; email',
         'proj.cw.s1.desc': "Conception, copy et exécution de bout en bout&nbsp;: la page qui convertit, la séquence qui relance, le parcours qui amène jusqu'à l'appel réservé.",
@@ -2172,7 +2170,6 @@ Un projet né de ma passion pour les finances personnelles&nbsp;: je teste en co
         'proj.cw.s2.desc': 'Outils sur-mesure, automatisations, skills Claude entraînés sur ta méthode. La tuyauterie tourne pendant que tu es avec tes clients.',
         'proj.cw.cta.label': 'Parlons-en',
         'proj.cw.cta.headline': 'Curieux de voir si je peux aider&nbsp;? Un appel de 20 minutes ne coûte rien et te le dira vite.',
-        'proj.cw.note': 'Ce site est en ligne depuis mi-avril 2026 pour soutenir cette activité (Github public <a href="https://github.com/Nachboris/nachboris/activity">ici</a>).',
 
         'proj.feat.tag': 'Projet phare',
         'proj.feat.h2': 'Bobu <span class="italic-accent">· e-commerce, 2012 → 2024</span>',
@@ -2181,15 +2178,6 @@ Un projet né de ma passion pour les finances personnelles&nbsp;: je teste en co
         'proj.feat.ph1.title': 'Side-business <em>pendant les études &amp; premiers jobs</em>',
         'proj.feat.ph2.label': 'Phase 2 · 2021-2024',
         'proj.feat.ph2.title': 'Full-time <em>activité déclarée</em>',
-        'proj.feat.m1.label': 'Durée',
-        'proj.feat.m1.value': '12 <em>ans</em>',
-        'proj.feat.m1.sub': '2012-2024',
-        'proj.feat.m2.label': 'Transactions',
-        'proj.feat.m2.value': '20 000<em>+</em>',
-        'proj.feat.m2.sub': 'traitées en solo',
-        'proj.feat.m3.label': 'Satisfaction',
-        'proj.feat.m3.value': '100<em>%</em>',
-        'proj.feat.m3.sub': '2 250+ avis vérifiés',
         'proj.feat.sum1': "Je vendais <strong>des biens numériques à une communauté de joueurs passionnés, sur un marché à haute méfiance</strong>&nbsp;: là où la plupart des vendeurs sont anonymes et où la réputation est le vrai produit. Clés d'activation, comptes reconditionnés, service d'escrow pour sécuriser les échanges entre inconnus. Un vrai e-commerce de niche, opéré seul.",
         'proj.feat.sum2': "Les neuf premières années (2012-2021) ont tourné en arrière-plan de ma vie, en parallèle du lycée, d'un Master en Digital Business Management à Rennes School of Business, et de mes débuts comme business developer en startup. Les trois années suivantes (2021-2024) ont été full-time, dûment déclarées, avec une boutique sur-mesure, de l'automatisation, et les opérations d'une vraie petite entreprise.",
         'proj.feat.proved.label': 'Ce que ça prouve',
@@ -2198,7 +2186,7 @@ Un projet né de ma passion pour les finances personnelles&nbsp;: je teste en co
         'proj.feat.story.meta': '3 chapitres · ~4 min de lecture',
         'proj.feat.act1': "<span class=\"act-label\">Acte 1 · Le side-business (2012-2021)</span><h3>Neuf ans de services pour une communauté de joueurs passionnés</h3><p>Tout a commencé à 15 ans, en vendant 800 $ de biens numériques à un inconnu sur internet. J'avais les mains qui tremblaient en cliquant sur «&nbsp;confirmer&nbsp;». Ce seul échange a ouvert la porte à neuf ans de side-business.</p><p>Avec le temps, l'offre s'est élargie. D'un seul type de produit à un vrai menu de services&nbsp;: <strong>clés d'activation, transferts de comptes, et un service d'escrow pour sécuriser les échanges de valeur entre inconnus</strong>. Au début, tout se faisait à la main&nbsp;: chaque livraison une par une, chaque échange déroulé message après message. Au fil des années, j'ai automatisé ce qui pouvait l'être, en commençant par les plus gros volumes, tout en gardant l'humain là où ça comptait vraiment pour le client.</p><blockquote>La réputation se capitalise plus vite que le chiffre d'affaires. Chaque client satisfait devient un client récurrent. Chaque client récurrent amène des recommandations.</blockquote><p>À la fin de cette période, j'étais une référence connue dans ma niche&nbsp;: 1 000+ avis positifs vérifiés, 100% de satisfaction, et un business qui tournait en parallèle d'un emploi à plein temps, sans un seul litige que je ne savais pas clôturer proprement.</p>",
         'proj.feat.act2': "<span class=\"act-label\">Acte 2 · De producteur à revendeur</span><h3>Le virage qui a transformé l'activité en vrai business</h3><p>Au début, j'ai fait ce que la plupart des acteurs du secteur finissent par faire&nbsp;: essayer de scaler en devenant le producteur. Génération automatisée de l'offre, structures multi-comptes, tout l'attirail opérationnel — ce qui ressemblait à du «&nbsp;revenu passif&nbsp;» sur le papier. J'ai fonctionné comme ça pendant des années.</p><p>Il m'a fallu longtemps pour admettre que ce n'était pas vraiment passif. C'était un tapis roulant&nbsp;: plus de production, des marges plus fines, une maintenance sans fin, et un point de défaillance unique que je ne maîtriserais jamais vraiment. Le changement de regard a été lent, et honnêtement, ça remet à sa place.</p><p>Alors j'ai fait le mouvement inverse. J'ai arrêté de vouloir être le plus gros producteur pour devenir le vendeur le plus fiable. <strong>J'ai bâti un réseau de fournisseurs fiables, je me suis approvisionné via eux, et j'ai mis mon énergie dans la boutique, la relation client et la diversification des services.</strong></p><p>C'est là que l'offre a vraiment mûri&nbsp;: comptes reconditionnés vendus aux acheteurs, un <strong>service de tiers de confiance pour sécuriser les échanges de grande valeur entre inconnus</strong>, et des standards opérationnels que les autres vendeurs n'avaient tout simplement pas. Ce rôle de tiers de confiance en particulier, assis entre deux inconnus qui font un échange risqué, a été la graine de l'idée que je transformerai plus tard en projet de marketplace.</p><blockquote>J'ai arrêté de vouloir être le plus gros producteur pour devenir le vendeur le plus fiable. Tout a changé.</blockquote>",
-        'proj.feat.act3': "<span class=\"act-label\">Acte 3 · Full-time, sur la route (2021-2024)</span><h3>De side-project à business à <em>500K$+</em>, en voyageant en Asie du Sud-Est</h3><p>En 2021, ma copine et moi sommes partis un an à travers la Thaïlande, le Cambodge, le Vietnam, l'Indonésie, la Corée du Sud, la Malaisie et la Nouvelle-Zélande. Sur le papier, le pire moment pour scaler un business. En pratique, la meilleure chose qui lui soit arrivée.</p><p>Vivre sur la route a forcé des décisions que j'évitais&nbsp;: chaque tâche qui ne pouvait pas être automatisée devait disparaître ou imposer un correctif. J'ai construit une boutique WordPress sur-mesure, <strong>automatisé la livraison de produits numériques de bout en bout</strong>, mené des campagnes email via MailerLite, et basculé vers un marché plus grand avec une vraie sécurité opérationnelle. Le faible coût de la vie m'a donné la marge pour construire patiemment, au lieu de courir après chaque vente rapide.</p><p>Il n'y a pas eu de moment dramatique «&nbsp;je quitte mon job&nbsp;». À la fin de cette année, le business marchait mieux qu'un emploi. Alors je ne suis simplement pas revenu. Pendant les trois années suivantes, c'était mon revenu à plein temps, dûment déclaré, taxé, et assez rentable pour financer la vie que je voulais, et investir dans l'immobilier en France.</p><p>En 2024, avec 2 250+ avis positifs vérifiés et 100% de satisfaction sur toute son histoire, j'avais étiré ce modèle aussi loin qu'il pouvait aller seul. Je l'ai fermé à mes conditions, pour aller construire quelque chose de plus ambitieux&nbsp;: une vraie marketplace.</p>",
+        'proj.feat.act3': "<span class=\"act-label\">Acte 3 · Full-time, sur la route (2021-2024)</span><h3>De side-project à business à <em>500K$+</em>, en voyageant en Asie du Sud-Est</h3><p>En 2021, ma copine et moi sommes partis un an à travers la Thaïlande, le Cambodge, le Vietnam, l'Indonésie, la Corée du Sud, la Malaisie et la Nouvelle-Zélande. Sur le papier, le pire moment pour scaler un business. En pratique, la meilleure chose qui lui soit arrivée.</p><p>Vivre sur la route a forcé des décisions que j'évitais&nbsp;: chaque tâche qui ne pouvait pas être automatisée devait disparaître ou imposer un correctif. J'ai construit une boutique WordPress sur-mesure, <strong>automatisé la livraison de produits numériques de bout en bout</strong>, mené des campagnes email via MailerLite, et basculé vers un marché plus grand avec une vraie sécurité opérationnelle. Le faible coût de la vie m'a donné la marge pour construire patiemment, au lieu de courir après chaque vente rapide.</p><p>Il n'y a pas eu de moment dramatique «&nbsp;je quitte mon job&nbsp;». À la fin de cette année, le business marchait mieux qu'un emploi. Alors je ne suis simplement pas revenu. Pendant les trois années suivantes, c'était mon revenu à plein temps, dûment déclaré, taxé — <strong>500K$+ de chiffre cumulé sur la période</strong> — assez pour financer la vie que je voulais et investir dans l'immobilier en France.</p><p>En 2024, avec 2 250+ avis positifs vérifiés et 100% de satisfaction sur toute son histoire, j'avais étiré ce modèle aussi loin qu'il pouvait aller seul. Je l'ai fermé à mes conditions, pour aller construire quelque chose de plus ambitieux&nbsp;: une vraie marketplace.</p>",
         'proj.feat.toggle.closed': "Lire l'histoire complète",
         'proj.feat.toggle.open': "Masquer l'histoire",
 
@@ -2221,7 +2209,7 @@ Un projet né de ma passion pour les finances personnelles&nbsp;: je teste en co
 
         'proj.p2.title': 'PrimeParrain <em>(Affiliation)</em>',
         'proj.p2.period': 'En continu · version minimaliste',
-		'proj.p2.body': "<p>Un projet né de ma passion pour les finances personnelles&nbsp;: je teste en continu les plateformes bancaires, crypto et invest, et je partage deux types de contenus&nbsp;: des <strong>coups de cœur</strong> (avis et comparatifs sur les outils que j'utilise vraiment) et des <strong>offres à prime</strong> — tu t'inscris, tu fais une chose facile, tu reçois un bonus en cash.</p><p>Un seul article phare sur Finary a généré <strong>1 000+ parrainages</strong>, plus des revenus d'affiliation via un code promo exclusif. C'est gardé petit volontairement&nbsp;: quelques centaines d'euros par mois, avec un entretien minimal.</p><p>Je ne partage que les offres et outils qui valent le temps qu'ils prennent. Conçu comme un site minimaliste, adossé à une liste email à laquelle j'écris 2 à 3 fois par mois avec les meilleurs plans.</p>",
+        'proj.p2.body': "<p>Un projet né de ma passion pour les finances personnelles&nbsp;: je teste en continu les plateformes bancaires, crypto et invest, et je partage deux types de contenus&nbsp;: des <strong>coups de cœur</strong> (avis et comparatifs sur les outils que j'utilise vraiment) et des <strong>offres à prime</strong> — tu t'inscris, tu fais une chose facile, tu reçois un bonus en cash.</p><p>Un seul article phare sur Finary a généré <strong>1 000+ parrainages</strong>, plus des revenus d'affiliation via un code promo exclusif. C'est gardé petit volontairement&nbsp;: quelques centaines d'euros par mois, avec un entretien minimal.</p><p>Je ne partage que les offres et outils qui valent le temps qu'ils prennent. Conçu comme un site minimaliste, adossé à une liste email à laquelle j'écris 2 à 3 fois par mois avec les meilleurs plans.</p>",
         'proj.p2.meta': "<span><strong>URL&nbsp;:</strong> <a class=\"meta-link\" href=\"https://primeparrain.fr/avis-finary-code-parrainage-2026/\" target=\"_blank\" rel=\"noopener\">Article Finary (exemple)</a></span><span><strong>Rôle&nbsp;:</strong> Opérateur solo</span><span><strong>Cas Finary&nbsp;:</strong> 1 000+ parrainages</span><span><strong>Rythme&nbsp;:</strong> 2 à 3 emails / mois</span>",
         'proj.p2.proved': '<strong>Pour toi&nbsp;:</strong> je sais construire un actif de contenu qui rapporte pendant des années avec un entretien minimal. Un seul article bien fait a généré 1&nbsp;000+ parrainages.',
 
@@ -2238,7 +2226,7 @@ Un projet né de ma passion pour les finances personnelles&nbsp;: je teste en co
         'proj.p4.proved': "<strong>Pour toi&nbsp;:</strong> j'ai été des deux côtés de la relation fondateur/opérateur. Je sais ce qu'on attend de quelqu'un à qui on confie ses systèmes.",
 
         'proj.close.eyebrow': 'Ce que ça veut dire pour toi',
-        'proj.close.h2': "Si j'ai fait tourner un business <em>en solo pendant 12 ans,</em> je peux aider le tien.",
+        'proj.close.h2': "Si j'ai fait tourner des business <em>en solo pendant 15 ans,</em> je peux aider le tien.",
         'proj.close.p': "C'est la réaction que j'espère. Si tu es coach, consultant, formateur ou profession libérale en Suisse romande et que tu veux une présence en ligne qui attire et convertit — sans y passer tes soirées — tu sais maintenant d'où je viens. On en parle&nbsp;?",
         'proj.close.cta': 'Réserver un appel de 20 min',
 
@@ -2257,6 +2245,8 @@ Un projet né de ma passion pour les finances personnelles&nbsp;: je teste en co
 
         'proj.head.eyebrow': 'Projects &amp; experience',
 
+        'proj.sy.aria': 'Career at a glance',
+        'proj.tl.aria': 'Timeline 2011-2026',
         'proj.sy.s1.unit': 'yrs',
         'proj.sy.s1.label': 'operating online businesses, solo',
         'proj.sy.s2.label': 'transactions handled end to end',
@@ -2266,14 +2256,15 @@ Un projet né de ma passion pour les finances personnelles&nbsp;: je teste en co
         'proj.tl.p2': 'Bobu launches (e-commerce)',
         'proj.tl.p3': "Master's in Digital Business Management",
         'proj.tl.p4': 'Full-time E-commerce',
-        'proj.tl.p5': 'New project: Gamoniz (marketplace / consulting)',
-        'proj.tl.p6': 'Digital &amp; AI Operator',
+        'proj.tl.p5': 'New project: Gamoniz',
+        'proj.tl.p6': 'Digital &amp; AI Operator, Lausanne',
         'proj.head.h1': "I’ve already built <em>what I’m selling you.</em>",
         'proj.head.lede': "Websites, funnels, systems: everything I offer, I first ran for myself, end to end. Here’s the proof — numbers, track record and projects.",
 
         'proj.cw.eyebrow': 'Currently available',
         'proj.cw.h2': 'Digital &amp; AI Operator, <em>freelance.</em>',
         'proj.cw.since': 'Since April 2026',
+        'proj.cw.proof': "<strong>First clients onboarded since April 2026</strong> — including an offer-page redesign for an executive coach.",
         'proj.cw.intro': "The reason this site exists. <strong>I help independent experts in French-speaking Switzerland</strong> — coaches, consultants, trainers — turn their online presence into a system that attracts and converts. I lean on what I’ve actually run, not just read about.",
         'proj.cw.s1.label': 'Websites, funnels &amp; email',
         'proj.cw.s1.desc': "Design, copy and execution end to end: the page that converts, the sequence that re-engages, the path that leads to a booked call.",
@@ -2281,7 +2272,6 @@ Un projet né de ma passion pour les finances personnelles&nbsp;: je teste en co
         'proj.cw.s2.desc': "Custom tools, automations, Claude skills trained on your method. The plumbing runs while you’re with your clients.",
         'proj.cw.cta.label': 'Get in touch',
         'proj.cw.cta.headline': 'Curious if I can help? A 20-minute call costs nothing and tells you fast.',
-        'proj.cw.note': 'This site went live mid-April 2026 to support this activity.',
 
         'proj.feat.tag': 'Flagship project',
         'proj.feat.h2': 'Bobu <span class="italic-accent">· e-commerce, 2012 → 2024</span>',
@@ -2290,15 +2280,6 @@ Un projet né de ma passion pour les finances personnelles&nbsp;: je teste en co
         'proj.feat.ph1.title': 'Side hustle <em>through school &amp; first jobs</em>',
         'proj.feat.ph2.label': 'Phase 2 · 2021 &mdash; 2024',
         'proj.feat.ph2.title': 'Full-time <em>declared business</em>',
-        'proj.feat.m1.label': 'Duration',
-        'proj.feat.m1.value': '12 <em>yrs</em>',
-        'proj.feat.m1.sub': '2012 &mdash; 2024',
-        'proj.feat.m2.label': 'Transactions',
-        'proj.feat.m2.value': '20,000<em>+</em>',
-        'proj.feat.m2.sub': 'Processed solo',
-        'proj.feat.m3.label': 'Satisfaction',
-        'proj.feat.m3.value': '100<em>%</em>',
-        'proj.feat.m3.sub': '2,250+ verified reviews',
         'proj.feat.sum1': 'I sold <strong>digital goods to an audience of enthusiasts in a high-distrust market</strong> &mdash; the kind of niche where most sellers are anonymous and reputation is the actual product. Activation keys, second-hand accounts, escrow services for peer-to-peer trades. A real e-commerce operation, run solo.',
         'proj.feat.sum2': "The first nine years (2012&mdash;2021) ran in the background of my life, alongside high school, a Master in Digital Business Management at Rennes School of Business, and my early career as a business developer in startups. The next three years (2021&mdash;2024) were full-time, properly declared, with a custom storefront, automation, and the operations of a real small business.",
         'proj.feat.proved.label': 'What it proved',
@@ -2307,7 +2288,7 @@ Un projet né de ma passion pour les finances personnelles&nbsp;: je teste en co
         'proj.feat.story.meta': '3 chapters · ~4 min read',
         'proj.feat.act1': "<span class=\"act-label\">Act 1 &mdash; The side hustle (2012 &mdash; 2021)</span><h3>Nine years of services for a community of enthusiasts</h3><p>It started at 15, selling $800 of digital goods to a stranger on the internet. My hands were shaking when I clicked confirm. That single trade opened the door to nine years of side-hustling.</p><p>Over time, the offer kept widening. From a single product type to a full menu of services: <strong>activation keys, second-hand account transfers, and an escrow service to secure high-value trades between strangers</strong>. At first, everything was done by hand: every delivery one at a time, every trade walked through message by message. Over the years, I gradually automated the parts that could be &mdash; starting with the highest-volume ones &mdash; while keeping the human touch where it actually mattered to the customer.</p><blockquote>Reputation compounds faster than revenue. Every happy customer becomes a returning customer. Every returning customer brings referrals.</blockquote><p>By the end of that period I was a known reference in my niche, with 1,000+ verified positive reviews, a 100% satisfaction rate, and a business that ran in parallel with a full-time job &mdash; without a single dispute I couldn't close cleanly.</p>",
         'proj.feat.act2': "<span class=\"act-label\">Act 2 &mdash; From producer to reseller</span><h3>The shift that turned the operation into a real business</h3><p>Early on, I did what most operators in this space eventually do: I tried to scale by becoming the producer. Automated supply generation, parallel account structures, the whole operational stack &mdash; what looked like \"passive income\" on paper. I ran it that way for years.</p><p>It took me a long time to admit it wasn't actually passive. It was a treadmill: more output, thinner margins, endless maintenance, and a single point of failure I'd never really own. The shift in thinking was slow, and honestly, humbling.</p><p>So I made the opposite move. I stopped trying to be the biggest producer and started being the most trusted seller. <strong>I built a network of reliable suppliers, sourced inventory through them, and put my energy into the storefront, the customer relationship, and the diversification of services.</strong></p><p>That's when the offer really matured: second-hand accounts sold to buyers, a <strong>middleman service to secure high-value trades between strangers</strong>, and operational standards that other sellers simply didn't have. The middleman work in particular &mdash; sitting between two strangers making a risky exchange &mdash; was the seed of an idea I'd later turn into my marketplace project.</p><blockquote>I stopped trying to be the biggest producer and started being the most trusted seller. Everything changed.</blockquote>",
-        'proj.feat.act3': "<span class=\"act-label\">Act 3 &mdash; Full-time, on the road (2021 &mdash; 2024)</span><h3>From side project to <em>$500K+</em> business &mdash; while traveling Southeast Asia</h3><p>In 2021, my girlfriend and I left for a year across Thailand, Cambodia, Vietnam, Indonesia, South Korea, Malaysia and New Zealand. On paper, terrible timing to scale a business. In practice, the best thing that ever happened to it.</p><p>Living on the road forced decisions I'd been avoiding: every task that couldn't be automated had to disappear or force a fix. I built a custom WordPress storefront, <strong>fully automated digital product delivery end-to-end</strong>, ran email campaigns through MailerLite, and shifted into a bigger market with proper operational security. The low cost of living gave me runway to build patiently instead of grabbing every quick sale.</p><p>There was no dramatic \"I quit my job\" moment. By the end of that year, the business was doing better than a job. So I just didn't go back. For the next three years, this was my full-time income &mdash; properly declared, taxed, and profitable enough to fund the life I wanted, and invest in real estate back in France.</p><p>By 2024, with 2,250+ verified positive reviews and a 100% satisfaction rate across its entire history, I'd stretched that model about as far as it could go alone. I closed it on my terms &mdash; to go build something more ambitious: a proper marketplace.</p>",
+        'proj.feat.act3': "<span class=\"act-label\">Act 3 &mdash; Full-time, on the road (2021 &mdash; 2024)</span><h3>From side project to <em>$500K+</em> business &mdash; while traveling Southeast Asia</h3><p>In 2021, my girlfriend and I left for a year across Thailand, Cambodia, Vietnam, Indonesia, South Korea, Malaysia and New Zealand. On paper, terrible timing to scale a business. In practice, the best thing that ever happened to it.</p><p>Living on the road forced decisions I'd been avoiding: every task that couldn't be automated had to disappear or force a fix. I built a custom WordPress storefront, <strong>fully automated digital product delivery end-to-end</strong>, ran email campaigns through MailerLite, and shifted into a bigger market with proper operational security. The low cost of living gave me runway to build patiently instead of grabbing every quick sale.</p><p>There was no dramatic \"I quit my job\" moment. By the end of that year, the business was doing better than a job. So I just didn't go back. For the next three years, this was my full-time income &mdash; properly declared, taxed &mdash; <strong>$500K+ in cumulative revenue over the period</strong> &mdash; enough to fund the life I wanted and invest in real estate back in France.</p><p>By 2024, with 2,250+ verified positive reviews and a 100% satisfaction rate across its entire history, I'd stretched that model about as far as it could go alone. I closed it on my terms &mdash; to go build something more ambitious: a proper marketplace.</p>",
         'proj.feat.toggle.closed': 'Read the full story',
         'proj.feat.toggle.open': 'Hide story',
 
@@ -2330,7 +2311,7 @@ Un projet né de ma passion pour les finances personnelles&nbsp;: je teste en co
 
         'proj.p2.title': 'PrimeParrain <em>(Affiliation)</em>',
         'proj.p2.period': 'Ongoing &mdash; minimalist side',
-		'proj.p2.body': "<p>A project born from my passion for personal finance&nbsp;: I continuously test banking, crypto, and investment platforms, and I share two types of content&nbsp;: <strong>favorites</strong> (reviews and comparisons of the tools I actually use) and <strong>bonus offers</strong> — you sign up, do one easy thing, and get a cash bonus.</p><p>A single flagship article on Finary generated <strong>1,000+ referrals</strong>, plus affiliate revenue through an exclusive promo code. Kept deliberately small&nbsp;: a few hundred euros a month, with minimal upkeep.</p><p>I only share offers and tools that are worth the time they take. Built as a minimalist site, backed by an email list I write to 2 to 3 times a month with the best deals.</p>",
+        'proj.p2.body': "<p>A project born from my passion for personal finance&nbsp;: I continuously test banking, crypto, and investment platforms, and I share two types of content&nbsp;: <strong>favorites</strong> (reviews and comparisons of the tools I actually use) and <strong>bonus offers</strong> — you sign up, do one easy thing, and get a cash bonus.</p><p>A single flagship article on Finary generated <strong>1,000+ referrals</strong>, plus affiliate revenue through an exclusive promo code. Kept deliberately small&nbsp;: a few hundred euros a month, with minimal upkeep.</p><p>I only share offers and tools that are worth the time they take. Built as a minimalist site, backed by an email list I write to 2 to 3 times a month with the best deals.</p>",
         'proj.p2.meta': "<span><strong>URL:</strong> <a class=\"meta-link\" href=\"https://primeparrain.fr/avis-finary-code-parrainage-2026/\" target=\"_blank\" rel=\"noopener\">Finary article (sample)</a></span><span><strong>Role:</strong> Solo operator</span><span><strong>Finary case:</strong> 1,000+ referrals</span><span><strong>Cadence:</strong> 2&ndash;3 emails / month</span>",
         'proj.p2.proved': "<strong>For you:</strong> I know how to build a content asset that pays for years with minimal upkeep. One well-made article generated 1,000+ referrals.",
 
@@ -2347,7 +2328,7 @@ Un projet né de ma passion pour les finances personnelles&nbsp;: je teste en co
         'proj.p4.proved': "<strong>For you:</strong> I’ve been on both sides of the founder/operator relationship. I know what’s expected of someone you trust with your systems.",
 
         'proj.close.eyebrow': 'What this means for you',
-        'proj.close.h2': 'If I ran a business <em>solo for 12 years,</em> I can help with yours.',
+        'proj.close.h2': 'If I’ve run businesses <em>solo for 15 years,</em> I can help with yours.',
         'proj.close.p': "That’s the reaction I’m hoping for. If you’re a coach, consultant or trainer in French-speaking Switzerland and you want an online presence that attracts and converts — without spending your evenings on it — you now know where I come from. Let’s talk.",
         'proj.close.cta': 'Book a 20-min call',
 
@@ -2419,6 +2400,10 @@ Un projet né de ma passion pour les finances personnelles&nbsp;: je teste en co
       document.querySelectorAll('[data-i18n-html]').forEach((el) => {
         const key = el.getAttribute('data-i18n-html');
         if (dict[key] !== undefined) el.innerHTML = dict[key];
+      });
+      document.querySelectorAll('[data-aria-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-aria-i18n');
+        if (dict[key] !== undefined) el.setAttribute('aria-label', dict[key]);
       });
 
       document.documentElement.setAttribute('lang', lang);
