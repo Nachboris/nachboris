@@ -1120,18 +1120,20 @@
     .current-services {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 0.75rem;
-      margin-top: 1rem;
+      gap: 1.4rem;
+      margin-top: 1.75rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--rule);
     }
-    @media (min-width: 600px) { .current-services { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 600px) { .current-services { grid-template-columns: repeat(2, 1fr); gap: 2rem; } }
     .current-service {
-      padding: 1rem 1.15rem;
-      background: rgba(255, 255, 255, 0.7);
-      border: 1px solid rgba(15, 15, 23, 0.05);
-      border-radius: var(--r-md);
+      padding: 0;
+      background: none;
+      border: 0;
+      border-radius: 0;
       display: flex;
       flex-direction: column;
-      gap: 0.35rem;
+      gap: 0.4rem;
     }
     .current-service .service-label {
       font-family: var(--sans);
@@ -1153,16 +1155,54 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 0.85rem;
-      padding: 1.25rem;
-      background: rgba(255, 255, 255, 0.55);
-      border: 1px solid rgba(15, 15, 23, 0.05);
-      border-radius: var(--r-md);
+      padding: 0;
+      background: none;
+      border: 0;
+      border-radius: 0;
+    }
+    @media (max-width: 859px) {
+      .current-card-cta {
+        margin-top: 0.5rem;
+        padding-top: 1.75rem;
+        border-top: 1px solid var(--rule);
+      }
     }
     @media (min-width: 860px) {
-      .current-card-cta { padding: 1.5rem; }
+      .current-card-cta {
+        justify-content: space-between;
+        padding-left: 2.25rem;
+        border-left: 1px solid var(--rule);
+      }
     }
+    .current-card-cta-facts {
+      list-style: none;
+      margin: 0.35rem 0 0;
+      padding: 1.4rem 0 0;
+      width: 100%;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .current-card-cta-facts li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--sans);
+      font-size: var(--fs-15);
+      color: var(--ink-soft);
+    }
+    .current-card-cta-facts li::before {
+      content: "";
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--indigo);
+      flex-shrink: 0;
+    }
+    .current-card-cta-facts li:nth-child(2)::before { background: var(--orange); }
+    .current-card-cta-facts li:nth-child(3)::before { background: var(--green); }
     .current-card-cta-label {
       font-family: var(--sans);
       font-size: 0.7rem;
@@ -1329,27 +1369,35 @@
 
     .project-proved {
       margin-top: auto;
-      padding-top: 0.75rem;
+      padding-top: 0.9rem;
       font-family: var(--serif);
       font-style: italic;
       font-weight: 300;
       color: var(--ink);
       font-size: var(--fs-17);
-      line-height: 1.45;
-      display: flex;
-      gap: 0.5rem;
+      line-height: 1.5;
     }
-    .project-proved::before {
-      content: "→";
-      color: var(--indigo);
-      font-style: normal;
+    .project-proved strong {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.55rem;
       font-family: var(--sans);
+      font-style: normal;
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--indigo);
+    }
+    .project-proved strong::before {
+      content: "→";
       font-weight: 600;
       flex-shrink: 0;
     }
-    .project.project-orange .project-proved::before { color: var(--orange); }
-    .project.project-lime .project-proved::before { color: var(--lime); }
-    .project.project-sky .project-proved::before { color: var(--sky); }
+    .project.project-orange .project-proved strong { color: var(--orange); }
+    .project.project-lime .project-proved strong { color: var(--lime); }
+    .project.project-sky .project-proved strong { color: var(--sky); }
 
     .projects-footer {
       margin-top: clamp(2.5rem, 5vw, 4rem);
@@ -1406,8 +1454,8 @@
       filter: blur(30px);
       pointer-events: none;
     }
-    .closing-inner { position: relative; z-index: 1; max-width: 640px; }
-    .closing .eyebrow { color: var(--indigo-soft); }
+    .closing-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; text-align: center; }
+    .closing .eyebrow { color: var(--indigo-soft); justify-content: center; }
     .closing .eyebrow::before { background: var(--indigo-soft); }
     .closing h2 {
       margin-top: 1.1rem;
@@ -1417,6 +1465,8 @@
     .closing h2 em { font-style: italic; color: var(--orange-soft); font-weight: 300; }
     .closing p {
       margin-top: 1.2rem;
+      margin-left: auto;
+      margin-right: auto;
       color: rgba(247, 245, 242, 0.75);
       font-size: var(--fs-17);
       line-height: 1.6;
@@ -1428,6 +1478,7 @@
       flex-wrap: wrap;
       gap: 0.85rem 1.25rem;
       align-items: center;
+      justify-content: center;
     }
     .closing .btn-ink {
       background: var(--bg);
@@ -1692,6 +1743,11 @@
               <span data-i18n="nav.cta.full">Réserver un appel</span>
               <svg class="arrow cta-phone" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             </a>
+            <ul class="current-card-cta-facts">
+              <li data-i18n="proj.cw.cta.f1">Async-first</li>
+              <li data-i18n="proj.cw.cta.f2">Remote · Lausanne</li>
+              <li data-i18n="proj.cw.cta.f3">2 clients max en parallèle</li>
+            </ul>
           </div>
 
         </div>
@@ -1857,7 +1913,7 @@
               <span><strong>Équipe&nbsp;:</strong> 3 stagiaires pilotés au lancement</span>
             </div>
             <p class="project-proved" data-i18n="proj.p1.proved">
-              <strong>Pour toi&nbsp;:</strong> quelqu'un qui a déjà mené un lancement complet — marque, go-to-market, communauté, petite équipe pilotée — et qui sait pivoter quand la réalité l'exige, sans perdre l'audience.
+              <strong>Pour toi</strong> quelqu'un qui a déjà mené un lancement complet — marque, go-to-market, communauté, petite équipe pilotée — et qui sait pivoter quand la réalité l'exige, sans perdre l'audience.
             </p>
           </article>
 
@@ -1886,7 +1942,7 @@
               <span><strong>Rythme&nbsp;:</strong> 2 à 3 emails / mois</span>
             </div>
             <p class="project-proved" data-i18n="proj.p2.proved">
-              <strong>Pour toi&nbsp;:</strong> je sais construire un actif de contenu qui rapporte pendant des années avec un entretien minimal. Un seul article bien fait a généré 1&nbsp;000+ parrainages.
+              <strong>Pour toi</strong> je sais construire un actif de contenu qui rapporte pendant des années avec un entretien minimal. Un seul article bien fait a généré 1&nbsp;000+ parrainages.
             </p>
           </article>
 
@@ -1911,7 +1967,7 @@
               <span><strong>Utilisateurs&nbsp;:</strong> moi seulement</span>
             </div>
             <p class="project-proved" data-i18n="proj.p3.proved">
-              <strong>Pour toi&nbsp;:</strong> si j'ai construit une app complète pour le plaisir, ton espace client ou ton outil interne est un projet à ma portée — vite, léger, sans agence.
+              <strong>Pour toi</strong> si j'ai construit une app complète pour le plaisir, ton espace client ou ton outil interne est un projet à ma portée — vite, léger, sans agence.
             </p>
           </article>
 
@@ -1936,7 +1992,7 @@
               <span><strong>Bénévolat&nbsp;:</strong> association Well'Come</span>
             </div>
             <p class="project-proved" data-i18n="proj.p4.proved">
-              <strong>Pour toi&nbsp;:</strong> j'ai été des deux côtés de la relation fondateur/opérateur. Je sais ce qu'on attend de quelqu'un à qui on confie ses systèmes.
+              <strong>Pour toi</strong> j'ai été des deux côtés de la relation fondateur/opérateur. Je sais ce qu'on attend de quelqu'un à qui on confie ses systèmes.
             </p>
           </article>
 
@@ -2170,6 +2226,9 @@
         'proj.cw.s2.desc': 'Outils sur-mesure, automatisations, skills Claude entraînés sur ta méthode. La tuyauterie tourne pendant que tu es avec tes clients.',
         'proj.cw.cta.label': 'Parlons-en',
         'proj.cw.cta.headline': 'Curieux de voir si je peux aider&nbsp;? Un appel de 20 minutes ne coûte rien et te le dira vite.',
+        'proj.cw.cta.f1': 'Async-first',
+        'proj.cw.cta.f2': 'Remote · Lausanne',
+        'proj.cw.cta.f3': '2 clients max en parallèle',
 
         'proj.feat.tag': 'Projet phare',
         'proj.feat.h2': 'Bobu <span class="italic-accent">· e-commerce, 2012 → 2024</span>',
@@ -2205,25 +2264,25 @@
         'proj.p1.period': "Fin 2024 · aujourd'hui",
         'proj.p1.body': "<p>Lancé au départ comme une marketplace de biens numériques, portée par une <strong>campagne de crowdfunding financée à 226% de son objectif</strong>, avec une petite équipe de 3 stagiaires que j'ai pilotée sur la marque, le go-to-market, le build WordPress et le lancement.</p><p>La marketplace a dû fermer en 2025 après un lancement réussi, pour des contraintes légales propres au secteur. Honnêtement, une décision franchement frustrante&nbsp;: rien dans la loi ne m'empêchait de la faire tourner, mais d'autres acteurs du secteur en ont décidé autrement, et j'ai choisi de partir plutôt que de mener une bataille qui aurait cramé des années d'énergie pour pas grand-chose. J'ai gardé la communauté (~2 000 abonnés email, 300+ membres Discord) et j'ai fait pivoter Gamoniz vers ce qu'elle est aujourd'hui&nbsp;: une marque de contenu &amp; coaching où je partage mon expérience d'opérateur, via des articles, Twitter, un produit low-ticket et du coaching en 1-on-1.</p>",
         'proj.p1.meta': "<span><strong>URL&nbsp;:</strong> <a class=\"meta-link\" href=\"https://gamoniz.com\" target=\"_blank\" rel=\"noopener\">gamoniz.com</a></span><span><strong>Rôle&nbsp;:</strong> Fondateur, opérateur solo</span><span><strong>Crowdfunding&nbsp;:</strong> 226% de l'objectif</span><span><strong>Communauté&nbsp;:</strong> 2 000+ email · 300+ Discord</span><span><strong>Équipe&nbsp;:</strong> 3 stagiaires pilotés au lancement</span>",
-        'proj.p1.proved': "<strong>Pour toi&nbsp;:</strong> quelqu'un qui a déjà mené un lancement complet — marque, go-to-market, communauté, petite équipe pilotée — et qui sait pivoter quand la réalité l'exige, sans perdre l'audience.",
+        'proj.p1.proved': "<strong>Pour toi</strong> quelqu'un qui a déjà mené un lancement complet — marque, go-to-market, communauté, petite équipe pilotée — et qui sait pivoter quand la réalité l'exige, sans perdre l'audience.",
 
         'proj.p2.title': 'PrimeParrain <em>(Affiliation)</em>',
         'proj.p2.period': 'En continu · version minimaliste',
         'proj.p2.body': "<p>Un projet né de ma passion pour les finances personnelles&nbsp;: je teste en continu les plateformes bancaires, crypto et invest, et je partage deux types de contenus&nbsp;: des <strong>coups de cœur</strong> (avis et comparatifs sur les outils que j'utilise vraiment) et des <strong>offres à prime</strong> — tu t'inscris, tu fais une chose facile, tu reçois un bonus en cash.</p><p>Un seul article phare sur Finary a généré <strong>1 000+ parrainages</strong>, plus des revenus d'affiliation via un code promo exclusif. C'est gardé petit volontairement&nbsp;: quelques centaines d'euros par mois, avec un entretien minimal.</p><p>Je ne partage que les offres et outils qui valent le temps qu'ils prennent. Conçu comme un site minimaliste, adossé à une liste email à laquelle j'écris 2 à 3 fois par mois avec les meilleurs plans.</p>",
         'proj.p2.meta': "<span><strong>URL&nbsp;:</strong> <a class=\"meta-link\" href=\"https://primeparrain.fr/avis-finary-code-parrainage-2026/\" target=\"_blank\" rel=\"noopener\">Article Finary (exemple)</a></span><span><strong>Rôle&nbsp;:</strong> Opérateur solo</span><span><strong>Cas Finary&nbsp;:</strong> 1 000+ parrainages</span><span><strong>Rythme&nbsp;:</strong> 2 à 3 emails / mois</span>",
-        'proj.p2.proved': '<strong>Pour toi&nbsp;:</strong> je sais construire un actif de contenu qui rapporte pendant des années avec un entretien minimal. Un seul article bien fait a généré 1&nbsp;000+ parrainages.',
+        'proj.p2.proved': '<strong>Pour toi</strong> je sais construire un actif de contenu qui rapporte pendant des années avec un entretien minimal. Un seul article bien fait a généré 1&nbsp;000+ parrainages.',
 
         'proj.p3.title': 'BodyFlow <em>(App de sport à la maison)</em>',
         'proj.p3.period': 'Construit pour le plaisir · et pour moi',
         'proj.p3.body': "<p>Un prétexte pour tester le vibe coding avec Claude, et finir avec quelque chose de vraiment utile. BodyFlow est une app de sport à la maison entièrement personnalisée, calée sur mon niveau exact, mon matériel, et la façon dont j'ai vraiment envie de m'entraîner.</p><p>Le vrai problème qu'elle règle&nbsp;: rester motivé à s'entraîner seul chez soi, c'est dur. Alors j'ai ajouté une <strong>couche de gamification (défis, système de carotte et de bâton, timers, et un tableau de bord)</strong> qui rend ça moins corvée. Gratuit, sans pub, à moi.</p>",
         'proj.p3.meta': "<span><strong>URL&nbsp;:</strong> <a class=\"meta-link\" href=\"https://nachboris.github.io/BODYFLOW/\" target=\"_blank\" rel=\"noopener\">Démo en ligne</a></span><span><strong>Construit avec&nbsp;:</strong> Claude + vibe coding</span><span><strong>Utilisateurs&nbsp;:</strong> moi seulement</span>",
-        'proj.p3.proved': "<strong>Pour toi&nbsp;:</strong> si j'ai construit une app complète pour le plaisir, ton espace client ou ton outil interne est un projet à ma portée — vite, léger, sans agence.",
+        'proj.p3.proved': "<strong>Pour toi</strong> si j'ai construit une app complète pour le plaisir, ton espace client ou ton outil interne est un projet à ma portée — vite, léger, sans agence.",
 
         'proj.p4.title': 'Au-delà des <em>projets solo</em>',
         'proj.p4.period': 'Études &amp; débuts de carrière',
         'proj.p4.body': "<p>En parallèle de Bobu, j'ai obtenu un <strong>Master en Digital Business Management</strong> à Rennes School of Business et occupé deux postes de <strong>business developer</strong> en startup early-stage, où j'ai vu l'autre côté de la table&nbsp;: des fondateurs qui recrutent des opérateurs, font grandir les ventes, et construisent des process à partir de zéro.</p><p>J'ai aussi géré les ops communauté de <strong>Well'Come</strong>, une association étudiante qui accueille les étudiants internationaux. Une autre leçon précoce et bénévole de community building, qui m'est restée.</p>",
         'proj.p4.meta': "<span><strong>Diplôme&nbsp;:</strong> Master Digital Business Mgmt</span><span><strong>Rôles&nbsp;:</strong> Biz dev × 2 startups</span><span><strong>Bénévolat&nbsp;:</strong> association Well'Come</span>",
-        'proj.p4.proved': "<strong>Pour toi&nbsp;:</strong> j'ai été des deux côtés de la relation fondateur/opérateur. Je sais ce qu'on attend de quelqu'un à qui on confie ses systèmes.",
+        'proj.p4.proved': "<strong>Pour toi</strong> j'ai été des deux côtés de la relation fondateur/opérateur. Je sais ce qu'on attend de quelqu'un à qui on confie ses systèmes.",
 
         'proj.close.eyebrow': 'Ce que ça veut dire pour toi',
         'proj.close.h2': "Si j'ai fait tourner des business <em>en solo pendant 15 ans,</em> je peux aider le tien.",
@@ -2272,6 +2331,9 @@
         'proj.cw.s2.desc': "Custom tools, automations, Claude skills trained on your method. The plumbing runs while you’re with your clients.",
         'proj.cw.cta.label': 'Get in touch',
         'proj.cw.cta.headline': 'Curious if I can help? A 20-minute call costs nothing and tells you fast.',
+        'proj.cw.cta.f1': 'Async-first',
+        'proj.cw.cta.f2': 'Remote · Lausanne',
+        'proj.cw.cta.f3': 'Max. 2 clients at a time',
 
         'proj.feat.tag': 'Flagship project',
         'proj.feat.h2': 'Bobu <span class="italic-accent">· e-commerce, 2012 → 2024</span>',
@@ -2307,25 +2369,25 @@
         'proj.p1.period': 'Late 2024 &mdash; present',
         'proj.p1.body': "<p>Originally launched as a digital-goods marketplace backed by a <strong>crowdfunding campaign that raised 226% of its goal</strong>, with a small team of 3 interns I managed through brand, go-to-market, WordPress build and launch.</p><p>Pivot: The marketplace had to close in 2025 despite a successful launch, forced by an industry player. Honestly, it was a deeply frustrating decision: the market was promising and the framework was completely legitimate, but I chose to walk away rather than fight a battle that would have drained years of energy for little upside. I kept the community (~2,000 email subscribers, 300+ Discord members) and pivoted Gamoniz into what it is today: a content &amp; coaching brand where I share my operator experience through articles, Twitter, a low-ticket product, and 1-on-1 coaching.</p>",
         'proj.p1.meta': "<span><strong>URL:</strong> <a class=\"meta-link\" href=\"https://gamoniz.com\" target=\"_blank\" rel=\"noopener\">gamoniz.com</a></span><span><strong>Role:</strong> Founder, solo operator</span><span><strong>Crowdfunding:</strong> 226% of goal</span><span><strong>Community:</strong> 2,000+ email · 300+ Discord</span><span><strong>Team:</strong> Managed 3 interns at launch</span>",
-        'proj.p1.proved': "<strong>For you:</strong> someone who has already run a full launch — brand, go-to-market, community, a small team — and knows how to pivot when reality demands it, without losing the audience.",
+        'proj.p1.proved': "<strong>For you</strong> someone who has already run a full launch — brand, go-to-market, community, a small team — and knows how to pivot when reality demands it, without losing the audience.",
 
         'proj.p2.title': 'PrimeParrain <em>(Affiliation)</em>',
         'proj.p2.period': 'Ongoing &mdash; minimalist side',
         'proj.p2.body': "<p>A project born from my passion for personal finance&nbsp;: I continuously test banking, crypto, and investment platforms, and I share two types of content&nbsp;: <strong>favorites</strong> (reviews and comparisons of the tools I actually use) and <strong>bonus offers</strong> — you sign up, do one easy thing, and get a cash bonus.</p><p>A single flagship article on Finary generated <strong>1,000+ referrals</strong>, plus affiliate revenue through an exclusive promo code. Kept deliberately small&nbsp;: a few hundred euros a month, with minimal upkeep.</p><p>I only share offers and tools that are worth the time they take. Built as a minimalist site, backed by an email list I write to 2 to 3 times a month with the best deals.</p>",
         'proj.p2.meta': "<span><strong>URL:</strong> <a class=\"meta-link\" href=\"https://primeparrain.fr/avis-finary-code-parrainage-2026/\" target=\"_blank\" rel=\"noopener\">Finary article (sample)</a></span><span><strong>Role:</strong> Solo operator</span><span><strong>Finary case:</strong> 1,000+ referrals</span><span><strong>Cadence:</strong> 2&ndash;3 emails / month</span>",
-        'proj.p2.proved': "<strong>For you:</strong> I know how to build a content asset that pays for years with minimal upkeep. One well-made article generated 1,000+ referrals.",
+        'proj.p2.proved': "<strong>For you</strong> I know how to build a content asset that pays for years with minimal upkeep. One well-made article generated 1,000+ referrals.",
 
         'proj.p3.title': 'BodyFlow <em>(Home-workout app)</em>',
         'proj.p3.period': 'Built for fun &mdash; and for me',
         'proj.p3.body': "<p>An excuse to explore vibe coding with Claude — and end up with something genuinely useful. BodyFlow is a fully personalized home-workout app built around my exact level, my equipment, and the way I actually want to train.</p><p>The real problem it solves: staying motivated to train alone at home is hard. So I built in a <strong>gamification layer — challenges, a carrot-and-stick system, timers, and a dashboard</strong> that makes it feel less like a chore. Free, ad-free, mine.</p>",
         'proj.p3.meta': "<span><strong>URL:</strong> <a class=\"meta-link\" href=\"https://nachboris.github.io/BODYFLOW/\" target=\"_blank\" rel=\"noopener\">Live demo</a></span><span><strong>Built with:</strong> Claude + vibe coding</span><span><strong>Users:</strong> me only</span>",
-        'proj.p3.proved': "<strong>For you:</strong> if I built a complete app for fun, your client portal or internal tool is well within reach — fast, light, no agency required.",
+        'proj.p3.proved': "<strong>For you</strong> if I built a complete app for fun, your client portal or internal tool is well within reach — fast, light, no agency required.",
 
         'proj.p4.title': 'Beyond <em>solo projects</em>',
         'proj.p4.period': 'Studies &amp; early career',
         'proj.p4.body': "<p>Alongside Bobu, I earned a <strong>Master in Digital Business Management</strong> at Rennes School of Business and worked two stints as a <strong>business developer</strong> in early-stage startups &mdash; where I saw the other side of the table: founders hiring operators, scaling sales, building processes from scratch.</p><p>I also ran community ops for <strong>Well'Come</strong>, a student association welcoming international students &mdash; another early, unpaid lesson in community building that stuck.</p>",
         'proj.p4.meta': "<span><strong>Degree:</strong> Master Digital Business Mgmt</span><span><strong>Roles:</strong> Biz dev × 2 startups</span><span><strong>Volunteer:</strong> Well'Come student association</span>",
-        'proj.p4.proved': "<strong>For you:</strong> I’ve been on both sides of the founder/operator relationship. I know what’s expected of someone you trust with your systems.",
+        'proj.p4.proved': "<strong>For you</strong> I’ve been on both sides of the founder/operator relationship. I know what’s expected of someone you trust with your systems.",
 
         'proj.close.eyebrow': 'What this means for you',
         'proj.close.h2': 'If I’ve run businesses <em>solo for 15 years,</em> I can help with yours.',
