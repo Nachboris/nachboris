@@ -696,6 +696,40 @@
     }
     .btn-ghost:hover::after { transform: scaleX(0.98); opacity: 1; }
 
+    .btn-soft {
+      background: #FFFFFF;
+      color: var(--ink);
+      border: 1px solid var(--rule);
+      box-shadow: 0 8px 20px -16px rgba(15, 15, 23, 0.4);
+      cursor: pointer;
+    }
+    .btn-soft:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px -16px rgba(15, 15, 23, 0.45);
+    }
+    .btn-whatsapp:hover {
+      border-color: rgba(37, 211, 102, 0.55);
+      box-shadow: 0 12px 26px -16px rgba(37, 211, 102, 0.45);
+    }
+    .btn-soft .wa-icon {
+      width: 1.1rem;
+      height: 1.1rem;
+      fill: #25D366;
+      flex-shrink: 0;
+    }
+    .btn-soft .mail-icon {
+      width: 1.15rem;
+      height: 1.15rem;
+      color: var(--ink-soft);
+      flex-shrink: 0;
+      transition: color 0.25s var(--soft);
+    }
+    .btn-copy.copied {
+      border-color: rgba(34, 197, 94, 0.6);
+      color: var(--green);
+    }
+    .btn-copy.copied .mail-icon { color: var(--green); }
+
     .nav-cta {
       display: inline-flex;
       align-items: center;
@@ -2696,9 +2730,19 @@
     .contact-ctas {
       margin-top: 2rem;
       display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .contact-ctas-alt {
+      display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1rem 2rem;
+      gap: 0.75rem;
+    }
+    .contact-ctas-alt .btn {
+      padding: 0.72rem 1.15rem;
+      font-size: 0.9rem;
     }
     .contact-signature {
       margin-top: 2.5rem;
@@ -3111,10 +3155,9 @@
 <a aria-label="Boris Nachbaur, accueil" class="logo logo-mark" href="/">BN<span class="logo-dot">.</span></a>
 </div>
 <div class="nav-links nav-menu">
-<a class="nav-link" href="/#work" data-i18n="nav.services">Services</a>
-<a class="nav-link nav-link-about" href="/me" data-i18n="nav.about">À propos</a>
-<a class="nav-link nav-link-toolkit" href="/projects" data-i18n="nav.projects">Projets</a>
+<a class="nav-link" href="/projects" data-i18n="nav.projects">Portfolio</a>
 <a class="nav-link" href="/reviews" data-i18n="nav.reviews">Avis</a>
+<a class="nav-link" href="/me" data-i18n="nav.about">À propos</a>
 </div>
 <div class="nav-end">
 <div class="nav-actions">
@@ -3139,10 +3182,9 @@
 </nav>
 <div inert class="mobile-menu" id="mobileMenu">
 <div class="mobile-menu-links">
-<a class="mobile-menu-link" href="/#work"><span data-i18n="nav.services">Services</span> <span>01</span></a>
-<a class="mobile-menu-link" href="/me"><span data-i18n="nav.about">À propos</span> <span>02</span></a>
-<a class="mobile-menu-link" href="/projects"><span data-i18n="nav.projects">Projets</span> <span>03</span></a>
-<a class="mobile-menu-link" href="/reviews"><span data-i18n="nav.reviews">Avis</span> <span>04</span></a>
+<a class="mobile-menu-link" href="/projects"><span data-i18n="nav.projects">Portfolio</span> <span>01</span></a>
+<a class="mobile-menu-link" href="/reviews"><span data-i18n="nav.reviews">Avis</span> <span>02</span></a>
+<a class="mobile-menu-link" href="/me"><span data-i18n="nav.about">À propos</span> <span>03</span></a>
 </div>
 <div class="mobile-menu-foot">
 <a class="mobile-menu-cta" href="https://calendly.com/nachboris/20min" target="_blank" rel="noopener noreferrer"><span data-i18n="nav.cta.full">Réserver un appel</span> <svg class="cta-phone" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
@@ -3593,7 +3635,16 @@
 <span class="btn-label" data-i18n="contact.cta.primary">Réserver un appel</span>
 <svg class="arrow cta-phone" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
 </a>
-<a class="btn btn-ghost" href="mailto:boris@nachboris.ch"><span class="btn-label">boris@nachboris.ch</span></a>
+<div class="contact-ctas-alt">
+<a class="btn btn-soft btn-whatsapp" href="https://wa.me/41772796885?text=Salut%20Boris%2C%20je%20viens%20de%20ton%20site%20%E2%80%94%20j%27aimerais%20discuter%20d%27un%20projet." data-i18n-href="contact.cta.whatsapp.href" rel="noopener" target="_blank" aria-label="Écrire sur WhatsApp">
+<svg class="wa-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.359.101 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.652a11.882 11.882 0 005.71 1.447h.006c6.585 0 11.946-5.359 11.949-11.893a11.821 11.821 0 00-3.481-8.413z"/></svg>
+<span class="btn-label" data-i18n="contact.cta.whatsapp">WhatsApp</span>
+</a>
+<button type="button" class="btn btn-soft btn-copy" data-copy="boris@nachboris.ch" aria-label="Copier l'adresse e-mail">
+<svg class="mail-icon" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M3 6.75A1.75 1.75 0 0 1 4.75 5h14.5A1.75 1.75 0 0 1 21 6.75v10.5A1.75 1.75 0 0 1 19.25 19H4.75A1.75 1.75 0 0 1 3 17.25V6.75Zm1.9-.25 7.1 5.31 7.1-5.31H4.9Zm14.6 11V8.34l-6.98 5.22a.9.9 0 0 1-1.04 0L4.5 8.34v9.16h15Z"/></svg>
+<span class="btn-label">boris@nachboris.ch</span>
+</button>
+</div>
 </div>
 <div class="contact-signature reveal">
 <span class="contact-signature-avatar">
@@ -3639,9 +3690,10 @@
 <span class="footer-copy">© <span id="year">2026</span> Nachboris · <span data-i18n="footer.copy">Fait avec ♡ par Boris &amp; Claude.</span></span>
 </div>
 <nav aria-label="Footer" class="footer-nav">
-<a href="/me" data-i18n="nav.about">À propos</a>
-<a href="/projects" data-i18n="nav.projects">Projets</a>
+<a href="/projects" data-i18n="nav.projects">Portfolio</a>
 <a href="/reviews" data-i18n="nav.reviews">Avis</a>
+<a href="/me" data-i18n="nav.about">À propos</a>
+<a href="/legal" data-i18n="footer.legal">Mentions légales</a>
 </nav>
 <div class="footer-social">
 <a aria-label="LinkedIn" href="https://www.linkedin.com/in/borisnch/" rel="noopener" target="_blank">
@@ -3778,7 +3830,7 @@
         // NAV
         'nav.services': 'Services',
         'nav.about': 'À propos',
-        'nav.projects': 'Projets',
+        'nav.projects': 'Portfolio',
         'nav.reviews': 'Avis',
         'nav.available': 'Disponible',
         'nav.cta.full': 'Réserver un appel',
@@ -3923,6 +3975,8 @@
         'contact.h2': "Prêt à ce que ta présence en ligne <span class=\"italic-accent\">travaille pour toi</span>&nbsp;?",
         'contact.sub': "Le premier appel dure 20 minutes. C'est gratuit. Dans le pire des cas, tu repars avec une vision claire de ce qui bloque, et de quoi corriger en premier.",
         'contact.cta.primary': 'Réserver un appel',
+        'contact.cta.whatsapp': 'WhatsApp',
+        'contact.cta.whatsapp.href': 'https://wa.me/41772796885?text=Salut%20Boris%2C%20je%20viens%20de%20ton%20site%20%E2%80%94%20j%27aimerais%20discuter%20d%27un%20projet.',
         'contact.signature.text': 'Et si je ne suis pas le bon profil — <em>aucun souci.</em><br/>Tu repars au moins avec une vision claire.',
         'contact.signature.name': '— Boris',
 
@@ -3930,12 +3984,14 @@
         'footer.lang': 'Français',
         'footer.location': 'Basé à Lausanne',
         'footer.copy': 'Fait avec ♡ par Boris &amp; Claude.',
+        'footer.legal': 'Mentions légales',
+        'contact.cta.copied': 'Copié !',
       },
       en: {
         // NAV
         'nav.services': 'Services',
         'nav.about': 'About',
-        'nav.projects': 'Projects',
+        'nav.projects': 'Work',
         'nav.reviews': 'Reviews',
         'nav.available': 'Available',
         'nav.cta.full': 'Book a call',
@@ -3944,7 +4000,7 @@
         // HERO
         'hero.h1.line1': "You’ve got the expertise.",
         'hero.h1.line2': "I build the rest.",
-        'hero.sub': "I help <span class=\"hero-sub-strong\">established independent experts in French-speaking Switzerland</span> — coaches, consultants, trainers — turn their online presence into a system that attracts and converts: websites, funnels, email, automations. AI works backstage. You stay on stage.",
+        'hero.sub': "I help <span class=\"hero-sub-strong\">established independent experts in Switzerland</span> — coaches, consultants, trainers — turn their online presence into a system that attracts and converts: websites, funnels, email, automations. AI works backstage. You stay on stage.",
         'hero.photoNote': 'your digital &amp; AI right-hand?',
         'hero.badge': 'Digital &amp; AI Operator · 15 yrs of solo ops',
         'hero.cta.primary': 'Book a call',
@@ -4001,7 +4057,7 @@
         // EDGE
         'edge.eyebrow': 'What sets me apart',
         'edge.h2': "Marketing and tech in the same head, <span class=\"italic-accent\">for real</span>.",
-        'edge.body': "Most profiles do one or the other: the marketing consultant who outsources the tech, or the developer who has never sold anything. I’ve done both, solo, for 15 years — funnels, email and content on one side; websites, automations and tools on the other. The result: $500K+ in revenue, 20,000+ transactions, no team. <strong>When I design your system, I know why it should exist and how to build it.</strong>",
+        'edge.body': "Most profiles do one or the other: the marketing consultant who outsources the tech, or the developer who has never sold anything. I’ve done both, solo, for 15 years — funnels, email and content on one side; websites, automations and tools on the other. <strong>When I design your system, I know why it should exist and how to build it.</strong>",
         'edge.chip1': 'Funnels &amp; acquisition',
         'edge.chip2': 'Email lifecycle',
         'edge.chip3': 'Automation',
@@ -4080,6 +4136,8 @@
         'contact.h2': "Ready for an online presence that <span class=\"italic-accent\">works for you</span>?",
         'contact.sub': "The first call is 20 minutes. It’s free. Worst case, you walk away knowing exactly what’s blocking you — and what to fix first.",
         'contact.cta.primary': 'Book a call',
+        'contact.cta.whatsapp': 'WhatsApp',
+        'contact.cta.whatsapp.href': 'https://wa.me/41772796885?text=Hi%20Boris%2C%20I%20came%20from%20your%20site%20%E2%80%94%20I%27d%20like%20to%20discuss%20a%20project.',
         'contact.signature.text': "And if I'm not the right fit — <em>no worries.</em><br/>You'll leave with a clear picture either way.",
         'contact.signature.name': '— Boris',
 
@@ -4087,6 +4145,8 @@
         'footer.lang': 'French speaker',
         'footer.location': 'Based in Lausanne',
         'footer.copy': 'Made with ♡ by Boris &amp; Claude.',
+        'footer.legal': 'Legal notice',
+        'contact.cta.copied': 'Copied!',
       }
     };
 
@@ -4158,6 +4218,10 @@
         const key = el.getAttribute('data-i18n-html');
         if (dict[key] !== undefined) el.innerHTML = dict[key];
       });
+      document.querySelectorAll('[data-i18n-href]').forEach((el) => {
+        const key = el.getAttribute('data-i18n-href');
+        if (dict[key] !== undefined) el.setAttribute('href', dict[key]);
+      });
 
       // <html lang>
       document.documentElement.setAttribute('lang', lang);
@@ -4189,6 +4253,45 @@
         applyLang(target);
       });
     });
+
+    // Copy-to-clipboard buttons (email address)
+    (function () {
+      function fallbackCopy(text) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch (e) { /* noop */ }
+        document.body.removeChild(ta);
+      }
+      document.querySelectorAll('.btn-copy').forEach((btn) => {
+        const labelEl = btn.querySelector('.btn-label');
+        const text = btn.getAttribute('data-copy') || '';
+        let resetTimer = null;
+        btn.addEventListener('click', () => {
+          const feedback = () => {
+            const lang = document.documentElement.getAttribute('lang') === 'en' ? 'en' : 'fr';
+            const copied = (i18n[lang] && i18n[lang]['contact.cta.copied']) || 'Copié !';
+            if (labelEl) labelEl.textContent = copied;
+            btn.classList.add('copied');
+            clearTimeout(resetTimer);
+            resetTimer = setTimeout(() => {
+              if (labelEl) labelEl.textContent = text;
+              btn.classList.remove('copied');
+            }, 1800);
+          };
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(feedback).catch(() => { fallbackCopy(text); feedback(); });
+          } else {
+            fallbackCopy(text);
+            feedback();
+          }
+        });
+      });
+    })();
 
     // Apply on load
     applyLang(detectInitialLang());
