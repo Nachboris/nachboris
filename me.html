@@ -43,7 +43,9 @@
     },
     "nationality": "French",
     "sameAs": [
-      "https://www.linkedin.com/in/borisnch/"
+      "https://www.linkedin.com/in/borisnch/",
+      "https://x.com/borisnachbaur",
+      "https://github.com/Nachboris/nachboris"
     ],
     "knowsAbout": ["AI workflows", "Custom Claude skills", "Digital marketing", "Email & funnels", "Content repurposing", "Personal finance"],
     "alumniOf": {
@@ -981,26 +983,30 @@
     .back-to-top svg { width: 16px; height: 16px; }
 
     /* ==========================================================
-       FOOTER
+       FOOTER — bloc canonique, identique sur les 5 pages
        ========================================================== */
     footer {
-  padding: 2.75rem 0 calc(3rem + env(safe-area-inset-bottom));
-  border-top: 1px solid rgba(15, 15, 23, 0.06);
-}
+      padding: 2.75rem 0 calc(3rem + env(safe-area-inset-bottom));
+      border-top: 1px solid rgba(15, 15, 23, 0.06);
+    }
     .footer-inner {
       max-width: var(--max);
       margin: 0 auto;
       padding: 0 var(--pad);
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1.25rem;
-      align-items: center;
+      gap: 1.5rem;
+      color: var(--ink-mute);
     }
-    @media (min-width: 760px) {
-      .footer-inner { grid-template-columns: 1fr auto auto; gap: 1.75rem; }
+    @media (min-width: 860px) {
+      .footer-inner {
+        grid-template-columns: 1.2fr auto auto;
+        align-items: start;
+        gap: 2rem;
+      }
     }
-    /* Mobile : nav + socials on the same row, footer-meta full width above */
-    @media (max-width: 759px) {
+    /* Mobile : nav + socials sur la même ligne, footer-meta pleine largeur au-dessus */
+    @media (max-width: 859px) {
       .footer-inner {
         grid-template-columns: 1fr auto;
         grid-template-areas:
@@ -1014,26 +1020,84 @@
       .footer-nav { grid-area: nav; }
       .footer-social { grid-area: social; justify-self: end; }
     }
-    .footer-meta { display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.86rem; color: var(--ink-mute); }
+    .footer-meta {
+      display: grid;
+      gap: 0.45rem;
+      font-size: var(--fs-15);
+    }
     .footer-identity {
       display: inline-flex;
       align-items: center;
       gap: 0.45rem;
       flex-wrap: wrap;
-      color: var(--ink-soft);
+      color: var(--ink);
       font-weight: 500;
+      letter-spacing: -0.01em;
+      line-height: 1.5;
+    }
+    .footer-copy {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      max-width: 56ch;
     }
     .flag-badge {
       display: inline-flex;
-      width: 16px; height: 16px;
-      border-radius: 50%;
-      overflow: hidden;
-      flex-shrink: 0;
-      box-shadow: 0 0 0 1px rgba(15, 15, 23, 0.08);
+      align-items: center;
+      justify-content: center;
+      width: 1rem;
+      height: 1rem;
     }
-    .flag-badge svg { width: 100%; height: 100%; }
-
-    /* Swiss flag flutter */
+    .flag-badge svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border-radius: 999px;
+      box-shadow: inset 0 0 0 0.5px rgba(15, 15, 23, 0.08);
+    }
+    .footer-nav,
+    .footer-social {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem 1.15rem;
+      align-content: start;
+      font-size: 0.9rem;
+      align-items: center;
+    }
+    .footer-nav a,
+    .footer-social a {
+      transition: color 0.25s var(--soft), transform 0.25s var(--soft);
+    }
+    /* Zones cliquables élargies (WCAG 2.5.8) sans impact visuel */
+    .footer-nav a {
+      display: inline-block;
+      padding: 0.35rem 0;
+      margin: -0.35rem 0;
+    }
+    .footer-social a {
+      display: inline-flex;
+      padding: 0.55rem;
+      margin: -0.55rem;
+      border-radius: 999px;
+    }
+    .footer-nav a:hover,
+    .footer-social a:hover {
+      color: var(--indigo);
+      transform: translateY(-1px);
+    }
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.15rem;
+      height: 1.15rem;
+    }
+    .social-icon svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      fill: currentColor;
+    }
+    /* Swiss flag flutter (hero — hors footer) */
     .ch-flag {
       display: inline-block;
       width: 1em;
@@ -1060,26 +1124,7 @@
     @media (prefers-reduced-motion: reduce) {
       .ch-flag { animation: none; }
     }
-    .footer-copy { font-size: 0.78rem; color: var(--ink-mute); max-width: 56ch; line-height: 1.6; }
-    .footer-nav {
-      display: inline-flex;
-      gap: 1.1rem;
-      flex-wrap: wrap;
-      font-size: 0.88rem;
-    }
-    .footer-nav a { color: var(--ink-soft); transition: color 0.25s var(--soft); }
-    .footer-nav a:hover { color: var(--indigo); }
-    .footer-social { display: inline-flex; gap: 0.5rem; }
-    .footer-social a {
-      width: 2.1rem; height: 2.1rem;
-      border-radius: 999px;
-      display: inline-flex; align-items: center; justify-content: center;
-      color: var(--ink-soft);
-      background: rgba(15, 15, 23, 0.04);
-      transition: color 0.25s var(--soft), background 0.25s var(--soft), transform 0.35s var(--spring);
-    }
-    .footer-social a:hover { color: var(--indigo); background: var(--indigo-tint); transform: translateY(-1px); }
-    .social-icon svg { width: 18px; height: 18px; fill: currentColor; }
+
 
     /* Responsive CTA label (harmonized with homepage) */
     .nav-cta-label-short { display: none; }
@@ -1396,61 +1441,68 @@
   </a>
 
   <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-meta">
+<footer>
+<div class="footer-inner">
+<div class="footer-meta">
 <span class="footer-identity">
-  <span>Boris Nachbaur</span>
-  <span aria-hidden="true" class="flag-badge">
-    <svg role="img" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <defs><clippath id="fr-round"><circle cx="12" cy="12" r="12"></circle></clippath></defs>
-      <g clip-path="url(#fr-round)">
-        <rect fill="#1F4AA8" height="24" width="8" x="0" y="0"></rect>
-        <rect fill="#FFFFFF" height="24" width="8" x="8" y="0"></rect>
-        <rect fill="#E23D28" height="24" width="8" x="16" y="0"></rect>
-      </g>
-    </svg>
-  </span>
-  <span data-i18n="footer.lang">Français</span>
-  <span>·</span>
-  <span aria-hidden="true" class="flag-badge">
-    <svg role="img" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <defs><clippath id="ch-round"><circle cx="12" cy="12" r="12"></circle></clippath></defs>
-      <g clip-path="url(#ch-round)">
-        <rect fill="#D52B1E" height="24" width="24"></rect>
-        <rect fill="#FFFFFF" height="14" width="4" x="10" y="5"></rect>
-        <rect fill="#FFFFFF" height="4" width="14" x="5" y="10"></rect>
-      </g>
-    </svg>
-  </span>
-  <span data-i18n="footer.location">Basé à Lausanne</span>
+<span>Boris Nachbaur</span>
+<span aria-hidden="true" class="flag-badge">
+<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<defs><clipPath id="fr-round"><circle cx="12" cy="12" r="12"></circle></clipPath></defs>
+<g clip-path="url(#fr-round)">
+<rect fill="#1F4AA8" height="24" width="8" x="0" y="0"></rect>
+<rect fill="#FFFFFF" height="24" width="8" x="8" y="0"></rect>
+<rect fill="#E23D28" height="24" width="8" x="16" y="0"></rect>
+</g>
+</svg>
 </span>
-        <span class="footer-copy">© <span id="year">2026</span> Nachboris · <span data-i18n="footer.copy">Fait avec ♡ par Boris &amp; Claude.</span></span>
-      </div>
-      <nav class="footer-nav" aria-label="Footer">
-        <a href="/#work" data-i18n="nav.services">Services</a>
-        <a href="/me" data-i18n="nav.about">À propos</a>
-        <a href="/projects" data-i18n="nav.projects">Projets</a>
-        <a href="/reviews" data-i18n="nav.reviews">Avis</a>
-      </nav>
-      <div class="footer-social">
-        <a href="https://www.linkedin.com/in/borisnch/" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <span class="social-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A1.96 1.96 0 1 0 5.3 6.92 1.96 1.96 0 0 0 5.25 3Zm14.19 9.89c0-3.47-1.85-5.08-4.32-5.08-1.99 0-2.88 1.1-3.38 1.87V8.5H8.36c.04.79 0 11.5 0 11.5h3.38v-6.42c0-.34.02-.68.13-.92.27-.68.88-1.39 1.92-1.39 1.35 0 1.89 1.03 1.89 2.54V20H19.1v-7.11Z"/>
-            </svg>
-          </span>
-        </a>
-        <a href="mailto:boris@nachboris.ch" aria-label="Email">
-          <span class="social-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M3 6.75A1.75 1.75 0 0 1 4.75 5h14.5A1.75 1.75 0 0 1 21 6.75v10.5A1.75 1.75 0 0 1 19.25 19H4.75A1.75 1.75 0 0 1 3 17.25V6.75Zm1.9-.25 7.1 5.31 7.1-5.31H4.9Zm14.6 11V8.34l-6.98 5.22a.9.9 0 0 1-1.04 0L4.5 8.34v9.16h15Z"/>
-            </svg>
-          </span>
-        </a>
-      </div>
-    </div>
-  </footer>
+<span data-i18n="footer.lang">Français</span>
+<span>·</span>
+<span aria-hidden="true" class="flag-badge">
+<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<defs><clipPath id="ch-round"><circle cx="12" cy="12" r="12"></circle></clipPath></defs>
+<g clip-path="url(#ch-round)">
+<rect fill="#D52B1E" height="24" width="24"></rect>
+<rect fill="#FFFFFF" height="14" width="4" x="10" y="5"></rect>
+<rect fill="#FFFFFF" height="4" width="14" x="5" y="10"></rect>
+</g>
+</svg>
+</span>
+<span data-i18n="footer.location">Basé à Lausanne</span>
+</span>
+<span class="footer-copy">© <span id="year">2026</span> Nachboris · <span data-i18n="footer.copy">Fait avec ♡ par Boris &amp; Claude.</span></span>
+</div>
+<nav aria-label="Footer" class="footer-nav">
+<a href="/projects" data-i18n="nav.projects">Portfolio</a>
+<a href="/reviews" data-i18n="nav.reviews">Avis</a>
+<a href="/me" data-i18n="nav.about">À propos</a>
+<a href="/legal" data-i18n="footer.legal">Mentions légales</a>
+</nav>
+<div class="footer-social">
+<a aria-label="LinkedIn" href="https://www.linkedin.com/in/borisnch/" rel="me noopener" target="_blank">
+<span aria-hidden="true" class="social-icon">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A1.96 1.96 0 1 0 5.3 6.92 1.96 1.96 0 0 0 5.25 3Zm14.19 9.89c0-3.47-1.85-5.08-4.32-5.08-1.99 0-2.88 1.1-3.38 1.87V8.5H8.36c.04.79 0 11.5 0 11.5h3.38v-6.42c0-.34.02-.68.13-.92.27-.68.88-1.39 1.92-1.39 1.35 0 1.89 1.03 1.89 2.54V20H19.1v-7.11Z"></path>
+</svg>
+</span>
+</a>
+<a aria-label="X (Twitter)" href="https://x.com/borisnachbaur" rel="me noopener" target="_blank">
+<span aria-hidden="true" class="social-icon">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.451-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644Z"></path>
+</svg>
+</span>
+</a>
+<a aria-label="Email" href="mailto:boris@nachboris.ch">
+<span aria-hidden="true" class="social-icon">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 6.75A1.75 1.75 0 0 1 4.75 5h14.5A1.75 1.75 0 0 1 21 6.75v10.5A1.75 1.75 0 0 1 19.25 19H4.75A1.75 1.75 0 0 1 3 17.25V6.75Zm1.9-.25 7.1 5.31 7.1-5.31H4.9Zm14.6 11V8.34l-6.98 5.22a.9.9 0 0 1-1.04 0L4.5 8.34v9.16h15Z"></path>
+</svg>
+</span>
+</a>
+</div>
+</div>
+</footer>
 
   <script>
     // Auto-update copyright year
@@ -1516,7 +1568,7 @@
         // NAV
         'nav.services': 'Services',
         'nav.about': 'À propos',
-        'nav.projects': 'Projets',
+        'nav.projects': 'Portfolio',
         'nav.reviews': 'Avis',
         'nav.available': 'Disponible',
         'nav.cta.full': 'Me contacter',
@@ -1603,12 +1655,13 @@
         'footer.lang': 'Français',
         'footer.location': 'Basé à Lausanne',
         'footer.copy': 'Fait avec ♡ par Boris &amp; Claude.',
+        'footer.legal': 'Mentions légales',
       },
       en: {
         // NAV
         'nav.services': 'Services',
         'nav.about': 'About',
-        'nav.projects': 'Projects',
+        'nav.projects': 'Work',
         'nav.reviews': 'Reviews',
         'nav.available': 'Available',
         'nav.cta.full': 'Get in touch',
@@ -1695,6 +1748,7 @@
         'footer.lang': 'French speaker',
         'footer.location': 'Based in Lausanne',
         'footer.copy': 'Made with ♡ by Boris &amp; Claude.',
+        'footer.legal': 'Legal notice',
       }
     };
 
