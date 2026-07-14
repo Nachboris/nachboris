@@ -696,6 +696,24 @@
     }
     .btn-ghost:hover::after { transform: scaleX(0.98); opacity: 1; }
 
+    .btn-whatsapp {
+      background: #FFFFFF;
+      color: var(--ink);
+      border: 1px solid var(--rule);
+      box-shadow: 0 8px 20px -16px rgba(15, 15, 23, 0.4);
+    }
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      border-color: rgba(37, 211, 102, 0.55);
+      box-shadow: 0 12px 26px -16px rgba(37, 211, 102, 0.45);
+    }
+    .btn-whatsapp .wa-icon {
+      width: 1.15rem;
+      height: 1.15rem;
+      fill: #25D366;
+      flex-shrink: 0;
+    }
+
     .nav-cta {
       display: inline-flex;
       align-items: center;
@@ -3111,10 +3129,9 @@
 <a aria-label="Boris Nachbaur, accueil" class="logo logo-mark" href="/">BN<span class="logo-dot">.</span></a>
 </div>
 <div class="nav-links nav-menu">
-<a class="nav-link" href="/#work" data-i18n="nav.services">Services</a>
-<a class="nav-link nav-link-about" href="/me" data-i18n="nav.about">À propos</a>
-<a class="nav-link nav-link-toolkit" href="/projects" data-i18n="nav.projects">Projets</a>
+<a class="nav-link" href="/projects" data-i18n="nav.projects">Portfolio</a>
 <a class="nav-link" href="/reviews" data-i18n="nav.reviews">Avis</a>
+<a class="nav-link nav-link-about" href="/me" data-i18n="nav.about">À propos</a>
 </div>
 <div class="nav-end">
 <div class="nav-actions">
@@ -3139,10 +3156,9 @@
 </nav>
 <div inert class="mobile-menu" id="mobileMenu">
 <div class="mobile-menu-links">
-<a class="mobile-menu-link" href="/#work"><span data-i18n="nav.services">Services</span> <span>01</span></a>
-<a class="mobile-menu-link" href="/me"><span data-i18n="nav.about">À propos</span> <span>02</span></a>
-<a class="mobile-menu-link" href="/projects"><span data-i18n="nav.projects">Projets</span> <span>03</span></a>
-<a class="mobile-menu-link" href="/reviews"><span data-i18n="nav.reviews">Avis</span> <span>04</span></a>
+<a class="mobile-menu-link" href="/projects"><span data-i18n="nav.projects">Portfolio</span> <span>01</span></a>
+<a class="mobile-menu-link" href="/reviews"><span data-i18n="nav.reviews">Avis</span> <span>02</span></a>
+<a class="mobile-menu-link" href="/me"><span data-i18n="nav.about">À propos</span> <span>03</span></a>
 </div>
 <div class="mobile-menu-foot">
 <a class="mobile-menu-cta" href="https://calendly.com/nachboris/20min" target="_blank" rel="noopener noreferrer"><span data-i18n="nav.cta.full">Réserver un appel</span> <svg class="cta-phone" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
@@ -3593,6 +3609,10 @@
 <span class="btn-label" data-i18n="contact.cta.primary">Réserver un appel</span>
 <svg class="arrow cta-phone" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
 </a>
+<a class="btn btn-whatsapp" href="https://wa.me/41772796885?text=Salut%20Boris%2C%20je%20viens%20de%20ton%20site%20%E2%80%94%20j%27aimerais%20discuter%20d%27un%20projet." data-i18n-href="contact.cta.whatsapp.href" rel="noopener" target="_blank" aria-label="Écrire sur WhatsApp">
+<svg class="wa-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.359.101 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.652a11.882 11.882 0 005.71 1.447h.006c6.585 0 11.946-5.359 11.949-11.893a11.821 11.821 0 00-3.481-8.413z"/></svg>
+<span class="btn-label" data-i18n="contact.cta.whatsapp">WhatsApp</span>
+</a>
 <a class="btn btn-ghost" href="mailto:boris@nachboris.ch"><span class="btn-label">boris@nachboris.ch</span></a>
 </div>
 <div class="contact-signature reveal">
@@ -3639,9 +3659,9 @@
 <span class="footer-copy">© <span id="year">2026</span> Nachboris · <span data-i18n="footer.copy">Fait avec ♡ par Boris &amp; Claude.</span></span>
 </div>
 <nav aria-label="Footer" class="footer-nav">
-<a href="/me" data-i18n="nav.about">À propos</a>
-<a href="/projects" data-i18n="nav.projects">Projets</a>
+<a href="/projects" data-i18n="nav.projects">Portfolio</a>
 <a href="/reviews" data-i18n="nav.reviews">Avis</a>
+<a href="/me" data-i18n="nav.about">À propos</a>
 </nav>
 <div class="footer-social">
 <a aria-label="LinkedIn" href="https://www.linkedin.com/in/borisnch/" rel="noopener" target="_blank">
@@ -3778,7 +3798,7 @@
         // NAV
         'nav.services': 'Services',
         'nav.about': 'À propos',
-        'nav.projects': 'Projets',
+        'nav.projects': 'Portfolio',
         'nav.reviews': 'Avis',
         'nav.available': 'Disponible',
         'nav.cta.full': 'Réserver un appel',
@@ -3923,6 +3943,8 @@
         'contact.h2': "Prêt à ce que ta présence en ligne <span class=\"italic-accent\">travaille pour toi</span>&nbsp;?",
         'contact.sub': "Le premier appel dure 20 minutes. C'est gratuit. Dans le pire des cas, tu repars avec une vision claire de ce qui bloque, et de quoi corriger en premier.",
         'contact.cta.primary': 'Réserver un appel',
+        'contact.cta.whatsapp': 'WhatsApp',
+        'contact.cta.whatsapp.href': 'https://wa.me/41772796885?text=Salut%20Boris%2C%20je%20viens%20de%20ton%20site%20%E2%80%94%20j%27aimerais%20discuter%20d%27un%20projet.',
         'contact.signature.text': 'Et si je ne suis pas le bon profil — <em>aucun souci.</em><br/>Tu repars au moins avec une vision claire.',
         'contact.signature.name': '— Boris',
 
@@ -3935,7 +3957,7 @@
         // NAV
         'nav.services': 'Services',
         'nav.about': 'About',
-        'nav.projects': 'Projects',
+        'nav.projects': 'Work',
         'nav.reviews': 'Reviews',
         'nav.available': 'Available',
         'nav.cta.full': 'Book a call',
@@ -4080,6 +4102,8 @@
         'contact.h2': "Ready for an online presence that <span class=\"italic-accent\">works for you</span>?",
         'contact.sub': "The first call is 20 minutes. It’s free. Worst case, you walk away knowing exactly what’s blocking you — and what to fix first.",
         'contact.cta.primary': 'Book a call',
+        'contact.cta.whatsapp': 'WhatsApp',
+        'contact.cta.whatsapp.href': 'https://wa.me/41772796885?text=Hi%20Boris%2C%20I%20came%20from%20your%20site%20%E2%80%94%20I%27d%20like%20to%20discuss%20a%20project.',
         'contact.signature.text': "And if I'm not the right fit — <em>no worries.</em><br/>You'll leave with a clear picture either way.",
         'contact.signature.name': '— Boris',
 
@@ -4157,6 +4181,10 @@
       document.querySelectorAll('[data-i18n-html]').forEach((el) => {
         const key = el.getAttribute('data-i18n-html');
         if (dict[key] !== undefined) el.innerHTML = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-href]').forEach((el) => {
+        const key = el.getAttribute('data-i18n-href');
+        if (dict[key] !== undefined) el.setAttribute('href', dict[key]);
       });
 
       // <html lang>
