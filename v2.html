@@ -1816,19 +1816,14 @@
       box-shadow: 0 14px 28px -24px rgba(15, 15, 23, 0.3);
     }
     .fit-row-me {
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(135deg, rgba(91, 79, 224, 0.11) 0%, rgba(255, 107, 53, 0.08) 100%);
-      border-color: rgba(91, 79, 224, 0.18);
-      box-shadow: 0 14px 34px -28px rgba(91, 79, 224, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.82);
+      background: var(--ink);
+      border-color: var(--ink);
+      box-shadow: 0 22px 50px -30px rgba(15, 15, 23, 0.55);
     }
-    .fit-row-me::before {
-      content: "";
-      position: absolute;
-      inset: 0 auto 0 0;
-      width: 4px;
-      background: linear-gradient(180deg, var(--indigo), var(--orange));
-      border-radius: 999px;
+    .fit-row-me:hover {
+      background: var(--ink);
+      border-color: var(--ink);
+      box-shadow: 0 26px 56px -30px rgba(15, 15, 23, 0.6);
     }
     .fit-option {
       display: grid;
@@ -1842,8 +1837,14 @@
       letter-spacing: -0.01em;
     }
     .fit-row-me .fit-option-name {
-      color: var(--indigo);
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.4rem;
+      letter-spacing: -0.01em;
+      color: var(--orange);
     }
+    .fit-row-me .fit-option-meta { color: rgba(247, 245, 242, 0.55); }
     .fit-option-meta {
       color: var(--ink-mute);
       font-size: 0.78rem;
@@ -1856,7 +1857,16 @@
       line-height: 1.42;
     }
     .fit-row-me .fit-cell {
-      color: var(--ink);
+      color: rgba(247, 245, 242, 0.9);
+    }
+    .fit-row-me .fit-cell.fit-tradeoff {
+      color: rgba(247, 245, 242, 0.5);
+    }
+    .fit-row-me .fit-chip {
+      background: transparent;
+      border: 1px solid rgba(247, 245, 242, 0.25);
+      color: rgba(247, 245, 242, 0.85);
+      font-weight: 600;
     }
     .fit-chips {
       display: flex;
@@ -3119,66 +3129,121 @@
     }
     .edge-card {
       position: relative;
-      padding: clamp(2rem, 4vw, 3rem);
-      border-radius: var(--r-xl);
-      background: linear-gradient(135deg, rgba(255, 107, 53, 0.07) 0%, rgba(91, 79, 224, 0.05) 60%, rgba(255, 255, 255, 0.45) 100%);
-      border: 1px solid rgba(15, 15, 23, 0.07);
-      overflow: hidden;
-      box-shadow: 0 26px 60px -40px rgba(15, 15, 23, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.75);
-      text-align: center;
-    }
-    .edge-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      width: 4px;
-      background: linear-gradient(180deg, var(--orange), var(--indigo));
-      border-radius: 999px;
+      padding: clamp(2.2rem, 4vw, 3.4rem) 0;
     }
     .edge-card .eyebrow {
       color: var(--orange);
       justify-content: center;
     }
     .edge-card .eyebrow::before { background: var(--orange); }
-    .edge-card h2 {
-      margin-top: 1rem;
-      max-width: 28ch;
-      margin-left: auto;
-      margin-right: auto;
+    .edge-card > h2 {
+      margin: 1rem auto 2.6rem;
+      max-width: 22ch;
+      text-align: center;
     }
-    .edge-card p {
-      margin-top: 1.4rem;
-      font-size: 1.06rem;
-      line-height: 1.7;
+    .edge-spread {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+      gap: clamp(1.5rem, 4vw, 3rem);
+      align-items: stretch;
+    }
+    .edge-rule { background: var(--rule); }
+    .edge-tension {
+      display: grid;
+      gap: 1.4rem;
+      align-content: start;
+    }
+    .edge-profile {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.9rem;
+      align-items: baseline;
+      padding-bottom: 1.4rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .edge-profile:last-child { border-bottom: 0; padding-bottom: 0; }
+    .edge-profile .x {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.3rem;
+      line-height: 1;
+      color: var(--ink-mute);
+    }
+    .edge-profile p {
       color: var(--ink-soft);
-      max-width: 62ch;
-      margin-left: auto;
-      margin-right: auto;
+      font-size: 0.98rem;
+      line-height: 1.55;
     }
-    .edge-card p strong {
+    .edge-profile p strong { color: var(--ink); font-weight: 700; }
+    .edge-me {
+      display: grid;
+      gap: 1.1rem;
+      align-content: start;
+    }
+    .edge-kicker {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.6rem, 2.6vw, 2rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
       color: var(--ink);
+    }
+    .edge-kicker .italic-accent { color: var(--orange); }
+    .edge-me-body {
+      color: var(--ink-soft);
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+    .edge-me-body strong { color: var(--ink); font-weight: 700; }
+    .edge-facts {
+      display: flex;
+      gap: 1.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.2rem;
+    }
+    .edge-fact-n {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      line-height: 1.1;
+    }
+    .edge-fact-l {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--ink-mute);
       font-weight: 600;
+      margin-top: 0.15rem;
     }
     .edge-chips {
-      margin-top: 1.85rem;
+      margin-top: 0.5rem;
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
-      justify-content: center;
     }
     .edge-chip {
       display: inline-flex;
       align-items: center;
-      padding: 0.42rem 0.85rem;
+      padding: 0.45rem 0.9rem;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.72);
-      border: 1px solid rgba(15, 15, 23, 0.08);
-      font-size: 0.76rem;
-      font-weight: 700;
-      color: var(--ink);
-      letter-spacing: 0.02em;
+      background: transparent;
+      border: 1px solid var(--rule);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--ink-soft);
+      letter-spacing: 0.01em;
+      transition: border-color 0.2s var(--soft), color 0.2s var(--soft);
+    }
+    .edge-chip:hover { border-color: var(--ink); color: var(--ink); }
+    @media (max-width: 720px) {
+      .edge-spread { grid-template-columns: 1fr; }
+      .edge-rule { display: none; }
+      .edge-tension {
+        padding-bottom: 1.4rem;
+        border-bottom: 1px solid var(--rule);
+      }
     }
 
 </style>
@@ -3434,14 +3499,27 @@
 <div class="edge-card reveal">
 <span class="eyebrow" data-i18n="edge.eyebrow">Ce qui me différencie</span>
 <h2 data-i18n-html="edge.h2">Le marketing et la technique, dans la même tête, <span class="italic-accent">pour de vrai</span>.</h2>
-<p data-i18n-html="edge.body">
-              La plupart des profils font l'un ou l'autre&nbsp;: le consultant marketing qui sous-traite la technique, ou le développeur qui n'a jamais rien vendu. Moi, j'ai fait les deux en solo pendant 15 ans — funnels, email et contenu d'un côté&nbsp;; sites, automatisations et outils de l'autre. <strong>Quand je conçois ton système, je sais pourquoi il doit exister et comment le construire.</strong>
-            </p>
+<div class="edge-spread">
+<div class="edge-tension">
+<div class="edge-profile"><span class="x" aria-hidden="true">×</span><p data-i18n-html="edge.tension1">Le <strong>consultant marketing</strong> qui sous-traite la technique. Il vend le plan&nbsp;; quelqu'un d'autre le construit — et le rend flou.</p></div>
+<div class="edge-profile"><span class="x" aria-hidden="true">×</span><p data-i18n-html="edge.tension2">Le <strong>développeur</strong> qui n'a jamais rien vendu. Il construit proprement, sans jamais penser à qui doit cliquer.</p></div>
+</div>
+<div class="edge-rule" aria-hidden="true"></div>
+<div class="edge-me">
+<div class="edge-kicker" data-i18n-html="edge.kicker">Moi, <span class="italic-accent">les deux.</span></div>
+<div class="edge-me-body" data-i18n-html="edge.mebody">15 ans en solo — funnels, email et contenu d'un côté&nbsp;; sites, automatisations et outils de l'autre. <strong>Quand je conçois ton système, je sais pourquoi il doit exister et comment le construire.</strong></div>
+<div class="edge-facts">
+<div><div class="edge-fact-n" data-i18n="edge.fact1n">2&nbsp;250+</div><div class="edge-fact-l" data-i18n="edge.fact1l">avis · 100% positifs</div></div>
+<div><div class="edge-fact-n" data-i18n="edge.fact2n">20&nbsp;000+</div><div class="edge-fact-l" data-i18n="edge.fact2l">transactions</div></div>
+<div><div class="edge-fact-n" data-i18n="edge.fact3n">0</div><div class="edge-fact-l" data-i18n="edge.fact3l">équipe</div></div>
+</div>
 <div class="edge-chips" aria-label="Domaines opérés en solo">
 <span class="edge-chip" data-i18n="edge.chip1">Funnels &amp; acquisition</span>
 <span class="edge-chip" data-i18n="edge.chip2">Email lifecycle</span>
 <span class="edge-chip" data-i18n="edge.chip3">Automatisation</span>
 <span class="edge-chip" data-i18n="edge.chip4">Contenu organique</span>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -3940,7 +4018,16 @@
         // EDGE
         'edge.eyebrow': 'Ce qui me différencie',
         'edge.h2': "Le marketing et la technique, dans la même tête, <span class=\"italic-accent\">pour de vrai</span>.",
-        'edge.body': "La plupart des profils font l'un ou l'autre&nbsp;: le consultant marketing qui sous-traite la technique, ou le développeur qui n'a jamais rien vendu. Moi, j'ai fait les deux en solo pendant 15 ans — funnels, email et contenu d'un côté&nbsp;; sites, automatisations et outils de l'autre. Résultat&nbsp;: 500K$+ cumulés, 20&nbsp;000+ transactions, sans équipe. <strong>Quand je conçois ton système, je sais pourquoi il doit exister et comment le construire.</strong>",
+        'edge.tension1': "Le <strong>consultant marketing</strong> qui sous-traite la technique. Il vend le plan&nbsp;; quelqu'un d'autre le construit — et le rend flou.",
+        'edge.tension2': "Le <strong>développeur</strong> qui n'a jamais rien vendu. Il construit proprement, sans jamais penser à qui doit cliquer.",
+        'edge.kicker': 'Moi, <span class="italic-accent">les deux.</span>',
+        'edge.mebody': "15 ans en solo — funnels, email et contenu d'un côté&nbsp;; sites, automatisations et outils de l'autre. <strong>Quand je conçois ton système, je sais pourquoi il doit exister et comment le construire.</strong>",
+        'edge.fact1n': '2&nbsp;250+',
+        'edge.fact1l': 'avis · 100% positifs',
+        'edge.fact2n': '20&nbsp;000+',
+        'edge.fact2l': 'transactions',
+        'edge.fact3n': '0',
+        'edge.fact3l': 'équipe',
         'edge.chip1': 'Funnels &amp; acquisition',
         'edge.chip2': 'Email lifecycle',
         'edge.chip3': 'Automatisation',
@@ -4101,7 +4188,16 @@
         // EDGE
         'edge.eyebrow': 'What sets me apart',
         'edge.h2': "Marketing and tech in the same head, <span class=\"italic-accent\">for real</span>.",
-        'edge.body': "Most profiles do one or the other: the marketing consultant who outsources the tech, or the developer who has never sold anything. I’ve done both, solo, for 15 years — funnels, email and content on one side; websites, automations and tools on the other. <strong>When I design your system, I know why it should exist and how to build it.</strong>",
+        'edge.tension1': "The <strong>marketing consultant</strong> who outsources the tech. He sells the plan; someone else builds it — and blurs it.",
+        'edge.tension2': "The <strong>developer</strong> who has never sold anything. He builds cleanly, without ever thinking about who has to click.",
+        'edge.kicker': 'Me, <span class="italic-accent">both.</span>',
+        'edge.mebody': "15 years solo — funnels, email and content on one side; websites, automations and tools on the other. <strong>When I design your system, I know why it should exist and how to build it.</strong>",
+        'edge.fact1n': '2,250+',
+        'edge.fact1l': 'reviews · 100% positive',
+        'edge.fact2n': '20,000+',
+        'edge.fact2l': 'transactions',
+        'edge.fact3n': '0',
+        'edge.fact3l': 'team',
         'edge.chip1': 'Funnels &amp; acquisition',
         'edge.chip2': 'Email lifecycle',
         'edge.chip3': 'Automation',
