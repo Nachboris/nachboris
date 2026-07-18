@@ -3151,10 +3151,13 @@
     .edge-halves {
       display: grid;
       grid-template-columns: 1fr auto 1fr;
+      gap: clamp(1.5rem, 5vw, 3.5rem);
       align-items: stretch;
       text-align: left;
     }
-    .edge-half { padding: 0.5rem clamp(1rem, 3vw, 2.4rem); }
+    .edge-half { padding: 0.5rem 0; }
+    .edge-half:not(.edge-half-tech) { justify-self: end; }
+    .edge-half-tech { justify-self: start; }
     .edge-half-label {
       font-size: 0.72rem;
       font-weight: 700;
@@ -3237,6 +3240,7 @@
       .edge-join-line { width: auto; height: 1px; align-self: center; }
       .edge-join-amp { width: 48px; height: 48px; font-size: 1.7rem; }
       .edge-half { text-align: center; padding: 0 1rem; }
+      .edge-half:not(.edge-half-tech), .edge-half-tech { justify-self: center; }
       .edge-half-list { justify-items: center; }
       .edge-half-list li { grid-template-columns: none; }
       .edge-half-list li::before { display: none; }
@@ -3562,7 +3566,7 @@
 <div class="edge-card reveal">
 <span class="eyebrow" data-i18n="edge.eyebrow">Ce qui me différencie</span>
 <h2 data-i18n-html="edge.h2">Le marketing et la technique, dans la même tête, <span class="italic-accent">pour de vrai</span>.</h2>
-<p class="edge-lede" data-i18n-html="edge.lede">La plupart des profils font l'un <strong>ou</strong> l'autre. Moi, les deux — <strong>en solo depuis 15 ans</strong>.</p>
+<p class="edge-lede" data-i18n-html="edge.lede">La plupart des profils font l'un <strong>ou</strong> l'autre. Je maîtrise <strong>les deux</strong>.</p>
 <div class="edge-halves">
 <div class="edge-half">
 <div class="edge-half-label" data-i18n="edge.mkt.label">Le marketing</div>
@@ -4026,7 +4030,7 @@
         // EDGE
         'edge.eyebrow': 'Ce qui me différencie',
         'edge.h2': "Le marketing et la technique, dans la même tête, <span class=\"italic-accent\">pour de vrai</span>.",
-        'edge.lede': "La plupart des profils font l'un <strong>ou</strong> l'autre. Moi, les deux — <strong>en solo depuis 15 ans</strong>.",
+        'edge.lede': "La plupart des profils font l'un <strong>ou</strong> l'autre. Je maîtrise <strong>les deux</strong>.",
         'edge.mkt.label': 'Le marketing',
         'edge.mkt.1': 'Funnels &amp; acquisition',
         'edge.mkt.2': 'Email &amp; séquences',
@@ -4200,7 +4204,7 @@
         // EDGE
         'edge.eyebrow': 'What sets me apart',
         'edge.h2': "Marketing and tech in the same head, <span class=\"italic-accent\">for real</span>.",
-        'edge.lede': "Most profiles do one <strong>or</strong> the other. Me, both — <strong>solo, for 15 years</strong>.",
+        'edge.lede': "Most profiles do one <strong>or</strong> the other. I do <strong>both</strong>.",
         'edge.mkt.label': 'Marketing',
         'edge.mkt.1': 'Funnels &amp; acquisition',
         'edge.mkt.2': 'Email &amp; sequences',
